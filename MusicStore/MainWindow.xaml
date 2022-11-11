@@ -5,9 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MusicStore"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="217,185,0,0" VerticalAlignment="Top" Width="232"/>
+        Title="MainWindow" Height="450" Width="400"
+        WindowStyle="none"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown"
+        Background="Transparent"
+        AllowsTransparency="True">
+    <Border CornerRadius="40">
+        <Border.Background>
+            <ImageBrush ImageSource="/obrazy/logo.png"/>
+        </Border.Background>
+            <Border CornerRadius="30"
+            BorderThickness="4"
+                    Opacity="0.97">
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
+                <GradientStop Color="DarkCyan" Offset="0"/>
+                <GradientStop Color="Green" Offset="0.66"/>
+                <GradientStop Color="Orange" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                <GradientStop Color="#000000" Offset="0"/>
+                <GradientStop Color="#001111" Offset="0.5"/>
+                <GradientStop Color="#002222" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
 
-    </Grid>
+    </Border>
+    </Border>
 </Window>
+    
