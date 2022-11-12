@@ -31,5 +31,15 @@ namespace MusicStore
                 DragMove();
             }
         }
+
+        private void btnchowanie_click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void btnzamykanie_click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

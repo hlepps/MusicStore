@@ -16,25 +16,118 @@
         <Border.Background>
             <ImageBrush ImageSource="/obrazy/logo.png"/>
         </Border.Background>
-            <Border CornerRadius="30"
+        <Border CornerRadius="10"
             BorderThickness="4"
                     Opacity="0.97">
-        <Border.BorderBrush>
-            <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
-                <GradientStop Color="DarkCyan" Offset="0"/>
-                <GradientStop Color="Green" Offset="0.66"/>
-                <GradientStop Color="Orange" Offset="1"/>
-            </LinearGradientBrush>
-        </Border.BorderBrush>
-        <Border.Background>
-            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                <GradientStop Color="#000000" Offset="0"/>
-                <GradientStop Color="#001111" Offset="0.5"/>
-                <GradientStop Color="#002222" Offset="1"/>
-            </LinearGradientBrush>
-        </Border.Background>
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
+                    <GradientStop Color="DarkCyan" Offset="0"/>
+                    <GradientStop Color="Green" Offset="0.66"/>
+                    <GradientStop Color="Orange" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#000000" Offset="0"/>
+                    <GradientStop Color="#001111" Offset="0.5"/>
+                    <GradientStop Color="#002222" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40">
+                    </RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="8"/>
+                    </Grid.ColumnDefinitions>
 
-    </Border>
+                    <TextBlock Text="LOGOWANIE"
+                               Foreground="Orange"
+                               Grid.Column="1"
+                               TextAlignment="left"
+                               FontSize="15"
+                               Margin="0,15,0,0"
+                               FontFamily="InriaSans-Light"
+                               />
+                    <Button    x:Name="btnchowanie"
+                               Grid.Column="2"
+                               Content="-"
+                               FontSize="30"
+                               BorderThickness="0"
+                               Foreground="white"
+                               FontFamily="InriaSans-Light"
+                               Cursor="Hand"
+                               Click="btnchowanie_click" 
+                        >
+                        <Button.Style>
+                            <Style TargetType="Button">
+                            <Setter Property="Background" Value="green"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="LightGreen"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                                </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="30"
+                                        Height="30"
+                                        CornerRadius="15"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                    </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                            <Button    x:Name="btnzamykanie"
+                               Grid.Column="3"
+                               Content="x"
+                               FontSize="25"
+                               BorderThickness="0"
+                               Foreground="white"
+                               FontFamily="InriaSans-Light"
+                               Cursor="Hand"
+                               Click="btnzamykanie_click"
+                               
+                        >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="DarkCyan"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Cyan"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="30"
+                                        Height="30"
+                                        CornerRadius="15"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                        </Button>
+                </Grid>
+                <StackPanel Width="100%">
+                    
+                </StackPanel>
+            </Grid>
+        </Border>
     </Border>
 </Window>
     
