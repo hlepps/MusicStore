@@ -48,7 +48,7 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Text="LOGOWANIE"
-                               Foreground="Orange"
+                               Foreground="DarkOrange"
                                Grid.Column="1"
                                TextAlignment="left"
                                FontSize="15"
@@ -67,13 +67,13 @@
                         >
                         <Button.Style>
                             <Style TargetType="Button">
-                            <Setter Property="Background" Value="green"/>
+                                <Setter Property="Background" Value="green"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="LightGreen"/>
+                                        <Setter Property="Background" Value="#FF66C766"/>
                                     </Trigger>
                                 </Style.Triggers>
-                                </Style>
+                            </Style>
                         </Button.Style>
 
                         <Button.Template>
@@ -82,13 +82,13 @@
                                         Height="30"
                                         CornerRadius="15"
                                         Background="{TemplateBinding Background}">
-                                <ContentPresenter VerticalAlignment="Center"
+                                    <ContentPresenter VerticalAlignment="Center"
                                                   HorizontalAlignment="Center"/>
-                                    </Border>
+                                </Border>
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                            <Button    x:Name="btnzamykanie"
+                    <Button    x:Name="btnzamykanie"
                                Grid.Column="3"
                                Content="x"
                                FontSize="25"
@@ -99,32 +99,147 @@
                                Click="btnzamykanie_click"
                                
                         >
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Background" Value="DarkCyan"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="Cyan"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="DarkCyan"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FF00CACA"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
 
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border Width="30"
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="30"
                                         Height="30"
                                         CornerRadius="15"
                                         Background="{TemplateBinding Background}">
-                                <ContentPresenter VerticalAlignment="Center"
+                                    <ContentPresenter VerticalAlignment="Center"
                                                   HorizontalAlignment="Center"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                        </Button>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
                 </Grid>
-                <StackPanel Width="100%">
-                    
+                <StackPanel Width="250"
+                            Orientation="Vertical"
+                            Margin="71,80,71,-391"
+                            >
+                    <Image Source="/obrazy/note-gb4fa8b680_640.png"
+                           Width="100" Height="100"/>
+                    <TextBlock Text="AFCurse"
+                               Foreground="Orange"
+                               TextAlignment="center"
+                               FontFamily="InriaSans-Light"
+                               FontWeight="Bold"
+                               FontSize="30"/>
+                    <TextBlock Text="Login"
+                               Foreground="Orange"
+                               FontWeight="Medium"
+                               FontFamily="InriaSans-Light"
+                               FontSize="18"
+                               Margin="12,10,0,0"/>
+                    <TextBox x:Name="logintxt"
+                             Background="Transparent"
+                             Foreground="Orange"
+                             Margin="0,5,0,0"
+                             FontSize="16"
+                             FontFamily="InriaSans-Light"
+                             BorderBrush="Green"
+                             BorderThickness="0,0,0,2"
+                             >
+
+                    </TextBox>
+                    <TextBlock Text="Hasło"
+                               Foreground="Orange"
+                               FontWeight="Medium"
+                               FontFamily="InriaSans-Light"
+                               FontSize="18"
+                               Margin="12,15,0,0"/>
+                    <PasswordBox x:Name="haslotxt"
+                             Background="Transparent"
+                             Foreground="Orange"
+                             Margin="0,5,0,0"
+                             FontSize="16"
+                             FontFamily="InriaSans-Light"
+                             BorderBrush="Green"
+                             BorderThickness="0,0,0,2"
+                             >
+
+                    </PasswordBox>
+
+                        <Button    x:Name="btnlogowanie"
+                               Content="Zaloguj się"
+                               FontSize="16"
+                               BorderThickness="5,5,5,5"
+                               Foreground="White"
+                               FontFamily="InriaSans-Light"
+                               Cursor="Hand"
+                               Click="btnlogowanie_click"
+                               Margin="0,20,0,0"
+                               
+                               
+                        >
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Green"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FF66C766"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="102"
+                                        Height="30"
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button    x:Name="btnrejestracja"
+                               Content="Rejestracja"
+                               FontSize="16"
+                               BorderThickness="5,5,5,5"
+                               Foreground="White"
+                               FontFamily="InriaSans-Light"
+                               Cursor="Hand"
+                               Click="btnrejestracja_click"
+                               Margin="0,13,0,0"
+                               
+                               
+                        >
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="DarkCyan"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FF00CACA"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="102"
+                                        Height="30"
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
                 </StackPanel>
             </Grid>
         </Border>

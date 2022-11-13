@@ -93,7 +93,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="obrazy\note-gb4fa8b680_640.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="obrazy\logo.png" />
   </ItemGroup>

@@ -41,5 +41,15 @@ namespace MusicStore
         {
             Application.Current.Shutdown();
         }
+
+        private void btnlogowanie_click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void btnrejestracja_click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
