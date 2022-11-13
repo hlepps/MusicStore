@@ -213,9 +213,7 @@
                                FontFamily="InriaSans-Light"
                                Cursor="Hand"
                                Click="btnrejestracja_click"
-                               Margin="0,13,0,0"
-                               
-                               
+                               Margin="0,13,0,0"     
                         >
                         <Button.Style>
                             <Style TargetType="Button">
