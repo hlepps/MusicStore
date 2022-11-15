@@ -50,7 +50,7 @@ namespace MusicStore
         private void btnrejestracja_click(object sender, RoutedEventArgs e)
         {
             register nowyuser = new register();
-            nowyuser.ShowDialog();
+            nowyuser.Show();
         }
     }
 }
