@@ -44,13 +44,16 @@ namespace MusicStore
 
         private void btnlogowanie_click(object sender, RoutedEventArgs e)
         {
-            
+            if (logintxt.Text != "" && haslotxt.Password != "")
+            {
+                DBConn.instance.Login(logintxt.Text, haslotxt.Password);
+            }
         }
 
         private void btnrejestracja_click(object sender, RoutedEventArgs e)
         {
             register nowyuser = new register();
-            nowyuser.Show();
+            nowyuser.ShowDialog();
         }
     }
 }
