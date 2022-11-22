@@ -37,7 +37,7 @@ namespace MusicStore
         {
             foreach(char c in s)
             {
-                if (!Char.IsLetterOrDigit(c) && c != '_' && c != ' ')
+                if (!Char.IsLetterOrDigit(c) && c != '_' && c != ' ' && c != '!' && c != '@')
                     return false;
             }
             return true;

@@ -23,7 +23,7 @@ namespace MusicStore
             else
                 return;
 
-            string connStr = "server=localhost;user=root;database=musicstore;port=3306;password=";
+            string connStr = "server=192.166.219.220;user=vinyl;database=vinyl;port=3306;password=vinyl1212";
             conn = new MySqlConnection(connStr);
             try
             {
