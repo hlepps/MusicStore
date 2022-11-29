@@ -58,18 +58,9 @@
                                Foreground="white"
                                FontFamily="InriaSans-Light"
                                Cursor="Hand"
-                               Click="btnchowanie_click" 
+                               Click="btnchowanie_click"
+                               Style="{DynamicResource button1}"
                         >
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="green"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#FF66C766"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
 
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
@@ -92,18 +83,8 @@
                                FontFamily="InriaSans-Light"
                                Cursor="Hand"
                                Click="btnzamykanie_click"
-                               
+                               Style="{DynamicResource button2}"
                         >
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="DarkCyan"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#FF00CACA"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
 
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
@@ -165,7 +146,7 @@
 
                     </PasswordBox>
 
-                        <Button    x:Name="btnlogowanie"
+                    <Button    x:Name="btnlogowanie"
                                Content="Zaloguj się"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
@@ -174,11 +155,8 @@
                                Cursor="Hand"
                                Click="btnlogowanie_click"
                                Margin="0,20,0,0"
-                               Style="{DynamicResource logowaniebutton}"
-                               
+                               Style="{DynamicResource button1}"       
                         >
-                        
-
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border Width="102"
@@ -199,18 +177,9 @@
                                FontFamily="InriaSans-Light"
                                Cursor="Hand"
                                Click="btnrejestracja_click"
-                               Margin="0,13,0,0"     
+                               Margin="0,13,0,0"
+                               Style="{DynamicResource button2}"
                         >
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="DarkCyan"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#FF00CACA"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
 
                         <Button.Template>
                             <ControlTemplate TargetType="Button">

@@ -14,6 +14,22 @@
 
     <SolidColorBrush x:Key="napisy" Color="Orange"/>
     <SolidColorBrush x:Key="paski" Color="Green"/>
-    <SolidColorBrush x:Key="buttonpress1" Color="#FF66C766"/>
 
+    <Style x:Key="button1" TargetType="Button">
+        <Setter Property="Background" Value="Green"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#FF66C766"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="button2" TargetType="Button">
+        <Setter Property="Background" Value="DarkCyan"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#FF00CACA"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

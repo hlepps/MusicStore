@@ -2,16 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:MusicStore.Style">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Style/Darkmode.xaml"/>
+        <ResourceDictionary Source="/Style/Lightmode.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-
-
-    <Style x:Key="logowaniebutton" TargetType="Button">
-        <Setter Property="Background" Value="Green"/>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#FF66C766"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
 </ResourceDictionary>
