@@ -158,13 +158,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="obrazy\note-gb4fa8b680_640.png" />
+    <Content Include="obrazy\note-gb4fa8b680_640.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="obrazy\logo.png" />
+    <Content Include="obrazy\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="obrazy\light.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

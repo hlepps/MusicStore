@@ -32,4 +32,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
+    <BitmapImage x:Key="logo" UriSource="../obrazy/note-gb4fa8b680_640.png"/>
 </ResourceDictionary>

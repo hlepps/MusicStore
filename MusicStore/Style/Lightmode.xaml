@@ -32,4 +32,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
+    <BitmapImage x:Key="logo" UriSource="/obrazy/light.png"/>
 </ResourceDictionary>

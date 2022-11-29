@@ -14,7 +14,7 @@
         AllowsTransparency="True">
     <Border CornerRadius="40">
         <Border.Background>
-            <ImageBrush ImageSource="/obrazy/logo.png"/>
+            <ImageBrush ImageSource="obrazy/logo.png"/>
         </Border.Background>
         <Border CornerRadius="10"
             BorderThickness="4"
@@ -103,7 +103,7 @@
                             Orientation="Vertical"
                             Margin="71,80,71,-391"
                             >
-                    <Image Source="/obrazy/note-gb4fa8b680_640.png"
+                    <Image Source="{DynamicResource logo}"
                            Width="100" Height="100"/>
                     <TextBlock Text="Vinyl Library"
                                Foreground="{DynamicResource napisy}"
