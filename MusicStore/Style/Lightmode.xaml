@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <GradientStopCollection x:Key="tlo">
+        <GradientStop Offset="0" Color="#FFFFFF"/>
+        <GradientStop Offset="0.5" Color="#FFEEEE"/>
+        <GradientStop Offset="1" Color="#FFDDDD"/>
+    </GradientStopCollection>
+
+    <GradientStopCollection x:Key="rama">
+        <GradientStop Offset="0" Color="blue"/>
+        <GradientStop Offset="0.66" Color="MediumPurple"/>
+        <GradientStop Offset="1" Color="MediumVioletRed"/>
+    </GradientStopCollection>
+
+    <SolidColorBrush x:Key="napisy" Color="MediumVioletRed"/>
+    <SolidColorBrush x:Key="paski" Color="MediumPurple"/>
+</ResourceDictionary>

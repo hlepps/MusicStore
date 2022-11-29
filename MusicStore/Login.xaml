@@ -20,17 +20,12 @@
             BorderThickness="4"
                     Opacity="0.97">
             <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
-                    <GradientStop Color="DarkCyan" Offset="0"/>
-                    <GradientStop Color="Green" Offset="0.66"/>
-                    <GradientStop Color="Orange" Offset="1"/>
+                <LinearGradientBrush StartPoint="1,1" EndPoint="0,0" GradientStops="{DynamicResource rama}">
+                    
                 </LinearGradientBrush>
             </Border.BorderBrush>
             <Border.Background>
-                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="#000000" Offset="0"/>
-                    <GradientStop Color="#001111" Offset="0.5"/>
-                    <GradientStop Color="#002222" Offset="1"/>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" GradientStops="{DynamicResource tlo}">
                 </LinearGradientBrush>
             </Border.Background>
             <Grid>
@@ -48,7 +43,7 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Text="LOGOWANIE"
-                               Foreground="DarkOrange"
+                               Foreground="{DynamicResource napisy}"
                                Grid.Column="1"
                                TextAlignment="left"
                                FontSize="15"
@@ -129,42 +124,42 @@
                             >
                     <Image Source="/obrazy/note-gb4fa8b680_640.png"
                            Width="100" Height="100"/>
-                    <TextBlock Text="AFCurse"
-                               Foreground="Orange"
+                    <TextBlock Text="Vinyl Library"
+                               Foreground="{DynamicResource napisy}"
                                TextAlignment="center"
                                FontFamily="InriaSans-Light"
                                FontWeight="Bold"
                                FontSize="30"/>
                     <TextBlock Text="Login"
-                               Foreground="Orange"
+                               Foreground="{DynamicResource napisy}"
                                FontWeight="Medium"
                                FontFamily="InriaSans-Light"
                                FontSize="18"
                                Margin="12,10,0,0"/>
                     <TextBox x:Name="logintxt"
                              Background="Transparent"
-                             Foreground="Orange"
+                             Foreground="{DynamicResource napisy}"
                              Margin="0,5,0,0"
                              FontSize="16"
                              FontFamily="InriaSans-Light"
-                             BorderBrush="Green"
+                             BorderBrush="{DynamicResource paski}"
                              BorderThickness="0,0,0,2"
                              >
 
                     </TextBox>
                     <TextBlock Text="Hasło"
-                               Foreground="Orange"
+                               Foreground="{DynamicResource napisy}"
                                FontWeight="Medium"
                                FontFamily="InriaSans-Light"
                                FontSize="18"
                                Margin="12,15,0,0"/>
                     <PasswordBox x:Name="haslotxt"
                              Background="Transparent"
-                             Foreground="Orange"
+                             Foreground="{DynamicResource napisy}"
                              Margin="0,5,0,0"
                              FontSize="16"
                              FontFamily="InriaSans-Light"
-                             BorderBrush="Green"
+                             BorderBrush="{DynamicResource paski}"
                              BorderThickness="0,0,0,2"
                              >
 
@@ -179,19 +174,10 @@
                                Cursor="Hand"
                                Click="btnlogowanie_click"
                                Margin="0,20,0,0"
-                               
+                               Style="{DynamicResource logowaniebutton}"
                                
                         >
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="Green"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#FF66C766"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
+                        
 
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
