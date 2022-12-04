@@ -94,6 +94,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBConn\DBUser.cs" />
+    <Compile Include="MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Security\Security.cs" />
     <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -115,6 +118,10 @@
       <DependentUpon>Login.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="register.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -159,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="obrazy\note-gb4fa8b680_640.png" />
+    <Resource Include="placeholder_bannerbackground.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="obrazy\logo.png">
