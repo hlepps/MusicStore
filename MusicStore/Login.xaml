@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MusicStore"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="400"
         WindowStyle="none"
@@ -101,8 +100,8 @@
                 </Grid>
                 <StackPanel Width="250"
                             Orientation="Vertical"
-                            Margin="71,80,71,-391"
-                            >
+                            Margin="71,80,71,-391">
+                    
                     <Image Source="{DynamicResource logo}"
                            Width="100" Height="100"/>
                     <TextBlock Text="Vinyl Library"
@@ -178,8 +177,7 @@
                                Cursor="Hand"
                                Click="btnrejestracja_click"
                                Margin="0,13,0,0"
-                               Style="{DynamicResource button2}"
-                        >
+                               Style="{DynamicResource button2}">
 
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
