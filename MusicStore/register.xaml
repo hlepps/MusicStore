@@ -94,6 +94,8 @@
                         </Button.Template>
                     </Button>
                 </Grid>
+                <StackPanel>
+                </StackPanel>
             </Grid>
         </Border>
     </Border>
