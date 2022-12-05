@@ -42,7 +42,7 @@ namespace MusicStore
             conn.Close();
         }
         
-        public void Login(string username, string password)
+        public bool Login(string username, string password)
         {
             string passhash = Security.DoubleHash(password);
 
@@ -62,6 +62,7 @@ namespace MusicStore
                     currentUser.wallet = (double)rdr[3];
                     currentUser.permission = (int)rdr[2];
                     currentUser.library = (string)rdr[4];
+                    return true;
 
                 }
                 else
@@ -75,6 +76,7 @@ namespace MusicStore
                 System.Windows.MessageBox.Show("Use only letters, numbers and '_'", "Login", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
 
             }
+            return false;
         }
     }
 }
