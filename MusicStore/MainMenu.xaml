@@ -14,7 +14,7 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="7*" />
         </Grid.RowDefinitions>
-        <Canvas x:Name="BannerCanvas" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF010A6A">
+        <Canvas x:Name="BannerCanvas" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid Grid.Row="0" x:Name="BannerGrid" Width="{Binding ActualWidth, ElementName=BannerCanvas}" Height="{Binding ActualHeight, ElementName=BannerCanvas}" Panel.ZIndex="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*" />
@@ -36,26 +36,31 @@
                     <DataGrid x:Name="UserDetailsDataGrid"/>
                 </Border>
             </Grid>
-            <Image x:Name="BannerBackground" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="{Binding ActualWidth, ElementName=BannerCanvas}" Height="{Binding ActualHeight, ElementName=BannerCanvas}" Source="placeholder_bannerbackground.jpg" Stretch="Fill"/>
-            <Grid Grid.Row="0" x:Name="LogoAndStudioNameGrid" Width="{Binding ActualWidth, ElementName=BannerCanvas}" Height="{Binding ActualHeight, ElementName=BannerCanvas}" Panel.ZIndex="1">
+            <Grid x:Name="LogoAndStudioNameGrid" Width="{Binding ActualWidth, ElementName=BannerCanvas}" Height="{Binding ActualHeight, ElementName=BannerCanvas}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="8*" />
                     <ColumnDefinition Width="2*" />
                 </Grid.ColumnDefinitions>
-                <Image x:Name="StudioLogo" Source="obrazy/logo.png" Grid.Column="0" Height="{Binding ActualHeight, ElementName=BannerCanvas}" Width="{Binding ActualHeight, ElementName=BannerCanvas}" HorizontalAlignment="Left"/>
-                <Grid x:Name="StudioNameGrid" Height="{Binding ActualHeight, ElementName=BannerCanvas}" VerticalAlignment="Stretch" Margin="0,0,0,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="{Binding ActualHeight, ElementName=BannerCanvas}"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox x:Name="StudioName" HorizontalAlignment="Stretch"  Grid.Row="1" Grid.Column="1" Text="Vinyl Library" Background="{x:Null}" Focusable="False" AllowDrop="False" IsTabStop="False" TextWrapping="Wrap" FontSize="{Binding ActualHeight, ElementName=StudioName}" FontWeight="Bold" FontStyle="Italic" VerticalContentAlignment="Center" SelectionBrush="{x:Null}"/>
-                </Grid>
                 <!--Przycisk jest na całe pole, po naciśnięciu ma otwierać osobne okno do edycji loga oraz nazwy studia jeśli użytkownik jest Administratorem-->
-                <Button x:Name="OpenStudioDetailsButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="OpenStudioDetailsButton_Click" Panel.ZIndex="1"/>
+                <Button x:Name="OpenStudioDetailsButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="OpenStudioDetailsButton_Click">
+                    <Canvas Width="{Binding ActualWidth, ElementName=OpenStudioDetailsButton}" Height="{Binding ActualHeight, ElementName=OpenStudioDetailsButton}">
+                        <Image x:Name="StudioLogo" Source="obrazy/logo.png" Height="{Binding ActualHeight, ElementName=BannerCanvas}" Width="{Binding ActualHeight, ElementName=BannerCanvas}" HorizontalAlignment="Left" Panel.ZIndex="1"/>
+                        <Grid x:Name="StudioNameGrid" Height="{Binding ActualHeight, ElementName=BannerCanvas}" VerticalAlignment="Stretch" Margin="0,0,0,0" Panel.ZIndex="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="{Binding ActualHeight, ElementName=BannerCanvas}"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Viewbox Grid.Row="1" Grid.Column="1">
+                                <TextBlock x:Name="StudioName" FontWeight="Bold" FontStyle="Italic" Foreground="Black" Text="Vinyl Library" VerticalAlignment="Center"/>
+                            </Viewbox>
+                        </Grid>
+                        <Image x:Name="BannerBackground" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="{Binding ActualWidth, ElementName=BannerCanvas}" Height="{Binding ActualHeight, ElementName=BannerCanvas}" Source="placeholder_bannerbackground.jpg" Stretch="Fill"/>
+                    </Canvas>
+                </Button>
             </Grid>
         </Canvas>
     </Grid>

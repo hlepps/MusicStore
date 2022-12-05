@@ -22,6 +22,11 @@ namespace MusicStore
         public MainMenu()
         {
             InitializeComponent();
+            //Set Admin Layout
+            if(DBConn.currentUser.permission>=2)
+            {
+                OpenStudioDetailsButton.IsEnabled = true;
+            }
         }
 
         private void btnminimalize(object sender, RoutedEventArgs e)
@@ -37,7 +42,8 @@ namespace MusicStore
 
         private void OpenStudioDetailsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            BannerSetup bannerSetup = new BannerSetup();
+            bannerSetup.ShowDialog();
         }
     }
 }
