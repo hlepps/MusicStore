@@ -29,8 +29,8 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Minimize" Grid.Column="0" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
-                    <Button Content="Close" Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
+                    <Button Click="btnminimalize" Content="Minimize" Grid.Column="0" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
+                    <Button Click="btnclose" Content="Close" Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
                 </Grid>
                 <Border x:Name="AccountDetailsBorder" BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="1" VerticalAlignment="Stretch" Margin="10">
                     <DataGrid x:Name="UserDetailsDataGrid"/>

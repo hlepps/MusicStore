@@ -47,6 +47,8 @@ namespace MusicStore
             if (logintxt.Text != "" && haslotxt.Password != "")
             {
                 DBConn.instance.Login(logintxt.Text, haslotxt.Password);
+                MainMenu menu = new MainMenu();
+                menu.ShowDialog();
             }
         }
 

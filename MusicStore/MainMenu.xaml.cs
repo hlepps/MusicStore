@@ -24,6 +24,17 @@ namespace MusicStore
             InitializeComponent();
         }
 
+        private void btnminimalize(object sender, RoutedEventArgs e)
+        {
+           
+            WindowState = WindowState.Minimized;
+        }
+
+        private void btnclose(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
         private void OpenStudioDetailsButton_Click(object sender, RoutedEventArgs e)
         {
 
