@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MusicStore"
         mc:Ignorable="d"
         Title="register" Height="450" Width="800"
         WindowStyle="none"
@@ -17,19 +16,85 @@
             BorderThickness="4"
                     Opacity="0.97">
             <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
-                    <GradientStop Color="DarkCyan" Offset="0"/>
-                    <GradientStop Color="Green" Offset="0.66"/>
-                    <GradientStop Color="Orange" Offset="1"/>
+                <LinearGradientBrush StartPoint="1,1" EndPoint="0,0" GradientStops="{DynamicResource rama}">
                 </LinearGradientBrush>
             </Border.BorderBrush>
             <Border.Background>
-                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="#000000" Offset="0"/>
-                    <GradientStop Color="#001111" Offset="0.5"/>
-                    <GradientStop Color="#002222" Offset="1"/>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" GradientStops="{DynamicResource tlo}">
                 </LinearGradientBrush>
             </Border.Background>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40">
+                    </RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="8"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="REJESTRACJA"
+                               Foreground="{DynamicResource napisy}"
+                               Grid.Column="1"
+                               TextAlignment="left"
+                               FontSize="15"
+                               Margin="0,15,0,0"
+                               FontFamily="InriaSans-Light"
+                               />
+                    <Button    x:Name="btnchowanie"
+                               Grid.Column="2"
+                               Content="-"
+                               FontSize="30"
+                               BorderThickness="0"
+                               Foreground="white"
+                               FontFamily="InriaSans-Light"
+                               Cursor="Hand"
+                               Click="btnchowanie_click"
+                               Style="{DynamicResource button1}"
+                        >
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="30"
+                                        Height="30"
+                                        CornerRadius="15"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button    x:Name="btnzamykanie"
+                               Grid.Column="3"
+                               Content="x"
+                               FontSize="25"
+                               BorderThickness="0"
+                               Foreground="white"
+                               FontFamily="InriaSans-Light"
+                               Cursor="Hand"
+                               Click="btnzamykanie_click"
+                               Style="{DynamicResource button2}"
+                        >
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="30"
+                                        Height="30"
+                                        CornerRadius="15"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Grid>
         </Border>
     </Border>
 </Window>
