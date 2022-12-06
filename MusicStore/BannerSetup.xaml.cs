@@ -22,6 +22,25 @@ namespace MusicStore
         public BannerSetup()
         {
             InitializeComponent();
+            //Wyciągnięcie aktualnej nazwy Studia do wartości StudioNameInputTextBox
+            //StudioNameInputTextBox.Text=DBConn.
+        }
+
+        private void CloseWindowButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ApplyChangesButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Send new info to database;
+            //Run function to update banner;
+            this.Close();
+        }
+
+        private void ImportLogoButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

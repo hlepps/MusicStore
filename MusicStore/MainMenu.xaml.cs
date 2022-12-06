@@ -47,6 +47,9 @@ namespace MusicStore
         private void OpenStudioDetailsButton_Click(object sender, RoutedEventArgs e)
         {
             BannerSetup bannerSetup = new BannerSetup();
+            bannerSetup.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            bannerSetup.Height = (System.Windows.SystemParameters.PrimaryScreenHeight) / 2;
+            bannerSetup.Width = (System.Windows.SystemParameters.PrimaryScreenWidth) / 2;
             bannerSetup.ShowDialog();
         }
     }

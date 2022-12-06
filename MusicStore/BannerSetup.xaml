@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MusicStore"
         mc:Ignorable="d"
-        Title="BannerSetup" Height="450" Width="800">
+        Title="BannerSetup" Height="450" Width="960" WindowStyle="None">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="WindowButtonsGrid" Grid.Row="0" Margin="0,5,10,0">
+            <Button x:Name="CloseWindowButton" HorizontalAlignment="Right" Height="{Binding ActualHeight, ElementName=WindowButtonsGrid}" Width="{Binding ActualHeight, ElementName=WindowButtonsGrid}" Content="Close" Margin="0" Padding="1,1,1,4" Click="CloseWindowButton_Click"/>
+        </Grid>
+        <Grid x:Name="ContentGrid" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="8.1*"/>
+                <RowDefinition Height="0.9*"/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="ContentImportGrid" HorizontalAlignment="Stretch"  Grid.Row="1" VerticalAlignment="Stretch" Margin="25,0,25,24">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <StackPanel x:Name="StudioNameStackPanel" Orientation="Horizontal" Grid.Row="0">
+                    <TextBlock Text="Studio Name: " FontWeight="Bold" VerticalAlignment="Center"/>
+                    <TextBox x:Name="StudioNameInputTextBox" VerticalAlignment="Center" Text="Vinyl Library"/>
+                </StackPanel>
+                <StackPanel x:Name="StudioLogoStackPanel" Orientation="Horizontal" Grid.Row="1">
+                    <TextBlock Text="Studio Logo: " FontWeight="Bold" VerticalAlignment="Center"/>
+                    <Button x:Name="ImportLogoButton" Content="Select File" Click="ImportLogoButton_Click" VerticalAlignment="Center"/>
+                    <Image x:Name="StudioLogoImage" Source="obrazy/logo.png"/>
+                </StackPanel>
+                <StackPanel x:Name="StudioBannerStackPanel" Orientation="Horizontal" Grid.Row="2">
+                    <TextBlock Text="App Banner: " FontWeight="Bold" VerticalAlignment="Center"/>
+                    <Button x:Name="ImportAppBannerButton" Content="Select File" Click="ImportLogoButton_Click" VerticalAlignment="Center"/>
+                    <Image x:Name="AppBannerImage" Source="placeholder_bannerbackground.jpg"/>
+                </StackPanel>
+            </Grid>
+            <Button x:Name="ApplyChangesButton" Grid.Row="2" Content="Apply Changes" HorizontalAlignment="Center" Click="ApplyChangesButton_Click"/>
+        </Grid>
     </Grid>
 </Window>
