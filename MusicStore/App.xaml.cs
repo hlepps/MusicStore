@@ -17,6 +17,7 @@ namespace MusicStore
         [STAThread]
         public static void Main()
         {
+
             // tworzenie instancji polaczenia z baza danych
             DBConn dbconn = new DBConn();
             // instancja jest dostepna globalnie w DBConn.instance aby nie laczyc
@@ -31,6 +32,8 @@ namespace MusicStore
             // pomocne gdy podczas uruchamiania aplikacji poza visual studio
             // wywali błąd - mamy wtedy informacje co i gdzie sie wywaliło
             Application a = new Application();
+            var resourcesPath = "Style/Startowy.xaml";
+            a.Resources = (ResourceDictionary)Application.LoadComponent(new Uri(resourcesPath, UriKind.Relative));
             a.StartupUri = new Uri("Login.xaml", System.UriKind.Relative);
 #if DEBUG
             a.Run();

@@ -399,3 +399,4 @@ FodyWeavers.xsd
 MusicStore/obj/Debug/App.g.i.cs
 MusicStore/obj/Debug/MusicStore.csproj.CoreCompileInputs.cache
 *.cache
+*.cache
