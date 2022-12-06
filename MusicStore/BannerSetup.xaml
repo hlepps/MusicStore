@@ -38,7 +38,7 @@
                 </StackPanel>
                 <StackPanel x:Name="StudioBannerStackPanel" Orientation="Horizontal" Grid.Row="2">
                     <TextBlock Text="App Banner: " FontWeight="Bold" VerticalAlignment="Center"/>
-                    <Button x:Name="ImportAppBannerButton" Content="Select File" Click="ImportLogoButton_Click" VerticalAlignment="Center"/>
+                    <Button x:Name="ImportAppBannerButton" Content="Select File" Click="ImportAppBannerButton_Click" VerticalAlignment="Center"/>
                     <Image x:Name="AppBannerImage" Source="placeholder_bannerbackground.jpg"/>
                 </StackPanel>
             </Grid>

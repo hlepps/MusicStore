@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
+using Microsoft.Win32;
 
 namespace MusicStore
 {
@@ -40,7 +42,25 @@ namespace MusicStore
 
         private void ImportLogoButton_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+               "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+               "Portable Network Graphic (*.png)|*.png";
+            if (openFileDialog.ShowDialog()==true)
+            {
+                StudioLogoImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+            }
+        }
+        private void ImportAppBannerButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+               "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+               "Portable Network Graphic (*.png)|*.png";
+            if (openFileDialog.ShowDialog()==true)
+            {
+                AppBannerImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+            }
         }
     }
 }
