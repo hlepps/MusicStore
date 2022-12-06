@@ -27,6 +27,10 @@ namespace MusicStore
             {
                 OpenStudioDetailsButton.IsEnabled = true;
             }
+            else
+            {
+                OpenStudioDetailsButton.IsEnabled = false;
+            }
         }
 
         private void btnminimalize(object sender, RoutedEventArgs e)

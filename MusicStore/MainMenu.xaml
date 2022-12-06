@@ -44,7 +44,7 @@
                     <ColumnDefinition Width="2*" />
                 </Grid.ColumnDefinitions>
                 <!--Przycisk jest na całe pole, po naciśnięciu ma otwierać osobne okno do edycji loga oraz nazwy studia jeśli użytkownik jest Administratorem-->
-                <Button x:Name="OpenStudioDetailsButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="OpenStudioDetailsButton_Click">
+                <Button x:Name="OpenStudioDetailsButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="OpenStudioDetailsButton_Click" IsEnabled="False">
                     <Canvas Width="{Binding ActualWidth, ElementName=OpenStudioDetailsButton}" Height="{Binding ActualHeight, ElementName=OpenStudioDetailsButton}">
                         <Image x:Name="StudioLogo" Source="obrazy/logo.png" Height="{Binding ActualHeight, ElementName=BannerCanvas}" Width="{Binding ActualHeight, ElementName=BannerCanvas}" HorizontalAlignment="Left" Panel.ZIndex="1"/>
                         <Grid x:Name="StudioNameGrid" Height="{Binding ActualHeight, ElementName=BannerCanvas}" VerticalAlignment="Stretch" Margin="0,0,0,0" Panel.ZIndex="1">
