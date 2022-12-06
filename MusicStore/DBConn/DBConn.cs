@@ -56,7 +56,7 @@ namespace MusicStore
                 if (rdr.HasRows)
                 {
                     rdr.Read();
-                    System.Windows.MessageBox.Show($"user: {rdr[0]}, permission: {rdr[2]}, wallet: {rdr[3]}zł, library: {rdr[4]}", "Login", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+                    //System.Windows.MessageBox.Show($"user: {rdr[0]}, permission: {rdr[2]}, wallet: {rdr[3]}zł, library: {rdr[4]}", "Login", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
                     currentUser = new DB.DBUser();
                     currentUser.username = username;
                     currentUser.wallet = (double)rdr[3];
