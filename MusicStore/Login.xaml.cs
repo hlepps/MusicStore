@@ -39,7 +39,7 @@ namespace MusicStore
 
         private void btnzamykanie_click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            Close();
         }
 
         private void btnlogowanie_click(object sender, RoutedEventArgs e)
@@ -49,7 +49,8 @@ namespace MusicStore
                 if (DBConn.instance.Login(logintxt.Text, haslotxt.Password))
                 {
                     MainMenu menu = new MainMenu();
-                    menu.ShowDialog();
+                    menu.Show();
+                    this.Hide();
                 }
             }
         }
@@ -57,7 +58,12 @@ namespace MusicStore
         private void btnrejestracja_click(object sender, RoutedEventArgs e)
         {
             register nowyuser = new register();
-            nowyuser.ShowDialog();
+            this.Hide();
+            if((bool)nowyuser.ShowDialog())
+            {
+
+            }
+            this.Show();
         }
     }
 }

@@ -12,6 +12,9 @@
         Background="Transparent"
         AllowsTransparency="True">
     <Border CornerRadius="40">
+        <Border.Background>
+            <ImageBrush ImageSource="obrazy/skyrim.png"/>
+        </Border.Background>
         <Border CornerRadius="10"
             BorderThickness="4"
                     Opacity="0.97">
@@ -94,7 +97,119 @@
                         </Button.Template>
                     </Button>
                 </Grid>
-                <StackPanel>
+                <StackPanel
+                            Orientation="Vertical"
+                            Margin="10,59,488,-368">
+                    <TextBlock Text="Login"
+                               Foreground="{DynamicResource napisy}"
+                               FontWeight="Medium"
+                               FontFamily="InriaSans-Light"
+                               FontSize="18"
+                               Margin="12,10,0,0"/>
+                    <TextBox x:Name="logintxt"
+                             Background="Transparent"
+                             Foreground="{DynamicResource napisy}"
+                             Margin="0,8,0,0"
+                             FontSize="16"
+                             FontFamily="InriaSans-Light"
+                             BorderBrush="{DynamicResource paski}"
+                             BorderThickness="0,0,0,2">
+                    </TextBox>
+                    <TextBlock Text="Hasło"
+                               Foreground="{DynamicResource napisy}"
+                               FontWeight="Medium"
+                               FontFamily="InriaSans-Light"
+                               FontSize="18"
+                               Margin="12,15,0,0"/>
+                    <PasswordBox x:Name="haslotxt"
+                             Background="Transparent"
+                             Foreground="{DynamicResource napisy}"
+                             Margin="0,8,0,0"
+                             FontSize="16"
+                             FontFamily="InriaSans-Light"
+                             BorderBrush="{DynamicResource paski}"
+                             BorderThickness="0,0,0,2"
+                             >
+                    </PasswordBox>
+                    <TextBlock Text="Powtórz hasło"
+                               Foreground="{DynamicResource napisy}"
+                               FontWeight="Medium"
+                               FontFamily="InriaSans-Light"
+                               FontSize="18"
+                               Margin="12,15,0,0"/>
+                    <PasswordBox x:Name="powtorzhaslotxt"
+                             Background="Transparent"
+                             Foreground="{DynamicResource napisy}"
+                             Margin="0,8,0,0"
+                             FontSize="16"
+                             FontFamily="InriaSans-Light"
+                             BorderBrush="{DynamicResource paski}"
+                             BorderThickness="0,0,0,2"
+                             >
+                    </PasswordBox>
+                    <TextBlock Text="Numer karty kredytowej"
+                               Foreground="{DynamicResource napisy}"
+                               FontWeight="Medium"
+                               FontFamily="InriaSans-Light"
+                               FontSize="18"
+                               Margin="12,15,0,0"/>
+                    <TextBox x:Name="nrcardtxt"
+                             Background="Transparent"
+                             Foreground="{DynamicResource napisy}"
+                             Margin="0,8,0,0"
+                             FontSize="16"
+                             FontFamily="InriaSans-Light"
+                             BorderBrush="{DynamicResource paski}"
+                             BorderThickness="0,0,0,2">
+                    </TextBox>
+                    <StackPanel Orientation="Horizontal" Margin="15,25,15,-80">
+                        <Button    x:Name="btncreate_account"
+                               Content="Załóż konto"
+                               FontSize="16"
+                               BorderThickness="5,5,5,5"
+                               Foreground="White"
+                               FontFamily="InriaSans-Light"
+                               Cursor="Hand"
+                               Click="btnnowekonto_click"
+                               Margin="10,0,0,0"
+                               Style="{DynamicResource button1}"       
+                        >
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="102"
+                                        Height="30"
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button    x:Name="btnbacktologin"
+                               Content="Anuluj"
+                               FontSize="16"
+                               BorderThickness="5,5,5,5"
+                               Foreground="White"
+                               FontFamily="InriaSans-Light"
+                               Cursor="Hand"
+                               Click="btnzamykanie_click"
+                               Margin="30,0,0,0"
+                               Style="{DynamicResource button2}">
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="102"
+                                        Height="30"
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
         </Border>

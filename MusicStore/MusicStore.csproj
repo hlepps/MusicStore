@@ -136,6 +136,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Resource Include="obrazy\skyrim.png" />
     <Content Include="Style\Darkmode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
