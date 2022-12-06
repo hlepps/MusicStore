@@ -14,6 +14,7 @@ namespace MusicStore
     /// </summary>
     public partial class App : Application
     {
+        public static Application application;
         [STAThread]
         public static void Main()
         {
@@ -31,16 +32,18 @@ namespace MusicStore
             // 
             // pomocne gdy podczas uruchamiania aplikacji poza visual studio
             // wywali błąd - mamy wtedy informacje co i gdzie sie wywaliło
-            Application a = new Application();
+            application = new Application();
             var resourcesPath = "Style/Startowy.xaml";
-            a.Resources = (ResourceDictionary)Application.LoadComponent(new Uri(resourcesPath, UriKind.Relative));
-            a.StartupUri = new Uri("Login.xaml", System.UriKind.Relative);
+            application.Resources = (ResourceDictionary)Application.LoadComponent(new Uri(resourcesPath, UriKind.Relative));
+            application.StartupUri = new Uri("Login.xaml", System.UriKind.Relative);
 #if DEBUG
-            a.Run();
+            DebugWindow dw = new DebugWindow();
+            dw.Show();
+            application.Run();
 #else
             try
             {
-                a.Run();
+                application.Run();
             }
             catch (Exception exc)
             {

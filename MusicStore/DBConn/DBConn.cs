@@ -15,7 +15,7 @@ namespace MusicStore
     {
         public static DBConn instance;
         private MySqlConnection conn;
-        public static DB.DBUser currentUser;
+        public DB.DBUser currentUser;
         public DBConn() // konstruktor połączenia, wywoływany raz
         {
             if (instance == null)
@@ -61,7 +61,7 @@ namespace MusicStore
                     currentUser.username = username;
                     currentUser.wallet = (double)rdr[3];
                     currentUser.permission = (int)rdr[2];
-                    currentUser.library = (string)rdr[4];
+                    ReloadUserLibrary();
                     return true;
 
                 }
@@ -77,6 +77,17 @@ namespace MusicStore
 
             }
             return false;
+        }
+
+        public void ReloadUserLibrary()
+        {
+            string sql = $"SELECT username, passhash, permission, wallet, library FROM users WHERE username='{username}' AND passhash='{passhash}'";
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            conn.Open();
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            conn.Close();
         }
     }
 }

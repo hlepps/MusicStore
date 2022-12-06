@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace MusicStore.DB
 {
-    public class DBLibrary
+    public class DBImage
     {
-        public List<DBLibraryObject> itemlist;
-    }
-
-    public class DBLibraryObject
-    {
-
+        public BitmapImage bitmap;
     }
 }

@@ -9,7 +9,7 @@ namespace MusicStore.DB
     public class DBUser
     {
         public string username;
-        public string library;
+        public DBLibrary library;
         public double wallet;
         public int permission;
 

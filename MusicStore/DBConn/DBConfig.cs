@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace MusicStore.DB
 {
-    public class DBLibrary
+    public class DBConfig
     {
-        public List<DBLibraryObject> itemlist;
-    }
-
-    public class DBLibraryObject
-    {
-
+        public string studioName;
+        public DBImage studioLogo;
+        public DBImage studioBanner;
     }
 }
