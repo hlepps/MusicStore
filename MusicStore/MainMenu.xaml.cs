@@ -23,7 +23,7 @@ namespace MusicStore
         {
             InitializeComponent();
             //Set Admin Layout
-            if(DBConn.currentUser.permission>=2)
+            if(DBConn.instance.currentUser.permission>=2)
             {
                 OpenStudioDetailsButton.IsEnabled = true;
             }

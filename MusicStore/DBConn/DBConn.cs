@@ -81,6 +81,7 @@ namespace MusicStore
 
         public void ReloadUserLibrary()
         {
+            /*
             string sql = $"SELECT username, passhash, permission, wallet, library FROM users WHERE username='{username}' AND passhash='{passhash}'";
 
             MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -88,6 +89,7 @@ namespace MusicStore
             MySqlDataReader rdr = cmd.ExecuteReader();
 
             conn.Close();
+            */
         }
     }
 }
