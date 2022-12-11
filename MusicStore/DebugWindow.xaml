@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MusicStore"
         mc:Ignorable="d"
-        Title="DebugWindow" Height="232.166" Width="358.599">
+        Title="DebugWindow" Height="295.753" Width="351.205">
     <Grid>
-        <Button Content="Zmień styl" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="190" Height="79" Click="Style_Click"/>
+        <Button Content="Zmień styl" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="323" Height="32" Click="Style_Click"/>
+        <Button Content="Załaduj Obraz" HorizontalAlignment="Left" Margin="10,233,0,0" VerticalAlignment="Top" Width="101" Height="23" Click="Button_Click"/>
+        <Image x:Name="img" HorizontalAlignment="Left" Height="180" Margin="11,47,0,0" VerticalAlignment="Top" Width="180"/>
+        <TextBox x:Name="imgid" HorizontalAlignment="Left" Height="23" Margin="116,233,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>

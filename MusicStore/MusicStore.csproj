@@ -96,8 +96,13 @@
     <Compile Include="BannerSetup.xaml.cs">
       <DependentUpon>BannerSetup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DBConn\DBAlbum.cs" />
+    <Compile Include="DBConn\DBAuthor.cs" />
+    <Compile Include="DBConn\DBConfig.cs" />
     <Compile Include="DBConn\DBLibrary.cs" />
     <Compile Include="DBConn\DBUser.cs" />
+    <Compile Include="DBConn\DBImage.cs" />
+    <Compile Include="DBConn\DBSong.cs" />
     <Compile Include="DebugWindow.xaml.cs">
       <DependentUpon>DebugWindow.xaml</DependentUpon>
     </Compile>

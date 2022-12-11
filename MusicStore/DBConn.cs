@@ -14,7 +14,7 @@ namespace MusicStore
     class DBConn
     {
         public static DBConn instance;
-        public MySqlConnection conn;
+        private MySqlConnection conn;
         public DB.DBUser currentUser;
         public DBConn() // konstruktor połączenia, wywoływany raz
         {
@@ -61,7 +61,7 @@ namespace MusicStore
                     currentUser.username = username;
                     currentUser.wallet = (double)rdr[3];
                     currentUser.permission = (int)rdr[2];
-                    DBConn.instance.currentUser.library.ReloadLibrary();
+                    ReloadUserLibrary();
                     return true;
 
                 }
@@ -79,6 +79,42 @@ namespace MusicStore
             return false;
         }
 
-        
+        public void ReloadUserLibrary()
+        {
+            DBConn.instance.currentUser.library.itemlist.Clear();
+            string sql = $"SELECT library FROM users WHERE username='{DBConn.instance.currentUser.username}'";
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            conn.Open();
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if(rdr.HasRows)
+            {
+                rdr.Read();
+                string[] entries = rdr[0].ToString().Split(',');
+                foreach(string entry in entries)
+                {
+                    char type = entry[0];
+                    int id = int.Parse(entry.Substring(1));
+
+                    switch(type)
+                    {
+                        case 's':
+                            MySqlCommand encmd = new MySqlCommand($"SELECT songname, image_id FROM songs where id={id}", conn);
+                            MySqlDataReader enrdr = encmd.ExecuteReader();
+                            if(rdr.HasRows)
+                            {
+                                rdr.Read();
+                            }
+                            break;
+
+                        case 'a':
+
+                            break;
+                    }
+                }
+            }
+            conn.Close();
+            
+        }
     }
 }

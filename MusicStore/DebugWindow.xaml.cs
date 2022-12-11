@@ -25,7 +25,7 @@ namespace MusicStore
             InitializeComponent();
         }
 
-        bool a = false;
+        bool a = true;
         private void Style_Click(object sender, RoutedEventArgs e)
         {
             string resourcePath;
@@ -40,6 +40,12 @@ namespace MusicStore
                 a = true;
             }
             App.application.Resources = (ResourceDictionary)Application.LoadComponent(new Uri(resourcePath, UriKind.Relative));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            int id = int.Parse(imgid.Text);
+            img.Source = DB.DBImagesSaved.Get(id).bitmap;
         }
     }
 }
