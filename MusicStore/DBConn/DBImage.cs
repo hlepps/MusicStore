@@ -13,6 +13,42 @@ namespace MusicStore.DB
     public class DBImage
     {
         public BitmapImage bitmap;
+
+        public DBImage()
+        {
+
+        }
+
+        public DBImage(BitmapImage bi)
+        {
+            bitmap = bi;
+        }
+        public static BitmapImage GetBitmapFromBytes(byte[] buffer)
+        {
+            MemoryStream memoryStream = new MemoryStream(buffer);
+
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.DecodePixelWidth = 180;
+            bitmap.DecodePixelHeight = 180;
+            bitmap.StreamSource = memoryStream;
+            bitmap.EndInit();
+            bitmap.Freeze();
+
+            return bitmap;
+        }
+        public static byte[] GetBytesFromBitmap(BitmapImage bitmapImage)
+        {
+            byte[] data;
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(bitmapImage));
+            using (MemoryStream ms = new MemoryStream())
+            {
+                encoder.Save(ms);
+                data = ms.ToArray();
+            }
+            return data;
+        }
     }
 
     public class DBImagesSaved
@@ -31,18 +67,10 @@ namespace MusicStore.DB
             rdr.Read();
             
             byte[] buffer = (byte[])rdr[0];
-            MemoryStream memoryStream = new MemoryStream(buffer);
-
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.DecodePixelWidth = 180;
-            bitmap.DecodePixelHeight = 180;
-            bitmap.StreamSource = memoryStream;
-            bitmap.EndInit();
-            bitmap.Freeze();
+            
 
             DBImage temp = new DBImage();
-            temp.bitmap = bitmap;
+            temp.bitmap = DBImage.GetBitmapFromBytes(buffer);
 
             if (dictionary.ContainsKey(id))
                 dictionary[id] = temp;
@@ -54,4 +82,5 @@ namespace MusicStore.DB
         }
 
     }
+
 }
