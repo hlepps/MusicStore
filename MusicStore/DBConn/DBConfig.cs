@@ -13,6 +13,7 @@ namespace MusicStore.DB
         public static string studioName;
         public static DBImage studioLogo;
         public static DBImage studioBanner;
+        
 
         public static void UploadConfig(string sname, DBImage slogo, DBImage sbanner)
         {
@@ -23,6 +24,8 @@ namespace MusicStore.DB
             DBConn.instance.conn.Open();
             cmd.ExecuteNonQuery();
             DBConn.instance.conn.Close();
+
+            RefreshConfig();
         }
 
         public static void RefreshConfig()
