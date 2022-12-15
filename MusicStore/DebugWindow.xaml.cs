@@ -24,6 +24,28 @@ namespace MusicStore
         public DebugWindow()
         {
             InitializeComponent();
+
+            var listview = new ListView();
+            libview.Content = listview;
+
+            var item = new Border();
+            var grid = new Grid();
+            item.Child = grid;
+            var image = new Image();
+            image.Margin = new Thickness(6, 6, 308, 6);
+            image.RenderSize = new Size(78, 78);
+            image.Width = 78;
+            image.Height = 78;
+            image.Source = DB.DBImagesSaved.Get(8).bitmap;
+            grid.Children.Add(image);
+            var label = new Label();
+            label.Margin = new Thickness(90, 6, 0, 0);
+            label.Content = "ASDF - asdf";
+            label.HorizontalAlignment = HorizontalAlignment.Left;
+            label.VerticalAlignment = VerticalAlignment.Top;
+            grid.Children.Add(label);
+            
+            listview.Items.Add(item);
         }
 
         bool a = true;
@@ -76,6 +98,44 @@ namespace MusicStore
         {
             DB.DBConfig.RefreshConfig();
             img.Source = DB.DBConfig.studioLogo.bitmap;
+        }
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            var listview = new ListView();
+            libview.Content = listview;
+
+            foreach(DB.DBLibraryObject obj in DBConn.instance.currentUser.library.itemlist)
+            {
+                int imgid;
+                string text;
+                var item = new Border();
+                var grid = new Grid();
+                item.Child = grid;
+                var image = new Image();
+                image.Margin = new Thickness(6, 6, 308, 6);
+                image.RenderSize = new Size(78, 78);
+                image.Width = 78;
+                image.Height = 78;
+                var label = new Label();
+                if (obj.GetType() == typeof(DB.DBSong))
+                {
+                    image.Source = ((DB.DBSong)obj).image.bitmap;
+                    label.Content = ((DB.DBSong)obj).authors[0].name + " - " + ((DB.DBSong)obj).name;
+                }
+                else if (obj.GetType() == typeof(DB.DBAlbum))
+                {
+                    image.Source = ((DB.DBAlbum)obj).image.bitmap;
+                    label.Content = ((DB.DBAlbum)obj).author + " - " + ((DB.DBAlbum)obj).name;
+                }
+                grid.Children.Add(image);
+                label.Margin = new Thickness(90, 6, 0, 0);
+                label.HorizontalAlignment = HorizontalAlignment.Left;
+                label.VerticalAlignment = VerticalAlignment.Top;
+                grid.Children.Add(label);
+
+                listview.Items.Add(item);
+            }
+
         }
     }
 }

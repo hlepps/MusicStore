@@ -16,16 +16,26 @@ namespace MusicStore.DB
 
     public class DBAuthorsSaved
     {
-        private static Dictionary<int, DBAuthor> dictionary;
+        /// <summary>
+        /// Lokalna baza, może nie być aktualna
+        /// </summary>
+        public static Dictionary<int, DBAuthor> dictionary;
 
+        /// <summary>
+        /// Pobiera z bazy danych i aktualizuje lokalną bazę
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static DBAuthor Get(int id)
         {
             if (dictionary == null)
                 dictionary = new Dictionary<int, DBAuthor>();
-
+            
+            if (dictionary.ContainsKey(id))
+                return dictionary[id];
 
             MySqlCommand cmd = new MySqlCommand($"SELECT name, image_id FROM authors WHERE id={id}", DBConn.instance.conn);
-            DBConn.instance.conn.Open();
+            DBConn.instance.PrepareConnection();
             MySqlDataReader rdr = cmd.ExecuteReader();
             rdr.Read();
 
@@ -33,10 +43,8 @@ namespace MusicStore.DB
             temp.name = (string)rdr[0];
             temp.image = DBImagesSaved.Get((int)rdr[1]);
 
-            if (dictionary.ContainsKey(id))
-                dictionary[id] = temp;
-            else
-                dictionary.Add(id, temp);
+            
+            dictionary.Add(id, temp);
 
             DBConn.instance.conn.Close();
             return dictionary[id];

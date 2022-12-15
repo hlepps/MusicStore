@@ -5,14 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MusicStore"
         mc:Ignorable="d"
-        Title="DebugWindow" Height="295.753" Width="351.205">
+        Title="DebugWindow" Height="295.753" Width="635.656">
     <Grid>
         <Button Content="Zmień styl" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="323" Height="32" Click="Style_Click"/>
         <Button Content="Załaduj Obraz" HorizontalAlignment="Left" Margin="10,233,0,0" VerticalAlignment="Top" Width="101" Height="23" Click="Button_Click"/>
         <Image x:Name="img" HorizontalAlignment="Left" Height="180" Margin="11,47,0,0" VerticalAlignment="Top" Width="180"/>
         <TextBox x:Name="imgid" HorizontalAlignment="Left" Height="23" Margin="116,233,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Nowy config" HorizontalAlignment="Left" Margin="196,47,0,0" VerticalAlignment="Top" Width="137" Height="46" Click="Button_Click_1"/>
-        <Button Content="Refresh config" HorizontalAlignment="Left" Margin="196,98,0,0" VerticalAlignment="Top" Width="137" Height="37" Click="Button_Click_2"/>
+        <Button Content="Nowy config" HorizontalAlignment="Left" Margin="338,10,0,0" VerticalAlignment="Top" Width="76" Height="32" Click="Button_Click_1"/>
+        <Button Content="Refresh config" HorizontalAlignment="Left" Margin="419,10,0,0" VerticalAlignment="Top" Width="90" Height="32" Click="Button_Click_2"/>
+        <ScrollViewer x:Name="libview" HorizontalAlignment="Left" Height="209" Margin="196,47,0,0" VerticalAlignment="Top" Width="421">
+            <ListView>
+                <Border BorderBrush="Black" BorderThickness="1" Height="100" Width="398">
+                    <Grid>
+                        <Image Margin="10,10,308,10" Width="78" Height="78"/>
+                        <Label Content="Autor - nazwa" HorizontalAlignment="Left" Margin="93,10,0,0" VerticalAlignment="Top"/>
+                    </Grid>
+                </Border>
+            </ListView>
+        </ScrollViewer>
+        <Button Content="Pobierz Biblioteke" HorizontalAlignment="Left" Margin="514,10,0,0" VerticalAlignment="Top" Width="103" Height="32" Click="Button_Click_3"/>
 
     </Grid>
 </Window>

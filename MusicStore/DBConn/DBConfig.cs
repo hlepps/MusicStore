@@ -21,7 +21,7 @@ namespace MusicStore.DB
             cmd.Parameters.AddWithValue("@sn", sname);
             cmd.Parameters.AddWithValue("@l", DB.DBImage.GetBytesFromBitmap(slogo.bitmap));
             cmd.Parameters.AddWithValue("@b", DB.DBImage.GetBytesFromBitmap(sbanner.bitmap));
-            DBConn.instance.conn.Open();
+            DBConn.instance.PrepareConnection();
             cmd.ExecuteNonQuery();
             DBConn.instance.conn.Close();
 
@@ -31,7 +31,7 @@ namespace MusicStore.DB
         public static void RefreshConfig()
         {
             MySqlCommand cmd = new MySqlCommand($"SELECT studio_name, logo, banner FROM config WHERE id=1", DBConn.instance.conn);
-            DBConn.instance.conn.Open();
+            DBConn.instance.PrepareConnection();
             MySqlDataReader rdr = cmd.ExecuteReader();
             rdr.Read();
 

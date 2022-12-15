@@ -53,16 +53,26 @@ namespace MusicStore.DB
 
     public class DBImagesSaved
     {
-        private static Dictionary<int, DBImage> dictionary;
+        /// <summary>
+        /// Lokalna baza, może nie być aktualna
+        /// </summary>
+        public static Dictionary<int, DBImage> dictionary;
 
+        /// <summary>
+        /// Pobiera z bazy danych i aktualizuje lokalną bazę
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static DBImage Get(int id)
         {
             if (dictionary == null)
                 dictionary = new Dictionary<int, DBImage>();
 
+            if (dictionary.ContainsKey(id))
+                return dictionary[id];
 
             MySqlCommand cmd = new MySqlCommand($"SELECT image FROM images WHERE id={id}", DBConn.instance.conn);
-            DBConn.instance.conn.Open();
+            DBConn.instance.PrepareConnection();
             MySqlDataReader rdr = cmd.ExecuteReader();
             rdr.Read();
             
@@ -72,11 +82,7 @@ namespace MusicStore.DB
             DBImage temp = new DBImage();
             temp.bitmap = DBImage.GetBitmapFromBytes(buffer);
 
-            if (dictionary.ContainsKey(id))
-                dictionary[id] = temp;
-            else
-                dictionary.Add(id, temp);
-
+            dictionary.Add(id, temp);
             DBConn.instance.conn.Close();
             return dictionary[id];
         }

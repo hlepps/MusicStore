@@ -41,6 +41,13 @@ namespace MusicStore
         {
             conn.Close();
         }
+
+        public void PrepareConnection()
+        {
+            conn.Close();
+            if (conn.State != System.Data.ConnectionState.Open)
+                conn.Open();
+        }
         
         public bool Login(string username, string password)
         {
@@ -61,7 +68,8 @@ namespace MusicStore
                     currentUser.username = username;
                     currentUser.wallet = (double)rdr[3];
                     currentUser.permission = (int)rdr[2];
-                    DBConn.instance.currentUser.library.ReloadLibrary();
+                    currentUser.library = new DB.DBLibrary();
+                    currentUser.library.ReloadLibrary();
                     return true;
 
                 }
