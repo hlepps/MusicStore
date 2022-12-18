@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <TextBlock x:Key="signin" Text="登入"/>
+    <TextBlock x:Key="register" Text="登记"/>
+    <TextBlock x:Key="createaccount" Text="创建一个帐户"/>
+    <TextBlock x:Key="backtologin" Text="回到登入"/>
+</ResourceDictionary>

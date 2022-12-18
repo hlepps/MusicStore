@@ -146,7 +146,7 @@
                     </PasswordBox>
 
                     <Button    x:Name="btnlogowanie"
-                               Content="Zaloguj się"
+                               Content="{DynamicResource signin}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"
@@ -169,7 +169,7 @@
                         </Button.Template>
                     </Button>
                     <Button    x:Name="btnrejestracja"
-                               Content="Rejestracja"
+                               Content="{DynamicResource register}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"

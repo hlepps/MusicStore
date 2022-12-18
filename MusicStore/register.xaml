@@ -164,19 +164,19 @@
                     </TextBox>
                     <StackPanel Orientation="Horizontal" Margin="15,25,15,-80">
                         <Button    x:Name="btncreate_account"
-                               Content="Załóż konto"
+                               Content="{DynamicResource createaccount}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"
                                FontFamily="InriaSans-Light"
                                Cursor="Hand"
                                Click="btnnowekonto_click"
-                               Margin="10,0,0,0"
+                               Margin="5,0,0,0"
                                Style="{DynamicResource button1}"       
                         >
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
-                                    <Border Width="102"
+                                    <Border Width="110"
                                         Height="30"
                                         CornerRadius="5"
                                         Background="{TemplateBinding Background}">
@@ -187,7 +187,7 @@
                             </Button.Template>
                         </Button>
                         <Button    x:Name="btnbacktologin"
-                               Content="Anuluj"
+                               Content="{DynamicResource backtologin}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"
@@ -199,7 +199,7 @@
 
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
-                                    <Border Width="102"
+                                    <Border Width="110"
                                         Height="30"
                                         CornerRadius="5"
                                         Background="{TemplateBinding Background}">
