@@ -2,6 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Darkmode.xaml"/>
-        <ResourceDictionary Source="/Language/Chinese.xaml"/>
+        <ResourceDictionary Source="/Language/English.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -1,7 +1,15 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib">
     <TextBlock x:Key="signin" Text="Sign in"/>
     <TextBlock x:Key="register" Text="Register"/>
     <TextBlock x:Key="createaccount" Text="Create account"/>
     <TextBlock x:Key="backtologin" Text="Back to login"/>
+    <s:String x:Key="LOGIN">LOGIN</s:String>
+    <s:String x:Key="USERNAME">Username</s:String>
+    <s:String x:Key="PASSWORD">Password</s:String>
+    <s:String x:Key="REGISTER">REGISTER</s:String>
+    <s:String x:Key="NEWLOGIN">Username</s:String>
+    <s:String x:Key="NEWPASSWORD">Password</s:String>
+    <s:String x:Key="REPEATNEWPASSWORD">Repeat password</s:String>
+    <s:String x:Key="NEWPAYMENT">Credit card number</s:String>
 </ResourceDictionary>

@@ -41,7 +41,7 @@
                         <ColumnDefinition Width="8"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="LOGOWANIE"
+                    <TextBlock Text="{DynamicResource LOGIN}"
                                Foreground="{DynamicResource napisy}"
                                Grid.Column="1"
                                TextAlignment="left"
@@ -110,7 +110,7 @@
                                FontFamily="InriaSans-Light"
                                FontWeight="Bold"
                                FontSize="30"/>
-                    <TextBlock Text="Login"
+                    <TextBlock Text="{DynamicResource USERNAME}"
                                Foreground="{DynamicResource napisy}"
                                FontWeight="Medium"
                                FontFamily="InriaSans-Light"
@@ -127,7 +127,7 @@
                              >
 
                     </TextBox>
-                    <TextBlock Text="Hasło"
+                    <TextBlock Text="{DynamicResource PASSWORD}"
                                Foreground="{DynamicResource napisy}"
                                FontWeight="Medium"
                                FontFamily="InriaSans-Light"

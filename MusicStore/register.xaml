@@ -40,7 +40,7 @@
                         <ColumnDefinition Width="8"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="REJESTRACJA"
+                    <TextBlock Text="{DynamicResource REGISTER}"
                                Foreground="{DynamicResource napisy}"
                                Grid.Column="1"
                                TextAlignment="left"
@@ -100,7 +100,7 @@
                 <StackPanel
                             Orientation="Vertical"
                             Margin="10,59,488,-368">
-                    <TextBlock Text="Login"
+                    <TextBlock Text="{DynamicResource NEWLOGIN}"
                                Foreground="{DynamicResource napisy}"
                                FontWeight="Medium"
                                FontFamily="InriaSans-Light"
@@ -115,7 +115,7 @@
                              BorderBrush="{DynamicResource paski}"
                              BorderThickness="0,0,0,2">
                     </TextBox>
-                    <TextBlock Text="Hasło"
+                    <TextBlock Text="{DynamicResource NEWPASSWORD}"
                                Foreground="{DynamicResource napisy}"
                                FontWeight="Medium"
                                FontFamily="InriaSans-Light"
@@ -131,7 +131,7 @@
                              BorderThickness="0,0,0,2"
                              >
                     </PasswordBox>
-                    <TextBlock Text="Powtórz hasło"
+                    <TextBlock Text="{DynamicResource REPEATNEWPASSWORD}"
                                Foreground="{DynamicResource napisy}"
                                FontWeight="Medium"
                                FontFamily="InriaSans-Light"
@@ -147,7 +147,7 @@
                              BorderThickness="0,0,0,2"
                              >
                     </PasswordBox>
-                    <TextBlock Text="Numer karty kredytowej"
+                    <TextBlock Text="{DynamicResource NEWPAYMENT}"
                                Foreground="{DynamicResource napisy}"
                                FontWeight="Medium"
                                FontFamily="InriaSans-Light"
