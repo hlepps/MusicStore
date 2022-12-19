@@ -21,11 +21,14 @@ namespace MusicStore
     /// </summary>
     public partial class BannerSetup : Window
     {
+        public MainMenu instance;
         public BannerSetup()
         {
             InitializeComponent();
-            //Wyciągnięcie aktualnej nazwy Studia do wartości StudioNameInputTextBox
-            //StudioNameInputTextBox.Text=DBConn.
+            //Load current values
+            StudioNameInputTextBox.Text = DB.DBConfig.studioName;
+            StudioLogoImage.Source = DB.DBConfig.studioLogo.bitmap;
+            AppBannerImage.Source = DB.DBConfig.studioBanner.bitmap;
         }
 
         private void CloseWindowButton_Click(object sender, RoutedEventArgs e)
@@ -35,8 +38,10 @@ namespace MusicStore
 
         private void ApplyChangesButton_Click(object sender, RoutedEventArgs e)
         {
-            //Send new info to database;
+            //Send new info to database
+            DB.DBConfig.UploadConfig(StudioNameInputTextBox.Text, new DB.DBImage((BitmapImage)StudioLogoImage.Source), new DB.DBImage((BitmapImage)AppBannerImage.Source));
             //Run function to update banner;
+            instance.RefreshBannerFunction();
             this.Close();
         }
 

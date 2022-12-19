@@ -22,8 +22,10 @@ namespace MusicStore
         public MainMenu()
         {
             InitializeComponent();
+            RefreshBannerFunction();
+            RefreshUserInfo();
             //Set Admin Layout
-            if(DBConn.instance.currentUser.permission>=2)
+            if (DBConn.instance.currentUser.permission >= 2)
             {
                 OpenStudioDetailsButton.IsEnabled = true;
             }
@@ -35,7 +37,7 @@ namespace MusicStore
 
         private void btnminimalize(object sender, RoutedEventArgs e)
         {
-           
+
             WindowState = WindowState.Minimized;
         }
 
@@ -50,7 +52,40 @@ namespace MusicStore
             bannerSetup.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             bannerSetup.Height = (System.Windows.SystemParameters.PrimaryScreenHeight) / 2;
             bannerSetup.Width = (System.Windows.SystemParameters.PrimaryScreenWidth) / 2;
+            bannerSetup.instance = this;
             bannerSetup.ShowDialog();
+        }
+
+        public void RefreshBannerFunction()
+        {
+            DB.DBConfig.RefreshConfig();
+            StudioName.Text = DB.DBConfig.studioName;
+            StudioLogo.Source = DB.DBConfig.studioLogo.bitmap;
+            BannerBackground.Source = DB.DBConfig.studioBanner.bitmap;
+        }
+
+        public void RefreshUserInfo()
+        {
+            //Set current username text
+            UsernameTextBlock.Text = DBConn.instance.currentUser.username;
+            //Set permission type text
+            switch(DBConn.instance.currentUser.permission)
+            {
+                case 0:
+                    UsertypeTextBlock.Text = "Guest";
+                    break;
+                case 1:
+                    UsertypeTextBlock.Text = "User";
+                    break;
+                case 2:
+                    UsertypeTextBlock.Text = "Administartor";
+                    break;
+                case 3:
+                    UsertypeTextBlock.Text = "Headadmin";
+                    break;
+            }
+            //Set current funds text in PLN
+            UserFundsTextBlock.Text = DBConn.instance.currentUser.wallet + " PLN";
         }
     }
 }
