@@ -22,6 +22,8 @@ namespace MusicStore
     public partial class BannerSetup : Window
     {
         public MainMenu instance;
+        public BitmapImage logo = DB.DBConfig.studioLogo.bitmap;
+        public BitmapImage banner = DB.DBConfig.studioBanner.bitmap;
         public BannerSetup()
         {
             InitializeComponent();
@@ -39,7 +41,7 @@ namespace MusicStore
         private void ApplyChangesButton_Click(object sender, RoutedEventArgs e)
         {
             //Send new info to database
-            DB.DBConfig.UploadConfig(StudioNameInputTextBox.Text, new DB.DBImage((BitmapImage)StudioLogoImage.Source), new DB.DBImage((BitmapImage)AppBannerImage.Source));
+            DB.DBConfig.UploadConfig(StudioNameInputTextBox.Text, new DB.DBImage(logo), new DB.DBImage(banner));
             //Run function to update banner;
             instance.RefreshBannerFunction();
             this.Close();
@@ -53,7 +55,8 @@ namespace MusicStore
                "Portable Network Graphic (*.png)|*.png";
             if (openFileDialog.ShowDialog()==true)
             {
-                StudioLogoImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                logo = new BitmapImage(new Uri(openFileDialog.FileName));
+                StudioLogoImage.Source = logo;
             }
         }
         private void ImportAppBannerButton_Click(object sender, RoutedEventArgs e)
@@ -64,7 +67,8 @@ namespace MusicStore
                "Portable Network Graphic (*.png)|*.png";
             if (openFileDialog.ShowDialog()==true)
             {
-                AppBannerImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+               banner = new BitmapImage(new Uri(openFileDialog.FileName));
+                AppBannerImage.Source = banner;
             }
         }
     }
