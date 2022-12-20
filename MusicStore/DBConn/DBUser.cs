@@ -12,6 +12,7 @@ namespace MusicStore.DB
         public DBLibrary library;
         public double wallet;
         public int permission;
+        public DBImage avatar;
 
     }
 }
