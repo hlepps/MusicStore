@@ -46,23 +46,29 @@ namespace MusicStore
             grid.Children.Add(label);
             
             listview.Items.Add(item);
+
+            jezykbox.Items.Clear();
+            MusicStore.Language.LangManager.RefreshLanguages();
+            foreach(string lang in MusicStore.Language.LangManager.languages)
+            {
+                jezykbox.Items.Add(lang.Remove(lang.Length-5).Remove(0,9));
+            }
         }
 
-        bool a = true;
+        bool a = false;
         private void Style_Click(object sender, RoutedEventArgs e)
         {
-            string resourcePath;
             if (a)
             {
-                resourcePath = "Style/Darkmode.xaml";
+                MusicStore.Style.StyleManager.SetCurrentStyle("Style/Darkmode.xaml");
                 a = false;
             }
             else
             {
-                resourcePath = "Style/Lightmode.xaml";
+                MusicStore.Style.StyleManager.SetCurrentStyle("Style/Lightmode.xaml");
                 a = true;
             }
-            App.application.Resources = (ResourceDictionary)Application.LoadComponent(new Uri(resourcePath, UriKind.Relative));
+            MusicStore.Style.StyleManager.UpdateStyle();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -106,8 +112,6 @@ namespace MusicStore
 
             foreach(DB.DBLibraryObject obj in DBConn.instance.currentUser.library.itemlist)
             {
-                int imgid;
-                string text;
                 var item = new Border();
                 var grid = new Grid();
                 item.Child = grid;
@@ -136,6 +140,13 @@ namespace MusicStore
                 listview.Items.Add(item);
             }
 
+        }
+
+        private void Jezykbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MusicStore.Language.LangManager.SetCurrentLanguage(MusicStore.Language.LangManager.languages[jezykbox.Items.IndexOf(jezykbox.SelectedValue)]);
+            MusicStore.Language.LangManager.UpdateLanguage();
+            Trace.WriteLine(MusicStore.Language.LangManager.GetCurrentLanguage());
         }
     }
 }
