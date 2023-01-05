@@ -25,6 +25,8 @@
         </ScrollViewer>
         <Button Content="Pobierz Biblioteke" HorizontalAlignment="Left" Margin="514,10,0,0" VerticalAlignment="Top" Width="103" Height="32" Click="Button_Click_3"/>
         <ComboBox x:Name="jezykbox" HorizontalAlignment="Left" Margin="10,261,0,0" VerticalAlignment="Top" Width="265" Height="35" SelectionChanged="Jezykbox_SelectionChanged"/>
+        <TextBox x:Name="songid" HorizontalAlignment="Left" Margin="10,301,0,0" TextWrapping="Wrap" Text="ID piosenki" VerticalAlignment="Top" Width="120" Height="20"/>
+        <Button Content="Odtwórz muzykę" HorizontalAlignment="Left" Margin="135,301,0,0" VerticalAlignment="Top" Width="140" Click="MusicPlay"/>
 
     </Grid>
 </Window>

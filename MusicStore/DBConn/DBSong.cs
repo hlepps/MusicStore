@@ -14,6 +14,7 @@ namespace MusicStore.DB
         public List<DBAuthor> authors;
         public DBImage image;
         public double price;
+        public string songurlid;
     }
     public class DBSongsSaved
     {
@@ -37,16 +38,17 @@ namespace MusicStore.DB
                 return dictionary[id];
 
             DBConn.instance.PrepareConnection();
-            MySqlCommand encmd = new MySqlCommand($"SELECT songname, image_id, price FROM songs where id={id}", DBConn.instance.conn);
+            MySqlCommand encmd = new MySqlCommand($"SELECT songname, image_id, price, mp3_id FROM songs where id={id}", DBConn.instance.conn);
             MySqlDataReader enrdr = encmd.ExecuteReader();
             enrdr.Read();
 
-            object[] a = { enrdr[0], enrdr[1], enrdr[2] };
+            object[] a = { enrdr[0], enrdr[1], enrdr[2], enrdr[3] };
             DB.DBSong song = new DB.DBSong();
             song.name = (string)a[0];
             song.image = DB.DBImagesSaved.Get((int)a[1]);
             song.price = (double)a[2];
             song.authors = new List<DBAuthor>();
+            song.songurlid = (string)a[3];
 
             DBConn.instance.PrepareConnection();
             MySqlCommand authorcmd = new MySqlCommand($"SELECT author_id FROM songauthors where song_id={id}", DBConn.instance.conn);

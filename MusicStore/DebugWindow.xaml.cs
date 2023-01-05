@@ -148,5 +148,13 @@ namespace MusicStore
             MusicStore.Language.LangManager.UpdateLanguage();
             Trace.WriteLine(MusicStore.Language.LangManager.GetCurrentLanguage());
         }
+
+        private void MusicPlay(object sender, RoutedEventArgs e)
+        {
+            MusicPlayer musicPlayer = new MusicPlayer();
+            musicPlayer.RefreshSong(Int32.Parse(songid.Text));
+            musicPlayer.Show();
+
+        }
     }
 }
