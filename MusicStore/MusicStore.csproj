@@ -210,6 +210,7 @@
     <Content Include="obrazy\music vibe.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="obrazy\thanos.png" />
     <Content Include="Style\Darkmode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

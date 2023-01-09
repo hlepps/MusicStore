@@ -5,44 +5,85 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MusicStore"
         mc:Ignorable="d"
-        Title="BannerSetup" Height="450" Width="960" WindowStyle="None">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="9*"/>
-        </Grid.RowDefinitions>
-        <Grid x:Name="WindowButtonsGrid" Grid.Row="0" Margin="0,5,10,0">
-            <Button x:Name="CloseWindowButton" HorizontalAlignment="Right" Height="{Binding ActualHeight, ElementName=WindowButtonsGrid}" Width="{Binding ActualHeight, ElementName=WindowButtonsGrid}" Content="Close" Margin="0" Padding="1,1,1,4" Click="CloseWindowButton_Click"/>
-        </Grid>
-        <Grid x:Name="ContentGrid" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.5*"/>
-                <RowDefinition Height="8.1*"/>
-                <RowDefinition Height="0.9*"/>
-                <RowDefinition Height="0.5*"/>
-            </Grid.RowDefinitions>
-            <Grid x:Name="ContentImportGrid" HorizontalAlignment="Stretch"  Grid.Row="1" VerticalAlignment="Stretch" Margin="25,0,25,24">
+        Title="BannerSetup" Height="450" Width="480" WindowStyle="None"
+        Background="Transparent">
+    <Border CornerRadius="20">
+        <Border.Background>
+            <ImageBrush ImageSource="/obrazy/thanos.png" />
+        </Border.Background>
+        <Border CornerRadius="10"
+            BorderThickness="4"
+                    Opacity="0.97">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="1,1" EndPoint="0,0" GradientStops="{DynamicResource rama}">
+
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" GradientStops="{DynamicResource tlo}">
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="9*"/>
                 </Grid.RowDefinitions>
-                <StackPanel x:Name="StudioNameStackPanel" Orientation="Horizontal" Grid.Row="0">
-                    <TextBlock Text="Studio Name: " FontWeight="Bold" VerticalAlignment="Center"/>
-                    <TextBox x:Name="StudioNameInputTextBox" VerticalAlignment="Center" Text="Vinyl Library"/>
-                </StackPanel>
-                <StackPanel x:Name="StudioLogoStackPanel" Orientation="Horizontal" Grid.Row="1">
-                    <TextBlock Text="Studio Logo: " FontWeight="Bold" VerticalAlignment="Center"/>
-                    <Button x:Name="ImportLogoButton" Content="Select File" Click="ImportLogoButton_Click" VerticalAlignment="Center"/>
-                    <Image x:Name="StudioLogoImage" Source="obrazy/logo.png"/>
-                </StackPanel>
-                <StackPanel x:Name="StudioBannerStackPanel" Orientation="Horizontal" Grid.Row="2">
-                    <TextBlock Text="App Banner: " FontWeight="Bold" VerticalAlignment="Center"/>
-                    <Button x:Name="ImportAppBannerButton" Content="Select File" Click="ImportAppBannerButton_Click" VerticalAlignment="Center"/>
-                    <Image x:Name="AppBannerImage" Source="placeholder_bannerbackground.jpg"/>
-                </StackPanel>
+                <Grid x:Name="WindowButtonsGrid" Grid.Row="0" Margin="0,5,10,0">
+                    <TextBlock  Text="{DynamicResource BANNERSETUP}" Foreground="{DynamicResource napisy}" Padding="15,8,0,0" FontSize="15" FontFamily="InriaSans-Light"/>
+                    <Button x:Name="CloseWindowButton" HorizontalAlignment="Right" Height="{Binding ActualHeight, ElementName=WindowButtonsGrid}" Width="{Binding ActualHeight, ElementName=WindowButtonsGrid}" Content="X" Margin="0" Padding="1,1,1,4" Click="CloseWindowButton_Click" Foreground="white" Style="{DynamicResource button2}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="30"
+                                        Height="30"
+                                        CornerRadius="15"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+                </Grid>
+                <Grid x:Name="ContentGrid" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5.5*"/>
+                        <RowDefinition Height="2.1*"/>
+                        <RowDefinition Height="0.9*"/>
+                        <RowDefinition Height="0.5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid x:Name="ContentImportGrid" HorizontalAlignment="Stretch"  Grid.Row="1" VerticalAlignment="Stretch" Margin="25,0,25,24">
+                        <StackPanel x:Name="StudioNameStackPanel" Grid.Row="0" Margin="92,10,92,10" Orientation="Vertical" RenderTransformOrigin="0.503,0.865">
+                            <TextBlock Text="Nazwa studia" Foreground="{DynamicResource napisy}" FontSize="13" FontFamily="InriaSans-Light" FontWeight="Bold" TextAlignment="Center"/>
+                            <TextBox x:Name="StudioNameInputTextBox" Background="Transparent" Foreground="{DynamicResource napisy}" Margin="0,10,0,0" FontFamily="InriaSans-Light"
+                             BorderBrush="{DynamicResource paski}" TextAlignment="Center"
+                             BorderThickness="0,0,0,2" Text="Vinyl Library" Height="18" RenderTransformOrigin="0.513,0.225"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel x:Name="StudioBannerStackPanel" Orientation="Horizontal" Grid.Row="2">
+                            <TextBlock Text="App Banner: " FontWeight="Bold" VerticalAlignment="Center"/>
+                            <Button x:Name="ImportAppBannerButton" Content="Select File" Click="ImportAppBannerButton_Click" VerticalAlignment="Center"/>
+                            <Image x:Name="AppBannerImage" Source="placeholder_bannerbackground.jpg"/>
+                        </StackPanel>
+
+                        <StackPanel x:Name="StudioLogoStackPanel" Orientation="Horizontal" Margin="0,76,0,0" Grid.RowSpan="2">
+                            <TextBlock Text="Studio Logo: " FontWeight="Bold" VerticalAlignment="Center"/>
+                            <Button x:Name="ImportLogoButton" Content="Select File" Click="ImportLogoButton_Click" VerticalAlignment="Center"/>
+                            <Image x:Name="StudioLogoImage" Source="obrazy/logo.png"/>
+                        </StackPanel>
+
+
+                    </Grid>
+
+                    <Button x:Name="ApplyChangesButton" Grid.Row="2" Content="Apply Changes" HorizontalAlignment="Center" Click="ApplyChangesButton_Click"/>
+                </Grid>
             </Grid>
-            <Button x:Name="ApplyChangesButton" Grid.Row="2" Content="Apply Changes" HorizontalAlignment="Center" Click="ApplyChangesButton_Click"/>
-        </Grid>
-    </Grid>
+        </Border>
+    </Border>
 </Window>
