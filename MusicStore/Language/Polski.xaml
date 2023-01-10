@@ -12,4 +12,11 @@
     <s:String x:Key="NEWPASSWORD">Hasło</s:String>
     <s:String x:Key="REPEATNEWPASSWORD">Powtórz hasło</s:String>
     <s:String x:Key="NEWPAYMENT">Numer karty kredytowej</s:String>
+    <s:String x:Key="BANNERSETUP">USTAWIENIA BANERA</s:String>
+    <s:String x:Key="APPBANNER">Baner aplikacji</s:String>
+    <s:String x:Key="STUDIOLOGO">Logo studia</s:String>
+    <TextBlock x:Key="choosebtn1" Text="Wybierz plik"/>
+    <TextBlock x:Key="choosebtn2" Text="Wybierz plik"/>
+    <TextBlock x:Key="applybtn" Text="Zastosuj"/>
+
 </ResourceDictionary>

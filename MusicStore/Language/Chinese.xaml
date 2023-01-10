@@ -12,4 +12,10 @@
     <s:String x:Key="NEWPASSWORD">密码</s:String>
     <s:String x:Key="REPEATNEWPASSWORD">重复输入密码</s:String>
     <s:String x:Key="NEWPAYMENT">信用卡号码</s:String>
+    <s:String x:Key="BANNERSETUP">横幅设置</s:String>
+    <s:String x:Key="APPBANNER">应用横幅</s:String>
+    <s:String x:Key="STUDIOLOGO">工作室标志</s:String>
+    <TextBlock x:Key="choosebtn1" Text="选择文件"/>
+    <TextBlock x:Key="choosebtn2" Text="选择文件"/>
+    <TextBlock x:Key="applybtn" Text="应用更改"/>
 </ResourceDictionary>
