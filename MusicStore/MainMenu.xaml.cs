@@ -19,6 +19,9 @@ namespace MusicStore
     /// </summary>
     public partial class MainMenu : Window
     {
+        Pages.Library library = new Pages.Library();
+        Pages.Shop shop = new Pages.Shop();
+        Pages.Options options = new Pages.Options();
         public MainMenu()
         {
             InitializeComponent();
@@ -87,6 +90,21 @@ namespace MusicStore
             //Set current funds text in PLN
             UserFundsTextBlock.Text = DBConn.instance.currentUser.wallet + " PLN";
             UserAvatar.Source = DBConn.instance.currentUser.avatar.bitmap;
+        }
+
+        private void Btnbiblioteka_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = library;
+        }
+
+        private void Btnsklep_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = shop;
+        }
+
+        private void Btnopcje_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = options;
         }
     }
 }
