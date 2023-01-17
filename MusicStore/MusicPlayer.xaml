@@ -113,7 +113,16 @@
                     <TextBlock x:Name="name" Text="TEST - test" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5" FontSize="15" FontWeight="Bold" 
                                Foreground="{DynamicResource napisy}" TextAlignment="Left" VerticalAlignment="Center"></TextBlock>
                     <!-- slider do stylowania :) -->
-                    <Slider x:Name="songSlider" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="6" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" Width="350" Maximum="9" ValueChanged="songSlider_ValueChanged"/>
+                    <Slider x:Name="songSlider" 
+                            Grid.Row="1" Grid.Column="1" 
+                            Grid.ColumnSpan="6" 
+                            HorizontalAlignment="Left" 
+                            Margin="0,0,0,0" 
+                            VerticalAlignment="Center" 
+                            Width="350" 
+                            Maximum="9" 
+                            ValueChanged="songSlider_ValueChanged"
+                            />
                     <Button    x:Name="btnpauza"
                                Content="⏸"
                                Grid.Column="1"

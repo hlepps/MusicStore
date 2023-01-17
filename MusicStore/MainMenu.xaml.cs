@@ -63,8 +63,8 @@ namespace MusicStore
         {
             DB.DBConfig.RefreshConfig();
             StudioName.Text = DB.DBConfig.studioName;
-            StudioLogo.Source = DB.DBConfig.studioLogo.bitmap;
-            BannerBackground.Source = DB.DBConfig.studioBanner.bitmap;
+            StudioLogo.ImageSource = DB.DBConfig.studioLogo.bitmap;
+            BannerBackground.ImageSource = DB.DBConfig.studioBanner.bitmap;
         }
 
         public void RefreshUserInfo()

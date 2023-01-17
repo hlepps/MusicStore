@@ -8,8 +8,9 @@
         Title="MainMenu" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="None"
         Width="{x:Static SystemParameters.PrimaryScreenWidth}"
         Height="{x:Static SystemParameters.PrimaryScreenHeight}"
+        Background="Transparent"
         >
-    <Border>
+    <Border CornerRadius="13">
         <Border.Background>
             <ImageBrush ImageSource="obrazy/minecraft.png"/>
         </Border.Background>
@@ -46,17 +47,56 @@
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <Button Click="btnminimalize" Content="Minimize" Grid.Column="0" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
+                            <Button Style="{DynamicResource button1}" Click="btnminimalize" Content="-" Grid.Column="0" HorizontalAlignment="Stretch" FontSize="20" VerticalAlignment="Stretch" Foreground="White">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Margin="3,2,3,0"
+                                        CornerRadius="8"
+                                        Background="{TemplateBinding Background}">
+                                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
 
-                            <Button Click="btnclose" Content="Close" Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
+                            <Button Style="{DynamicResource button2}" Click="btnclose" Content="X" Grid.Column="1" HorizontalAlignment="Stretch" Foreground="White" VerticalAlignment="Stretch">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Margin="3,2,3,0"
+                                        CornerRadius="8"
+                                        Background="{TemplateBinding Background}">
+                                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
                         </Grid>
-                        <Border x:Name="AccountDetailsBorder" BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="1" VerticalAlignment="Stretch" Margin="10" Background="White">
+                        <Border x:Name="AccountDetailsBorder"  
+                                BorderThickness="1" 
+                                Grid.Column="1" 
+                                HorizontalAlignment="Stretch" 
+                                Grid.Row="1" 
+                                VerticalAlignment="Stretch" 
+                                Margin="10"
+                                CornerRadius="10"
+                                >
+                            <Border.BorderBrush>
+                                <LinearGradientBrush StartPoint="1,1" EndPoint="0,0" GradientStops="{DynamicResource rama}">
+
+                                </LinearGradientBrush>
+                            </Border.BorderBrush>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" GradientStops="{DynamicResource tlo}">
+                                </LinearGradientBrush>
+                            </Border.Background>
                             <Grid x:Name="UserDetailsLayoutGrid">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="3*"/>
                                     <ColumnDefinition Width="7*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" x:Name="UserAvatar" Source="obrazy/note-gb4fa8b680_640.png" Width="{Binding ActualWidth, ElementName=AvatarLayout}" Height="{Binding ActualWidth, ElementName=AvatarLayout}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Image Margin="10,0,0,0" Grid.Column="0" x:Name="UserAvatar" Source="{DynamicResource logo}" Width="{Binding ActualWidth, ElementName=AvatarLayout}" Height="{Binding ActualWidth, ElementName=AvatarLayout}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 <Grid Grid.Column="1" x:Name="UserDetailsGrid">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="1*" />
@@ -67,12 +107,12 @@
                                         <ColumnDefinition Width="1*"/>
                                         <ColumnDefinition Width="1*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="User: " FontWeight="Bold"/>
-                                    <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Text="User type: " FontWeight="Bold"/>
-                                    <TextBlock x:Name="UsernameTextBlock" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Username" />
-                                    <TextBlock x:Name="UsertypeTextBlock" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Usertype" />
-                                    <TextBlock Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Available Funds: " FontWeight="Bold"/>
-                                    <TextBlock x:Name="UserFundsTextBlock" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Funds" />
+                                    <TextBlock Grid.Column="0" Foreground="{DynamicResource napisy}" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="User: " FontWeight="Bold"/>
+                                    <TextBlock Grid.Column="0" Foreground="{DynamicResource napisy}" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Text="User type: " FontWeight="Bold"/>
+                                    <TextBlock x:Name="UsernameTextBlock" Grid.Column="1" Foreground="{DynamicResource napisy}" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Username" />
+                                    <TextBlock x:Name="UsertypeTextBlock" Grid.Column="1" Foreground="{DynamicResource napisy}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Usertype" />
+                                    <TextBlock Grid.Column="0" Foreground="{DynamicResource napisy}" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Available Funds: " FontWeight="Bold"/>
+                                    <TextBlock x:Name="UserFundsTextBlock" Grid.Column="1" Foreground="{DynamicResource napisy}" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Funds" />
                                 </Grid>
                             </Grid>
                         </Border>
@@ -83,23 +123,32 @@
                             <ColumnDefinition Width="2*" />
                         </Grid.ColumnDefinitions>
                         <!--Przycisk jest na całe pole, po naciśnięciu ma otwierać osobne okno do edycji loga oraz nazwy studia jeśli użytkownik jest Administratorem-->
-                        <Button x:Name="OpenStudioDetailsButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="OpenStudioDetailsButton_Click" IsEnabled="False">
+                        <Button x:Name="OpenStudioDetailsButton" HorizontalAlignment="Center" VerticalAlignment="Stretch" Grid.Column="0" Background="Transparent" Click="OpenStudioDetailsButton_Click" IsEnabled="False">
                             <Canvas Width="{Binding ActualWidth, ElementName=OpenStudioDetailsButton}" Height="{Binding ActualHeight, ElementName=OpenStudioDetailsButton}">
-                                <Image x:Name="StudioLogo" Source="obrazy/logo.png" Height="{Binding ActualHeight, ElementName=BannerCanvas}" Width="{Binding ActualHeight, ElementName=BannerCanvas}" HorizontalAlignment="Left" Panel.ZIndex="1"/>
-                                <Grid x:Name="StudioNameGrid" Height="{Binding ActualHeight, ElementName=BannerCanvas}" VerticalAlignment="Stretch" Margin="0,0,0,0" Panel.ZIndex="1">
+                                <Border Width="1528" Margin="-2,-2,0,0" Height="172" CornerRadius="8,8,0,0">
+                                    <Border.Background>
+                                        <ImageBrush x:Name="BannerBackground" ImageSource="placeholder_bannerbackground.jpg" Stretch="Fill"/>
+                                    </Border.Background>
+                                </Border>
+                                <Grid x:Name="StudioNameGrid" Background="Transparent" Height="{Binding ActualHeight, ElementName=BannerCanvas}" VerticalAlignment="Stretch" Margin="0,0,0,0" Panel.ZIndex="1">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="85.6"/>
+                                        <RowDefinition/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="{Binding ActualHeight, ElementName=BannerCanvas}"/>
                                         <ColumnDefinition Width="1*"/>
                                     </Grid.ColumnDefinitions>
                                     <Viewbox Grid.Row="1" Grid.Column="1">
-                                        <TextBlock x:Name="StudioName" FontWeight="Bold" FontStyle="Italic" Foreground="Black" Text="Vinyl Library" VerticalAlignment="Center"/>
+                                        <TextBlock x:Name="StudioName" Foreground="{DynamicResource napisy}" FontWeight="Bold" FontFamily="InriaSans-Light" Margin="10,0,0,0" Text="Vinyl Library" VerticalAlignment="Center"/>
                                     </Viewbox>
                                 </Grid>
-                                <Image x:Name="BannerBackground" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="{Binding ActualWidth, ElementName=BannerCanvas}" Height="{Binding ActualHeight, ElementName=BannerCanvas}" Source="placeholder_bannerbackground.jpg" Stretch="Fill"/>
+                                <Border Height="160" Width="160" Margin="4" CornerRadius="10">
+                                    <Border.Background>
+                                        <ImageBrush x:Name="StudioLogo" ImageSource="obrazy/logo.png"/>
+                                    </Border.Background>
+                                </Border>
+
                             </Canvas>
                         </Button>
                     </Grid>
@@ -190,7 +239,7 @@
                     </Grid>
                     <Grid Grid.Column="2">
                         <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden">
-                            
+
                         </Frame>
                     </Grid>
                 </Grid>
