@@ -1,14 +1,82 @@
-﻿<Page x:Class="MusicStore.Pages.Library"
+﻿<Page
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MusicStore.Pages"
+      xmlns:DB="clr-namespace:MusicStore.DB" x:Class="MusicStore.Pages.Library"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Library">
 
     <Grid>
-        <Button Width="100" Height="200">test</Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Border x:Name="Filter" Grid.Column="0" Background="#FFD4F327">
+            <TextBlock TextWrapping="Wrap" Text="&lt;SQL FILTER&gt;" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <!--Lewa część strony zawierająca filtr dla wezwań SQL-->
+        </Border>
+        <!--ScrollBox-SQL_DataBase_Content-->
+        <ScrollViewer x:Name="ContentScrollViewer" Grid.Column="1" HorizontalAlignment="Stretch">
+            <ListView x:Name="LibraryListView" PreviewMouseWheel="LibraryListView_PreviewMouseWheel">
+                <!--Dynamic Created Library Object gets inserted here-->
+            </ListView>
+        </ScrollViewer>
+        <!--ContentInfoPanel-->
+        <ScrollViewer x:Name="DetailsScrollViewer" Grid.Column="2" PreviewMouseWheel="DetailsScrollViewer_PreviewMouseWheel" VerticalScrollBarVisibility="Hidden">
+            <!--TrackDetails/AlbumDetails-->
+            <StackPanel x:Name="DetailsStackPanel" Background="#FFABABAB">
+                <Separator Height="25" Background="{x:Null}" Foreground="{x:Null}"/>
+                <Grid Width="{Binding ActualWidth, ElementName=DetailsStackPanel}">
+                    <!--This grid purpose is to center the logo of the object-->
+                    <Grid.ColumnDefinitions>
+                       <ColumnDefinition Width="1*"/>
+                       <ColumnDefinition Width="1*"/>
+                       <ColumnDefinition Width="1*"/>
+                       <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Separator x:Name="HeightFiller" Grid.Column="1" Grid.ColumnSpan="2" Background="{x:Null}" Foreground="{x:Null}"/>
+                    <Image x:Name="ObjectImage" Grid.Column="1" Grid.ColumnSpan="2" Source="../obrazy/light.png" Height="{Binding ActualWidth, ElementName=HeightFiller}"/>
+                </Grid>
+                <Separator Height="10" Background="{x:Null}" Foreground="{x:Null}"/>
+                <TextBlock x:Name="ObjectNameTextBlock" Text="{}{ObjectName}" HorizontalAlignment="Center" FontWeight="Bold" />
+                <Separator Height="5" Background="{x:Null}" Foreground="{x:Null}"/>
+                <TextBlock x:Name="ArtistTextBlock" Text="{}{ArtistName{s}}" HorizontalAlignment="Center" />
+                <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
+                <StackPanel x:Name="AlbumStackPanel">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" HorizontalAlignment="Right" Text="Tracks: "/>
+                        <TextBlock x:Name="TrackAmount" Grid.Column="1" HorizontalAlignment="Left" Text="{}{TrackAmount}"/>
+                    </Grid>
+                    <Separator Height="10" Background="{x:Null}" Foreground="{x:Null}"/>
+                    <StackPanel x:Name="AlbumTracksStackPanel">
+                        <!--Function adds track names here-->
+                    </StackPanel>
+                    <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
+                </StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" HorizontalAlignment="Right" Text="Price: "/>
+                    <TextBlock x:Name="Price" Grid.Column="1" HorizontalAlignment="Left" Text="{}{PriceInPLN} PLN"/>
+                </Grid>
+                <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
+                <Button HorizontalAlignment="Center">Add to Cart</Button>
+                <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
+                <Button HorizontalAlignment="Center">
+                    <!--If Owned, Text="Play", if not owned Text="Play Sample"-->
+                    <TextBlock x:Name="ListenTextBlock" Text="Play Sample"/>
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

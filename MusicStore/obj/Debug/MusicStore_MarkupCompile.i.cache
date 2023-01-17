@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-11-1048006678
-4135490347
-19530464797
-28-1879218257
-App.xaml;BannerSetup.xaml;DebugWindow.xaml;Language\Chinese.xaml;Language\English.xaml;Language\Polski.xaml;Login.xaml;MainMenu.xaml;Register.xaml;Style\Lightmode.xaml;Style\Startowy.xaml;
+10-1449166313
+12-1193914376
+25-2072880817
+39325191953
+App.xaml;BannerSetup.xaml;DebugWindow.xaml;Login.xaml;MainMenu.xaml;MusicPlayer.xaml;Pages\Library.xaml;Pages\Options.xaml;Pages\Shop.xaml;Register.xaml;
 
 True
 
