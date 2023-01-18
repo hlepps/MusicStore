@@ -39,6 +39,7 @@ namespace MusicStore.DB
             aenrdr.Read();
             object[] a = { aenrdr[0], aenrdr[1], aenrdr[2], aenrdr[3] };
             DB.DBAlbum album = new DB.DBAlbum();
+            album.id = id;
             album.name = (string)a[0];
             album.image = DB.DBImagesSaved.Get((int)a[1]);
             album.author = DB.DBAuthorsSaved.Get((int)a[2]);

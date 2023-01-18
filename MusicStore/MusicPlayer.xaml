@@ -10,11 +10,11 @@
         MouseDown="Window_MouseDown"
         Background="Transparent"
         AllowsTransparency="True">
-    <Border CornerRadius="40">
+    <Border CornerRadius="12,12,12,12">
         <Border.Background>
             <ImageBrush ImageSource="obrazy/music vibe.png"/>
         </Border.Background>
-        <Border CornerRadius="10"
+        <Border CornerRadius="10,10,10,10"
             BorderThickness="4"
                     Opacity="0.9">
             <Border.BorderBrush>

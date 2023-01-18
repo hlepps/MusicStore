@@ -54,6 +54,6 @@ namespace MusicStore.DB
 
     public class DBLibraryObject
     {
-
+        public int id;
     }
 }

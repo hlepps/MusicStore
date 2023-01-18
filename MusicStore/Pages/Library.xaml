@@ -12,20 +12,45 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Border x:Name="Filter" Grid.Column="0" Background="#FFD4F327">
             <TextBlock TextWrapping="Wrap" Text="&lt;SQL FILTER&gt;" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <!--Lewa część strony zawierająca filtr dla wezwań SQL-->
         </Border>
-        <!--ScrollBox-SQL_DataBase_Content-->
         <ScrollViewer x:Name="ContentScrollViewer" Grid.Column="1" HorizontalAlignment="Stretch">
-            <ListView x:Name="LibraryListView" PreviewMouseWheel="LibraryListView_PreviewMouseWheel">
-                <!--Dynamic Created Library Object gets inserted here-->
-            </ListView>
+            <WrapPanel x:Name="itemPanel">
+                <!--
+                <Border x:Name="albumdefault" CornerRadius="8,8,0,8" Grid.Column="0" VerticalAlignment="Top" Height="100" Width="100" Margin="0,10,0,0"
+                        BorderThickness="2,2,4,4">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush StartPoint="1,1" EndPoint="0,0" GradientStops="{DynamicResource rama}">
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                    <Border.Background>
+                        <ImageBrush x:Name="image" ImageSource="../logo.ico"/>
+                    </Border.Background>
+                    <Grid>
+                        <Button Opacity="0" Click="Album_Click"></Button>
+                        <Border CornerRadius="8,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                        BorderThickness="2,2,2,2" Width="30" Height="15">
+                            <Border.BorderBrush>
+                                <LinearGradientBrush StartPoint="1,1" EndPoint="0,0" GradientStops="{DynamicResource rama}">
+
+                                </LinearGradientBrush>
+                            </Border.BorderBrush>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="1,1" EndPoint="0,0" GradientStops="{DynamicResource rama}">
+
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        <Image Source="../obrazy/album.png" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="15" Margin="0,0,5,0"></Image>
+                    </Grid>
+                </Border> -->
+            </WrapPanel>
         </ScrollViewer>
-        <!--ContentInfoPanel-->
         <ScrollViewer x:Name="DetailsScrollViewer" Grid.Column="2" PreviewMouseWheel="DetailsScrollViewer_PreviewMouseWheel" VerticalScrollBarVisibility="Hidden">
             <!--TrackDetails/AlbumDetails-->
             <StackPanel x:Name="DetailsStackPanel" Background="#FFABABAB">
@@ -33,10 +58,10 @@
                 <Grid Width="{Binding ActualWidth, ElementName=DetailsStackPanel}">
                     <!--This grid purpose is to center the logo of the object-->
                     <Grid.ColumnDefinitions>
-                       <ColumnDefinition Width="1*"/>
-                       <ColumnDefinition Width="1*"/>
-                       <ColumnDefinition Width="1*"/>
-                       <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <Separator x:Name="HeightFiller" Grid.Column="1" Grid.ColumnSpan="2" Background="{x:Null}" Foreground="{x:Null}"/>
                     <Image x:Name="ObjectImage" Grid.Column="1" Grid.ColumnSpan="2" Source="../obrazy/light.png" Height="{Binding ActualWidth, ElementName=HeightFiller}"/>

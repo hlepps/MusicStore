@@ -44,6 +44,7 @@ namespace MusicStore.DB
 
             object[] a = { enrdr[0], enrdr[1], enrdr[2], enrdr[3] };
             DB.DBSong song = new DB.DBSong();
+            song.id = id;
             song.name = (string)a[0];
             song.image = DB.DBImagesSaved.Get((int)a[1]);
             song.price = (double)a[2];

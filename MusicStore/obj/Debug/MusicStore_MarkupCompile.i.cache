@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\GitHub\MusicStore\MusicStore\obj\Debug\
+C:\Users\HP\Documents\PMS\MusicStore\MusicStore\obj\Debug\
 MusicStore
 none
 false
 DEBUG;TRACE
 
 10-1449166313
-12-1193914376
-25-2072880817
-39325191953
+141619203552
+28-966207112
+39748667825
 App.xaml;BannerSetup.xaml;DebugWindow.xaml;Login.xaml;MainMenu.xaml;MusicPlayer.xaml;Pages\Library.xaml;Pages\Options.xaml;Pages\Shop.xaml;Register.xaml;
 
-True
+False
 
