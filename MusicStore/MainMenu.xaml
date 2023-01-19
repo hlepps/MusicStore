@@ -93,10 +93,18 @@
                             </Border.Background>
                             <Grid x:Name="UserDetailsLayoutGrid">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="4*"/>
                                     <ColumnDefinition Width="7*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Margin="10,0,0,0" Grid.Column="0" x:Name="UserAvatar" Source="{DynamicResource logo}" Width="{Binding ActualWidth, ElementName=AvatarLayout}" Height="{Binding ActualWidth, ElementName=AvatarLayout}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Border Height="85"
+                                        CornerRadius="10"
+                                        Margin="4,0,0,0"
+                                        VerticalAlignment="Center"
+                                        Width="85">
+                                    <Border.Background>
+                                        <ImageBrush x:Name="UserAvatar" ImageSource="{DynamicResource logo}"/>
+                                    </Border.Background>
+                                </Border>
                                 <Grid Grid.Column="1" x:Name="UserDetailsGrid">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="1*" />
@@ -104,14 +112,14 @@
                                         <RowDefinition Height="1*" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Foreground="{DynamicResource napisy}" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="User: " FontWeight="Bold"/>
-                                    <TextBlock Grid.Column="0" Foreground="{DynamicResource napisy}" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Text="User type: " FontWeight="Bold"/>
+                                    <TextBlock Grid.Column="0" Foreground="{DynamicResource napisy}" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{DynamicResource USER}" FontWeight="Bold"/>
+                                    <TextBlock Grid.Column="0" Foreground="{DynamicResource napisy}" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{DynamicResource USERTYPE}" FontWeight="Bold"/>
                                     <TextBlock x:Name="UsernameTextBlock" Grid.Column="1" Foreground="{DynamicResource napisy}" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Username" />
                                     <TextBlock x:Name="UsertypeTextBlock" Grid.Column="1" Foreground="{DynamicResource napisy}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Usertype" />
-                                    <TextBlock Grid.Column="0" Foreground="{DynamicResource napisy}" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Available Funds: " FontWeight="Bold"/>
+                                    <TextBlock Grid.Column="0" Foreground="{DynamicResource napisy}" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{DynamicResource AVAIBLEFUNDS}" FontWeight="Bold"/>
                                     <TextBlock x:Name="UserFundsTextBlock" Grid.Column="1" Foreground="{DynamicResource napisy}" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Funds" />
                                 </Grid>
                             </Grid>
@@ -143,12 +151,16 @@
                                         <TextBlock x:Name="StudioName" Foreground="{DynamicResource napisy}" FontWeight="Bold" FontFamily="InriaSans-Light" Margin="10,0,0,0" Text="Vinyl Library" VerticalAlignment="Center"/>
                                     </Viewbox>
                                 </Grid>
-                                <Border Height="160" Width="160" Margin="4" CornerRadius="10">
+                                <Border Height="160" Width="160" Margin="4" CornerRadius="10" BorderThickness="4">
                                     <Border.Background>
                                         <ImageBrush x:Name="StudioLogo" ImageSource="obrazy/logo.png"/>
                                     </Border.Background>
-                                </Border>
+                                    <Border.BorderBrush>
+                                        <LinearGradientBrush StartPoint="1,1" EndPoint="0,0" GradientStops="{DynamicResource rama}">
 
+                                        </LinearGradientBrush>
+                                    </Border.BorderBrush>
+                                </Border>
                             </Canvas>
                         </Button>
                     </Grid>
@@ -171,20 +183,20 @@
                         </Grid.RowDefinitions>
 
                         <Button    x:Name="btnbiblioteka"
-                               Content="{DynamicResource signin}"
+                               Content="{DynamicResource librarybtn}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"
                                FontFamily="InriaSans-Light"
                                Cursor="Hand"
                                Click="Btnbiblioteka_Click"
-                               Margin="0,0,0,0"
+                               Margin="0,1,0,0"
                                Style="{DynamicResource button1}"   
                                Grid.Row="0">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border
-                                        CornerRadius="5"
+                                        CornerRadius="0,8,8,0"
                                         Background="{TemplateBinding Background}">
                                         <ContentPresenter VerticalAlignment="Center"
                                                   HorizontalAlignment="Center"/>
@@ -193,7 +205,7 @@
                             </Button.Template>
                         </Button>
                         <Button    x:Name="btnsklep"
-                               Content="{DynamicResource signin}"
+                               Content="{DynamicResource shopbtn}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"
@@ -206,7 +218,7 @@
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border
-                                        CornerRadius="5"
+                                        CornerRadius="0,5,5,0"
                                         Background="{TemplateBinding Background}">
                                         <ContentPresenter VerticalAlignment="Center"
                                                   HorizontalAlignment="Center"/>
@@ -215,7 +227,7 @@
                             </Button.Template>
                         </Button>
                         <Button    x:Name="btnopcje"
-                               Content="{DynamicResource backtologin}"
+                               Content="{DynamicResource optionbtn}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"
@@ -228,7 +240,29 @@
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border
-                                        CornerRadius="5"
+                                        CornerRadius="0,5,5,0"
+                                        Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button    x:Name="btnlogout"
+                               Content="{DynamicResource logoutbtn}"
+                               FontSize="16"
+                               BorderThickness="5,5,5,5"
+                               Foreground="White"
+                               FontFamily="InriaSans-Light"
+                               Cursor="Hand"
+                               Click="Btnopcje_Click"
+                               Margin="0,0,0,0"
+                               Style="{DynamicResource button2}"   
+                               Grid.Row="3">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        CornerRadius="0,5,5,0"
                                         Background="{TemplateBinding Background}">
                                         <ContentPresenter VerticalAlignment="Center"
                                                   HorizontalAlignment="Center"/>

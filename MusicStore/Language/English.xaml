@@ -18,4 +18,11 @@
     <TextBlock x:Key="choosebtn1" Text="Select File"/>
     <TextBlock x:Key="choosebtn2" Text="Select File"/>
     <TextBlock x:Key="applybtn" Text="Apply changes"/>
+    <TextBlock x:Key="librarybtn" Text="Library"/>
+    <TextBlock x:Key="shopbtn" Text="Shop"/>
+    <TextBlock x:Key="optionbtn" Text="Option"/>
+    <s:String x:Key="USER">User: </s:String>
+    <s:String x:Key="USERTYPE">User type: </s:String>
+    <s:String x:Key="AVAIBLEFUNDS">Avaible funds: </s:String>
+    <TextBlock x:Key="logoutbtn" Text="Log out"/>
 </ResourceDictionary>
