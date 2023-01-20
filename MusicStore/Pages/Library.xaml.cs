@@ -147,11 +147,48 @@ namespace MusicStore.Pages
 
         private void Album_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("ALBUM", GetIDFromObjectName(((Button)sender).Name).ToString(), MessageBoxButton.OK, MessageBoxImage.Information);
+            //MessageBox.Show("ALBUM", GetIDFromObjectName(((Button)sender).Name).ToString(), MessageBoxButton.OK, MessageBoxImage.Information);
+            //Swap details panel visibility
+            TrackDetailsScrollViewer.Visibility = Visibility.Hidden;
+            AlbumDetailsScrollViewer.Visibility = Visibility.Visible;
+            //Get reference to album with ID from button
+            DB.DBAlbum reference = DB.DBAlbumsSaved.Get(GetIDFromObjectName(((Button)sender).Name));
+            //Refresh panel details
+            AlbumLogoImage.Source = reference.image.bitmap;
+            AlbumNameTextBlock.Text = reference.name;
+            AlbumArtistTextBlock.Text = reference.author.name;
+            TrackAmount.Text = reference.songs.Count().ToString();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < reference.songs.Count; i++)
+            {
+                sb.Append(reference.songs[i].name);
+                if (i != (reference.songs.Count - 1))
+                    sb.AppendLine();
+            }
+            AlbumTrackListTextBlock.Text = sb.ToString();
+            AlbumPrice.Text = reference.price.ToString() + " PLN";
         }
         private void Song_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("SONG", GetIDFromObjectName(((Button)sender).Name).ToString(), MessageBoxButton.OK, MessageBoxImage.Information);
+            //MessageBox.Show("SONG", GetIDFromObjectName(((Button)sender).Name).ToString(), MessageBoxButton.OK, MessageBoxImage.Information);
+            //Swap details panel visibility
+            AlbumDetailsScrollViewer.Visibility = Visibility.Hidden;
+            TrackDetailsScrollViewer.Visibility = Visibility.Visible;
+            // Get reference to song with ID from button
+            DB.DBSong reference = DB.DBSongsSaved.Get(GetIDFromObjectName(((Button)sender).Name));
+            //Refresh panel details
+            TrackLogoImage.Source = reference.image.bitmap;
+            TrackTitleTextBlock.Text = reference.name;
+            StringBuilder sb = new StringBuilder();
+            for (int i=0; i < reference.authors.Count;i++)
+            {
+                sb.Append(reference.authors[i].name);
+                if(i!=(reference.authors.Count-1))
+                sb.AppendLine();
+            }
+            TrackArtistTextBlock.Text = sb.ToString();
+            TrackPrice.Text = reference.price.ToString() + " PLN";
+
         }
     }
     
