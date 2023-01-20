@@ -21,6 +21,8 @@ namespace MusicStore.Pages
     public partial class Library : Page
     {
         List<Border> items = new List<Border>();
+        int savedID=-1; //-1 is default setting, preventing Load_Saved() from activation
+        bool savedIdIsSong; //True - Object with saved ID is a song, False - Object with saved ID is an album
 
         public void RefreshItems()
         {
@@ -55,6 +57,8 @@ namespace MusicStore.Pages
                     button.Name = "A" + obj.id;
                     button.Opacity = 0;
                     button.Click += Album_Click;
+                    button.MouseEnter += Album_Hover;
+                    button.MouseLeave += Mouse_Leave;
                     grid.Children.Add(button);
 
                     Border b = new Border();
@@ -110,6 +114,8 @@ namespace MusicStore.Pages
                     button.Name = "S" + obj.id;
                     button.Opacity = 0;
                     button.Click += Song_Click;
+                    button.MouseEnter += Song_Hover;
+                    button.MouseLeave += Mouse_Leave;
                     grid.Children.Add(button);
 
                     temp.Child = grid;
@@ -145,14 +151,12 @@ namespace MusicStore.Pages
             return Int32.Parse(s);
         }
 
-        private void Album_Click(object sender, RoutedEventArgs e)
+        private void Refresh_Album(int id)
         {
-            //MessageBox.Show("ALBUM", GetIDFromObjectName(((Button)sender).Name).ToString(), MessageBoxButton.OK, MessageBoxImage.Information);
-            //Swap details panel visibility
             TrackDetailsScrollViewer.Visibility = Visibility.Hidden;
             AlbumDetailsScrollViewer.Visibility = Visibility.Visible;
-            //Get reference to album with ID from button
-            DB.DBAlbum reference = DB.DBAlbumsSaved.Get(GetIDFromObjectName(((Button)sender).Name));
+            //Get reference to album with ID
+            DB.DBAlbum reference = DB.DBAlbumsSaved.Get(id);
             //Refresh panel details
             AlbumLogoImage.Source = reference.image.bitmap;
             AlbumNameTextBlock.Text = reference.name;
@@ -168,28 +172,78 @@ namespace MusicStore.Pages
             AlbumTrackListTextBlock.Text = sb.ToString();
             AlbumPrice.Text = reference.price.ToString() + " PLN";
         }
-        private void Song_Click(object sender, RoutedEventArgs e)
+
+        private void Refresh_Song(int id)
         {
-            //MessageBox.Show("SONG", GetIDFromObjectName(((Button)sender).Name).ToString(), MessageBoxButton.OK, MessageBoxImage.Information);
             //Swap details panel visibility
             AlbumDetailsScrollViewer.Visibility = Visibility.Hidden;
             TrackDetailsScrollViewer.Visibility = Visibility.Visible;
             // Get reference to song with ID from button
-            DB.DBSong reference = DB.DBSongsSaved.Get(GetIDFromObjectName(((Button)sender).Name));
+            DB.DBSong reference = DB.DBSongsSaved.Get(id);
             //Refresh panel details
             TrackLogoImage.Source = reference.image.bitmap;
             TrackTitleTextBlock.Text = reference.name;
             StringBuilder sb = new StringBuilder();
-            for (int i=0; i < reference.authors.Count;i++)
+            for (int i = 0; i < reference.authors.Count; i++)
             {
                 sb.Append(reference.authors[i].name);
-                if(i!=(reference.authors.Count-1))
-                sb.AppendLine();
+                if (i != (reference.authors.Count - 1))
+                    sb.AppendLine();
             }
             TrackArtistTextBlock.Text = sb.ToString();
             TrackPrice.Text = reference.price.ToString() + " PLN";
+        }
+
+        private void Load_Saved()
+        {
+            if (savedIdIsSong)
+                Refresh_Song(savedID);
+            else
+                Refresh_Album(savedID);
+        }
+        private void Album_Click(object sender, RoutedEventArgs e)
+        {
+            savedID = GetIDFromObjectName(((Button)sender).Name);
+            savedIdIsSong = false;
+            Load_Saved();
+            //MessageBox.Show("ALBUM", GetIDFromObjectName(((Button)sender).Name).ToString(), MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+        private void Song_Click(object sender, RoutedEventArgs e)
+        {
+            savedID = GetIDFromObjectName(((Button)sender).Name);
+            savedIdIsSong = true;
+            Load_Saved();
+            //MessageBox.Show("SONG", GetIDFromObjectName(((Button)sender).Name).ToString(), MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void Song_Hover(object sender, RoutedEventArgs e)
+        {
+            Refresh_Song(GetIDFromObjectName(((Button)sender).Name));
+        }
+        
+        private void Album_Hover(object sender, RoutedEventArgs e)
+        {
+            Refresh_Album(GetIDFromObjectName(((Button)sender).Name));
+        }
+
+        private void Mouse_Leave(object sender, RoutedEventArgs e)
+        {
+            if(savedID!=-1)
+            Load_Saved();
+            else
+            {
+                AlbumDetailsScrollViewer.Visibility = Visibility.Hidden;
+                TrackDetailsScrollViewer.Visibility = Visibility.Hidden;
+            }
+        }
+       private void MusicPlay(object sender, RoutedEventArgs e)
+        {
+            MusicPlayer musicPlayer = new MusicPlayer();
+            musicPlayer.RefreshSong(savedID);
+            musicPlayer.Show();
 
         }
+
     }
     
 }

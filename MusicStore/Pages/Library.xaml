@@ -83,7 +83,7 @@
                 <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
                 <Button HorizontalAlignment="Center">Add to Cart</Button>
                 <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
-                <Button HorizontalAlignment="Center">
+                <Button HorizontalAlignment="Center" Click="MusicPlay">
                     <!--If Owned, Text="Play", if not owned Text="Play Sample"-->
                     <TextBlock x:Name="TrackListenTextBlock" Text="Play Sample"/>
                 </Button>
