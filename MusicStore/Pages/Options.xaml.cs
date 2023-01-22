@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,36 @@ namespace MusicStore.Pages
     {
         public Options()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            
+            jezykbox.Items.Clear();
+            MusicStore.Language.LangManager.RefreshLanguages();
+            foreach (string lang in MusicStore.Language.LangManager.languages)
+            {
+                jezykbox.Items.Add(lang.Remove(lang.Length - 5).Remove(0, 9));
+            }
+        }
+
+        bool a = false;
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (a)
+            {
+                MusicStore.Style.StyleManager.SetCurrentStyle("Style/Darkmode.xaml");
+                a = false;
+            }
+            else
+            {
+                MusicStore.Style.StyleManager.SetCurrentStyle("Style/Lightmode.xaml");
+                a = true;
+            }
+            MusicStore.Style.StyleManager.UpdateStyle();
+        }
+        private void Jezykbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MusicStore.Language.LangManager.SetCurrentLanguage(MusicStore.Language.LangManager.languages[jezykbox.Items.IndexOf(jezykbox.SelectedValue)]);
+            MusicStore.Language.LangManager.UpdateLanguage();
+            Trace.WriteLine(MusicStore.Language.LangManager.GetCurrentLanguage());
         }
     }
 }

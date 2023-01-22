@@ -152,8 +152,7 @@ namespace MusicStore
         private void MusicPlay(object sender, RoutedEventArgs e)
         {
             MusicPlayer musicPlayer = new MusicPlayer();
-            musicPlayer.RefreshSong(Int32.Parse(songid.Text));
-            musicPlayer.Show();
+            musicPlayer.PlaySong(Int32.Parse(songid.Text));
 
         }
     }

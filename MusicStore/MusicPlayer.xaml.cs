@@ -1,5 +1,6 @@
 ﻿using NAudio.Utils;
 using NAudio.Wave;
+using NAudioBPM;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -32,7 +33,7 @@ namespace MusicStore
             InitializeComponent();
         }
 
-        public void RefreshSong(int id)
+        public void PlaySong(int id)
         {
             songID = id;
             songimage.ImageSource = DB.DBSongsSaved.Get(songID).image.bitmap;
@@ -45,14 +46,19 @@ namespace MusicStore
             var url = "https://drive.google.com/uc?id=" + songurlid + "&export=download";
             mf = new MediaFoundationReader(url);
             waveOut.Init(mf);
-            waveOut.Play(); 
+            waveOut.Play();
+            BPMDetector bpm = new BPMDetector(mf, 0, (int)mf.TotalTime.TotalSeconds);
+            int interval = (int)((60000f / (bpm.Groups[0].Tempo)) * 1f);
+            Trace.WriteLine("BPM: " + bpm.Groups[0].Tempo + "; interval: " + interval);
             var dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, interval);
             dispatcherTimer.Start();
             songSlider.Maximum = mf.TotalTime.TotalSeconds;
+            songSlider.TickFrequency = 0.05;
             name.Text = DB.DBSongsSaved.Get(id).authors[0].name + " - " + DB.DBSongsSaved.Get(id).name;
             time.Text = mf.CurrentTime.ToString(@"m\:ss") + " / " + mf.TotalTime.ToString(@"m\:ss");
+            this.Show();
         }
         double lastChanged = 0;
         private void dispatcherTimer_Tick(object sender, EventArgs e)
