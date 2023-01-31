@@ -25,8 +25,11 @@ namespace MusicStore.Pages
         int savedID=-1; //-1 is default setting, preventing Load_Saved() from activation
         bool savedIdIsSong; //True - Object with saved ID is a song, False - Object with saved ID is an album
 
-        public void RefreshItems(List<DB.DBLibraryObject> list)
+        private void RefreshItems(List<DB.DBLibraryObject> list)
         {
+            itemPanel.Children.Clear();
+            items.Clear();
+            
             foreach (DB.DBLibraryObject obj in list)
             {
                 if (obj.GetType() == typeof(DB.DBAlbum))
@@ -130,6 +133,10 @@ namespace MusicStore.Pages
         public Library()
         {
             InitializeComponent();
+            RefreshContent();
+        }
+        public void RefreshContent()
+        {
             if (albumID == 0)
             {
                 RefreshItems(DBConn.instance.currentUser.library.itemlist);
@@ -173,7 +180,7 @@ namespace MusicStore.Pages
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < reference.songs.Count; i++)
             {
-                sb.Append(reference.songs[i].name);
+                sb.Append(((DB.DBSong)reference.songs[i]).name);
                 if (i != (reference.songs.Count - 1))
                     sb.AppendLine();
             }
@@ -247,11 +254,20 @@ namespace MusicStore.Pages
        private void MusicPlay(object sender, RoutedEventArgs e)
         {
             MusicPlayer musicPlayer = new MusicPlayer();
-            musicPlayer.RefreshSong(savedID);
-            musicPlayer.Show();
-
+            musicPlayer.PlaySong(savedID);
         }
 
+        private void OpenAlbumLibrary_Click(object sender, RoutedEventArgs e)
+        {
+            Library albumLibrary = new Library();
+            Window window = new Window();
+            albumLibrary.albumID = savedID;
+            albumLibrary.RefreshContent();
+            Frame pageFrame = new Frame();
+            pageFrame.Content = albumLibrary;
+            window.Content = pageFrame;
+            window.Show();
+        }
     }
     
 }

@@ -135,8 +135,7 @@
                 <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
                 <Button HorizontalAlignment="Center">Add to Cart</Button>
                 <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
-                <Button HorizontalAlignment="Center">
-                    <!--If Owned, Text="Play", if not owned Text="Play Sample"-->
+                <Button HorizontalAlignment="Center" Click="OpenAlbumLibrary_Click">
                     <TextBlock Text="Open Album"/>
                 </Button>
             </StackPanel>
