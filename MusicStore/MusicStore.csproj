@@ -155,7 +155,7 @@
     <Compile Include="Pages\Shop.xaml.cs">
       <DependentUpon>Shop.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Security\Security.cs" />
+    <Compile Include="Utility\Security.cs" />
     <Compile Include="Style\StyleManager.cs" />
     <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>

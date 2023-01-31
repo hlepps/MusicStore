@@ -12,7 +12,7 @@ namespace MusicStore.DB
     {
         public string name;
         public DBAuthor author;
-        public List<DBSong> songs;
+        public List<DBLibraryObject> songs;
         public DBImage image;
         public double price;
     }
@@ -44,7 +44,7 @@ namespace MusicStore.DB
             album.image = DB.DBImagesSaved.Get((int)a[1]);
             album.author = DB.DBAuthorsSaved.Get((int)a[2]);
             album.price = (double)a[3];
-            album.songs = new List<DBSong>();
+            album.songs = new List<DBLibraryObject>();
 
             DBConn.instance.PrepareConnection();
             MySqlCommand songscmd = new MySqlCommand($"SELECT song_id FROM songsinalbums where album_id={id}", DBConn.instance.conn);

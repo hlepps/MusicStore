@@ -21,10 +21,11 @@ namespace MusicStore.Pages
     public partial class Library : Page
     {
         List<Border> items = new List<Border>();
+        public int albumID = 0;
 
-        public void RefreshItems()
+        public void RefreshItems(List<DB.DBLibraryObject> list)
         {
-            foreach (DB.DBLibraryObject obj in DBConn.instance.currentUser.library.itemlist)
+            foreach (DB.DBLibraryObject obj in list)
             {
                 if (obj.GetType() == typeof(DB.DBAlbum))
                 {
@@ -123,7 +124,14 @@ namespace MusicStore.Pages
         public Library()
         {
             InitializeComponent();
-            RefreshItems();
+            if (albumID == 0)
+            {
+                RefreshItems(DBConn.instance.currentUser.library.itemlist);
+            }
+            else
+            {
+                RefreshItems(DB.DBAlbumsSaved.Get(albumID).songs);
+            }
         }
 
         private void LibraryListView_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
