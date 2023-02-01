@@ -48,6 +48,8 @@ namespace MusicStore
             {
                 if (DBConn.instance.Login(logintxt.Text, haslotxt.Password))
                 {
+                    DB.DBAlbumsSaved.PreloadAll();
+                    DB.DBSongsSaved.PreloadAll();
                     MainMenu menu = new MainMenu();
                     menu.Show();
                     this.Hide();

@@ -207,7 +207,9 @@ namespace MusicStore.Pages
 
                 case Mode.Shop:
                     //RefreshItems(WholeDatabase);
-                    RefreshItems(DB.DBAlbumsSaved.Get(14).songs); //DEBUG ONLY
+                    DB.DBSongsSaved.PreloadAll();
+                    DB.DBAlbumsSaved.PreloadAll();
+                    RefreshItems(DB.DBSongsSaved.GetAllFromDictionary()); //DEBUG ONLY
                     break;
 
                 case Mode.Album:

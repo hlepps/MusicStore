@@ -24,6 +24,35 @@ namespace MusicStore.DB
         /// Lokalna baza, może nie być aktualna
         /// </summary>
         public static Dictionary<int, DBAlbum> dictionary;
+        public static List<DBLibraryObject> GetAllFromDictionary()
+        {
+            List<DBLibraryObject> temp = new List<DBLibraryObject>();
+            foreach(System.Collections.Generic.KeyValuePair<int, DBAlbum> a in dictionary)
+            {
+                temp.Add(a.Value);
+            }
+            return temp;
+        }
+
+        public static void PreloadAll()
+        {
+            DBConn.instance.PrepareConnection();
+            MySqlCommand encmd = new MySqlCommand($"SELECT id FROM albums", DBConn.instance.conn);
+            MySqlDataReader enrdr = encmd.ExecuteReader();
+
+            while (enrdr.Read())
+            {
+                /// 0-songname 1-image_id 2-price 3-mp3_id 4-id
+                object[] a = { enrdr[0] };
+                if (!dictionary.ContainsKey((int)enrdr[0]))
+                    Get((int)enrdr[0]);
+
+                if(enrdr.IsClosed)
+                    break;
+                
+            }
+
+        }
 
         public static DBAlbum Get(int id)
         {
