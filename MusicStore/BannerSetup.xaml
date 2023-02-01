@@ -91,7 +91,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Image x:Name="AppBannerImage" Source="placeholder_bannerbackground.jpg" Width="450" Height="200" Margin="0,5,0,0" />
+                            <Image x:Name="AppBannerImage" Source="placeholder_bannerbackground.jpg" Width="450" Height="100" Margin="0,45,0,0" Stretch="Fill"/>
                         </StackPanel>
 
                         <StackPanel x:Name="StudioLogoStackPanel" Orientation="Vertical" Grid.Column="1">

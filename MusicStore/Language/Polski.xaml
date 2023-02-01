@@ -25,5 +25,7 @@
     <s:String x:Key="USERTYPE">Typ użytkownika: </s:String>
     <s:String x:Key="AVAIBLEFUNDS">Dostępne środki: </s:String>
     <TextBlock x:Key="logoutbtn" Text="Wyloguj się"/>
+    <TextBlock x:Key="changestylebtn" Text="Wybierz styl"/>
+    <TextBlock x:Key="changelanbtn" Text="Wybierz Język"/>
 
 </ResourceDictionary>

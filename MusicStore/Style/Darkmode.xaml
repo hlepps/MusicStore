@@ -12,6 +12,16 @@
         <GradientStop Offset="1" Color="Orange"/>
     </GradientStopCollection>
 
+    <GradientStopCollection x:Key="pas">
+        <GradientStop Offset="0" Color="Green"/>
+        <GradientStop Offset="1" Color="Transparent"/>
+    </GradientStopCollection>
+    
+    <GradientStopCollection x:Key="checkbox">
+        <GradientStop Offset="0" Color="Transparent"/>
+        <GradientStop Offset="1" Color="Orange"/>
+    </GradientStopCollection>
+
     <SolidColorBrush x:Key="napisy" Color="Orange"/>
     <SolidColorBrush x:Key="paski" Color="Green"/>
 

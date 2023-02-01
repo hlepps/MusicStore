@@ -93,14 +93,14 @@
                             </Border.Background>
                             <Grid x:Name="UserDetailsLayoutGrid">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="5*"/>
                                     <ColumnDefinition Width="7*"/>
                                 </Grid.ColumnDefinitions>
-                                <Border Height="85"
+                                <Border Height="114"
                                         CornerRadius="10"
-                                        Margin="4,0,0,0"
                                         VerticalAlignment="Center"
-                                        Width="85">
+                                        HorizontalAlignment="Center"
+                                        Width="114">
                                     <Border.Background>
                                         <ImageBrush x:Name="UserAvatar" ImageSource="{DynamicResource logo}"/>
                                     </Border.Background>
@@ -110,17 +110,14 @@
                                         <RowDefinition Height="1*" />
                                         <RowDefinition Height="1*" />
                                         <RowDefinition Height="1*" />
+                                        <RowDefinition Height="1*"/>
                                     </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Foreground="{DynamicResource napisy}" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{DynamicResource USER}" FontWeight="Bold"/>
-                                    <TextBlock Grid.Column="0" Foreground="{DynamicResource napisy}" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{DynamicResource USERTYPE}" FontWeight="Bold"/>
-                                    <TextBlock x:Name="UsernameTextBlock" Grid.Column="1" Foreground="{DynamicResource napisy}" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Username" />
-                                    <TextBlock x:Name="UsertypeTextBlock" Grid.Column="1" Foreground="{DynamicResource napisy}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Usertype" />
-                                    <TextBlock Grid.Column="0" Foreground="{DynamicResource napisy}" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{DynamicResource AVAIBLEFUNDS}" FontWeight="Bold"/>
-                                    <TextBlock x:Name="UserFundsTextBlock" Grid.Column="1" Foreground="{DynamicResource napisy}" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Funds" />
+
+
+                                    <TextBlock x:Name="UsernameTextBlock" Foreground="{DynamicResource napisy}" Grid.Row="0" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Username" />
+                                    <TextBlock x:Name="UsertypeTextBlock" Foreground="{DynamicResource napisy}" Grid.Row="1" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="top" Text="Usertype" />
+                                    <TextBlock x:Name="UserFundsText" Foreground="{DynamicResource napisy}" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{DynamicResource AVAIBLEFUNDS}" FontWeight="Bold" />
+                                    <TextBlock x:Name="UserFundsTextBlock" Foreground="{DynamicResource napisy}" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Funds" />
                                 </Grid>
                             </Grid>
                         </Border>
