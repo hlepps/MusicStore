@@ -28,7 +28,7 @@ namespace MusicStore
             RefreshBannerFunction();
             RefreshUserInfo();
             //Set Admin Layout
-            if (DBConn.instance.currentUser.permission >= 2)
+            if (UserFunctions.VerifyUserPermission(2))
             {
                 OpenStudioDetailsButton.IsEnabled = true;
             }
@@ -94,12 +94,17 @@ namespace MusicStore
 
         private void Btnbiblioteka_Click(object sender, RoutedEventArgs e)
         {
+            library.pageMode = Pages.Library.Mode.UserLibrary;
+            library.RefreshPage();
             mainFrame.Content = library;
         }
 
         private void Btnsklep_Click(object sender, RoutedEventArgs e)
         {
-            mainFrame.Content = shop;
+            //mainFrame.Content = shop;
+            library.pageMode = Pages.Library.Mode.Shop;
+            library.RefreshPage();
+            mainFrame.Content = library;
         }
 
         private void Btnopcje_Click(object sender, RoutedEventArgs e)

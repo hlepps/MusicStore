@@ -22,8 +22,16 @@ namespace MusicStore.Pages
     {
         List<Border> items = new List<Border>();
         public int albumID = 0;
-        int savedID=-1; //-1 is default setting, preventing Load_Saved() from activation
-        bool savedIdIsSong; //True - Object with saved ID is a song, False - Object with saved ID is an album
+        public int savedID=-1; //-1 is default setting, preventing Load_Saved() from activation
+        private bool savedIdIsSong; //True - Object with saved ID is a song, False - Object with saved ID is an album
+
+        public enum Mode //Mode Library.xaml is launched on
+        {
+            UserLibrary, //Shows only user-owned objects
+            Shop, //Shows whole library, contains shop functions
+            Album //Shows only album-specific objects
+        }
+        public Mode pageMode = Mode.UserLibrary;
 
         private void RefreshItems(List<DB.DBLibraryObject> list)
         {
@@ -133,17 +141,78 @@ namespace MusicStore.Pages
         public Library()
         {
             InitializeComponent();
+            //Lower part is only to be used as long as SQL Filter won't be made
+            sqlFilterColumn.Width = new GridLength(0, GridUnitType.Star);
+            contentListColumn.Width = new GridLength(6, GridUnitType.Star);
+            //END OF TEMPORARY PART
+        }
+        public void RefreshPage()
+        {
+            savedID = -1;
+            AlbumDetailsScrollViewer.Visibility = Visibility.Hidden;
+            TrackDetailsScrollViewer.Visibility = Visibility.Hidden;
+            SetUserLayout();
+            SetDetailsPanelLayout();
             RefreshContent();
         }
-        public void RefreshContent()
+        private void SetUserLayout()
         {
-            if (albumID == 0)
+            if(UserFunctions.VerifyUserPermission(2))
             {
-                RefreshItems(DBConn.instance.currentUser.library.itemlist);
+                adminPanelRow.Height = new GridLength(1, GridUnitType.Star);
             }
             else
             {
-                RefreshItems(DB.DBAlbumsSaved.Get(albumID).songs);
+                adminPanelRow.Height = new GridLength(0, GridUnitType.Star);
+            }
+        }
+
+        private void SetDetailsPanelLayout()
+        {
+            switch (pageMode)
+            {
+                case Mode.UserLibrary:
+                    ShopTrackPanel.Visibility = Visibility.Collapsed;
+                    ShopAlbumPanel.Visibility = Visibility.Collapsed;
+                    TrackListenTextBlock.Text = "Play Track";
+                    break;
+
+                case Mode.Shop:
+                    ShopTrackPanel.Visibility = Visibility.Visible;
+                    ShopAlbumPanel.Visibility = Visibility.Visible;
+                    TrackListenTextBlock.Text = "Play Sample";
+                    break;
+
+                case Mode.Album:
+                    ShopTrackPanel.Visibility = Visibility.Collapsed;
+                    ShopAlbumPanel.Visibility = Visibility.Collapsed;
+                    if(DBConn.instance.currentUser.library.itemlist.Contains(DB.DBAlbumsSaved.Get(albumID)))
+                    {
+                        TrackListenTextBlock.Text = "Play Track";
+                    }
+                    else
+                    {
+                        TrackListenTextBlock.Text = "Play Sample";
+                    }
+                    break;
+            }
+        }
+        public void RefreshContent()
+        {
+            switch(pageMode)
+            {
+                case Mode.UserLibrary:
+                    RefreshItems(DBConn.instance.currentUser.library.itemlist);
+                    break;
+
+                case Mode.Shop:
+                    //RefreshItems(WholeDatabase);
+                    RefreshItems(DB.DBAlbumsSaved.Get(14).songs); //DEBUG ONLY
+                    break;
+
+                case Mode.Album:
+                    RefreshItems(DB.DBAlbumsSaved.Get(albumID).songs);
+                    break;
             }
         }
 
@@ -262,12 +331,12 @@ namespace MusicStore.Pages
             Library albumLibrary = new Library();
             Window window = new Window();
             albumLibrary.albumID = savedID;
-            albumLibrary.RefreshContent();
+            albumLibrary.pageMode = Mode.Album;
+            albumLibrary.RefreshPage();
             Frame pageFrame = new Frame();
             pageFrame.Content = albumLibrary;
             window.Content = pageFrame;
             window.Show();
         }
     }
-    
 }

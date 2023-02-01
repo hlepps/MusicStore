@@ -9,18 +9,25 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Library">
 
-    <Grid>
+    <Grid x:Name="GridTest">
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="adminPanelRow" Height="2*"/>
+            <RowDefinition x:Name="contentRow" Height="8*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition x:Name="sqlFilterColumn" Width="1*"/>
+            <ColumnDefinition x:Name="contentListColumn" Width="5*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Border x:Name="Filter" Grid.Column="0" Background="#FFD4F327">
+        <!--Admin Panel-->
+        
+        <!--Content Row-->
+        <Border x:Name="Filter" Grid.Column="0" Grid.Row="1" Background="#FFD4F327">
             <TextBlock TextWrapping="Wrap" Text="&lt;SQL FILTER&gt;" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <!--Lewa część strony zawierająca filtr dla wezwań SQL-->
         </Border>
-        <ScrollViewer x:Name="ContentScrollViewer" Grid.Column="1" HorizontalAlignment="Stretch">
-            <WrapPanel x:Name="itemPanel">
+        <ScrollViewer x:Name="ContentScrollViewer" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <WrapPanel x:Name="itemPanel" VerticalAlignment="Stretch">
                 <!--
                 <Border x:Name="albumdefault" CornerRadius="8,8,0,8" Grid.Column="0" VerticalAlignment="Top" Height="100" Width="100" Margin="0,10,0,0"
                         BorderThickness="2,2,4,4">
@@ -53,7 +60,7 @@
         </ScrollViewer>
         <!--TrackDetails/AlbumDetails-->
         <!--TrackDetails-->
-        <ScrollViewer x:Name="TrackDetailsScrollViewer" Grid.Column="2" PreviewMouseWheel="DetailsScrollViewer_PreviewMouseWheel" VerticalScrollBarVisibility="Hidden" Visibility="Hidden">
+        <ScrollViewer x:Name="TrackDetailsScrollViewer" Grid.Column="2" Grid.Row="1" VerticalAlignment="Stretch" PreviewMouseWheel="DetailsScrollViewer_PreviewMouseWheel" VerticalScrollBarVisibility="Hidden" Visibility="Hidden">
             <StackPanel Background="#FFABABAB">
                 <Separator Height="25" Background="{x:Null}" Foreground="{x:Null}"/>
                 <Grid Width="{Binding ActualWidth, ElementName=TrackDetailsScrollViewer}">
@@ -71,17 +78,19 @@
                 <TextBlock x:Name="TrackTitleTextBlock" Text="{}{TrackName}" HorizontalAlignment="Center" FontWeight="Bold" />
                 <Separator Height="5" Background="{x:Null}" Foreground="{x:Null}"/>
                 <TextBlock x:Name="TrackArtistTextBlock" Text="{}{ArtistName{s}}" HorizontalAlignment="Center" />
-                <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" HorizontalAlignment="Right" Text="Price: "/>
-                    <TextBlock x:Name="TrackPrice" Grid.Column="1" HorizontalAlignment="Left" Text="{}{PriceInPLN} PLN"/>
-                </Grid>
-                <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
-                <Button HorizontalAlignment="Center">Add to Cart</Button>
+                <StackPanel x:Name="ShopTrackPanel">
+                    <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" HorizontalAlignment="Right" Text="Price: "/>
+                        <TextBlock x:Name="TrackPrice" Grid.Column="1" HorizontalAlignment="Left" Text="{}{PriceInPLN} PLN"/>
+                    </Grid>
+                    <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
+                    <Button HorizontalAlignment="Center">Add to Cart</Button>
+                </StackPanel>
                 <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
                 <Button HorizontalAlignment="Center" Click="MusicPlay">
                     <!--If Owned, Text="Play", if not owned Text="Play Sample"-->
@@ -90,7 +99,7 @@
             </StackPanel>
         </ScrollViewer>
         <!--AlbumDetails-->
-        <ScrollViewer x:Name="AlbumDetailsScrollViewer" Grid.Column="2" PreviewMouseWheel="DetailsScrollViewer_PreviewMouseWheel" VerticalScrollBarVisibility="Hidden" Visibility="Hidden">
+        <ScrollViewer x:Name="AlbumDetailsScrollViewer" Grid.Column="2" Grid.Row="1" VerticalAlignment="Stretch" PreviewMouseWheel="DetailsScrollViewer_PreviewMouseWheel" VerticalScrollBarVisibility="Hidden" Visibility="Hidden">
             <StackPanel Background="#FFABABAB">
                 <Separator Height="25" Background="{x:Null}" Foreground="{x:Null}"/>
                 <Grid Width="{Binding ActualWidth, ElementName=AlbumDetailsScrollViewer}">
@@ -122,18 +131,20 @@
                     <StackPanel>
                         <TextBlock x:Name="AlbumTrackListTextBlock" HorizontalAlignment="Center" Text="{}{TrackList}"/>
                     </StackPanel>
-                    <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
                 </StackPanel>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" HorizontalAlignment="Right" Text="Price: "/>
-                    <TextBlock x:Name="AlbumPrice" Grid.Column="1" HorizontalAlignment="Left" Text="{}{PriceInPLN} PLN"/>
-                </Grid>
-                <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
-                <Button HorizontalAlignment="Center">Add to Cart</Button>
+                <StackPanel x:Name="ShopAlbumPanel">
+                    <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" HorizontalAlignment="Right" Text="Price: "/>
+                        <TextBlock x:Name="AlbumPrice" Grid.Column="1" HorizontalAlignment="Left" Text="{}{PriceInPLN} PLN"/>
+                    </Grid>
+                    <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
+                    <Button HorizontalAlignment="Center">Add to Cart</Button>
+                </StackPanel>
                 <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
                 <Button HorizontalAlignment="Center" Click="OpenAlbumLibrary_Click">
                     <TextBlock Text="Open Album"/>
