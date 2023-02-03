@@ -20,7 +20,31 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <!--Admin Panel-->
-        
+        <StackPanel x:Name="AdminStackPanel" Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Button Content="Add new Track"/>
+            <Button Content="Add new Album"/>
+            <Button Content="Add new Artist"/>
+            <Separator Width="25"/>
+            <Button Content="Browse Mode" Click="SetBrowseMode_Click"/>
+            <Button Content="Edit Mode" Click="SetEditMode_Click"/>
+            <Button Content="Deletion Mode" Click="SetDeleteMode_Click"/>
+            <Separator Width="25"/>
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Current Mode" FontWeight="Bold" Background="White"/>
+                <Separator Height="10"/>
+                <TextBlock FontStyle="Italic" x:Name="AdminModeTextBlock" Background="White" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel x:Name="deleteStackPanel" Orientation="Horizontal">
+                <Separator Width="25"/>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Selected items" FontWeight="Bold" Background="White"/>
+                    <Separator Height="5"/>
+                    <TextBlock x:Name="markedForDeletionCountTextBlock" Background="White" FontStyle="Italic" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <Separator Height="10"/>
+                    <Button Content="DELETE" FontWeight="Bold"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
         <!--Content Row-->
         <Border x:Name="Filter" Grid.Column="0" Grid.Row="1" Background="#FFD4F327">
             <TextBlock TextWrapping="Wrap" Text="&lt;SQL FILTER&gt;" HorizontalAlignment="Center" VerticalAlignment="Center"/>

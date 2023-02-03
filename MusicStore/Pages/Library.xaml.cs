@@ -24,6 +24,7 @@ namespace MusicStore.Pages
         public int albumID = 0;
         public int savedID=-1; //-1 is default setting, preventing Load_Saved() from activation
         private bool savedIdIsSong; //True - Object with saved ID is a song, False - Object with saved ID is an album
+        private List<Button> markedForDeletion;
 
         public enum Mode //Mode Library.xaml is launched on
         {
@@ -32,6 +33,13 @@ namespace MusicStore.Pages
             Album //Shows only album-specific objects
         }
         public Mode pageMode = Mode.UserLibrary;
+        private enum AdminMode
+        {
+            Browse,
+            Edit,
+            Delete
+        }
+        private AdminMode pageAdminMode = AdminMode.Browse;
 
         private void RefreshItems(List<DB.DBLibraryObject> list)
         {
@@ -145,12 +153,15 @@ namespace MusicStore.Pages
             sqlFilterColumn.Width = new GridLength(0, GridUnitType.Star);
             contentListColumn.Width = new GridLength(6, GridUnitType.Star);
             //END OF TEMPORARY PART
+            markedForDeletion = new List<Button>();
         }
         public void RefreshPage()
         {
             savedID = -1;
             AlbumDetailsScrollViewer.Visibility = Visibility.Hidden;
             TrackDetailsScrollViewer.Visibility = Visibility.Hidden;
+            pageAdminMode = AdminMode.Browse;
+            deleteStackPanel.Visibility = Visibility.Collapsed;
             SetUserLayout();
             SetDetailsPanelLayout();
             RefreshContent();
@@ -160,6 +171,7 @@ namespace MusicStore.Pages
             if(UserFunctions.VerifyUserPermission(2))
             {
                 adminPanelRow.Height = new GridLength(1, GridUnitType.Star);
+                AdminModeTextBlock.Text = pageAdminMode.ToString();
             }
             else
             {
@@ -206,10 +218,9 @@ namespace MusicStore.Pages
                     break;
 
                 case Mode.Shop:
-                    //RefreshItems(WholeDatabase);
                     DB.DBSongsSaved.PreloadAll();
                     DB.DBAlbumsSaved.PreloadAll();
-                    RefreshItems(DB.DBSongsSaved.GetAllFromDictionary()); //DEBUG ONLY
+                    RefreshItems(DB.DBSongsSaved.GetAllFromDictionary());
                     break;
 
                 case Mode.Album:
@@ -289,17 +300,39 @@ namespace MusicStore.Pages
         }
         private void Album_Click(object sender, RoutedEventArgs e)
         {
-            savedID = GetIDFromObjectName(((Button)sender).Name);
-            savedIdIsSong = false;
-            Load_Saved();
-            //MessageBox.Show("ALBUM", GetIDFromObjectName(((Button)sender).Name).ToString(), MessageBoxButton.OK, MessageBoxImage.Information);
+            switch (pageAdminMode)
+            {
+                case AdminMode.Browse:
+                    savedID = GetIDFromObjectName(((Button)sender).Name);
+                    savedIdIsSong = false;
+                    Load_Saved();
+                    break;
+                case AdminMode.Edit:
+                    //open Album edition window;
+                    break;
+                case AdminMode.Delete:
+                    //mark for deletion;
+                    ToggleDelete(sender);
+                    break;
+            }
         }
         private void Song_Click(object sender, RoutedEventArgs e)
         {
-            savedID = GetIDFromObjectName(((Button)sender).Name);
-            savedIdIsSong = true;
-            Load_Saved();
-            //MessageBox.Show("SONG", GetIDFromObjectName(((Button)sender).Name).ToString(), MessageBoxButton.OK, MessageBoxImage.Information);
+            switch(pageAdminMode)
+            {
+                case AdminMode.Browse:
+                    savedID = GetIDFromObjectName(((Button)sender).Name);
+                    savedIdIsSong = true;
+                    Load_Saved();
+                    break;
+                case AdminMode.Edit:
+                    //open Track edition window;
+                    break;
+                case AdminMode.Delete:
+                    //mark for deletion;
+                    ToggleDelete(sender);
+                    break;
+            }    
         }
 
         private void Song_Hover(object sender, RoutedEventArgs e)
@@ -339,6 +372,63 @@ namespace MusicStore.Pages
             pageFrame.Content = albumLibrary;
             window.Content = pageFrame;
             window.Show();
+        }
+
+        //Admin Panel Functions
+        private void SetBrowseMode_Click(object sender, RoutedEventArgs e)
+        {
+            pageAdminMode = AdminMode.Browse;
+            AdminModeTextBlock.Text = pageAdminMode.ToString();
+            deleteStackPanel.Visibility = Visibility.Collapsed;
+            ClearMarkedForDeletionList();
+        } 
+        private void SetEditMode_Click(object sender, RoutedEventArgs e)
+        {
+            pageAdminMode = AdminMode.Edit;
+            AdminModeTextBlock.Text = pageAdminMode.ToString();
+            deleteStackPanel.Visibility = Visibility.Collapsed;
+            ClearMarkedForDeletionList();
+        } 
+        private void SetDeleteMode_Click(object sender, RoutedEventArgs e)
+        {
+            pageAdminMode = AdminMode.Delete;
+            AdminModeTextBlock.Text = pageAdminMode.ToString();
+            deleteStackPanel.Visibility = Visibility.Visible;
+            markedForDeletionCountTextBlock.Text = markedForDeletion.Count.ToString();
+        }
+
+        private void ToggleDelete(object sender)
+        {
+            if(markedForDeletion.Contains((Button)sender))
+            {
+                markedForDeletion.Remove((Button)sender);
+                //Set {default} border color;
+            }
+            else
+            {
+                markedForDeletion.Add((Button)sender);
+                //Set {delete} border color;
+            }
+            if (markedForDeletion.Any())
+            {
+                markedForDeletionCountTextBlock.Text = markedForDeletion.Count.ToString();
+            }
+            else
+            {
+                markedForDeletionCountTextBlock.Text = "0";
+            }
+        }
+
+        private void ClearMarkedForDeletionList()
+        {
+            if (markedForDeletion.Any())
+            {
+                foreach (Button obj in markedForDeletion)
+                {
+                    //Set {default} border color;
+                }
+                markedForDeletion.Clear();
+            }
         }
     }
 }
