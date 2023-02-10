@@ -435,5 +435,36 @@ namespace MusicStore.Pages
                 markedForDeletion.Clear();
             }
         }
+
+        private void DeleteMessageBox_Click(object sender, RoutedEventArgs e)
+        {
+            if(markedForDeletion.Any())
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append("You are about to remove ");
+                sb.Append(markedForDeletion.Count());
+                sb.Append(" items from the database.");
+                sb.AppendLine();
+                sb.AppendLine();
+                sb.Append("In result, these items will be removed from the shop, any albums they are associated with as well from library of any user that own these items.");
+                sb.AppendLine();
+                sb.AppendLine();
+                sb.Append("THIS ACTION CANNOT BE UNDONE!");
+                sb.AppendLine();
+                sb.AppendLine();
+                sb.AppendLine("Proceed?");
+                MessageBoxResult result = MessageBox.Show(sb.ToString(), "Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                switch(result)
+                {
+                    case MessageBoxResult.Yes:
+                        //RemoveFromDatabase Function;
+                        markedForDeletion.Clear();
+                        RefreshContent();
+                        break;
+                    case MessageBoxResult.No:
+                        break;
+                }
+            }
+        }
     }
 }

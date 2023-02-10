@@ -41,7 +41,7 @@
                     <Separator Height="5"/>
                     <TextBlock x:Name="markedForDeletionCountTextBlock" Background="White" FontStyle="Italic" FontWeight="Bold" HorizontalAlignment="Center"/>
                     <Separator Height="10"/>
-                    <Button Content="DELETE" FontWeight="Bold"/>
+                    <Button Content="DELETE" FontWeight="Bold" Click="DeleteMessageBox_Click"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
