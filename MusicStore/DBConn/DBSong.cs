@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Diagnostics;
 
 namespace MusicStore.DB
 {
@@ -51,6 +52,54 @@ namespace MusicStore.DB
             }
 
         }
+
+        public static void Remove(int id)
+        {
+            DBConn.instance.PrepareConnection();
+            MySqlCommand a = new MySqlCommand($"DELETE FROM songsinalbums WHERE song_id = '{id}'", DBConn.instance.conn);
+            a.ExecuteNonQuery();
+            DBConn.instance.PrepareConnection();
+            MySqlCommand b = new MySqlCommand($"DELETE FROM songauthours WHERE song_id = '{id}'", DBConn.instance.conn);
+            b.ExecuteNonQuery();
+            DBConn.instance.PrepareConnection();
+            MySqlCommand c = new MySqlCommand($"DELETE FROM songs WHERE id = '{id}'", DBConn.instance.conn);
+            c.ExecuteNonQuery();
+            DBConn.instance.PrepareConnection();
+            MySqlCommand d = new MySqlCommand($"SELECT id, library FROM users", DBConn.instance.conn);
+            DataTable dt = new DataTable();
+            dt.Load(d.ExecuteReader());
+            foreach (DataRow row in dt.Rows)
+            {
+                object[] temp = { row[0], row[1] };
+                string idtxt = "s" + id;
+                if (((string)temp[1]).Contains(idtxt))
+                {
+                    string t = (string)row[1];
+                    Trace.WriteLine(t);
+                    if (t.Contains("," + idtxt))
+                    {
+                        t = t.Replace("," + idtxt, "");
+                    }
+                    else if (t.Contains(idtxt + ","))
+                    {
+                        t = t.Replace(idtxt + ",", "");
+                    }
+                    else if (t.Contains(idtxt))
+                    {
+                        t = t.Replace(idtxt, "");
+                    }
+                    Trace.WriteLine(t);
+
+                    DBConn.instance.PrepareConnection();
+                    MySqlCommand e = new MySqlCommand($"UPDATE users SET library = '{t}' WHERE id='{(int)temp[0]}'", DBConn.instance.conn);
+                    e.ExecuteNonQuery();
+                    dictionary.Remove(id);
+
+                }
+            }
+
+        }
+
 
         /// <summary>
         /// Pobiera z bazy danych i aktualizuje lokalną bazę

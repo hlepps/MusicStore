@@ -397,10 +397,6 @@ namespace MusicStore.Pages
             markedForDeletionCountTextBlock.Text = markedForDeletion.Count.ToString();
         }
 
-        private Border GetBorderFromButton(Button b)
-        {
-            return (Border)((Grid)b.Parent).Parent;
-        }
 
         private void ToggleDelete(object sender)
         {
@@ -457,7 +453,21 @@ namespace MusicStore.Pages
                 switch(result)
                 {
                     case MessageBoxResult.Yes:
-                        //RemoveFromDatabase Function;
+                        foreach(Button b in markedForDeletion)
+                        {
+                            char type = b.Name.First();
+                            int id = int.Parse(b.Name.Substring(1));
+                            switch (type)
+                            {
+                                case 'S':
+
+                                    break;
+
+                                case 'A':
+                                    DB.DBAlbumsSaved.Remove(id);
+                                    break;
+                            }
+                        }
                         markedForDeletion.Clear();
                         RefreshContent();
                         break;
