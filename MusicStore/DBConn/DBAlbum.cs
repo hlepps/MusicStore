@@ -23,7 +23,7 @@ namespace MusicStore.DB
         /// <summary>
         /// Lokalna baza, może nie być aktualna
         /// </summary>
-        public static Dictionary<int, DBAlbum> dictionary;
+        public static Dictionary<int, DBAlbum> dictionary = new Dictionary<int, DBAlbum>();
         public static List<DBLibraryObject> GetAllFromDictionary()
         {
             List<DBLibraryObject> temp = new List<DBLibraryObject>();
@@ -42,7 +42,8 @@ namespace MusicStore.DB
 
             while (enrdr.Read())
             {
-                /// 0-songname 1-image_id 2-price 3-mp3_id 4-id
+                if (!enrdr.HasRows)
+                    continue;
                 object[] a = { enrdr[0] };
                 if (!dictionary.ContainsKey((int)enrdr[0]))
                     Get((int)enrdr[0]);

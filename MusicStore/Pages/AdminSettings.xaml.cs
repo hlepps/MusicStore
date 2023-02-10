@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace MusicStore.Pages
 {
     /// <summary>
-    /// Logika interakcji dla klasy Shop.xaml
+    /// Logika interakcji dla klasy AdminSettings.xaml
     /// </summary>
-    public partial class Shop : Page
+    public partial class AdminSettings : Page
     {
-        public Shop()
+        public AdminSettings()
         {
             InitializeComponent();
         }

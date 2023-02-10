@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-101797695898
+10-531194488
 14-463084393
-2677263478
+28-855419986
 391386154494
-App.xaml;BannerSetup.xaml;DebugWindow.xaml;Login.xaml;MainMenu.xaml;MusicPlayer.xaml;Pages\Library.xaml;Pages\Options.xaml;Pages\Shop.xaml;Register.xaml;
+App.xaml;BannerSetup.xaml;DebugWindow.xaml;Login.xaml;MainMenu.xaml;MusicPlayer.xaml;Pages\AdminSettings.xaml;Pages\Library.xaml;Pages\Options.xaml;Register.xaml;
 
-True
+False
 

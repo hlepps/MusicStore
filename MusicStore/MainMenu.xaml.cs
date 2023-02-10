@@ -20,8 +20,8 @@ namespace MusicStore
     public partial class MainMenu : Window
     {
         Pages.Library library = new Pages.Library();
-        Pages.Shop shop = new Pages.Shop();
         Pages.Options options = new Pages.Options();
+        Pages.AdminSettings adminSettings = new Pages.AdminSettings();
         public MainMenu()
         {
             InitializeComponent();
@@ -108,6 +108,10 @@ namespace MusicStore
         }
 
         private void Btnopcje_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = options;
+        }
+        private void Btnuser_Click(object sender, RoutedEventArgs e)
         {
             mainFrame.Content = options;
         }

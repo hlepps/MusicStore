@@ -31,6 +31,8 @@ namespace MusicStore.DB
                 string[] entries = ((string)rdr[0]).Split(',');
                 foreach (string entry in entries)
                 {
+                    if (entry == "")
+                        continue;
                     char type = entry[0];
                     int id = int.Parse(entry.Substring(1));
 

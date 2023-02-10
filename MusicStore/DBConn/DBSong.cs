@@ -21,7 +21,7 @@ namespace MusicStore.DB
         /// <summary>
         /// Lokalna baza, może nie być aktualna
         /// </summary>
-        public static Dictionary<int, DBSong> dictionary;
+        public static Dictionary<int, DBSong> dictionary = new Dictionary<int, DBSong>();
         public static List<DBLibraryObject> GetAllFromDictionary()
         {
             List<DBLibraryObject> temp = new List<DBLibraryObject>();

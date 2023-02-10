@@ -147,21 +147,6 @@
                              BorderThickness="0,0,0,2"
                              >
                     </PasswordBox>
-                    <TextBlock Text="{DynamicResource NEWPAYMENT}"
-                               Foreground="{DynamicResource napisy}"
-                               FontWeight="Medium"
-                               FontFamily="InriaSans-Light"
-                               FontSize="18"
-                               Margin="12,15,0,0"/>
-                    <TextBox x:Name="nrcardtxt"
-                             Background="Transparent"
-                             Foreground="{DynamicResource napisy}"
-                             Margin="0,8,0,0"
-                             FontSize="16"
-                             FontFamily="InriaSans-Light"
-                             BorderBrush="{DynamicResource paski}"
-                             BorderThickness="0,0,0,2">
-                    </TextBox>
                     <StackPanel Orientation="Horizontal" Margin="15,25,15,-80">
                         <Button    x:Name="btncreate_account"
                                Content="{DynamicResource createaccount}"
@@ -211,6 +196,68 @@
                         </Button>
                     </StackPanel>
                 </StackPanel>
+                <StackPanel
+                            Orientation="Vertical"
+                            Margin="396,59,10,-368">
+                    <TextBlock Text="{DynamicResource NEWPAYMENT}"
+                               Foreground="{DynamicResource napisy}"
+                               FontWeight="Medium"
+                               FontFamily="InriaSans-Light"
+                               FontSize="18"
+                               Margin="12,15,0,0"/>
+                    <TextBox x:Name="nrcardtxt"
+                             Background="Transparent"
+                             Foreground="{DynamicResource napisy}"
+                             FontSize="16"
+                             FontFamily="InriaSans-Light"
+                             BorderBrush="{DynamicResource paski}"
+                             BorderThickness="0,0,0,2"
+                               Margin="12,15,0,0"/>
+                    <TextBlock Text="Kod CVV"
+                               Foreground="{DynamicResource napisy}"
+                               FontWeight="Medium"
+                               FontFamily="InriaSans-Light"
+                               FontSize="18"
+                               Margin="12,15,0,0" Width="98"
+                               HorizontalAlignment="Left"/>
+                    <TextBox x:Name="cvvtxt"
+                             Background="Transparent"
+                             Foreground="{DynamicResource napisy}"
+                             FontSize="16"
+                             FontFamily="InriaSans-Light"
+                             BorderBrush="{DynamicResource paski}"
+                             BorderThickness="0,0,0,2"
+                             Margin="12,15,0,0" Width="98"
+                             HorizontalAlignment="Left"/>
+                    <TextBlock Text="Data ważności karty"
+                               Foreground="{DynamicResource napisy}"
+                               FontWeight="Medium"
+                               FontFamily="InriaSans-Light"
+                               FontSize="18"
+                               Margin="12,15,0,0" Width="194"
+                               HorizontalAlignment="Left"/>
+                    <DatePicker x:Name="cardDate" Background="Transparent"
+                             Foreground="{DynamicResource napisy}"
+                             FontSize="16"
+                             FontFamily="InriaSans-Light"
+                             BorderBrush="{DynamicResource paski}"
+                             BorderThickness="0,0,0,2"
+                             Margin="12,15,0,0" Width="200"
+                             HorizontalAlignment="Left"
+                                SelectedDateChanged="cardDate_SelectedDateChanged"
+                                />
+                    <TextBox x:Name="datetxt"
+                             Background="Transparent"
+                             Foreground="{DynamicResource napisy}"
+                             FontSize="16"
+                             FontFamily="InriaSans-Light"
+                             BorderBrush="{DynamicResource paski}"
+                             BorderThickness="0,0,0,2"
+                             Margin="12,15,0,0" Width="98"
+                             HorizontalAlignment="Left"/>
+                </StackPanel>
+                <DatePicker HorizontalAlignment="Left" Margin="-58,242,0,0" VerticalAlignment="Top"
+                            />
             </Grid>
         </Border>
     </Border>

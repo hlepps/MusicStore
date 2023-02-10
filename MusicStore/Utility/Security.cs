@@ -42,5 +42,23 @@ namespace MusicStore
             }
             return true;
         }
+        public static bool IsNumeric(string s)
+        {
+            foreach (char c in s)
+            {
+                if (!Char.IsDigit(c))
+                    return false;
+            }
+            return true;
+        }
+        public static bool IsNumericDate(string s)
+        {
+            foreach (char c in s)
+            {
+                if (!Char.IsDigit(c) && c != '/')
+                    return false;
+            }
+            return true;
+        }
     }
 }

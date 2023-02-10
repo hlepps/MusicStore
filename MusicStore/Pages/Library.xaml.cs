@@ -397,17 +397,22 @@ namespace MusicStore.Pages
             markedForDeletionCountTextBlock.Text = markedForDeletion.Count.ToString();
         }
 
+        private Border GetBorderFromButton(Button b)
+        {
+            return (Border)((Grid)b.Parent).Parent;
+        }
+
         private void ToggleDelete(object sender)
         {
             if(markedForDeletion.Contains((Button)sender))
             {
                 markedForDeletion.Remove((Button)sender);
-                //Set {default} border color;
+                ((LinearGradientBrush)((Border)((Grid)((Button)sender).Parent).Parent).BorderBrush).GradientStops = (GradientStopCollection)FindResource("rama");
             }
             else
             {
                 markedForDeletion.Add((Button)sender);
-                //Set {delete} border color;
+                ((LinearGradientBrush)((Border)((Grid)((Button)sender).Parent).Parent).BorderBrush).GradientStops = (GradientStopCollection)FindResource("ramaWybrana");
             }
             if (markedForDeletion.Any())
             {
@@ -425,7 +430,7 @@ namespace MusicStore.Pages
             {
                 foreach (Button obj in markedForDeletion)
                 {
-                    //Set {default} border color;
+                    ((LinearGradientBrush)((Border)((Grid)obj.Parent).Parent).BorderBrush).GradientStops = (GradientStopCollection)FindResource("rama");
                 }
                 markedForDeletion.Clear();
             }

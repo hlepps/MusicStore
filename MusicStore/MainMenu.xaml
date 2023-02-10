@@ -245,6 +245,28 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
+                        <Button    x:Name="btnuser"
+                               Content="Ustawienia konta"
+                               FontSize="16"
+                               BorderThickness="5,5,5,5"
+                               Foreground="White"
+                               FontFamily="InriaSans-Light"
+                               Cursor="Hand"
+                               Click="Btnuser_Click"
+                               Margin="0,0,0,0"
+                               Style="{DynamicResource button2}"   
+                               Grid.Row="3">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        CornerRadius="0,5,5,0"
+                                        Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
                         <Button    x:Name="btnlogout"
                                Content="{DynamicResource logoutbtn}"
                                FontSize="16"
@@ -255,7 +277,7 @@
                                Click="Btnopcje_Click"
                                Margin="0,0,0,0"
                                Style="{DynamicResource button2}"   
-                               Grid.Row="3">
+                               Grid.Row="7">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border

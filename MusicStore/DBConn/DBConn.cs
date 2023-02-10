@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using MusicStore.DB;
 
 namespace MusicStore
 {
@@ -48,6 +49,49 @@ namespace MusicStore
             if (conn.State != System.Data.ConnectionState.Open)
                 conn.Open();
         }
+
+        public bool Register(string username, string password, string cc, string cvv, string date)
+        {
+            string passhash = Security.DoubleHash(password);
+
+            if (!Security.IsNumeric(cc) && cc.Length != 16)
+            {
+                System.Windows.MessageBox.Show("Wrong credit card number", "Register", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                return false;
+            }
+            if (!Security.IsNumeric(cvv) && cvv.Length != 3)
+            {
+                System.Windows.MessageBox.Show("Wrong cvv number", "Register", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                return false;
+            }
+            if (!Security.IsNumericDate(date) && date.Length != 5)
+            {
+                System.Windows.MessageBox.Show("Wrong credit card expiration date", "Register", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                return false;
+            }
+
+            if(DBUser.GetUserInfo(username) != null)
+            {
+                System.Windows.MessageBox.Show("Username already exists", "Register", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                return false;
+            }
+
+            if (Security.IsAlphanumeric(username) && Security.IsAlphanumeric(password))
+            {
+                
+                string sql = $"INSERT INTO users (username, passhash, permission, wallet, avatar_id, paymentinfo, lastStyle, lastLanguage, library) VALUES ('{username}', '{passhash}', 1, 25, 0, '{cc + "," + cvv + "," + date}', 0, 'English', '')";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                PrepareConnection();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Use only letters, numbers and '_'", "Register", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                return false;
+            }
+        }
         
         public bool Login(string username, string password)
         {
@@ -58,7 +102,7 @@ namespace MusicStore
                 string sql = $"SELECT username, passhash, permission, wallet, library, avatar_id FROM users WHERE username='{username}' AND passhash='{passhash}'";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                conn.Open();
+                PrepareConnection();
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 if (rdr.HasRows)
                 {
@@ -79,7 +123,6 @@ namespace MusicStore
                 {
                     System.Windows.MessageBox.Show("Wrong username or password", "Login", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
                 }
-                conn.Close();
             }
             else
             {
