@@ -43,5 +43,15 @@ namespace MusicStore.DB
             return temp;
         }
 
+        public void ChangeAvatar(int imageID)
+        {
+            string sql = $"UPDATE users SET avatar_id = '{imageID}' WHERE username = '{username}'";
+
+            MySqlCommand cmd = new MySqlCommand(sql, DBConn.instance.conn);
+            DBConn.instance.PrepareConnection();
+            cmd.ExecuteNonQuery();
+            avatar = DBImagesSaved.Get(imageID);
+        }
+
     }
 }

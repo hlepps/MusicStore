@@ -13,6 +13,7 @@ namespace MusicStore.DB
     public class DBImage
     {
         public BitmapImage bitmap;
+        public int id;
 
         public DBImage()
         {
@@ -81,6 +82,7 @@ namespace MusicStore.DB
 
             DBImage temp = new DBImage();
             temp.bitmap = DBImage.GetBitmapFromBytes(buffer);
+            temp.id = id;
 
             dictionary.Add(id, temp);
             DBConn.instance.conn.Close();
