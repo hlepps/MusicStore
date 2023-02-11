@@ -17,6 +17,37 @@ namespace MusicStore.DB
             itemlist = new List<DBLibraryObject>();
         }
 
+
+        public bool ContainsID(Type type, int id)
+        {
+            foreach (DBLibraryObject dbo in itemlist)
+            {
+                if (dbo.id == id && dbo.GetType() == type)
+                    return true;
+            }
+            return false;
+        }
+        public DBLibraryObject GetByID(Type type, int id)
+        {
+            foreach (DBLibraryObject dbo in itemlist)
+            {
+                if (dbo.id == id && dbo.GetType() == type)
+                    return dbo;
+            }
+            return null;
+        }
+        public void RemoveByID(Type type, int id)
+        {
+            foreach (DBLibraryObject dbo in itemlist)
+            {
+                if (dbo.id == id && dbo.GetType() == type)
+                {
+                    itemlist.Remove(dbo);
+                    break;
+                }
+            }
+        }
+
         public void ReloadLibrary()
         {
             DBConn.instance.currentUser.library.itemlist.Clear();
