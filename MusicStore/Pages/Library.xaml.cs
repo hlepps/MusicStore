@@ -469,6 +469,10 @@ namespace MusicStore.Pages
                             }
                         }
                         markedForDeletion.Clear();
+                        savedID = -1;
+                        AlbumDetailsScrollViewer.Visibility = Visibility.Hidden;
+                        TrackDetailsScrollViewer.Visibility = Visibility.Hidden;
+                        //Tutaj wstaw funkcję do odświeżania info z bazy danych
                         RefreshContent();
                         break;
                     case MessageBoxResult.No:
