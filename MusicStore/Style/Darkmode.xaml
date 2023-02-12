@@ -22,14 +22,16 @@
         <GradientStop Offset="0" Color="Green"/>
         <GradientStop Offset="1" Color="Transparent"/>
     </GradientStopCollection>
-    
+
     <GradientStopCollection x:Key="checkbox">
-        <GradientStop Offset="0" Color="Transparent"/>
-        <GradientStop Offset="1" Color="Orange"/>
+        <GradientStop Offset="0" Color="Orange"/>
+        <GradientStop Offset="1" Color="Transparent"/>
     </GradientStopCollection>
 
+    <SolidColorBrush x:Key="fill" Color="DarkCyan"/>
     <SolidColorBrush x:Key="napisy" Color="Orange"/>
     <SolidColorBrush x:Key="paski" Color="Green"/>
+    <SolidColorBrush x:Key="butter" Color="#FF66C766"/>
 
     <Style x:Key="button1" TargetType="Button">
         <Setter Property="Background" Value="Green"/>

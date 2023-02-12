@@ -10,6 +10,10 @@
         MouseDown="Window_MouseDown"
         Background="Transparent"
         AllowsTransparency="True">
+    <Window.Resources>
+        
+    </Window.Resources>
+
     <Border CornerRadius="12,12,12,12">
         <Border.Background>
             <ImageBrush ImageSource="obrazy/music vibe.png"/>
@@ -123,6 +127,7 @@
                             Maximum="9" 
                             ValueChanged="songSlider_ValueChanged" SmallChange="0.001" LargeChange="10" Interval="10"
                             IsSnapToTickEnabled="false" IsMoveToPointEnabled="True" 
+                            
                             />
                     <Button    x:Name="btnpauza"
                                Content="⏸"

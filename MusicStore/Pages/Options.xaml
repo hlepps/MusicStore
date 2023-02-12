@@ -8,88 +8,60 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Options">
     <Page.Resources>
-        <Style TargetType="CheckBox">
+        <!--Stylowanie checkboxa-->
+        <Style x:Key="ToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource napisy}"/>
+            <Setter Property="Height" Value="33"/>
+            <Setter Property="Width" Value="51"/>
+            <Setter Property="MaxHeight" Value="33"/>
+            <Setter Property="MaxWidth" Value="51"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="CheckBox">
-                        <StackPanel>
-                            <Grid>
-                                <Border Width="60"
-                                        Height="30"
-                                        CornerRadius="15"
-                                        >
-                                    <Border.Background>
-                                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,1" GradientStops="{DynamicResource checkbox}">
-                                        </LinearGradientBrush>
-                                    </Border.Background>
-                                </Border>
-                                <Border x:Name="buttoncheck"
-                                        Width="30"
-                                        Height="30"
-                                        CornerRadius="15"
-                                        HorizontalAlignment="Left">
-                                </Border>
-                            </Grid>
-                            <ContentPresenter x:Name="ContentP"
-                                              Content="{TemplateBinding Content}"
-                                              VerticalAlignment="Center"/>
-                        </StackPanel>
-                        <ControlTemplate.Resources>
-                            <Storyboard x:Key="right">
-                                <ThicknessAnimation Storyboard.TargetProperty="Margin"
-                                                    Storyboard.TargetName="buttoncheck"
-                                                    Duration="0:0:0:4"
-                                                    From="0,0,0,0"
-                                                    To="28,0,0,0">
-                                    <ThicknessAnimation.EasingFunction>
-                                        <CircleEase EasingMode="EaseOut">
-                                        </CircleEase>
-                                    </ThicknessAnimation.EasingFunction>
-                                </ThicknessAnimation>
-                            </Storyboard>
-                            <Storyboard x:Key="left">
-                                <ThicknessAnimation Storyboard.TargetProperty="Margin"
-                                                    Storyboard.TargetName="buttoncheck"
-                                                    Duration="0:0:0:4"
-                                                    From="28,0,0,0"
-                                                    To="0,0,0,0">
-                                    <ThicknessAnimation.EasingFunction>
-                                        <CircleEase EasingMode="EaseOut">
-                                        </CircleEase>
-                                    </ThicknessAnimation.EasingFunction>
-                                </ThicknessAnimation>
-                            </Storyboard>
-                        </ControlTemplate.Resources>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Grid>
+                            <Border Background="Transparent"
+                                    CornerRadius="10"
+                                    Height="{TemplateBinding Height}"
+                                    Width="{TemplateBinding Width}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    >
+                            </Border>
+                            <Ellipse x:Name="Ellipse"
+                                     Height="20"
+                                     Width="20"
+                                     HorizontalAlignment="Left"
+                                     Fill="Transparent"
+                                     Stroke="{DynamicResource fill}"
+                                     StrokeThickness="4"/>
+                        </Grid>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="False">
-                                <Trigger.ExitActions>
-                                    <RemoveStoryboard BeginStoryboardName="left">
-                                    </RemoveStoryboard>
-                                    <BeginStoryboard Storyboard="{StaticResource right}" x:Name="rightt">
-                                    </BeginStoryboard>
-                                </Trigger.ExitActions>
-                                <Setter TargetName="buttoncheck"
-                                        Property="Background"
-                                        Value="MediumPurple">
-                                </Setter>
-                            </Trigger>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Trigger.ExitActions>
-                                    <RemoveStoryboard BeginStoryboardName="right">
-                                    </RemoveStoryboard>
-                                    <BeginStoryboard Storyboard="{StaticResource left}" x:Name="leftt">
-                                    </BeginStoryboard>
-                                </Trigger.ExitActions>
-                                <Setter TargetName="buttoncheck"
-                                        Property="Background"
-                                        Value="Green ">
-                                </Setter>
-                            </Trigger>
+                            <EventTrigger RoutedEvent="Checked">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetName="Ellipse"
+                                                            Storyboard.TargetProperty="Margin"
+                                                            To="30 0 0 0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Unchecked">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetName="Ellipse"
+                                                            Storyboard.TargetProperty="Margin"
+                                                            To="0 0 0 0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+        <!--Stylowanie Comboboxa-->
+        
     </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -104,18 +76,28 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
-        <CheckBox
-                  HorizontalAlignment="Center" 
-                  Foreground="{DynamicResource napisy}" 
-                  Margin="10,10,0,0" 
-                  VerticalAlignment="Center" 
+        <Border Grid.Column="2"
+                Grid.Row="0"
+                Width="60"
+                Height="30"
+                BorderThickness="4"
+                CornerRadius="15"
+            >
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="1,1" EndPoint="0,0" GradientStops="{DynamicResource checkbox}">
+
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <CheckBox
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
                   Click="CheckBox_Checked" 
                   IsChecked="True"
-                  Grid.Column="2"
-                  Grid.Row="0">
-        
+                  
+                  Style="{DynamicResource ToggleButtonStyle}">
         </CheckBox>
-        <Border Grid.Row="0"
+            </Border>
+                <Border Grid.Row="0"
                 Grid.Column="1">
             <Border.Background>
                 <LinearGradientBrush StartPoint="1,1" EndPoint="1,0" GradientStops="{DynamicResource pas}">
@@ -160,6 +142,7 @@
                   SelectionChanged="Jezykbox_SelectionChanged"
                   Grid.Row="2"
                   Grid.Column="2"
+                  
                   />
         
         <Label Content="{DynamicResource changelanbtn}" 

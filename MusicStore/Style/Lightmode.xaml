@@ -19,17 +19,19 @@
     </GradientStopCollection>
 
     <GradientStopCollection x:Key="pas">
+        <GradientStop Offset="1" Color="Transparent"/>
         <GradientStop Offset="0" Color="MediumPurple"/>
+    </GradientStopCollection>
+
+    <GradientStopCollection x:Key="checkbox">
+        <GradientStop Offset="0" Color="MediumVioletRed"/>
         <GradientStop Offset="1" Color="Transparent"/>
     </GradientStopCollection>
     
-    <GradientStopCollection x:Key="checkbox">
-        <GradientStop Offset="0" Color="Transparent"/>
-        <GradientStop Offset="1" Color="MediumVioletRed"/>
-    </GradientStopCollection>
-
+    <SolidColorBrush x:Key="fill" Color="Blue"/>
     <SolidColorBrush x:Key="napisy" Color="MediumVioletRed"/>
     <SolidColorBrush x:Key="paski" Color="MediumPurple"/>
+    <SolidColorBrush x:Key="butter" Color="purple"/>
 
     <Style x:Key="button1" TargetType="Button">
         <Setter Property="Background" Value="MediumPurple"/>
