@@ -274,7 +274,7 @@
                                Foreground="White"
                                FontFamily="InriaSans-Light"
                                Cursor="Hand"
-                               Click="Btnopcje_Click"
+                               Click="btnlogout_Click"
                                Margin="0,0,0,0"
                                Style="{DynamicResource button2}"   
                                Grid.Row="7">

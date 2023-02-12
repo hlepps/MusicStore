@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -33,26 +34,41 @@ namespace MusicStore.Pages
             }
         }
 
-        bool a = false;
+        bool a = true;
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
+            int stl;
             if (a)
             {
                 MusicStore.Style.StyleManager.SetCurrentStyle("Style/Darkmode.xaml");
                 a = false;
+                stl = 0;
             }
             else
             {
                 MusicStore.Style.StyleManager.SetCurrentStyle("Style/Lightmode.xaml");
                 a = true;
+                stl = 1;
             }
             MusicStore.Style.StyleManager.UpdateStyle();
+            string sql = $"UPDATE users SET lastStyle = '{stl}' WHERE username = '{DBConn.instance.currentUser.username}'";
+
+            MySqlCommand cmd = new MySqlCommand(sql, DBConn.instance.conn);
+            DBConn.instance.PrepareConnection();
+            cmd.ExecuteNonQuery();
         }
         private void Jezykbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             MusicStore.Language.LangManager.SetCurrentLanguage(MusicStore.Language.LangManager.languages[jezykbox.Items.IndexOf(jezykbox.SelectedValue)]);
             MusicStore.Language.LangManager.UpdateLanguage();
-            Trace.WriteLine(MusicStore.Language.LangManager.GetCurrentLanguage());
+            Trace.WriteLine(MusicStore.Language.LangManager.GetCurrentLanguage()); 
+
+
+            string sql = $"UPDATE users SET lastLanguage = '{MusicStore.Language.LangManager.languages[jezykbox.Items.IndexOf(jezykbox.SelectedValue)]}' WHERE username = '{DBConn.instance.currentUser.username}'";
+
+            MySqlCommand cmd = new MySqlCommand(sql, DBConn.instance.conn);
+            DBConn.instance.PrepareConnection();
+            cmd.ExecuteNonQuery();
         }
     }
 }
