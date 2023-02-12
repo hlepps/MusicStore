@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,12 +21,13 @@ namespace MusicStore
     /// </summary>
     public partial class MainMenu : Window
     {
+        public static MainMenu instance;
         Pages.Library library = new Pages.Library();
         Pages.Options options = new Pages.Options();
         Pages.AccountSettings accountSettings = new Pages.AccountSettings();
-        public MainMenu()
+
+        public void InitMainMenu()
         {
-            InitializeComponent();
             RefreshBannerFunction();
             RefreshUserInfo();
             //Set Admin Layout
@@ -36,6 +39,31 @@ namespace MusicStore
             {
                 OpenStudioDetailsButton.IsEnabled = false;
             }
+            instance = this;
+
+            DBConn.instance.PrepareConnection();
+            MySqlCommand cmd = new MySqlCommand($"SELECT lastStyle, lastLanguage FROM users WHERE username='{DBConn.instance.currentUser.username}'", DBConn.instance.conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            rdr.Read();
+            int styl = (int)rdr[0];
+            string lang = (string)rdr[1];
+
+
+            if (styl == 0)
+                MusicStore.Style.StyleManager.SetCurrentStyle("Style/Darkmode.xaml");
+            if (styl == 1)
+                MusicStore.Style.StyleManager.SetCurrentStyle("Style/Lightmode.xaml");
+
+            MusicStore.Style.StyleManager.UpdateStyle();
+            MusicStore.Language.LangManager.SetCurrentLanguage(lang);
+            MusicStore.Language.LangManager.UpdateLanguage();
+
+
+        }
+        public MainMenu()
+        {
+            InitializeComponent();
+            
         }
 
         private void btnminimalize(object sender, RoutedEventArgs e)
@@ -114,6 +142,11 @@ namespace MusicStore
         private void Btnuser_Click(object sender, RoutedEventArgs e)
         {
             mainFrame.Content = accountSettings;
+        }
+
+        private void btnlogout_Click(object sender, RoutedEventArgs e)
+        {
+            DBConn.instance.Logout();
         }
     }
 }

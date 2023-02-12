@@ -19,9 +19,11 @@ namespace MusicStore
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow instance;
         public MainWindow()
         {
             InitializeComponent();
+            instance = this;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -51,6 +53,7 @@ namespace MusicStore
                     DB.DBAlbumsSaved.PreloadAll();
                     DB.DBSongsSaved.PreloadAll();
                     MainMenu menu = new MainMenu();
+                    menu.InitMainMenu();
                     menu.Show();
                     this.Hide();
                 }

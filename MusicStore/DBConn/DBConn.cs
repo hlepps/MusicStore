@@ -92,6 +92,13 @@ namespace MusicStore
                 return false;
             }
         }
+
+        public void Logout()
+        {
+            currentUser = new DBUser();
+            MainMenu.instance.Hide();
+            MainWindow.instance.Show();
+        }
         
         public bool Login(string username, string password)
         {
