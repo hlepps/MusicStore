@@ -41,11 +41,12 @@
     <s:String x:Key="selecteditems">选定的对象: </s:String>
     <s:String x:Key="price">价格: </s:String>
     <TextBlock x:Key="addtocart" Text="添加到购买"/>
-    <TextBlock x:Key="playsample" Text="播放样本"/>
-    <TextBlock x:Key="playtrack" Text="播放曲目"/>
+    <s:String x:Key="playsample">播放样本</s:String>
+    <s:String x:Key="playtrack">播放曲目</s:String>
     <s:String x:Key="tracks">曲目: </s:String>
     <TextBlock x:Key="openalbum" Text="打开相册"/>
     <s:String x:Key="browse">浏览</s:String>
     <s:String x:Key="edit">编辑</s:String>
     <s:String x:Key="delete">删除</s:String>
+    <s:String x:Key="loading">加载中</s:String>
 </ResourceDictionary>

@@ -11,7 +11,13 @@
         <GradientStop Offset="0.66" Color="Green"/>
         <GradientStop Offset="1" Color="Orange"/>
     </GradientStopCollection>
-    
+
+    <GradientStopCollection x:Key="loader">
+        <GradientStop Offset="0" Color="Transparent"/>
+        <GradientStop Offset="0.5" Color="Orange"/>
+        <GradientStop Offset="1" Color="Transparent"/>
+    </GradientStopCollection>
+
     <GradientStopCollection x:Key="ramaWybrana">
         <GradientStop Offset="0" Color="#FF4E0505"/>
         <GradientStop Offset="0.66" Color="Maroon"/>

@@ -369,7 +369,7 @@
                         </ControlTemplate>
                     </Button.Template>
                     <!--If Owned, Text="Play", if not owned Text="Play Sample"-->
-                    <TextBlock x:Name="TrackListenTextBlock" Text="Play Sample"/>
+                    <TextBlock x:Name="TrackListenTextBlock" Text="{DynamicResource playsample}"/>
                 </Button>
             </StackPanel>
         </ScrollViewer>

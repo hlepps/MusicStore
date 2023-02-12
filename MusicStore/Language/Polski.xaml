@@ -41,12 +41,12 @@
     <s:String x:Key="selecteditems">Wybrane elementy: </s:String>
     <s:String x:Key="price">Cena: </s:String>
     <TextBlock x:Key="addtocart" Text="Dodaj do listy"/>
-    <TextBlock x:Key="playsample" Text="Odtwórz próbkę"/>
+    <s:String x:Key="playsample">Odtwórz próbkę</s:String>
     <s:String x:Key="tracks">Utwory: </s:String>
     <TextBlock x:Key="openalbum" Text="Otwórz Album"/>
     <s:String x:Key="browse">Przeglądanie</s:String>
     <s:String x:Key="edit">Edycja</s:String>
     <s:String x:Key="delete">Usuwanie</s:String>
-    <TextBlock x:Key="playtrack" Text="Odtwórz utwór"/>
-
+    <s:String x:Key="playtrack">Odtwórz utwór</s:String>
+    <s:String x:Key="loading">ŁADOWANIE</s:String>
 </ResourceDictionary>

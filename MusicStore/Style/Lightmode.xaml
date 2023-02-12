@@ -27,7 +27,13 @@
         <GradientStop Offset="0" Color="MediumVioletRed"/>
         <GradientStop Offset="1" Color="Transparent"/>
     </GradientStopCollection>
-    
+
+    <GradientStopCollection x:Key="loader">
+        <GradientStop Offset="0" Color="Transparent"/>
+        <GradientStop Offset="0.5" Color="MediumVioletRed"/>
+        <GradientStop Offset="1" Color="Transparent"/>
+    </GradientStopCollection>
+
     <SolidColorBrush x:Key="fill" Color="Blue"/>
     <SolidColorBrush x:Key="darknap" Color="MediumVioletRed"/>
     <SolidColorBrush x:Key="napisy" Color="MediumVioletRed"/>
