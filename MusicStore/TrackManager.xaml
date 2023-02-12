@@ -6,207 +6,625 @@
         xmlns:local="clr-namespace:MusicStore"
         mc:Ignorable="d"
         Title="Track Manager" Height="540" Width="960"
-        d:DesignHeight="540" d:DesignWidth="960">
-    <Grid Margin="25">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="9*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <ScrollViewer x:Name="ContentScrollViewer" Grid.Row="0">
-            <StackPanel x:Name="ContentStackPanel" Margin="0,0,10,0">
-                <Separator Height="10"/>
-                <!--Track Name-->
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1.75*"/>
-                        <ColumnDefinition Width="0.5*"/>
-                        <ColumnDefinition Width="7.75*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="*Track Name: " Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                    <DockPanel Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                        <Button x:Name="RestoreTrackNameButton" Content="Restore Track Name" Margin="0,0,25,0" Click="RestoreTrackName_Click"/>
-                        <TextBox x:Name="TrackNameTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                    </DockPanel>
-                    
-                </Grid>
-                <Separator Height="10"/>
-                <!--Track Image-->
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1.75*"/>
-                        <ColumnDefinition Width="0.5*"/>
-                        <ColumnDefinition Width="7.75*"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0">
-                        <TextBlock Text="Cover Image: " HorizontalAlignment="Right"/>
-                        <TextBlock Text="[Supported files: .jpg / .jpeg / .png]" FontStyle="Italic" FontSize="10"/>
-                    </StackPanel>
-                    <Grid Grid.Column="2" x:Name="CoverImageGrid">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*" x:Name="RestorePreviousImageColumn"/> <!--If creating new Width="0*"-->
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Content="Remove Image" Grid.Column="0" Click="SetDefaultCoverImage_Click"/>
-                        <!--Button below is only visible when window works in edit mode [Loaded song ID exists]-->
-                        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Content="Restore Previous Image" Grid.Column="1" Click="RestoreCoverImage_Click"/>
-                        <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <Button VerticalAlignment="Center" HorizontalAlignment="Center" Content="Select File" Click="SelectFile_Click"/>
-                            <StackPanel x:Name="CoverImageLoadedFileStackPanel" Visibility="Visible">
-                                <Separator Height="5" Opacity="0"/>
-                                <TextBlock HorizontalAlignment="Center" Text="" x:Name="CoverImageFileTextBlock"/>
-                            </StackPanel>
-                        </StackPanel>
-                        <Image x:Name="CoverPreviewImage" Grid.Column="3" Source="obrazy/note-gb4fa8b680_640.png" VerticalAlignment="Center" HorizontalAlignment="Center" Height="108" Width="108"/>
-                    </Grid>
-                </Grid>
-                <Separator Height="10"/>
-                <!--Authors-->
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1.75*"/>
-                        <ColumnDefinition Width="0.5*"/>
-                        <ColumnDefinition Width="7.75*"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,0,0">
-                        <TextBlock Text="*Authors: " VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                        <Separator Height="5" Opacity="0"/>
-                        <!--Pressing Button below opens new Author Manager window for adding new Author to database, after creation automatically adds to the list of artist to the right-->
-                        <Button Content="Add new Author" VerticalAlignment="Center" HorizontalAlignment="Right" Click="AddNewAuthor_Click"/>
-                        <Button Content="Restore Authors" Margin="0,10,0,0" x:Name="RestoreAuthorsButton" Click="RestoreAuthors_Click"/>
-                    </StackPanel>
-                    <StackPanel x:Name="AuthorsStackPanel" Grid.Column="2">
-                        <Grid Margin="0,5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="9*"/>
-                            </Grid.ColumnDefinitions>
-                            <ComboBox Grid.Column="1" x:Name="ComboBox_0">
-                                <!--ComboBoxItems are dynamically generated list of Author in database-->
-                                <!--ComboBoxItem Example //FOR DEBUG PURPOSE ONLY-->
-                                <ComboBoxItem IsSelected="True">
-                                    <DockPanel>
-                                        <Image Height="27" Width="27" Source="obrazy/logo.png"/>
-                                        <Separator Width="25" Opacity="0"/>
-                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="Artist Name_X"/>
-                                    </DockPanel>
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    <DockPanel>
-                                        <Image Height="27" Width="27" Source="obrazy/album.png"/>
-                                        <Separator Width="25" Opacity="0"/>
-                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="Artist Name_Y"/>
-                                    </DockPanel>
-                                </ComboBoxItem>
-                                <!--END OF EXAMPLE-->
-                            </ComboBox>
-                        </Grid>
-                        <!--Dynamic Generation of Author ComboBox Grid Elements-->
-                        <!--Example generated grid below //FOR DEBUG PURPOSE ONLY-->
-                        <Grid Margin="0,5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="9*"/>
-                            </Grid.ColumnDefinitions>
-                            <Button VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Content="-" Height="27" Width="27" Click="RemoveAuthorFromList_Click"/>
-                            <ComboBox Grid.Column="1" x:Name="ComboBox_X">
-                                <ComboBoxItem IsSelected="True">
-                                    <DockPanel>
-                                        <Image Height="27" Width="27" Source="obrazy/logo.png"/>
-                                        <Separator Width="25" Opacity="0"/>
-                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="Artist Name_X"/>
-                                    </DockPanel>
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    <DockPanel>
-                                        <Image Height="27" Width="27" Source="obrazy/album.png"/>
-                                        <Separator Width="25" Opacity="0"/>
-                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="Artist Name_Y"/>
-                                    </DockPanel>
-                                </ComboBoxItem>
-                            </ComboBox>
-                        </Grid>
-                        <!--End of dynamic generated content Example-->
+        d:DesignHeight="540" d:DesignWidth="960"
+         WindowStyle="none"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True">
+    <Border CornerRadius="14">
+        <Border.Background>
+            <ImageBrush ImageSource="obrazy/rushE.png"/>
+        </Border.Background>
+        <Border CornerRadius="10"
+            BorderThickness="4"
+                    Opacity="0.97">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="1,1" EndPoint="0,0" GradientStops="{DynamicResource rama}">
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" GradientStops="{DynamicResource tlo}">
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid Margin="25">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <ScrollViewer x:Name="ContentScrollViewer" Grid.Row="0">
+                    <StackPanel x:Name="ContentStackPanel" Margin="0,0,10,0">
+                        <Separator Height="10" Background="Transparent"/>
+                        <!--Track Name-->
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="9*"/>
+                                <ColumnDefinition Width="1.75*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="7.75*"/>
                             </Grid.ColumnDefinitions>
-                            <!--Clicking button below creates new ComboBox Grid with list of Artists from example above-->
-                            <Button x:Name="AddAuthorButton" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Content="+" Height="27" Width="27" Margin="0,5" Click="AddAuthorToList_Click"/>
+                            <TextBlock Text="*Track Name: " 
+                                       Grid.Column="0" 
+                                       HorizontalAlignment="Right" 
+                                       VerticalAlignment="Center"
+                                       Foreground="{DynamicResource napisy}"
+                                       FontFamily="InriaSans-Light"
+                                       FontWeight="Medium"/>
+                            <DockPanel Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                                <Button x:Name="RestoreTrackNameButton" 
+                                        Content="Restore Track Name" 
+                                        Margin="0,0,25,0" 
+                                        Click="RestoreTrackName_Click"
+                                        Foreground="White"
+                                        BorderThickness="0"
+                                        Width="120"
+                                        Height="25"
+                                        Style="{DynamicResource button1}">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <TextBox x:Name="TrackNameTextBox" 
+                                         HorizontalAlignment="Stretch" 
+                                         VerticalAlignment="Center"
+                                         FontSize="16"
+                                         Foreground="{DynamicResource napisy}"
+                                         BorderThickness="0,0,0,2"
+                                         BorderBrush="{DynamicResource paski}"
+                                         Background="Transparent"
+                                         FontFamily="InriaSans-Light"/>
+                            </DockPanel>
+
                         </Grid>
-                    </StackPanel>
-                </Grid>
-                <Separator Height="10"/>
-                
-                <!--File Import-->
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1.75*"/>
-                        <ColumnDefinition Width="0.5*"/>
-                        <ColumnDefinition Width="7.75*"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <TextBlock Text="*Track File: " HorizontalAlignment="Right"/>
-                        <TextBlock Text="[Supported files: .mp3]" FontStyle="Italic" FontSize="10"/>
-                    </StackPanel>
-                    <Grid Grid.Column="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*" x:Name="RestoreFilePathColumn"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Content="Clear File Path" Grid.Column="0" Click="ClearFilePath_Click"/>
-                        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Content="Restore File Path" Grid.Column="1" Click="RestoreFilePath_Click"/>
-                        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Content="Select File" Grid.Column="2" Click="SelectTrackFile_Click"/>
-                        <StackPanel Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock HorizontalAlignment="Center" Text="Selected File" FontWeight="Bold" />
-                            <StackPanel x:Name="LoadedFileStackPanel" Visibility="Visible">
-                                <Separator Height="5" Opacity="0"/>
-                                <TextBlock HorizontalAlignment="Center" Text="" x:Name="SelectedFileTextBlock"/>
+                        <Separator Height="10" Background="Transparent"/>
+                        <!--Track Image-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.75*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="7.75*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0">
+                                <TextBlock Text="Cover Image: " 
+                                           HorizontalAlignment="Right"
+                                           Foreground="{DynamicResource napisy}"
+                                           FontFamily="InriaSans-Light"
+                                           FontWeight="Medium"/>
+                                <TextBlock Text="[Supported files: .jpg / .jpeg / .png]" 
+                                           FontStyle="Italic" 
+                                           FontSize="10"
+                                           Foreground="{DynamicResource napisy}"
+                                           FontFamily="InriaSans-Light"
+                                           FontWeight="Medium"/>
                             </StackPanel>
-                        </StackPanel>
-                    </Grid>
-                </Grid>
-                <Separator Height="10"/>
-                
-                <!--Shop Price-->
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1.75*"/>
-                        <ColumnDefinition Width="0.5*"/>
-                        <ColumnDefinition Width="7.75*"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <TextBlock Text="*Shop Price: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                        <TextBlock Text="[Allowed format: XX.XX / XX]" FontStyle="Italic" FontSize="10"/>
+                            <Grid Grid.Column="2" x:Name="CoverImageGrid">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*" x:Name="RestorePreviousImageColumn"/>
+                                    <!--If creating new Width="0*"-->
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button VerticalAlignment="Center" 
+                                        HorizontalAlignment="Center" 
+                                        Content="Remove Image" 
+                                        Grid.Column="0" 
+                                        Click="SetDefaultCoverImage_Click"
+                                        Foreground="White"
+                                        BorderThickness="0"
+                                        Style="{DynamicResource button1}"
+                                        Width="120"
+                                        Height="25">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <!--Button below is only visible when window works in edit mode [Loaded song ID exists]-->
+                                <Button VerticalAlignment="Center" 
+                                        HorizontalAlignment="Center" 
+                                        Content="Restore Previous Image" 
+                                        Grid.Column="1" 
+                                        Click="RestoreCoverImage_Click"
+                                        Foreground="White"
+                                        BorderThickness="0"
+                                        Style="{DynamicResource button1}"
+                                        Width="130"
+                                        Height="25">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Button VerticalAlignment="Center" 
+                                            HorizontalAlignment="Center" 
+                                            Content="Select File" 
+                                            Click="SelectFile_Click"
+                                            Foreground="White"
+                                            BorderThickness="0"
+                                            Style="{DynamicResource button2}"
+                                            Width="80"
+                                            Height="25">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                    <StackPanel x:Name="CoverImageLoadedFileStackPanel" Visibility="Visible">
+                                        <Separator Height="5" Opacity="0"
+                                                   Background="Transparent"/>
+                                        <TextBlock HorizontalAlignment="Center" 
+                                                   Text="" 
+                                                   x:Name="CoverImageFileTextBlock"
+                                                   Foreground="{DynamicResource napisy}"
+                                                   FontFamily="InriaSans-Light"
+                                                   FontWeight="Medium"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <Image x:Name="CoverPreviewImage" Grid.Column="3" Source="obrazy/note-gb4fa8b680_640.png" VerticalAlignment="Center" HorizontalAlignment="Center" Height="108" Width="108"/>
+                            </Grid>
+                        </Grid>
+                        <Separator Height="10"
+                                   Background="Transparent"/>
+                        <!--Authors-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.75*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="7.75*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,0,0">
+                                <TextBlock Text="*Authors: " 
+                                           VerticalAlignment="Center" 
+                                           HorizontalAlignment="Right"
+                                           Foreground="{DynamicResource napisy}"
+                                           FontFamily="InriaSans-Light"
+                                           FontWeight="Medium"/>
+                                <Separator Height="5" Opacity="0"/>
+                                <!--Pressing Button below opens new Author Manager window for adding new Author to database, after creation automatically adds to the list of artist to the right-->
+                                <Button Content="Add new Author" 
+                                        VerticalAlignment="Center" 
+                                        HorizontalAlignment="Right" 
+                                        Click="AddNewAuthor_Click"
+                                        Foreground="White"
+                                        BorderThickness="0"
+                                        Style="{DynamicResource button1}"
+                                        Width="120"
+                                        Height="25">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Button Content="Restore Authors" 
+                                        Margin="0,10,0,0" 
+                                        x:Name="RestoreAuthorsButton" 
+                                        Click="RestoreAuthors_Click"
+                                        Foreground="White"
+                                        BorderThickness="0"
+                                        Style="{DynamicResource button2}"
+                                        Width="120"
+                                        Height="25">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </StackPanel>
+                            <StackPanel x:Name="AuthorsStackPanel" Grid.Column="2">
+                                <Grid Margin="0,5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="9*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <ComboBox Grid.Column="1" x:Name="ComboBox_0">
+                                        <!--ComboBoxItems are dynamically generated list of Author in database-->
+                                        <!--ComboBoxItem Example //FOR DEBUG PURPOSE ONLY-->
+                                        <ComboBoxItem IsSelected="True">
+                                            <DockPanel>
+                                                <Image Height="27" Width="27" Source="obrazy/logo.png"/>
+                                                <Separator Width="25" Opacity="0"/>
+                                                <TextBlock VerticalAlignment="Center" 
+                                                           HorizontalAlignment="Left" 
+                                                           Text="Artist Name_X"
+                                                           Foreground="{DynamicResource napisy}"
+                                                           FontFamily="InriaSans-Light"
+                                                           FontWeight="Medium"/>
+                                            </DockPanel>
+                                        </ComboBoxItem>
+                                        <ComboBoxItem>
+                                            <DockPanel>
+                                                <Image Height="27" Width="27" Source="obrazy/album.png"/>
+                                                <Separator Width="25" Opacity="0"/>
+                                                <TextBlock VerticalAlignment="Center" 
+                                                           HorizontalAlignment="Left" 
+                                                           Text="Artist Name_Y"
+                                                           Foreground="{DynamicResource napisy}"
+                                                           FontFamily="InriaSans-Light"
+                                                           FontWeight="Medium"/>
+                                            </DockPanel>
+                                        </ComboBoxItem>
+                                        <!--END OF EXAMPLE-->
+                                    </ComboBox>
+                                </Grid>
+                                <!--Dynamic Generation of Author ComboBox Grid Elements-->
+                                <!--Example generated grid below //FOR DEBUG PURPOSE ONLY-->
+                                <Grid Margin="0,5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="9*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button VerticalAlignment="Center" 
+                                            HorizontalAlignment="Center" 
+                                            Grid.Column="0" 
+                                            Content="-" 
+                                            Height="27" 
+                                            Width="27" 
+                                            Click="RemoveAuthorFromList_Click"
+                                            Foreground="White"
+                                            BorderThickness="0"
+                                            Style="{DynamicResource button1}">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                    <ComboBox Grid.Column="1" x:Name="ComboBox_X">
+                                        <ComboBoxItem IsSelected="True">
+                                            <DockPanel>
+                                                <Image Height="27" Width="27" Source="obrazy/logo.png"/>
+                                                <Separator Width="25" Opacity="0"/>
+                                                <TextBlock VerticalAlignment="Center" 
+                                                           HorizontalAlignment="Left" 
+                                                           Text="Artist Name_X"
+                                                           Foreground="{DynamicResource napisy}"
+                                                           FontFamily="InriaSans-Light"
+                                                           FontWeight="Medium"/>
+                                            </DockPanel>
+                                        </ComboBoxItem>
+                                        <ComboBoxItem>
+                                            <DockPanel>
+                                                <Image Height="27" Width="27" Source="obrazy/album.png"/>
+                                                <Separator Width="25" Opacity="0"/>
+                                                <TextBlock VerticalAlignment="Center" 
+                                                           HorizontalAlignment="Left" 
+                                                           Text="Artist Name_Y"
+                                                           Foreground="{DynamicResource napisy}"
+                                                           FontFamily="InriaSans-Light"
+                                                           FontWeight="Medium"/>
+                                            </DockPanel>
+                                        </ComboBoxItem>
+                                    </ComboBox>
+                                </Grid>
+                                <!--End of dynamic generated content Example-->
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="9*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <!--Clicking button below creates new ComboBox Grid with list of Artists from example above-->
+                                    <Button x:Name="AddAuthorButton" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Center" 
+                                            Grid.Column="0" 
+                                            Content="+" 
+                                            Height="27" 
+                                            Width="27" 
+                                            Margin="0,5" 
+                                            Click="AddAuthorToList_Click"
+                                            Foreground="White"
+                                            BorderThickness="0"
+                                            Style="{DynamicResource button2}">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <Separator Height="10"/>
+
+                        <!--File Import-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.75*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="7.75*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <TextBlock Text="*Track File: " 
+                                           HorizontalAlignment="Right"
+                                           Foreground="{DynamicResource napisy}"
+                                           FontFamily="InriaSans-Light"
+                                           FontWeight="Medium"/>
+                                <TextBlock Text="[Supported files: .mp3]" FontStyle="Italic" FontSize="10"
+                                           Foreground="{DynamicResource napisy}"
+                                           FontFamily="InriaSans-Light"
+                                           FontWeight="Medium"/>
+                            </StackPanel>
+                            <Grid Grid.Column="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*" x:Name="RestoreFilePathColumn"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button VerticalAlignment="Center" 
+                                        HorizontalAlignment="Center" 
+                                        Content="Clear File Path" 
+                                        Grid.Column="0" 
+                                        Click="ClearFilePath_Click"
+                                        Foreground="White"
+                                        BorderThickness="0"
+                                        Style="{DynamicResource button2}"
+                                        Width="120"
+                                        Height="25">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Button VerticalAlignment="Center" 
+                                        HorizontalAlignment="Center" 
+                                        Content="Restore File Path" 
+                                        Grid.Column="1" 
+                                        Click="RestoreFilePath_Click"
+                                        Foreground="White"
+                                        BorderThickness="0"
+                                        Style="{DynamicResource button1}"
+                                        Width="120"
+                                        Height="25">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Button VerticalAlignment="Center" 
+                                        HorizontalAlignment="Center" 
+                                        Content="Select File" 
+                                        Grid.Column="2" 
+                                        Click="SelectTrackFile_Click"
+                                        Foreground="White"
+                                        BorderThickness="0"
+                                        Style="{DynamicResource button2}"
+                                        Width="120"
+                                        Height="25">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <StackPanel Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <TextBlock HorizontalAlignment="Center" Text="Selected File" FontWeight="Bold"
+                                               Foreground="{DynamicResource napisy}"
+                                               FontFamily="InriaSans-Light"/>
+                                    <StackPanel x:Name="LoadedFileStackPanel" Visibility="Visible">
+                                        <Separator Height="5" Opacity="0"/>
+                                        <TextBlock HorizontalAlignment="Center" Text="" x:Name="SelectedFileTextBlock"
+                                                   Foreground="{DynamicResource napisy}"
+                                                   FontFamily="InriaSans-Light"
+                                                   FontWeight="Medium"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                        <Separator Height="10"/>
+
+                        <!--Shop Price-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.75*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="7.75*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <TextBlock Text="*Shop Price: " 
+                                           Foreground="{DynamicResource napisy}" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                           FontFamily="InriaSans-Light"
+                                           FontWeight="Medium"/>
+                                <TextBlock Text="[Allowed format: XX.XX / XX]" FontStyle="Italic" FontSize="10"
+                                           Foreground="{DynamicResource napisy}"
+                                           FontFamily="InriaSans-Light"
+                                           FontWeight="Medium"/>
+                            </StackPanel>
+                            <DockPanel Grid.Column="2">
+                                <Button VerticalAlignment="Center" 
+                                        HorizontalAlignment="Center" 
+                                        Content="Restore Price" 
+                                        x:Name="RestorePriceButton" 
+                                        Margin="0,0,25,0" 
+                                        Click="RestorePrice_Click"
+                                        Foreground="White"
+                                        BorderThickness="0"
+                                        Style="{DynamicResource button1}"
+                                        Width="120"
+                                        Height="25">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <TextBox x:Name="ShopPriceTextBox" 
+                                         Grid.Column="2" 
+                                         VerticalAlignment="Center" 
+                                         MinWidth="35" 
+                                         Text="" 
+                                         TextChanged="ShopPriceTextBox_TextChanged"
+                                         FontSize="16"
+                                         Foreground="{DynamicResource napisy}"
+                                         BorderThickness="0,0,0,2"
+                                         BorderBrush="{DynamicResource paski}"
+                                         Background="Transparent"
+                                         FontFamily="InriaSans-Light"/>
+                                <TextBlock Text=" PLN" VerticalAlignment="Center"
+                                           Foreground="{DynamicResource napisy}"
+                                           FontFamily="InriaSans-Light"
+                                           FontWeight="Medium"/>
+                            </DockPanel>
+                        </Grid>
+                        <Separator Height="10"/>
+
                     </StackPanel>
-                    <DockPanel Grid.Column="2">
-                        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Content="Restore Price" x:Name="RestorePriceButton" Margin="0,0,25,0" Click="RestorePrice_Click"/>
-                        <TextBox x:Name="ShopPriceTextBox" Grid.Column="2" VerticalAlignment="Center" MinWidth="35" Text="" TextChanged="ShopPriceTextBox_TextChanged"/>
-                        <TextBlock Text=" PLN" VerticalAlignment="Center"/>
-                    </DockPanel>
+                </ScrollViewer>
+                <!--Confirmation Buttons-->
+                <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="1" Margin="17.1,0">
+                    <Grid.ColumnDefinitions>
+                        <!--Column Definition 0 & 1 = "0*" when creating a new Track-->
+                        <ColumnDefinition Width="1*" x:Name="ResetChangesRow"/>
+                        <ColumnDefinition Width="1*" x:Name="SaveAsNewTrackRow"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" 
+                            Margin="25,0" 
+                            Content="Reset Changes" 
+                            Click="ResetChanges_Click"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Style="{DynamicResource button1}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                        CornerRadius="8"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Grid.Column="1" 
+                            Margin="25,0" 
+                            Content="Save as New Track" 
+                            Click="SaveAsNewTrack_Click"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Style="{DynamicResource button1}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                        CornerRadius="8"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <!--Button 2 Content= {When editing track = "Save Changes" / When creating new Track = "Add New Track"}-->
+                    <Button Grid.Column="2" 
+                            Margin="25,0" 
+                            Content="Save Changes" 
+                            x:Name="SaveChangesButton" 
+                            Click="SaveChanges_Click"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Style="{DynamicResource button2}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                        CornerRadius="8"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Grid.Column="3" 
+                            Margin="25,0" 
+                            Content="Cancel" 
+                            Click="Cancel_Click"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Style="{DynamicResource button2}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                        CornerRadius="8"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
                 </Grid>
-                <Separator Height="10"/>
-                               
-            </StackPanel>
-        </ScrollViewer>
-        <!--Confirmation Buttons-->
-        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="1" Margin="17.1,0">
-            <Grid.ColumnDefinitions>
-                <!--Column Definition 0 & 1 = "0*" when creating a new Track-->
-                <ColumnDefinition Width="1*" x:Name="ResetChangesRow"/>
-                <ColumnDefinition Width="1*" x:Name="SaveAsNewTrackRow"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="25,0" Content="Reset Changes" Click="ResetChanges_Click"/>
-            <Button Grid.Column="1" Margin="25,0" Content="Save as New Track" Click="SaveAsNewTrack_Click"/>
-            <!--Button 2 Content= {When editing track = "Save Changes" / When creating new Track = "Add New Track"}-->
-            <Button Grid.Column="2" Margin="25,0" Content="Save Changes" x:Name="SaveChangesButton" Click="SaveChanges_Click"/>
-            <Button Grid.Column="3" Margin="25,0" Content="Cancel" Click="Cancel_Click"/>
-        </Grid>
-    </Grid>
+            </Grid>
+        </Border>
+    </Border>
 </Window>

@@ -244,6 +244,7 @@
     <Content Include="obrazy\minecraft.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="obrazy\rushE.png" />
     <Content Include="obrazy\skyrim.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

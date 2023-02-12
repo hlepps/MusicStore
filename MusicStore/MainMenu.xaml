@@ -116,8 +116,8 @@
 
                                     <TextBlock x:Name="UsernameTextBlock" Foreground="{DynamicResource napisy}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Bottom" Text="Username" Width="173" />
                                     <TextBlock x:Name="UsertypeTextBlock" Foreground="{DynamicResource napisy}" FontSize="13" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Usertype" FontStyle="Italic" Margin="0,30,0,0" Grid.RowSpan="2" />
-                                    <TextBlock x:Name="UserFundsText" Foreground="{DynamicResource napisy}" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{DynamicResource AVAIBLEFUNDS}" FontWeight="Bold" Margin="72,0,0,0" />
-                                    <TextBlock x:Name="UserFundsTextBlock" Foreground="{DynamicResource napisy}" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top" Text="Funds" Margin="0,30,10,0" Grid.RowSpan="2" />
+                                    <TextBlock x:Name="UserFundsText" Foreground="{DynamicResource napisy}" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{DynamicResource AVAIBLEFUNDS}" FontWeight="Bold" Margin="0,0,20,0" />
+                                    <TextBlock x:Name="UserFundsTextBlock" Foreground="{DynamicResource napisy}" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top" Text="Funds" Margin="0,30,20,0" Grid.RowSpan="2" />
                                 </Grid>
                             </Grid>
                         </Border>
@@ -246,7 +246,7 @@
                             </Button.Template>
                         </Button>
                         <Button    x:Name="btnuser"
-                               Content="Ustawienia konta"
+                               Content="{DynamicResource optionuserbtn}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"

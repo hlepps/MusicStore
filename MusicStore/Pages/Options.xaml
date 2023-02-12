@@ -134,7 +134,6 @@
         
         
                 <ComboBox x:Name="jezykbox" 
-                  Text="Wybierz język" 
                   HorizontalAlignment="Center"  
                   VerticalAlignment="Center" 
                   Width="245" 
@@ -142,7 +141,7 @@
                   SelectionChanged="Jezykbox_SelectionChanged"
                   Grid.Row="2"
                   Grid.Column="2"
-                  
+
                   />
         
         <Label Content="{DynamicResource changelanbtn}" 

@@ -27,4 +27,5 @@
     <TextBlock x:Key="logoutbtn" Text="登出"/>
     <TextBlock x:Key="changestylebtn" Text="改变风格"/>
     <TextBlock x:Key="changelanbtn" Text="改变语言"/>
+    <TextBlock x:Key="optionuserbtn" Text="帐号设定"/>
 </ResourceDictionary>

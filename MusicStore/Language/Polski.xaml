@@ -27,5 +27,6 @@
     <TextBlock x:Key="logoutbtn" Text="Wyloguj się"/>
     <TextBlock x:Key="changestylebtn" Text="Wybierz styl"/>
     <TextBlock x:Key="changelanbtn" Text="Wybierz Język"/>
+    <TextBlock x:Key="optionuserbtn" Text="Ustawienia Konta"/>
 
 </ResourceDictionary>
