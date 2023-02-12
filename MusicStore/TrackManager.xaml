@@ -264,7 +264,8 @@
                                                 <TextBlock VerticalAlignment="Center" 
                                                            HorizontalAlignment="Left" 
                                                            Text="Artist Name_X"
-                                                           Foreground="{DynamicResource napisy}"
+                                                           Foreground="{DynamicResource darknap}"
+                                                           Background="Transparent"
                                                            FontFamily="InriaSans-Light"
                                                            FontWeight="Medium"/>
                                             </DockPanel>
@@ -276,7 +277,8 @@
                                                 <TextBlock VerticalAlignment="Center" 
                                                            HorizontalAlignment="Left" 
                                                            Text="Artist Name_Y"
-                                                           Foreground="{DynamicResource napisy}"
+                                                           Foreground="{DynamicResource darknap}"
+                                                           Background="Transparent"
                                                            FontFamily="InriaSans-Light"
                                                            FontWeight="Medium"/>
                                             </DockPanel>
@@ -320,7 +322,8 @@
                                                 <TextBlock VerticalAlignment="Center" 
                                                            HorizontalAlignment="Left" 
                                                            Text="Artist Name_X"
-                                                           Foreground="{DynamicResource napisy}"
+                                                           Foreground="{DynamicResource darknap}"
+                                                           Background="Transparent"
                                                            FontFamily="InriaSans-Light"
                                                            FontWeight="Medium"/>
                                             </DockPanel>
@@ -332,7 +335,8 @@
                                                 <TextBlock VerticalAlignment="Center" 
                                                            HorizontalAlignment="Left" 
                                                            Text="Artist Name_Y"
-                                                           Foreground="{DynamicResource napisy}"
+                                                           Foreground="{DynamicResource darknap}"
+                                                           Background="Transparent"
                                                            FontFamily="InriaSans-Light"
                                                            FontWeight="Medium"/>
                                             </DockPanel>

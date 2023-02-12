@@ -28,4 +28,24 @@
     <TextBlock x:Key="changestylebtn" Text="改变风格"/>
     <TextBlock x:Key="changelanbtn" Text="改变语言"/>
     <TextBlock x:Key="optionuserbtn" Text="帐号设定"/>
+    <s:String x:Key="CVCVCV">简历代码</s:String>
+    <s:String x:Key="datacard">卡片有效期</s:String>
+    <TextBlock x:Key="addnewtrack" Text="添加新曲目"/>
+    <TextBlock x:Key="addnewalbum" Text="添加新专辑"/>
+    <TextBlock x:Key="addnewartist" Text="添加新艺术家"/>
+    <TextBlock x:Key="browsemod" Text="浏览模式"/>
+    <TextBlock x:Key="editmode" Text="编辑模式"/>
+    <TextBlock x:Key="deletionmode" Text="删除模式"/>
+    <TextBlock x:Key="DELETE" Text="删除"/>
+    <s:String x:Key="currentmode">当前模式</s:String>
+    <s:String x:Key="selecteditems">选定的对象: </s:String>
+    <s:String x:Key="price">价格: </s:String>
+    <TextBlock x:Key="addtocart" Text="添加到购买"/>
+    <TextBlock x:Key="playsample" Text="播放样本"/>
+    <TextBlock x:Key="playtrack" Text="播放曲目"/>
+    <s:String x:Key="tracks">曲目: </s:String>
+    <TextBlock x:Key="openalbum" Text="打开相册"/>
+    <s:String x:Key="browse">浏览</s:String>
+    <s:String x:Key="edit">编辑</s:String>
+    <s:String x:Key="delete">删除</s:String>
 </ResourceDictionary>

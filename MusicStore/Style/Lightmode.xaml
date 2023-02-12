@@ -29,6 +29,7 @@
     </GradientStopCollection>
     
     <SolidColorBrush x:Key="fill" Color="Blue"/>
+    <SolidColorBrush x:Key="darknap" Color="MediumVioletRed"/>
     <SolidColorBrush x:Key="napisy" Color="MediumVioletRed"/>
     <SolidColorBrush x:Key="paski" Color="MediumPurple"/>
     <SolidColorBrush x:Key="butter" Color="purple"/>
