@@ -97,6 +97,8 @@ namespace MusicStore.DB
 
                 }
             }
+            if (DBConn.instance.currentUser.library.ContainsID(typeof(DBAlbum), id))
+                DBConn.instance.currentUser.library.RemoveByID(typeof(DBAlbum), id);
 
         }
 

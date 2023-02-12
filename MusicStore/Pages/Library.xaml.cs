@@ -318,18 +318,20 @@ namespace MusicStore.Pages
         }
         private void Song_Click(object sender, RoutedEventArgs e)
         {
-            switch(pageAdminMode)
+            savedID = GetIDFromObjectName(((Button)sender).Name);
+            savedIdIsSong = true;
+            switch (pageAdminMode)
             {
-                case AdminMode.Browse:
-                    savedID = GetIDFromObjectName(((Button)sender).Name);
-                    savedIdIsSong = true;
+                case AdminMode.Browse:                 
                     Load_Saved();
                     break;
                 case AdminMode.Edit:
-                    //open Track edition window;
+                    TrackManager trackManager = new TrackManager();
+                    trackManager.SetTrackReference(savedID);
+                    trackManager.ReloadWindow();
+                    trackManager.ShowDialog();
                     break;
                 case AdminMode.Delete:
-                    //mark for deletion;
                     ToggleDelete(sender);
                     break;
             }    
@@ -460,7 +462,7 @@ namespace MusicStore.Pages
                             switch (type)
                             {
                                 case 'S':
-
+                                    DB.DBSongsSaved.Remove(id);
                                     break;
 
                                 case 'A':
@@ -469,12 +471,21 @@ namespace MusicStore.Pages
                             }
                         }
                         markedForDeletion.Clear();
+                        savedID = -1;
+                        AlbumDetailsScrollViewer.Visibility = Visibility.Hidden;
+                        TrackDetailsScrollViewer.Visibility = Visibility.Hidden;
                         RefreshContent();
                         break;
                     case MessageBoxResult.No:
                         break;
                 }
             }
+        }
+        private void AddNewTrack_Click(object sender, RoutedEventArgs e)
+        {
+            TrackManager trackManager = new TrackManager();
+            trackManager.ReloadWindow();
+            trackManager.ShowDialog();
         }
     }
 }

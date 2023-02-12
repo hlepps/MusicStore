@@ -21,7 +21,7 @@ namespace MusicStore
     {
         Pages.Library library = new Pages.Library();
         Pages.Options options = new Pages.Options();
-        Pages.AdminSettings adminSettings = new Pages.AdminSettings();
+        Pages.AccountSettings accountSettings = new Pages.AccountSettings();
         public MainMenu()
         {
             InitializeComponent();
@@ -113,7 +113,7 @@ namespace MusicStore
         }
         private void Btnuser_Click(object sender, RoutedEventArgs e)
         {
-            mainFrame.Content = options;
+            mainFrame.Content = accountSettings;
         }
     }
 }

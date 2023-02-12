@@ -59,7 +59,7 @@ namespace MusicStore.DB
             MySqlCommand a = new MySqlCommand($"DELETE FROM songsinalbums WHERE song_id = '{id}'", DBConn.instance.conn);
             a.ExecuteNonQuery();
             DBConn.instance.PrepareConnection();
-            MySqlCommand b = new MySqlCommand($"DELETE FROM songauthours WHERE song_id = '{id}'", DBConn.instance.conn);
+            MySqlCommand b = new MySqlCommand($"DELETE FROM songauthors WHERE song_id = '{id}'", DBConn.instance.conn);
             b.ExecuteNonQuery();
             DBConn.instance.PrepareConnection();
             MySqlCommand c = new MySqlCommand($"DELETE FROM songs WHERE id = '{id}'", DBConn.instance.conn);
@@ -97,6 +97,8 @@ namespace MusicStore.DB
 
                 }
             }
+            if (DBConn.instance.currentUser.library.ContainsID(typeof(DBSong), id))
+                DBConn.instance.currentUser.library.RemoveByID(typeof(DBSong), id);
 
         }
 

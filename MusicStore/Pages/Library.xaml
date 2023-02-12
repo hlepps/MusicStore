@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
         <!--Admin Panel-->
         <StackPanel x:Name="AdminStackPanel" Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Button Content="Add new Track"/>
+            <Button Content="Add new Track" Click="AddNewTrack_Click"/>
             <Button Content="Add new Album"/>
             <Button Content="Add new Artist"/>
             <Separator Width="25"/>
