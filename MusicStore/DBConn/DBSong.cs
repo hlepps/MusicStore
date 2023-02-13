@@ -146,5 +146,15 @@ namespace MusicStore.DB
             return song;
         }
 
+        public static int Add()
+        {
+            return 0;
+        }
+
+        public static void Update()
+        {
+
+        }
+
     }
 }

@@ -89,10 +89,11 @@
                 </LinearGradientBrush>
             </Border.BorderBrush>
             <CheckBox
+                x:Name="stylbox"
                   VerticalAlignment="Center"
                   HorizontalAlignment="Center"
                   Click="CheckBox_Checked" 
-                  IsChecked="True"
+                  IsChecked="False"
                   
                   Style="{DynamicResource ToggleButtonStyle}">
         </CheckBox>

@@ -168,6 +168,7 @@
       <DependentUpon>TrackManager.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utility\DatePickerCalendar.cs" />
+    <Compile Include="Utility\ObjectGenerationHelper.cs" />
     <Compile Include="Utility\Security.cs" />
     <Compile Include="Style\StyleManager.cs" />
     <Compile Include="Utility\UserFunctions.cs" />

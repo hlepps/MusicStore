@@ -14,9 +14,12 @@ using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
 using System.Text.RegularExpressions;
+using MusicStore.DB;
 
 namespace MusicStore
 {
+
+
     /// <summary>
     /// Interaction logic for TrackManager.xaml
     /// </summary>
@@ -45,6 +48,14 @@ namespace MusicStore
             allowedChar.Add('9');
             allowedChar.Add('0');
             allowedChar.Add('.');
+
+            AuthorsStackPanel.Children.Clear();
+            Grid g = ObjectGenerationHelper.GetAuthorEmptyGrid();
+            var p = (UIElement)AddAuthorButton.Parent;
+            ObjectGenerationHelper.RemoveParent(AddAuthorButton);
+            g.Children.Add(AddAuthorButton);
+            AuthorsStackPanel.Children.Add(g);
+            RemoveAuthorButton.Visibility = Visibility.Collapsed;
         }
 
         public void ReloadWindow() //Manually called function to load site layout and values after assigning (or not) track ID
@@ -101,7 +112,8 @@ namespace MusicStore
         {
             {
                 //Poprawny Regex (według edytora Javascript) - ^(\d{ 1,})(\.{ 0,1})(\d{ 0,2})$
-                Regex regex = new Regex("[^0-9]+");
+                Regex regex = new Regex(@"^\\d*.\\d\\d|^\\d*");
+                //Regex regex = new Regex(@"^(\\d{ 1,})(\\.{ 0,1})(\\d{ 0,2})$");
                 e.Handled = regex.IsMatch(e.Text);
             }
         }
@@ -143,10 +155,8 @@ namespace MusicStore
         //Authors
         private void AddNewAuthor_Click(object sender, RoutedEventArgs e)
         {
-            /*
-             1. Open new Author Manager
-             2. If new Author was created, load and add it to Artist list
-             */
+            AuthorManager am = new AuthorManager();
+            am.ShowDialog();
         }
         private void RestoreAuthors_Click(object sender, RoutedEventArgs e)
         {
@@ -154,11 +164,61 @@ namespace MusicStore
         }
         private void RemoveAuthorFromList_Click(object sender, RoutedEventArgs e)
         {
-            //Delete ComboBox that the button belonged to
+            Grid g = (Grid)RemoveAuthorButton.Parent;
+            ObjectGenerationHelper.RemoveParent(RemoveAuthorButton);
+            AuthorsStackPanel.Children.Remove(g);
+            if (AuthorsStackPanel.Children.Count > 2)
+            {
+                ((Grid)AuthorsStackPanel.Children[AuthorsStackPanel.Children.Count - 2]).Children.Add(RemoveAuthorButton);
+            }
         }
         private void AddAuthorToList_Click(object sender, RoutedEventArgs e)
         {
-            //Generate new Author ComboBox
+            DBAuthorsSaved.GetAll();
+            Grid a = (Grid)AuthorsStackPanel.Children[AuthorsStackPanel.Children.Count-1];
+
+            ComboBox cb = new ComboBox();
+            cb.SetValue(Grid.ColumnProperty, 1);
+            a.Children.Add(cb);
+            
+            foreach(DBAuthor author in DBAuthorsSaved.dictionary.Values)
+            {
+                ComboBoxItem cbi = new ComboBoxItem();
+                cbi.Name = "a" + author.id;
+                DockPanel dp = new DockPanel();
+                Image img = new Image();
+                img.Height = 27;
+                img.Width = 27;
+                img.Source = author.image.bitmap;
+                dp.Children.Add(img);
+                Separator s = new Separator();
+                s.Width = 25;
+                s.Opacity = 0;
+                dp.Children.Add(s);
+                TextBlock tb = new TextBlock();
+                tb.VerticalAlignment = VerticalAlignment.Center;
+                tb.HorizontalAlignment = HorizontalAlignment.Left;
+                tb.Text = author.name;
+                tb.Foreground = (Brush)FindResource("darknap");
+                tb.Background = Brushes.Transparent;
+                tb.FontWeight = FontWeights.Medium;
+                dp.Children.Add(tb);
+                cbi.Content = dp;
+
+                cb.Items.Add(cbi);
+            }
+
+            Grid b = ObjectGenerationHelper.GetAuthorEmptyGrid();
+            ObjectGenerationHelper.RemoveParent(AddAuthorButton);
+            b.Children.Add(AddAuthorButton);
+            AuthorsStackPanel.Children.Add(b);
+
+            RemoveAuthorButton.Visibility = Visibility.Visible;
+            ObjectGenerationHelper.RemoveParent(RemoveAuthorButton);
+            a.Children.Add(RemoveAuthorButton);
+
+
+            
         }
 
         //Track File
@@ -232,6 +292,61 @@ namespace MusicStore
             for(int i=1;i<(AuthorsStackPanel.Children.Count-1);i++)
             {
                 AuthorsStackPanel.Children.RemoveAt(1);
+            }
+
+            if (trackID != null)
+            {
+                foreach(DBAuthor au in DBSongsSaved.Get((int)trackID).authors)
+                {
+                    Grid a = (Grid)AuthorsStackPanel.Children[AuthorsStackPanel.Children.Count - 1];
+
+                    ComboBox cb = new ComboBox();
+                    cb.SetValue(Grid.ColumnProperty, 1);
+                    a.Children.Add(cb);
+
+                    int c = 0;
+                    int sav = 0;
+                    foreach (DBAuthor author in DBAuthorsSaved.dictionary.Values)
+                    {
+                        ComboBoxItem cbi = new ComboBoxItem();
+                        cbi.Name = "a" + author.id;
+                        DockPanel dp = new DockPanel();
+                        Image img = new Image();
+                        img.Height = 27;
+                        img.Width = 27;
+                        img.Source = author.image.bitmap;
+                        dp.Children.Add(img);
+                        Separator s = new Separator();
+                        s.Width = 25;
+                        s.Opacity = 0;
+                        dp.Children.Add(s);
+                        TextBlock tb = new TextBlock();
+                        tb.VerticalAlignment = VerticalAlignment.Center;
+                        tb.HorizontalAlignment = HorizontalAlignment.Left;
+                        tb.Text = author.name;
+                        tb.Foreground = (Brush)FindResource("darknap");
+                        tb.Background = Brushes.Transparent;
+                        tb.FontWeight = FontWeights.Medium;
+                        dp.Children.Add(tb);
+                        cbi.Content = dp;
+
+                        cb.Items.Add(cbi);
+                        if (author == au)
+                            sav = c;
+
+                        c++;
+                    }
+                    cb.SelectedIndex = sav;
+
+                    Grid b = ObjectGenerationHelper.GetAuthorEmptyGrid();
+                    ObjectGenerationHelper.RemoveParent(AddAuthorButton);
+                    b.Children.Add(AddAuthorButton);
+                    AuthorsStackPanel.Children.Add(b);
+
+                    RemoveAuthorButton.Visibility = Visibility.Visible;
+                    ObjectGenerationHelper.RemoveParent(RemoveAuthorButton);
+                    a.Children.Add(RemoveAuthorButton);
+                }
             }
             /*
              This part of the function needs to in order:

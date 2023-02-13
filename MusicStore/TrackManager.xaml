@@ -294,27 +294,6 @@
                                         <ColumnDefinition Width="1*"/>
                                         <ColumnDefinition Width="9*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Button VerticalAlignment="Center" 
-                                            HorizontalAlignment="Center" 
-                                            Grid.Column="0" 
-                                            Content="-" 
-                                            Height="27" 
-                                            Width="27" 
-                                            Click="RemoveAuthorFromList_Click"
-                                            Foreground="White"
-                                            BorderThickness="0"
-                                            Style="{DynamicResource button1}">
-                                        <Button.Template>
-                                            <ControlTemplate TargetType="Button">
-                                                <Border
-                                        CornerRadius="5"
-                                        Background="{TemplateBinding Background}">
-                                                    <ContentPresenter VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Button.Template>
-                                    </Button>
                                     <ComboBox Grid.Column="1" x:Name="ComboBox_X">
                                         <ComboBoxItem IsSelected="True">
                                             <DockPanel>
@@ -351,31 +330,52 @@
                                         <ColumnDefinition Width="9*"/>
                                     </Grid.ColumnDefinitions>
                                     <!--Clicking button below creates new ComboBox Grid with list of Artists from example above-->
-                                    <Button x:Name="AddAuthorButton" 
-                                            VerticalAlignment="Center" 
-                                            HorizontalAlignment="Center" 
+                                </Grid>
+                            </StackPanel>
+                            <Button x:Name="AddAuthorButton" 
+                                            VerticalAlignment="Top" 
+                                            HorizontalAlignment="Left" 
                                             Grid.Column="0" 
                                             Content="+" 
                                             Height="27" 
                                             Width="27" 
-                                            Margin="0,5" 
+                                            Margin="0,0,0,0" 
                                             Click="AddAuthorToList_Click"
                                             Foreground="White"
                                             BorderThickness="0"
                                             Style="{DynamicResource button2}">
-                                        <Button.Template>
-                                            <ControlTemplate TargetType="Button">
-                                                <Border
+                                <Button.Template>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border
                                         CornerRadius="5"
                                         Background="{TemplateBinding Background}">
-                                                    <ContentPresenter VerticalAlignment="Center"
+                                            <ContentPresenter VerticalAlignment="Center"
                                                   HorizontalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Button.Template>
-                                    </Button>
-                                </Grid>
-                            </StackPanel>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button VerticalAlignment="Top"  x:Name="RemoveAuthorButton"
+                                            HorizontalAlignment="Left" 
+                                            Grid.Column="0" 
+                                            Content="-" 
+                                            Height="27" 
+                                            Width="27" 
+                                            Click="RemoveAuthorFromList_Click"
+                                            Foreground="White"
+                                            BorderThickness="0"
+                                            Style="{DynamicResource button1}" Margin="0,0,0,0">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
                         </Grid>
                         <Separator Height="10"/>
 
@@ -523,7 +523,7 @@
                                         </ControlTemplate>
                                     </Button.Template>
                                 </Button>
-                                
+
                                 <TextBox x:Name="ShopPriceTextBox" 
                                          Grid.Column="2" 
                                          VerticalAlignment="Center" 
@@ -536,7 +536,7 @@
                                          BorderBrush="{DynamicResource paski}"
                                          Background="Transparent"
                                          FontFamily="InriaSans-Light"/>
-                                
+
                                 <TextBlock Text=" PLN" VerticalAlignment="Center"
                                            Foreground="{DynamicResource napisy}"
                                            FontFamily="InriaSans-Light"

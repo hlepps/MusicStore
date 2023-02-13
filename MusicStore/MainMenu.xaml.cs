@@ -26,6 +26,7 @@ namespace MusicStore
         Pages.Options options = new Pages.Options();
         Pages.AccountSettings accountSettings = new Pages.AccountSettings();
 
+        int styl;
         public void InitMainMenu()
         {
             RefreshBannerFunction();
@@ -45,14 +46,17 @@ namespace MusicStore
             MySqlCommand cmd = new MySqlCommand($"SELECT lastStyle, lastLanguage FROM users WHERE username='{DBConn.instance.currentUser.username}'", DBConn.instance.conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
             rdr.Read();
-            int styl = (int)rdr[0];
+            styl = (int)rdr[0];
             string lang = (string)rdr[1];
 
-
             if (styl == 0)
+            {
                 MusicStore.Style.StyleManager.SetCurrentStyle("Style/Darkmode.xaml");
+            }
             if (styl == 1)
+            {
                 MusicStore.Style.StyleManager.SetCurrentStyle("Style/Lightmode.xaml");
+            }
 
             MusicStore.Style.StyleManager.UpdateStyle();
             MusicStore.Language.LangManager.SetCurrentLanguage(lang);
@@ -138,6 +142,14 @@ namespace MusicStore
         private void Btnopcje_Click(object sender, RoutedEventArgs e)
         {
             mainFrame.Content = options;
+            if (styl == 0)
+            {
+                options.UpdateCheckbox(false);
+            }
+            if (styl == 1)
+            {
+                options.UpdateCheckbox(true);
+            }
         }
         private void Btnuser_Click(object sender, RoutedEventArgs e)
         {

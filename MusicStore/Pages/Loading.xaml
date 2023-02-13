@@ -9,8 +9,7 @@
          WindowStyle="none"
         Background="Transparent"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen"
-        MouseDown="Window_MouseDown">
+        WindowStartupLocation="CenterScreen">
     <Border CornerRadius="15">
         <Border.Background>
             <ImageBrush ImageSource="/obrazy/skyrim.png"/>

@@ -89,6 +89,20 @@ namespace MusicStore.DB
             return dictionary[id];
         }
 
+        /// <summary>
+        /// returns added id
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        public static int Add(BitmapImage img)
+        {
+            MySqlCommand cmd = new MySqlCommand($"INSERT INTO images (image) VALUES (@data)", DBConn.instance.conn);
+            cmd.Parameters.AddWithValue("data", DBImage.GetBytesFromBitmap(img));
+            DBConn.instance.PrepareConnection();
+            cmd.ExecuteNonQuery();
+            return (int)cmd.LastInsertedId;
+        }
+
     }
 
 }

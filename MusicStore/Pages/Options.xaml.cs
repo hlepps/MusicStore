@@ -34,7 +34,15 @@ namespace MusicStore.Pages
             }
         }
 
-        bool a = true;
+        public void UpdateCheckbox(bool che)
+        {
+            if(che)
+            {
+                CheckBox_Checked(null, new RoutedEventArgs());
+            }
+        }
+
+        bool a = false;
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             int stl;

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows;
 using System.IO;
 using System.Text;
+using MusicStore.Pages;
 
 namespace MusicStore
 {
@@ -15,10 +16,10 @@ namespace MusicStore
     public partial class App : Application
     {
         public static Application application;
+        public static Pages.Loading loading;
         [STAThread]
         public static void Main()
         {
-
             // tworzenie instancji polaczenia z baza danych
             DBConn dbconn = new DBConn();
             // instancja jest dostepna globalnie w DBConn.instance aby nie laczyc
@@ -36,6 +37,7 @@ namespace MusicStore
             var resourcesPath = "Style/Startowy.xaml";
             application.Resources = (ResourceDictionary)Application.LoadComponent(new Uri(resourcesPath, UriKind.Relative));
             application.StartupUri = new Uri("Login.xaml", System.UriKind.Relative);
+            loading = new Pages.Loading();
 #if DEBUG
             DebugWindow dw = new DebugWindow();
             dw.Show();

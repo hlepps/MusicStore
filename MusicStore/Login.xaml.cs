@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MusicStore.Pages;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -48,6 +50,8 @@ namespace MusicStore
         {
             if (logintxt.Text != "" && haslotxt.Password != "")
             {
+                Loading.instance.Show();
+                System.Threading.Thread.Sleep(1000);
                 if (DBConn.instance.Login(logintxt.Text, haslotxt.Password))
                 {
                     DB.DBAlbumsSaved.PreloadAll();
@@ -57,6 +61,7 @@ namespace MusicStore
                     menu.Show();
                     this.Hide();
                 }
+                Loading.instance.Hide();
             }
         }
 

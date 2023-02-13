@@ -133,7 +133,8 @@
                                     </Button.Template>
                                 </Button>
                                 <!--Button below is only visible when window works in edit mode [Loaded song ID exists]-->
-                                <Button VerticalAlignment="Center" 
+                                <Button x:Name="restoreImageButton" 
+                                    VerticalAlignment="Center" 
                                         HorizontalAlignment="Center" 
                                         Content="Restore Previous Image" 
                                         Grid.Column="1" 

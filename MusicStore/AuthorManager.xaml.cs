@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
+using MusicStore.DB;
 
 namespace MusicStore
 {
@@ -24,6 +25,7 @@ namespace MusicStore
         public int? artistID = null; //Imported manually, null value will create new artist
         private DB.DBAuthor reference;
         private BitmapImage ArtistImage;
+        bool forceNewImage = false;
 
         public AuthorManager()
         {
@@ -31,6 +33,11 @@ namespace MusicStore
             int nWidth = (int)System.Windows.SystemParameters.PrimaryScreenWidth;
             int nHeight = (int)System.Windows.SystemParameters.PrimaryScreenHeight;
             this.LayoutTransform = new ScaleTransform(nWidth / 2, nHeight / 4);
+            if(artistID == null)
+            {
+                RestoreArtistNameButton.Visibility = Visibility.Hidden;
+                restoreImageButton.Visibility = Visibility.Hidden;
+            }
         }
 
         public void ReloadWindow() //Manually called function to load site layout and values after assigning (or not) artist ID
@@ -84,14 +91,16 @@ namespace MusicStore
         private void RestoreCoverImage_Click(object sender, RoutedEventArgs e)
         {
             ReloadCoverImage(reference);
+            forceNewImage = false;
         }
         private void SetDefaultCoverImage_Click(object sender, RoutedEventArgs e)
         {
             //Błąd przy linii 104, trzeba znaleźć sposób na załadowanie "default" opcji
-            // BitmapImage bitmapImage = new BitmapImage();
-            // Uri uri = new Uri("obrazy/note-gb4fa8b680_640.png");
-            // bitmapImage.UriSource = uri;
-            // CoverPreviewImage.Source = bitmapImage;
+            BitmapImage bitmapImage = new BitmapImage();
+            Uri uri = new Uri("obrazy/note-gb4fa8b680_640.png");
+            bitmapImage.UriSource = uri;
+            CoverPreviewImage.Source = bitmapImage;
+            forceNewImage = true;
         }
         private void SelectFile_Click(object sender, RoutedEventArgs e)
         {
@@ -104,6 +113,7 @@ namespace MusicStore
                 ArtistImage = new BitmapImage(new Uri(openFileDialog.FileName));
                 CoverPreviewImage.Source = ArtistImage;
                 CoverImageFileTextBlock.Text = openFileDialog.FileName;
+                forceNewImage = true;
             }
         }
 
@@ -111,12 +121,14 @@ namespace MusicStore
         private void ResetChanges_Click(object sender, RoutedEventArgs e)
         {
             LoadArtistInfo();
+            forceNewImage = false;
         }
         private void SaveAsNewArtist_Click(object sender, RoutedEventArgs e)
         {
             if (TrackNameTextBox.Text.Any())
             {
-                //Create new artist to database from data in this window
+                DBAuthorsSaved.Add(TrackNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source));
+                this.Close();
             }
             else
             {
@@ -127,7 +139,10 @@ namespace MusicStore
         {
             if (artistID != null)
             {
-                //Update author in database with ID equal to authorID with data from this window
+                if(forceNewImage)
+                    DBAuthorsSaved.Update((int)artistID, TrackNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source));
+                else
+                    DBAuthorsSaved.Update((int)artistID, TrackNameTextBox.Text, DBAuthorsSaved.Get((int)artistID).id);
             }
             else SaveAsNewArtist_Click(sender, e);
         }
@@ -145,6 +160,7 @@ namespace MusicStore
         {
             CoverPreviewImage.Source = reference.image.bitmap;
             CoverImageFileTextBlock.Text = reference.image.ToString();
+            forceNewImage = false;
         }
     }
 }
