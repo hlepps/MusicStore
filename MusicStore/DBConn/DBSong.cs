@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace MusicStore.DB
 {
@@ -146,13 +147,71 @@ namespace MusicStore.DB
             return song;
         }
 
-        public static int Add()
+        public static void GetAll()
         {
-            return 0;
+            DBConn.instance.PrepareConnection();
+            MySqlCommand authorcmd = new MySqlCommand($"SELECT id, songname, image_id, price, mp3_id FROM songs", DBConn.instance.conn);
+            DataTable dt = new DataTable();
+            dt.Load(authorcmd.ExecuteReader());
+            foreach (DataRow row in dt.Rows)
+            {
+                if (!dictionary.ContainsKey((int)row[0]))
+                {
+                    DBSong temp = new DBSong();
+                    temp.id = (int)row[0];
+                    temp.name = (string)row[1];
+                    temp.image = DBImagesSaved.Get((int)row[2]);
+                    temp.price = (double)row[3];
+                    temp.songurlid = (string)row[4];
+                    dictionary.Add(temp.id, temp);
+                    System.Diagnostics.Trace.WriteLine(temp.name);
+                }
+            }
         }
 
-        public static void Update()
+        public static int UploadMP3(byte[] bytes)
         {
+            MySqlCommand cmd = new MySqlCommand($"INSERT INTO mp3s (mp3) VALUES (@data)", DBConn.instance.conn);
+            cmd.Parameters.AddWithValue("data", bytes);
+            DBConn.instance.PrepareConnection();
+            cmd.ExecuteNonQuery();
+            return (int)cmd.LastInsertedId;
+        }
+
+        public static int Add(string name, int image_id, double price, int songid, List<int> authorsIDs)
+        {
+            MySqlCommand cmd = new MySqlCommand($"INSERT INTO songs (songname, image_id, price, mp3_id) VALUES ('{name}', {image_id}, {price}, {songid})", DBConn.instance.conn);
+            DBConn.instance.PrepareConnection();
+            cmd.ExecuteNonQuery();
+            int id = (int)cmd.LastInsertedId;
+            Get(id);
+
+            foreach(int authorID in authorsIDs)
+            {
+                MySqlCommand a = new MySqlCommand($"INSERT INTO songauthors (song_id, author_id) VALUES ({id}, {authorID})", DBConn.instance.conn);
+                DBConn.instance.PrepareConnection();
+                a.ExecuteNonQuery();
+            }
+
+            return id;
+        }
+
+        public static void Update(int id, string name, int image_id, double price, int songid, List<int> authorsIDs)
+        {
+            MySqlCommand cmd = new MySqlCommand($"UPDATE authors SET name = '{name}', image_id='{image_id}', price = {price}, mp3_id = {songid} WHERE id='{id}'", DBConn.instance.conn);
+            DBConn.instance.PrepareConnection();
+            cmd.ExecuteNonQuery();
+
+            MySqlCommand b = new MySqlCommand($"DELETE FROM songauthors WHERE song_id={id}", DBConn.instance.conn);
+            DBConn.instance.PrepareConnection();
+            b.ExecuteNonQuery();
+
+            foreach (int authorID in authorsIDs)
+            {
+                MySqlCommand a = new MySqlCommand($"INSERT INTO songauthors (song_id, author_id) VALUES ({id}, {authorID})", DBConn.instance.conn);
+                DBConn.instance.PrepareConnection();
+                a.ExecuteNonQuery();
+            }
 
         }
 

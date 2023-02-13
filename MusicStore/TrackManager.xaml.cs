@@ -28,6 +28,8 @@ namespace MusicStore
         public int? trackID = null; //Imported manually, null value will create new track
         private DB.DBSong reference;
         private BitmapImage CoverImage;
+        bool forceNewMP3 = false;
+        bool forceNewImage = false;
         
         public TrackManager()
         {
@@ -117,6 +119,7 @@ namespace MusicStore
         private void RestoreCoverImage_Click(object sender, RoutedEventArgs e)
         {
             ReloadCoverImage(reference);
+            forceNewImage = false;
         }
         private void SetDefaultCoverImage_Click(object sender, RoutedEventArgs e)
         {
@@ -125,6 +128,7 @@ namespace MusicStore
            // Uri uri = new Uri("obrazy/note-gb4fa8b680_640.png");
            // bitmapImage.UriSource = uri;
            // CoverPreviewImage.Source = bitmapImage;
+            forceNewImage = true;
         }
         private void SelectFile_Click(object sender, RoutedEventArgs e)
         {
@@ -138,6 +142,8 @@ namespace MusicStore
                 CoverPreviewImage.Source = CoverImage;
                 CoverImageFileTextBlock.Text = openFileDialog.FileName;
             }
+
+            forceNewImage = true;
         }
         //Authors
         private void AddNewAuthor_Click(object sender, RoutedEventArgs e)
@@ -208,24 +214,28 @@ namespace MusicStore
             
         }
 
-        //Track File
+        byte[] mp3bytes; //Track File
         private void ClearFilePath_Click(object sender, RoutedEventArgs e)
         {
             SelectedFileTextBlock.Text = null;
-            // remove reference to file
+            mp3bytes = new byte[0];
+            forceNewMP3 = false;
         }
         private void RestoreFilePath_Click(object sender, RoutedEventArgs e)
         {
             ReloadTrackFile(reference);
+            forceNewMP3 = false;
         }
+
         private void SelectTrackFile_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "MP3 Audio file(*.mp3)| *.mp3";
             if (openFileDialog.ShowDialog() == true)
             {
-                //Save reference to file
+                mp3bytes = File.ReadAllBytes(openFileDialog.FileName);
             }
+            forceNewMP3 = true;
         }
 
         //Shop Price
@@ -239,11 +249,35 @@ namespace MusicStore
         {
             LoadTrackInfo();
         }
+
+
+        List<int> GetAuthorsIDs()
+        {
+            List<int> ids = new List<int>();
+            
+            foreach(Grid g in AuthorsStackPanel.Children)
+            {
+                foreach(object cb in g.Children)
+                {
+                    if (cb is ComboBox)
+                    {
+                        string s = ((ComboBoxItem)((ComboBox)cb).SelectedItem).Name;
+                        s = s.Substring(1);
+                        ids.Add(int.Parse(s));
+                    }
+
+                }
+            }
+
+            return ids;
+        }
+
         private void SaveAsNewTrack_Click(object sender, RoutedEventArgs e)
         {
-            if(TrackNameTextBox.Text.Any() && SelectedFileTextBlock.Text.Any() && ShopPriceTextBox.Text.Any())
+            if(TrackNameTextBox.Text != "" && mp3bytes != new byte[0] && ShopPriceTextBox.Text != "")
             {
-                //Create new song to database from data in this window
+                DBSongsSaved.Add(TrackNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source), double.Parse(ShopPriceTextBox.Text), DBSongsSaved.UploadMP3(mp3bytes), GetAuthorsIDs());
+                this.Close();
             }
             else
             {
