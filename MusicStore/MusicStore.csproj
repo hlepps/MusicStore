@@ -125,6 +125,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorManager.xaml.cs">
+      <DependentUpon>AuthorManager.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BannerSetup.xaml.cs">
       <DependentUpon>BannerSetup.xaml</DependentUpon>
     </Compile>
@@ -174,6 +177,10 @@
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
+    <Page Include="AuthorManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BannerSetup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

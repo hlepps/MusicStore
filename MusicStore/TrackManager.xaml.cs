@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
+using System.Text.RegularExpressions;
 
 namespace MusicStore
 {
@@ -96,53 +97,12 @@ namespace MusicStore
                 ReloadShopPrice(reference);
             }
         }
-
-    private void ShopPriceTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            string sample = ShopPriceTextBox.Text;
-            bool tester = false;
-            bool dot = false;
-            if (sample.Any())
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    
-                        if (allowedChar.Contains(sample.Last()))
-                        {
-                            tester = true;
-                            if(sample.Last()=='.')
-                            {
-                            dot = true;
-                            }
-                            break;
-                        }
-
-                }
-                int counter = 0;
-                if (dot)
-                {                   
-                    for(int i=0;i<sample.Length;i++)
-                    {
-                        if(sample.ElementAt(i)=='.')
-                        {
-                            counter++;
-                        }
-                    }
-                }
-                if(sample.Length>4)
-                {
-                    string sub = sample.Substring(sample.Length - 4);
-                    if(sub.ElementAt(0)=='.')
-                    {
-                        tester = false;
-                    }
-                }
-                if (!tester || counter > 1 || sample.ElementAt(0)=='.')
-                {
-                    sample = sample.Remove((sample.Length - 1));
-                    ShopPriceTextBox.Text = sample;
-                    ShopPriceTextBox.CaretIndex = sample.Length;
-                }
+                //Poprawny Regex (według edytora Javascript) - ^(\d{ 1,})(\.{ 0,1})(\d{ 0,2})$
+                Regex regex = new Regex("[^0-9]+");
+                e.Handled = regex.IsMatch(e.Text);
             }
         }
 

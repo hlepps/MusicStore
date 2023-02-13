@@ -1,12 +1,11 @@
-﻿<Window x:Class="MusicStore.TrackManager"
+﻿<Window x:Class="MusicStore.AlbumManager"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
         xmlns:local="clr-namespace:MusicStore"
         mc:Ignorable="d"
-        Title="Track Manager" Height="540" Width="960"
+        Title="Album Manager" Height="540" Width="960"
         d:DesignHeight="540" d:DesignWidth="960"
          WindowStyle="none"
         ResizeMode="NoResize"
@@ -375,110 +374,7 @@
                         </Grid>
                         <Separator Height="10"/>
 
-                        <!--File Import-->
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1.75*"/>
-                                <ColumnDefinition Width="0.5*"/>
-                                <ColumnDefinition Width="7.75*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                <TextBlock Text="*Track File: " 
-                                           HorizontalAlignment="Right"
-                                           Foreground="{DynamicResource napisy}"
-                                           FontFamily="InriaSans-Light"
-                                           FontWeight="Medium"/>
-                                <TextBlock Text="[Supported files: .mp3]" FontStyle="Italic" FontSize="10"
-                                           Foreground="{DynamicResource napisy}"
-                                           FontFamily="InriaSans-Light"
-                                           FontWeight="Medium"/>
-                            </StackPanel>
-                            <Grid Grid.Column="2">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*" x:Name="RestoreFilePathColumn"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                </Grid.ColumnDefinitions>
-                                <Button VerticalAlignment="Center" 
-                                        HorizontalAlignment="Center" 
-                                        Content="Clear File Path" 
-                                        Grid.Column="0" 
-                                        Click="ClearFilePath_Click"
-                                        Foreground="White"
-                                        BorderThickness="0"
-                                        Style="{DynamicResource button2}"
-                                        Width="120"
-                                        Height="25">
-                                    <Button.Template>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border
-                                        CornerRadius="5"
-                                        Background="{TemplateBinding Background}">
-                                                <ContentPresenter VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Button.Template>
-                                </Button>
-                                <Button VerticalAlignment="Center" 
-                                        HorizontalAlignment="Center" 
-                                        Content="Restore File Path" 
-                                        Grid.Column="1" 
-                                        Click="RestoreFilePath_Click"
-                                        Foreground="White"
-                                        BorderThickness="0"
-                                        Style="{DynamicResource button1}"
-                                        Width="120"
-                                        Height="25">
-                                    <Button.Template>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border
-                                        CornerRadius="5"
-                                        Background="{TemplateBinding Background}">
-                                                <ContentPresenter VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Button.Template>
-                                </Button>
-                                <Button VerticalAlignment="Center" 
-                                        HorizontalAlignment="Center" 
-                                        Content="Select File" 
-                                        Grid.Column="2" 
-                                        Click="SelectTrackFile_Click"
-                                        Foreground="White"
-                                        BorderThickness="0"
-                                        Style="{DynamicResource button2}"
-                                        Width="120"
-                                        Height="25">
-                                    <Button.Template>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border
-                                        CornerRadius="5"
-                                        Background="{TemplateBinding Background}">
-                                                <ContentPresenter VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Button.Template>
-                                </Button>
-                                <StackPanel Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                    <TextBlock HorizontalAlignment="Center" Text="Selected File" FontWeight="Bold"
-                                               Foreground="{DynamicResource napisy}"
-                                               FontFamily="InriaSans-Light"/>
-                                    <StackPanel x:Name="LoadedFileStackPanel" Visibility="Visible">
-                                        <Separator Height="5" Opacity="0"/>
-                                        <TextBlock HorizontalAlignment="Center" Text="" x:Name="SelectedFileTextBlock"
-                                                   Foreground="{DynamicResource napisy}"
-                                                   FontFamily="InriaSans-Light"
-                                                   FontWeight="Medium"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </Grid>
-                        </Grid>
-                        <Separator Height="10"/>
-
+                        
                         <!--Shop Price-->
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -519,7 +415,7 @@
                                         </ControlTemplate>
                                     </Button.Template>
                                 </Button>
-                                
+
                                 <TextBox x:Name="ShopPriceTextBox" 
                                          Grid.Column="2" 
                                          VerticalAlignment="Center" 
@@ -532,7 +428,7 @@
                                          BorderBrush="{DynamicResource paski}"
                                          Background="Transparent"
                                          FontFamily="InriaSans-Light"/>
-                                
+
                                 <TextBlock Text=" PLN" VerticalAlignment="Center"
                                            Foreground="{DynamicResource napisy}"
                                            FontFamily="InriaSans-Light"

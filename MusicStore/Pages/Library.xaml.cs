@@ -487,5 +487,11 @@ namespace MusicStore.Pages
             trackManager.ReloadWindow();
             trackManager.ShowDialog();
         }
+        private void AddNewArtist_Click(object sender, RoutedEventArgs e)
+        {
+            AuthorManager authorManager = new AuthorManager();
+            authorManager.ReloadWindow();
+            authorManager.ShowDialog();
+        }
     }
 }

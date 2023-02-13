@@ -1,0 +1,283 @@
+﻿<Window x:Class="MusicStore.AuthorManager"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MusicStore"
+        mc:Ignorable="d"
+        Title="Author Manager" Height="270" Width="960"
+        d:DesignHeight="270" d:DesignWidth="960"
+        WindowStyle="none"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True">
+    <Border CornerRadius="14">
+        <Border.Background>
+            <ImageBrush ImageSource="obrazy/rushE.png"/>
+        </Border.Background>
+        <Border CornerRadius="10"
+            BorderThickness="4"
+                    Opacity="0.97">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="1,1" EndPoint="0,0" GradientStops="{DynamicResource rama}">
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" GradientStops="{DynamicResource tlo}">
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid Margin="25">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <ScrollViewer x:Name="ContentScrollViewer" Grid.Row="0">
+                    <StackPanel x:Name="ContentStackPanel" Margin="0,0,10,0">
+                        <Separator Height="10" Background="Transparent"/>
+                        <!--Author Name-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.75*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="7.75*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="*Artist Name: " 
+                                       Grid.Column="0" 
+                                       HorizontalAlignment="Right" 
+                                       VerticalAlignment="Center"
+                                       Foreground="{DynamicResource napisy}"
+                                       FontFamily="InriaSans-Light"
+                                       FontWeight="Medium"/>
+                            <DockPanel Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                                <Button x:Name="RestoreArtistNameButton" 
+                                        Content="Restore Artist Name" 
+                                        Margin="0,0,25,0" 
+                                        Click="RestoreArtistName_Click"
+                                        Foreground="White"
+                                        BorderThickness="0"
+                                        Width="120"
+                                        Height="25"
+                                        Style="{DynamicResource button1}">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <TextBox x:Name="TrackNameTextBox" 
+                                         HorizontalAlignment="Stretch" 
+                                         VerticalAlignment="Center"
+                                         FontSize="16"
+                                         Foreground="{DynamicResource napisy}"
+                                         BorderThickness="0,0,0,2"
+                                         BorderBrush="{DynamicResource paski}"
+                                         Background="Transparent"
+                                         FontFamily="InriaSans-Light"/>
+                            </DockPanel>
+
+                        </Grid>
+                        <Separator Height="10" Background="Transparent"/>
+                        <!--Track Image-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.75*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="7.75*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0">
+                                <TextBlock Text="Artist Image:" 
+                                           HorizontalAlignment="Right"
+                                           Foreground="{DynamicResource napisy}"
+                                           FontFamily="InriaSans-Light"
+                                           FontWeight="Medium"/>
+                                <TextBlock Text="[Supported files: .jpg / .jpeg / .png]" 
+                                           FontStyle="Italic" 
+                                           FontSize="10"
+                                           Foreground="{DynamicResource napisy}"
+                                           FontFamily="InriaSans-Light"
+                                           FontWeight="Medium"/>
+                            </StackPanel>
+                            <Grid Grid.Column="2" x:Name="CoverImageGrid">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*" x:Name="RestorePreviousImageColumn"/>
+                                    <!--If creating new Width="0*"-->
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button VerticalAlignment="Center" 
+                                        HorizontalAlignment="Center" 
+                                        Content="Remove Image" 
+                                        Grid.Column="0" 
+                                        Click="SetDefaultCoverImage_Click"
+                                        Foreground="White"
+                                        BorderThickness="0"
+                                        Style="{DynamicResource button1}"
+                                        Width="120"
+                                        Height="25">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <!--Button below is only visible when window works in edit mode [Loaded song ID exists]-->
+                                <Button VerticalAlignment="Center" 
+                                        HorizontalAlignment="Center" 
+                                        Content="Restore Previous Image" 
+                                        Grid.Column="1" 
+                                        Click="RestoreCoverImage_Click"
+                                        Foreground="White"
+                                        BorderThickness="0"
+                                        Style="{DynamicResource button1}"
+                                        Width="130"
+                                        Height="25">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Button VerticalAlignment="Center" 
+                                            HorizontalAlignment="Center" 
+                                            Content="Select File" 
+                                            Click="SelectFile_Click"
+                                            Foreground="White"
+                                            BorderThickness="0"
+                                            Style="{DynamicResource button2}"
+                                            Width="80"
+                                            Height="25">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                    <StackPanel x:Name="CoverImageLoadedFileStackPanel" Visibility="Visible">
+                                        <Separator Height="5" Opacity="0"
+                                                   Background="Transparent"/>
+                                        <TextBlock HorizontalAlignment="Center" 
+                                                   Text="" 
+                                                   x:Name="CoverImageFileTextBlock"
+                                                   Foreground="{DynamicResource napisy}"
+                                                   FontFamily="InriaSans-Light"
+                                                   FontWeight="Medium"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <Image x:Name="CoverPreviewImage" Grid.Column="3" Source="obrazy/note-gb4fa8b680_640.png" VerticalAlignment="Center" HorizontalAlignment="Center" Height="108" Width="108"/>
+                            </Grid>
+                        </Grid>
+                        <Separator Height="10"
+                                   Background="Transparent"/>
+                    </StackPanel>
+                </ScrollViewer>
+                <!--Confirmation Buttons-->
+                <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="1" Margin="17.1,0">
+                    <Grid.ColumnDefinitions>
+                        <!--Column Definition 0 & 1 = "0*" when creating a new Author-->
+                        <ColumnDefinition Width="1*" x:Name="ResetChangesRow"/>
+                        <ColumnDefinition Width="1*" x:Name="SaveAsNewArtistRow"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" 
+                            Margin="25,0" 
+                            Content="Reset Changes" 
+                            Click="ResetChanges_Click"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Style="{DynamicResource button1}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                        CornerRadius="8"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Grid.Column="1" 
+                            Margin="25,0" 
+                            Content="Save as New Author" 
+                            Click="SaveAsNewArtist_Click"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Style="{DynamicResource button1}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                        CornerRadius="8"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <!--Button 2 Content= {When editing track = "Save Changes" / When creating new Track = "Add New Track"}-->
+                    <Button Grid.Column="2" 
+                            Margin="25,0" 
+                            Content="Save Changes" 
+                            x:Name="SaveChangesButton" 
+                            Click="SaveChanges_Click"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Style="{DynamicResource button2}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                        CornerRadius="8"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Grid.Column="3" 
+                            Margin="25,0" 
+                            Content="Cancel" 
+                            Click="Cancel_Click"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Style="{DynamicResource button2}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                        CornerRadius="8"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Border>
+    </Border>
+</Window>

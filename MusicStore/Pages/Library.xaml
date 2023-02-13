@@ -108,7 +108,8 @@
                     FontFamily="InriaSans-Light"
                     Cursor="Hand"
                     Style="{DynamicResource button1}"
-                    BorderThickness="0">
+                    BorderThickness="0"
+                    Click="AddNewArtist_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border
