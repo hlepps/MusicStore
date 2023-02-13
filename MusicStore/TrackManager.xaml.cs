@@ -28,7 +28,6 @@ namespace MusicStore
         public int? trackID = null; //Imported manually, null value will create new track
         private DB.DBSong reference;
         private BitmapImage CoverImage;
-        private List<char> allowedChar = new List<char>();
         
         public TrackManager()
         {
@@ -36,18 +35,6 @@ namespace MusicStore
             int nWidth = (int)System.Windows.SystemParameters.PrimaryScreenWidth;
             int nHeight = (int)System.Windows.SystemParameters.PrimaryScreenHeight;
             this.LayoutTransform = new ScaleTransform(nWidth / 2, nHeight / 2);
-            allowedChar.Add('0');
-            allowedChar.Add('1');
-            allowedChar.Add('2');
-            allowedChar.Add('3');
-            allowedChar.Add('4');
-            allowedChar.Add('5');
-            allowedChar.Add('6');
-            allowedChar.Add('7');
-            allowedChar.Add('8');
-            allowedChar.Add('9');
-            allowedChar.Add('0');
-            allowedChar.Add('.');
 
             AuthorsStackPanel.Children.Clear();
             Grid g = ObjectGenerationHelper.GetAuthorEmptyGrid();

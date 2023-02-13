@@ -300,18 +300,20 @@ namespace MusicStore.Pages
         }
         private void Album_Click(object sender, RoutedEventArgs e)
         {
+            savedID = GetIDFromObjectName(((Button)sender).Name);
+            savedIdIsSong = false;
             switch (pageAdminMode)
             {
                 case AdminMode.Browse:
-                    savedID = GetIDFromObjectName(((Button)sender).Name);
-                    savedIdIsSong = false;
                     Load_Saved();
                     break;
                 case AdminMode.Edit:
-                    //open Album edition window;
+                    AlbumManager albumManager = new AlbumManager();
+                    albumManager.SetAlbumReference(savedID);
+                    albumManager.ReloadWindow();
+                    albumManager.ShowDialog();
                     break;
                 case AdminMode.Delete:
-                    //mark for deletion;
                     ToggleDelete(sender);
                     break;
             }
@@ -492,6 +494,12 @@ namespace MusicStore.Pages
             AuthorManager authorManager = new AuthorManager();
             authorManager.ReloadWindow();
             authorManager.ShowDialog();
+        }
+        private void AddNewAlbum_Click(object sender, RoutedEventArgs e)
+        {
+            AlbumManager albumManager = new AlbumManager();
+            albumManager.ReloadWindow();
+            albumManager.ShowDialog();
         }
     }
 }

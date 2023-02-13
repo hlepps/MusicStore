@@ -125,6 +125,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumManager.xaml.cs">
+      <DependentUpon>AlbumManager.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AuthorManager.xaml.cs">
       <DependentUpon>AuthorManager.xaml</DependentUpon>
     </Compile>
@@ -172,6 +175,10 @@
     <Compile Include="Utility\Security.cs" />
     <Compile Include="Style\StyleManager.cs" />
     <Compile Include="Utility\UserFunctions.cs" />
+    <Page Include="AlbumManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
