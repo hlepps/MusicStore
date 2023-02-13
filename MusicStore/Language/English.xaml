@@ -28,4 +28,25 @@
     <TextBlock x:Key="changestylebtn" Text="Change Style"/>
     <TextBlock x:Key="changelanbtn" Text="Change Language"/>
     <TextBlock x:Key="optionuserbtn" Text="Account Settings"/>
+    <s:String x:Key="CVCVCV">CV Code</s:String>
+    <s:String x:Key="datacard">Card expiration date</s:String>
+    <TextBlock x:Key="addnewtrack" Text="Add new Track"/>
+    <TextBlock x:Key="addnewalbum" Text="Add new Album"/>
+    <TextBlock x:Key="addnewartist" Text="Add new Artist"/>
+    <TextBlock x:Key="browsemod" Text="Browse Mode"/>
+    <TextBlock x:Key="editmode" Text="Edit Mode"/>
+    <TextBlock x:Key="deletionmode" Text="Deletion Mode"/>
+    <TextBlock x:Key="DELETE" Text="DELETE"/>
+    <s:String x:Key="currentmode">Current Mode</s:String>
+    <s:String x:Key="selecteditems">Selected items: </s:String>
+    <s:String x:Key="price">Price: </s:String>
+    <TextBlock x:Key="addtocart" Text="Add to Cart"/>
+    <s:String x:Key="playsample">Play Sample</s:String>
+    <s:String x:Key="tracks">Tracks: </s:String>
+    <TextBlock x:Key="openalbum" Text="Open Album"/>
+    <s:String x:Key="browse">Browse</s:String>
+    <s:String x:Key="edit">Edit</s:String>
+    <s:String x:Key="delete">Delete</s:String>
+    <s:String x:Key="playtrack">Play Track</s:String>
+    <s:String x:Key="loading">LOADING</s:String>
 </ResourceDictionary>

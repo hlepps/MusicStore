@@ -9,10 +9,10 @@
       Title="AccountSettings">
 
     <Grid>
-        <Image x:Name="pfp" HorizontalAlignment="Left" Height="128" Margin="10,10,0,0" VerticalAlignment="Top" Width="128" Source="../obrazy/logo.png"/>
-        <TextBlock x:Name="UsertypeTextBlock" Foreground="{DynamicResource napisy}" Margin="10,147,0,0" FontSize="13" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Zmień profilowe" Width="128" />
+        <Image x:Name="pfp" HorizontalAlignment="Left" Height="128" Margin="30,10,0,0" VerticalAlignment="Top" Width="128" Source="../obrazy/logo.png"/>
+        <TextBlock x:Name="UsertypeTextBlock" Foreground="{DynamicResource napisy}" Margin="30,147,0,0" FontSize="13" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Zmień profilowe" Width="128" />
 
-        <ComboBox x:Name="pictureCombo" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top" Width="128" SelectionChanged="pictureCombo_SelectionChanged"/>
+        <ComboBox x:Name="pictureCombo" HorizontalAlignment="Left" Margin="30,164,0,0" VerticalAlignment="Top" Width="128" SelectionChanged="pictureCombo_SelectionChanged"/>
         <Button    x:Name="btnusun"
                                Content="Usuń konto"
                                FontSize="16"
@@ -63,7 +63,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Border x:Name="AdminSettingsBorder" BorderBrush="Black" BorderThickness="1" Width="390" HorizontalAlignment="Left" Margin="400,10,0,10">
+        <Border x:Name="AdminSettingsBorder" BorderThickness="0" Width="390" HorizontalAlignment="Left" Margin="250,10,0,10">
             <Grid>
                 <Button    x:Name="btnzrezygnuj"
                                Content="Zrezygnuj z uprawnien administratora"

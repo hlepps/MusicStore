@@ -213,7 +213,7 @@
                              BorderBrush="{DynamicResource paski}"
                              BorderThickness="0,0,0,2"
                                Margin="12,15,0,0"/>
-                    <TextBlock Text="Kod CVV"
+                    <TextBlock Text="{DynamicResource CVCVCV}"
                                Foreground="{DynamicResource napisy}"
                                FontWeight="Medium"
                                FontFamily="InriaSans-Light"
@@ -229,7 +229,7 @@
                              BorderThickness="0,0,0,2"
                              Margin="12,15,0,0" Width="98"
                              HorizontalAlignment="Left"/>
-                    <TextBlock Text="Data ważności karty"
+                    <TextBlock Text="{DynamicResource datacard}"
                                Foreground="{DynamicResource napisy}"
                                FontWeight="Medium"
                                FontFamily="InriaSans-Light"

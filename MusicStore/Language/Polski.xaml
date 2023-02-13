@@ -28,5 +28,25 @@
     <TextBlock x:Key="changestylebtn" Text="Wybierz styl"/>
     <TextBlock x:Key="changelanbtn" Text="Wybierz Język"/>
     <TextBlock x:Key="optionuserbtn" Text="Ustawienia Konta"/>
-
+    <s:String x:Key="CVCVCV">Kod CV</s:String>
+    <s:String x:Key="datacard">Data ważności karty</s:String>
+    <TextBlock x:Key="addnewtrack" Text="Dodaj utwór"/>
+    <TextBlock x:Key="addnewalbum" Text="Dodaj album"/>
+    <TextBlock x:Key="addnewartist" Text="Dodaj artystę"/>
+    <TextBlock x:Key="browsemod" Text="Tryb przeglądania"/>
+    <TextBlock x:Key="editmode" Text="Tryb edycji"/>
+    <TextBlock x:Key="deletionmode" Text="Trub usuwania"/>
+    <TextBlock x:Key="DELETE" Text="USUŃ"/>
+    <s:String x:Key="currentmode">Obecny Tryb</s:String>
+    <s:String x:Key="selecteditems">Wybrane elementy: </s:String>
+    <s:String x:Key="price">Cena: </s:String>
+    <TextBlock x:Key="addtocart" Text="Dodaj do listy"/>
+    <s:String x:Key="playsample">Odtwórz próbkę</s:String>
+    <s:String x:Key="tracks">Utwory: </s:String>
+    <TextBlock x:Key="openalbum" Text="Otwórz Album"/>
+    <s:String x:Key="browse">Przeglądanie</s:String>
+    <s:String x:Key="edit">Edycja</s:String>
+    <s:String x:Key="delete">Usuwanie</s:String>
+    <s:String x:Key="playtrack">Odtwórz utwór</s:String>
+    <s:String x:Key="loading">ŁADOWANIE</s:String>
 </ResourceDictionary>
