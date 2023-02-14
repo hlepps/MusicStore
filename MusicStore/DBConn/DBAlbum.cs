@@ -139,5 +139,42 @@ namespace MusicStore.DB
             return album;
         }
 
+        public static int Add(string name, int image_id, double price, int mainauthor_id, List<int> songIDs)
+        {
+            MySqlCommand cmd = new MySqlCommand($"INSERT INTO albums (name, image_id, mainauthor_id, price) VALUES ('{name}', {image_id}, {mainauthor_id}, {price})", DBConn.instance.conn);
+            DBConn.instance.PrepareConnection();
+            cmd.ExecuteNonQuery();
+            int id = (int)cmd.LastInsertedId;
+            Get(id);
+
+            foreach (int songID in songIDs)
+            {
+                MySqlCommand a = new MySqlCommand($"INSERT INTO songsinalbums (song_id, album_id) VALUES ({songID}, {id})", DBConn.instance.conn);
+                DBConn.instance.PrepareConnection();
+                a.ExecuteNonQuery();
+            }
+
+            return id;
+        }
+
+        public static void Update(int id, string name, int image_id, double price, int mainauthor_id, List<int> songIDs)
+        {
+            MySqlCommand cmd = new MySqlCommand($"UPDATE albums SET name = '{name}', image_id='{image_id}', price = {price}, mainauthor_id = {mainauthor_id} WHERE id='{id}'", DBConn.instance.conn);
+            DBConn.instance.PrepareConnection();
+            cmd.ExecuteNonQuery();
+
+            MySqlCommand b = new MySqlCommand($"DELETE FROM songsinalbums WHERE album_id={id}", DBConn.instance.conn);
+            DBConn.instance.PrepareConnection();
+            b.ExecuteNonQuery();
+
+            foreach (int songID in songIDs)
+            {
+                MySqlCommand a = new MySqlCommand($"INSERT INTO songsinalbums (song_id, album_id) VALUES ({songID}, {id})", DBConn.instance.conn);
+                DBConn.instance.PrepareConnection();
+                a.ExecuteNonQuery();
+            }
+
+        }
+
     }
 }

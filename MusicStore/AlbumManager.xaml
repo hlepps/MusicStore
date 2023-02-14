@@ -207,26 +207,6 @@
                                            FontWeight="Medium"/>
                                 <Separator Height="5" Opacity="0"/>
                                 <!--Pressing Button below opens new Author Manager window for adding new Author to database, after creation automatically adds to the list of artist to the right-->
-                                <Button Content="Add new Author" 
-                                        VerticalAlignment="Center" 
-                                        HorizontalAlignment="Right" 
-                                        Click="AddNewAuthor_Click"
-                                        Foreground="White"
-                                        BorderThickness="0"
-                                        Style="{DynamicResource button1}"
-                                        Width="120"
-                                        Height="25">
-                                    <Button.Template>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border
-                                        CornerRadius="5"
-                                        Background="{TemplateBinding Background}">
-                                                <ContentPresenter VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Button.Template>
-                                </Button>
                                 <Button Content="Restore Author" 
                                         Margin="0,10,0,0" 
                                         x:Name="RestoreAuthorsButton" 
@@ -254,7 +234,7 @@
                                         <ColumnDefinition Width="1*"/>
                                         <ColumnDefinition Width="9*"/>
                                     </Grid.ColumnDefinitions>
-                                    <ComboBox Grid.Column="1" x:Name="ComboBox_0">
+                                    <ComboBox Grid.Column="1" x:Name="authorComboBox">
                                         <!--ComboBoxItems are dynamically generated list of Author in database-->
                                         <!--ComboBoxItem Example //FOR DEBUG PURPOSE ONLY-->
                                         <ComboBoxItem IsSelected="True">
@@ -293,34 +273,6 @@
                                         <ColumnDefinition Width="1*"/>
                                         <ColumnDefinition Width="9*"/>
                                     </Grid.ColumnDefinitions>
-                                    <ComboBox Grid.Column="1" x:Name="ComboBox_X">
-                                        <ComboBoxItem IsSelected="True">
-                                            <DockPanel>
-                                                <Image Height="27" Width="27" Source="obrazy/logo.png"/>
-                                                <Separator Width="25" Opacity="0"/>
-                                                <TextBlock VerticalAlignment="Center" 
-                                                           HorizontalAlignment="Left" 
-                                                           Text="Artist Name_X"
-                                                           Foreground="{DynamicResource darknap}"
-                                                           Background="Transparent"
-                                                           FontFamily="InriaSans-Light"
-                                                           FontWeight="Medium"/>
-                                            </DockPanel>
-                                        </ComboBoxItem>
-                                        <ComboBoxItem>
-                                            <DockPanel>
-                                                <Image Height="27" Width="27" Source="obrazy/album.png"/>
-                                                <Separator Width="25" Opacity="0"/>
-                                                <TextBlock VerticalAlignment="Center" 
-                                                           HorizontalAlignment="Left" 
-                                                           Text="Artist Name_Y"
-                                                           Foreground="{DynamicResource darknap}"
-                                                           Background="Transparent"
-                                                           FontFamily="InriaSans-Light"
-                                                           FontWeight="Medium"/>
-                                            </DockPanel>
-                                        </ComboBoxItem>
-                                    </ComboBox>
                                 </Grid>
                                 <!--End of dynamic generated content Example-->
                                 <Grid>
@@ -331,50 +283,8 @@
                                     <!--Clicking button below creates new ComboBox Grid with list of Artists from example above-->
                                 </Grid>
                             </StackPanel>
-                            <Button x:Name="AddAuthorButton" 
-                                            VerticalAlignment="Top" 
-                                            HorizontalAlignment="Left" 
-                                            Grid.Column="0" 
-                                            Content="+" 
-                                            Height="27" 
-                                            Width="27" 
-                                            Margin="0,0,0,0" 
-                                            Click="AddAuthorToList_Click"
-                                            Foreground="White"
-                                            BorderThickness="0"
-                                            Style="{DynamicResource button2}">
-                                <Button.Template>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border
-                                        CornerRadius="5"
-                                        Background="{TemplateBinding Background}">
-                                            <ContentPresenter VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
-                            <Button VerticalAlignment="Top"  x:Name="RemoveAuthorButton"
-                                            HorizontalAlignment="Left" 
-                                            Grid.Column="0" 
-                                            Content="-" 
-                                            Height="27" 
-                                            Width="27" 
-                                            Click="RemoveAuthorFromList_Click"
-                                            Foreground="White"
-                                            BorderThickness="0"
-                                            Style="{DynamicResource button1}" Margin="0,0,0,0">
-                                <Button.Template>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border
-                                        CornerRadius="5"
-                                        Background="{TemplateBinding Background}">
-                                            <ContentPresenter VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
+                            
+                            
                         </Grid>
                         <Separator Height="10"/>
 

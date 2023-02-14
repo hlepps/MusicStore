@@ -143,7 +143,7 @@ namespace NAudioBPM
             return groups.ToArray();
         }
 
-        public BPMDetector(MediaFoundationReader reader, int start = 0, int length = 0)
+        public BPMDetector(Mp3FileReader reader, int start = 0, int length = 0)
         {
             // Originally the sample rate was constant (44100), and the number of channels was 2. 
             // Let's just in case take them from file's properties

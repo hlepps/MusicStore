@@ -4,6 +4,7 @@ using NAudioBPM;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -24,10 +25,12 @@ namespace MusicStore
     public partial class MusicPlayer : Window
     {
         public int songID;
-        public string songurlid;
+        public int songurlid;
 
-        MediaFoundationReader mf;
         WaveOut waveOut = new WaveOut();
+
+        MemoryStream ms;
+        Mp3FileReader mf;
         public MusicPlayer()
         {
             InitializeComponent();
@@ -38,13 +41,15 @@ namespace MusicStore
             songID = id;
             songimage.ImageSource = DB.DBSongsSaved.Get(songID).image.bitmap;
             songurlid = DB.DBSongsSaved.Get(songID).songurlid;
-            if (songurlid == "0")
+            if (songurlid == 0)
             {
                 Close();
                 return;
             }
-            var url = "https://drive.google.com/uc?id=" + songurlid + "&export=download";
-            mf = new MediaFoundationReader(url);
+            //var url = "https://drive.google.com/uc?id=" + songurlid + "&export=download";
+            //mf = new MediaFoundationReader(url);
+            ms = new MemoryStream(DB.DBSongsSaved.DownloadMP3(songurlid));
+            mf = new Mp3FileReader(ms);
             waveOut.Init(mf);
             waveOut.Play();
             BPMDetector bpm = new BPMDetector(mf, 0, (int)mf.TotalTime.TotalSeconds);
@@ -58,6 +63,7 @@ namespace MusicStore
             songSlider.TickFrequency = 0.05;
             name.Text = DB.DBSongsSaved.Get(id).authors[0].name + " - " + DB.DBSongsSaved.Get(id).name;
             time.Text = mf.CurrentTime.ToString(@"m\:ss") + " / " + mf.TotalTime.ToString(@"m\:ss");
+            mf.CurrentTime = new TimeSpan(0, 0, 0);
             this.Show();
         }
         double lastChanged = 0;

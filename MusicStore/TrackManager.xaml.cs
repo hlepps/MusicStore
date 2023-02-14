@@ -288,7 +288,7 @@ namespace MusicStore
         {
             if (trackID != null)
             {
-                //Update song in database with ID equal to trackID with data from this window
+                DBSongsSaved.Update((int)trackID, TrackNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source), double.Parse(ShopPriceTextBox.Text), DBSongsSaved.UploadMP3(mp3bytes), GetAuthorsIDs());
             }
             else SaveAsNewTrack_Click(sender, e);
         }
@@ -387,7 +387,7 @@ namespace MusicStore
         }
         private void ReloadTrackFile(DB.DBSong reference)
         {
-            SelectedFileTextBlock.Text = reference.songurlid;
+            SelectedFileTextBlock.Text = reference.songurlid.ToString();
         }
         private void ReloadShopPrice(DB.DBSong reference)
         {

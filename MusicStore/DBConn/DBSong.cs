@@ -7,6 +7,7 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using System.Diagnostics;
 using System.Xml.Linq;
+using Google.Protobuf.WellKnownTypes;
 
 namespace MusicStore.DB
 {
@@ -16,7 +17,7 @@ namespace MusicStore.DB
         public List<DBAuthor> authors;
         public DBImage image;
         public double price;
-        public string songurlid;
+        public int songurlid;
     }
     public class DBSongsSaved
     {
@@ -130,7 +131,7 @@ namespace MusicStore.DB
             song.image = DB.DBImagesSaved.Get((int)a[1]);
             song.price = (double)a[2];
             song.authors = new List<DBAuthor>();
-            song.songurlid = (string)a[3];
+            song.songurlid = (int)a[3];
 
             DBConn.instance.PrepareConnection();
             MySqlCommand authorcmd = new MySqlCommand($"SELECT author_id FROM songauthors where song_id={id}", DBConn.instance.conn);
@@ -162,7 +163,7 @@ namespace MusicStore.DB
                     temp.name = (string)row[1];
                     temp.image = DBImagesSaved.Get((int)row[2]);
                     temp.price = (double)row[3];
-                    temp.songurlid = (string)row[4];
+                    temp.songurlid = (int)row[4];
                     dictionary.Add(temp.id, temp);
                     System.Diagnostics.Trace.WriteLine(temp.name);
                 }
@@ -176,6 +177,18 @@ namespace MusicStore.DB
             DBConn.instance.PrepareConnection();
             cmd.ExecuteNonQuery();
             return (int)cmd.LastInsertedId;
+        }
+
+        public static byte[] DownloadMP3(int id)
+        {
+            MySqlCommand encmd = new MySqlCommand($"SELECT mp3 FROM mp3s WHERE id={id}", DBConn.instance.conn);
+            DBConn.instance.PrepareConnection();
+            MySqlDataReader enrdr = encmd.ExecuteReader();
+            enrdr.Read();
+
+            byte[] r = (byte[])enrdr["mp3"];
+            return r;
+
         }
 
         public static int Add(string name, int image_id, double price, int songid, List<int> authorsIDs)
