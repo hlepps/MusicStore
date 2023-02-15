@@ -43,13 +43,14 @@ namespace MusicStore
         }
 
         private void btnnowekonto_click(object sender, RoutedEventArgs e)
-        {
+        {           
             if (logintxt.Text != "" &&
                 haslotxt.Password != "" &&
                 powtorzhaslotxt.Password == haslotxt.Password &&
                 nrcardtxt.Text != "" &&
                 cvvtxt.Text != "" &&
-                datetxt.Text != ""
+                datetxt.Text != "" &&
+                TaCCheckBox.IsChecked.Value
                 )
             {
                 if(DBConn.instance.Register(logintxt.Text, haslotxt.Password, nrcardtxt.Text, cvvtxt.Text, datetxt.Text))
@@ -78,6 +79,12 @@ namespace MusicStore
         {
             string txt = cardDate.SelectedDate.Value.Month.ToString("00") + "/" + cardDate.SelectedDate.Value.Year.ToString()[2] + cardDate.SelectedDate.Value.Year.ToString()[3];
             datetxt.Text = txt;
+        }
+
+        private void OpenTaC_Click(object sender, RoutedEventArgs e)
+        {
+            TermsAndConditions TaC = new TermsAndConditions();
+            TaC.Show();
         }
     }
 }

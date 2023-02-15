@@ -240,5 +240,11 @@ namespace MusicStore.Pages
                 }
             }
         }
+
+        private void btnTaC_Click(object sender, RoutedEventArgs e)
+        {
+            TermsAndConditions TaC = new TermsAndConditions();
+            TaC.Show();
+        }
     }
 }

@@ -1,0 +1,25 @@
+﻿<Window x:Class="MusicStore.TermsAndConditions"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MusicStore"
+        mc:Ignorable="d"
+        Title="TermsAndConditions" ResizeMode="NoResize" WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Width="480"
+        Height="864"
+        Background="Transparent">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" FontWeight="Bold" Text="Terms And Conditions" FontSize="44" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Background="White"/>
+        <ScrollViewer Grid.Row="1">
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Margin="10" x:Name="ContentTextBlock" Background="White"/>
+        </ScrollViewer>
+        <Button Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Content="CLOSE" Click="CloseWindow_Click" FontSize="36" FontWeight="Bold"/>
+    </Grid>
+</Window>
