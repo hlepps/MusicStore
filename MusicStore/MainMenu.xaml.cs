@@ -40,15 +40,7 @@ namespace MusicStore
             else
             {
                 OpenStudioDetailsButton.IsEnabled = false;
-            }
-            if (UserFunctions.VerifyUserPermission(1))
-            {
-                
-            }
-            else
-            {
-                btnbiblioteka.IsEnabled = false;
-            }
+            }          
             instance = this;
 
             DBConn.instance.PrepareConnection();
@@ -135,9 +127,32 @@ namespace MusicStore
 
         private void Btnbiblioteka_Click(object sender, RoutedEventArgs e)
         {
-            library.pageMode = Pages.Library.Mode.UserLibrary;
-            library.RefreshPage();
-            mainFrame.Content = library;
+            if (UserFunctions.VerifyUserPermission(1))
+            {
+                library.pageMode = Pages.Library.Mode.UserLibrary;
+                library.RefreshPage();
+                mainFrame.Content = library;
+            }
+            else
+            {
+                StringBuilder messageBoxText = new StringBuilder();
+                messageBoxText.Append("Library is not available for Guest accounts.");
+                messageBoxText.AppendLine();
+                messageBoxText.AppendLine();
+                messageBoxText.Append("Would you like to register as a new account?");
+                messageBoxText.AppendLine();
+                messageBoxText.AppendLine();
+                messageBoxText.Append("Register now and receive 25 PLN as a welcome gift!");
+                if (MessageBox.Show(messageBoxText.ToString(), "Insufficient Permissions", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    register nowyuser = new register();
+                    //nowyuser = load data from current guest user for Register data inputs
+                    if ((bool)nowyuser.ShowDialog())
+                    {
+
+                    }
+                }
+            }           
         }
 
         private void Btnsklep_Click(object sender, RoutedEventArgs e)

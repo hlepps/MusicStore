@@ -31,6 +31,7 @@ namespace MusicStore
         public void RefreshWindow()
         {
             LoadWallet();
+            LoadCardInfo();
         }
 
         private void LoadWallet()
@@ -50,6 +51,13 @@ namespace MusicStore
             {
                 fundsCheck.Text = "NOT ENOUGH FUNDS";
             }
+        }
+
+        private void LoadCardInfo()
+        {
+            string tmpcardNumber="XXXX XXXX XXXX ";
+            tmpcardNumber = tmpcardNumber + DBConn.instance.currentUser.creditInfo[0].Substring(12);
+            cardNumber.Text = tmpcardNumber;
         }
 
         private void Buy_Click(object sender, RoutedEventArgs e)
@@ -88,6 +96,15 @@ namespace MusicStore
                 stringBuilder.Append("Please select another form of payment.");
                 MessageBox.Show(stringBuilder.ToString(), "Payment Failed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+        private void EditCard_Click(object sender, RoutedEventArgs e)
+        {
+            CardInfo cardInfo = new CardInfo();
+            if ((bool)cardInfo.ShowDialog())
+            {
+
+            }
+            LoadCardInfo();
         }
         private void Close_Click(object sender, RoutedEventArgs e)
         {
