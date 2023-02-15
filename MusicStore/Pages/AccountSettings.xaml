@@ -115,6 +115,33 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
+                
+                <Button    x:Name="btnTaC"
+                               Content="Przeczytaj Regulamin"
+                               FontSize="16"
+                               BorderThickness="5,5,5,5"
+                               Foreground="White"
+                               FontFamily="InriaSans-Light"
+                               Cursor="Hand"
+                               Click="btnTaC_Click"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                               Margin="0,110,0,0"
+                               Style="{DynamicResource button1}"       
+                        >
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="148"
+                                        Height="30"
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                
             </Grid>
         </Border>
     </Grid>

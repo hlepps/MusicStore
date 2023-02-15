@@ -49,4 +49,52 @@
     <s:String x:Key="delete">Delete</s:String>
     <s:String x:Key="playtrack">Play Track</s:String>
     <s:String x:Key="loading">LOADING</s:String>
+    <s:String x:Key="trackname">*Track Name:</s:String>
+    <TextBlock x:Key="restoretrackname" Text="Restore Track Name"/>
+    <s:String x:Key="coverimage">Cover Image:</s:String>
+    <s:String x:Key="supported files">[Supported files: .jpg/.jpeg/ .png]</s:String>
+    <TextBlock x:Key="removeimage" Text="Remove Image"/>
+    <TextBlock x:Key="removeimage2" Text="Remove Image"/>
+    <TextBlock x:Key="removeimage3" Text="Remove Image"/>
+    <TextBlock x:Key="restorepreviousimage" Text="Restore Previous Image"/>
+    <TextBlock x:Key="restorepreviousimage2" Text="Restore Previous Image"/>
+    <TextBlock x:Key="restorepreviousimage3" Text="Restore Previous Image"/>
+    <TextBlock x:Key="selectfile" Text="Select File"/>
+    <TextBlock x:Key="selectfile5" Text="Select File"/>
+    <s:String x:Key="authors">*Authors:</s:String>
+    <TextBlock x:Key="addnewauthor" Text="Add new Author"/>
+    <TextBlock x:Key="restoreauthors" Text="Restore Authors"/>
+    <s:String x:Key="trackfile">*Track File:</s:String>
+    <s:String x:Key="supportedfiless">[Supported files: .mp3]</s:String>
+    <TextBlock x:Key="clearfilepath" Text="Clear File Path"/>
+    <TextBlock x:Key="restorefilepath" Text="Restore File Path"/>
+    <TextBlock x:Key="selectfile2" Text="Select File"/>
+    <TextBlock x:Key="selectfile3" Text="Select File"/>
+    <TextBlock x:Key="selectfile4" Text="Select File"/>
+    <s:String x:Key="selectedfile">Selected File</s:String>
+    <s:String x:Key="shopprice">*Shop Price:</s:String>
+    <s:String x:Key="allowedformat">[Allowed format: XX.XX / XX]</s:String>
+    <TextBlock x:Key="restoreprice" Text="Restore Price"/>
+    <TextBlock x:Key="restoreprice2" Text="Restore Price"/>
+    <TextBlock x:Key="resetchanges" Text="Reset Changes"/>
+    <TextBlock x:Key="saveasnewtrack" Text="Save as New Track"/>
+    <TextBlock x:Key="savechanges" Text="Save Changes"/>
+    <TextBlock x:Key="cancel" Text="Cancel"/>
+    <TextBlock x:Key="resetchanges2" Text="Reset Changes"/>
+    <TextBlock x:Key="saveasnewalbum" Text="Save as New Album"/>
+    <TextBlock x:Key="savechanges2" Text="Save Changes"/>
+    <TextBlock x:Key="cancel2" Text="Cancel"/>
+    <s:String x:Key="albumname">*Album Name:</s:String>
+    <TextBlock x:Key="restorealbumname" Text="Restore Album Name"/>
+    <TextBlock x:Key="restoreauthor" Text="Restore Author"/>
+    <s:String x:Key="tracks2">*Tracks:</s:String>
+    <TextBlock x:Key="addnewtrack2" Text="Add new Track"/>
+    <TextBlock x:Key="restoretracks" Text="Restore Tracks"/>
+    <s:String x:Key="artistname">*Artist Name:</s:String>
+    <TextBlock x:Key="restoreartistname" Text="Restore Artist Name"/>
+    <s:String x:Key="artistimage">Artist Image:</s:String>
+    <TextBlock x:Key="resetchanges3" Text="Reset Changes"/>
+    <TextBlock x:Key="saveasnewauthor" Text="Save as New Author"/>
+    <TextBlock x:Key="savechanges3" Text="Save Changes"/>
+    <TextBlock x:Key="cancel3" Text="Cancel"/>
 </ResourceDictionary>

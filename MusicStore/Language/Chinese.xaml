@@ -49,4 +49,52 @@
     <s:String x:Key="edit">编辑</s:String>
     <s:String x:Key="delete">删除</s:String>
     <s:String x:Key="loading">加载中</s:String>
+    <s:String x:Key="trackname">*轨道名称:</s:String>
+    <TextBlock x:Key="restoretrackname" Text="恢复曲目名称"/>
+    <s:String x:Key="coverimage">封面图片:</s:String>
+    <s:String x:Key="supported files">[支持的文件: .jpg/.jpeg/ .png]</s:String>
+    <TextBlock x:Key="removeimage" Text="删除图像"/>
+    <TextBlock x:Key="removeimage2" Text="删除图像"/>
+    <TextBlock x:Key="removeimage3" Text="删除图像"/>
+    <TextBlock x:Key="restorepreviousimage" Text="恢复以前的图像"/>
+    <TextBlock x:Key="restorepreviousimage2" Text="恢复以前的图像"/>
+    <TextBlock x:Key="restorepreviousimage3" Text="恢复以前的图像"/>
+    <TextBlock x:Key="selectfile" Text="选择文件"/>
+    <TextBlock x:Key="selectfile5" Text="选择文件"/>
+    <s:String x:Key="authors">*作者:</s:String>
+    <TextBlock x:Key="addnewauthor" Text="添加新作者"/>
+    <TextBlock x:Key="restoreauthors" Text="还原作者"/>
+    <s:String x:Key="trackfile">*跟踪文件:</s:String>
+    <s:String x:Key="supportedfiless">[支持的文件: .mp3]</s:String>
+    <TextBlock x:Key="clearfilepath" Text="清除文件路径"/>
+    <TextBlock x:Key="restorefilepath" Text="恢复文件路径"/>
+    <TextBlock x:Key="selectfile2" Text="选择文件"/>
+    <TextBlock x:Key="selectfile3" Text="选择文件"/>
+    <TextBlock x:Key="selectfile4" Text="选择文件"/>
+    <s:String x:Key="selectedfile">选定的文件</s:String>
+    <s:String x:Key="shopprice">*店铺价格:</s:String>
+    <s:String x:Key="allowedformat">[允许格式: XX.XX / XX]</s:String>
+    <TextBlock x:Key="restoreprice" Text="恢复价格"/>
+    <TextBlock x:Key="restoreprice2" Text="恢复价格"/>
+    <TextBlock x:Key="resetchanges" Text="重置更改"/>
+    <TextBlock x:Key="saveasnewtrack" Text="另存为新曲目"/>
+    <TextBlock x:Key="savechanges" Text="保存更改"/>
+    <TextBlock x:Key="cancel" Text="取消"/>
+    <s:String x:Key="albumname">*专辑名称:</s:String>
+    <TextBlock x:Key="restorealbumname" Text="恢复相册名称"/>
+    <TextBlock x:Key="restoreauthor" Text="还原作者"/>
+    <s:String x:Key="tracks2">*曲目:</s:String>
+    <TextBlock x:Key="addnewtrack2" Text="添加新曲目"/>
+    <TextBlock x:Key="restoretracks" Text="还原曲目"/>
+    <TextBlock x:Key="resetchanges2" Text="重置更改"/>
+    <TextBlock x:Key="saveasnewalbum" Text="另存为新专辑"/>
+    <TextBlock x:Key="savechanges2" Text="保存更改"/>
+    <TextBlock x:Key="cancel2" Text="取消"/>
+    <s:String x:Key="artistname">*艺术家姓名:</s:String>
+    <TextBlock x:Key="restoreartistname" Text="恢复艺术家姓名"/>
+    <s:String x:Key="artistimage">艺人形象:</s:String>
+    <TextBlock x:Key="resetchanges3" Text="重置更改"/>
+    <TextBlock x:Key="saveasnewauthor" Text="另存为新作者"/>
+    <TextBlock x:Key="savechanges3" Text="保存更改"/>
+    <TextBlock x:Key="cancel3" Text="取消"/>
 </ResourceDictionary>

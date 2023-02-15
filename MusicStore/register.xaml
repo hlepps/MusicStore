@@ -147,6 +147,20 @@
                              BorderThickness="0,0,0,2"
                              >
                     </PasswordBox>
+                    <TextBlock Text="Regulamin"
+                               Foreground="{DynamicResource napisy}"
+                               FontWeight="Medium"
+                               FontFamily="InriaSans-Light"
+                               FontSize="18"
+                               Margin="12,15,0,0"/>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="*" Background="White"/>
+                            <CheckBox x:Name="TaCCheckBox"/>
+                            <TextBlock Text="Zapoznałem się i akceptuje regulamin" Margin="10,0,0,0" Background="White"/>
+                        </StackPanel>
+                        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Content="Otwórz Regulamin" Click="OpenTaC_Click"/>
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="15,25,15,-80">
                         <Button    x:Name="btncreate_account"
                                Content="{DynamicResource createaccount}"

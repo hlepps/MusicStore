@@ -25,7 +25,7 @@ namespace MusicStore
         Pages.Library library = new Pages.Library();
         Pages.Options options = new Pages.Options();
         Pages.AccountSettings accountSettings = new Pages.AccountSettings();
-        Pages.Authors authors = new Pages.Authors();
+        public Pages.Authors authors = new Pages.Authors();
 
         int styl;
         public void InitMainMenu()

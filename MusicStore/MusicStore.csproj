@@ -170,6 +170,9 @@
     <Compile Include="Pages\Options.xaml.cs">
       <DependentUpon>Options.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TermsAndConditions.xaml.cs">
+      <DependentUpon>TermsAndConditions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TrackManager.xaml.cs">
       <DependentUpon>TrackManager.xaml</DependentUpon>
     </Compile>
@@ -283,6 +286,18 @@
     <Content Include="obrazy\thanos.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\TermsAndConditions\LoremIpsumChinese.txt">
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\TermsAndConditions\LoremIpsumEnglish.txt">
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\TermsAndConditions\LoremIpsumPolski.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Content>
     <Content Include="Style\Darkmode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -298,6 +313,10 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Page Include="TermsAndConditions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TrackManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
