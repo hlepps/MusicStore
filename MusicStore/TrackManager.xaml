@@ -43,7 +43,7 @@
                                 <ColumnDefinition Width="0.5*"/>
                                 <ColumnDefinition Width="7.75*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="*Track Name: " 
+                            <TextBlock Text="{DynamicResource trackname}" 
                                        Grid.Column="0" 
                                        HorizontalAlignment="Right" 
                                        VerticalAlignment="Center"
@@ -52,7 +52,7 @@
                                        FontWeight="Medium"/>
                             <DockPanel Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center">
                                 <Button x:Name="RestoreTrackNameButton" 
-                                        Content="Restore Track Name" 
+                                        Content="{DynamicResource restoretrackname}" 
                                         Margin="0,0,25,0" 
                                         Click="RestoreTrackName_Click"
                                         Foreground="White"
@@ -92,12 +92,12 @@
                                 <ColumnDefinition Width="7.75*"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0">
-                                <TextBlock Text="Cover Image: " 
+                                <TextBlock Text="{DynamicResource coverimage}" 
                                            HorizontalAlignment="Right"
                                            Foreground="{DynamicResource napisy}"
                                            FontFamily="InriaSans-Light"
                                            FontWeight="Medium"/>
-                                <TextBlock Text="[Supported files: .jpg / .jpeg / .png]" 
+                                <TextBlock Text="{DynamicResource supportedfiles}" 
                                            FontStyle="Italic" 
                                            FontSize="10"
                                            Foreground="{DynamicResource napisy}"
@@ -114,7 +114,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Button VerticalAlignment="Center" 
                                         HorizontalAlignment="Center" 
-                                        Content="Remove Image" 
+                                        Content="{DynamicResource removeimage}" 
                                         Grid.Column="0" 
                                         Click="SetDefaultCoverImage_Click"
                                         Foreground="White"
@@ -136,7 +136,7 @@
                                 <!--Button below is only visible when window works in edit mode [Loaded song ID exists]-->
                                 <Button VerticalAlignment="Center" 
                                         HorizontalAlignment="Center" 
-                                        Content="Restore Previous Image" 
+                                        Content="{DynamicResource restorepreviousimage}" 
                                         Grid.Column="1" 
                                         Click="RestoreCoverImage_Click"
                                         Foreground="White"
@@ -158,7 +158,7 @@
                                 <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
                                     <Button VerticalAlignment="Center" 
                                             HorizontalAlignment="Center" 
-                                            Content="Select File" 
+                                            Content="{DynamicResource selectfile}" 
                                             Click="SelectFile_Click"
                                             Foreground="White"
                                             BorderThickness="0"
@@ -200,7 +200,7 @@
                                 <ColumnDefinition Width="7.75*"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,0,0">
-                                <TextBlock Text="*Authors: " 
+                                <TextBlock Text="{DynamicResource authors}" 
                                            VerticalAlignment="Center" 
                                            HorizontalAlignment="Right"
                                            Foreground="{DynamicResource napisy}"
@@ -208,7 +208,7 @@
                                            FontWeight="Medium"/>
                                 <Separator Height="5" Opacity="0"/>
                                 <!--Pressing Button below opens new Author Manager window for adding new Author to database, after creation automatically adds to the list of artist to the right-->
-                                <Button Content="Add new Author" 
+                                <Button Content="{DynamicResource addnewauthor}" 
                                         VerticalAlignment="Center" 
                                         HorizontalAlignment="Right" 
                                         Click="AddNewAuthor_Click"
@@ -228,7 +228,7 @@
                                         </ControlTemplate>
                                     </Button.Template>
                                 </Button>
-                                <Button Content="Restore Authors" 
+                                <Button Content="{DynamicResource restoreauthors}" 
                                         Margin="0,10,0,0" 
                                         x:Name="RestoreAuthorsButton" 
                                         Click="RestoreAuthors_Click"
@@ -377,7 +377,7 @@
                                 </Button.Template>
                             </Button>
                         </Grid>
-                        <Separator Height="10"/>
+                        <Separator Height="10" Background="{DynamicResource paski}"/>
 
                         <!--File Import-->
                         <Grid>
@@ -387,12 +387,12 @@
                                 <ColumnDefinition Width="7.75*"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                <TextBlock Text="*Track File: " 
+                                <TextBlock Text="{DynamicResource trackfile}" 
                                            HorizontalAlignment="Right"
                                            Foreground="{DynamicResource napisy}"
                                            FontFamily="InriaSans-Light"
                                            FontWeight="Medium"/>
-                                <TextBlock Text="[Supported files: .mp3]" FontStyle="Italic" FontSize="10"
+                                <TextBlock Text="{DynamicResource supportedfiless}" FontStyle="Italic" FontSize="10"
                                            Foreground="{DynamicResource napisy}"
                                            FontFamily="InriaSans-Light"
                                            FontWeight="Medium"/>
@@ -406,7 +406,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Button VerticalAlignment="Center" 
                                         HorizontalAlignment="Center" 
-                                        Content="Clear File Path" 
+                                        Content="{DynamicResource clearfilepath}" 
                                         Grid.Column="0" 
                                         Click="ClearFilePath_Click"
                                         Foreground="White"
@@ -427,7 +427,7 @@
                                 </Button>
                                 <Button VerticalAlignment="Center" 
                                         HorizontalAlignment="Center" 
-                                        Content="Restore File Path" 
+                                        Content="{DynamicResource restorefilepath}" 
                                         Grid.Column="1" 
                                         Click="RestoreFilePath_Click"
                                         Foreground="White"
@@ -448,7 +448,7 @@
                                 </Button>
                                 <Button VerticalAlignment="Center" 
                                         HorizontalAlignment="Center" 
-                                        Content="Select File" 
+                                        Content="{DynamicResource selectfile2}" 
                                         Grid.Column="2" 
                                         Click="SelectTrackFile_Click"
                                         Foreground="White"
@@ -468,7 +468,7 @@
                                     </Button.Template>
                                 </Button>
                                 <StackPanel Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                    <TextBlock HorizontalAlignment="Center" Text="Selected File" FontWeight="Bold"
+                                    <TextBlock HorizontalAlignment="Center" Text="{DynamicResource selectedfile}" FontWeight="Bold"
                                                Foreground="{DynamicResource napisy}"
                                                FontFamily="InriaSans-Light"/>
                                     <StackPanel x:Name="LoadedFileStackPanel" Visibility="Visible">
@@ -481,7 +481,7 @@
                                 </StackPanel>
                             </Grid>
                         </Grid>
-                        <Separator Height="10"/>
+                        <Separator Height="10" Background="{DynamicResource paski}"/>
 
                         <!--Shop Price-->
                         <Grid>
@@ -491,11 +491,11 @@
                                 <ColumnDefinition Width="7.75*"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                <TextBlock Text="*Shop Price: " 
+                                <TextBlock Text="{DynamicResource shopprice}" 
                                            Foreground="{DynamicResource napisy}" HorizontalAlignment="Right" VerticalAlignment="Center"
                                            FontFamily="InriaSans-Light"
                                            FontWeight="Medium"/>
-                                <TextBlock Text="[Allowed format: XX.XX / XX]" FontStyle="Italic" FontSize="10"
+                                <TextBlock Text="{DynamicResource allowedformat}" FontStyle="Italic" FontSize="10"
                                            Foreground="{DynamicResource napisy}"
                                            FontFamily="InriaSans-Light"
                                            FontWeight="Medium"/>
@@ -503,7 +503,7 @@
                             <DockPanel Grid.Column="2">
                                 <Button VerticalAlignment="Center" 
                                         HorizontalAlignment="Center" 
-                                        Content="Restore Price" 
+                                        Content="{DynamicResource restoreprice}" 
                                         x:Name="RestorePriceButton" 
                                         Margin="0,0,25,0" 
                                         Click="RestorePrice_Click"
@@ -543,7 +543,7 @@
                                            FontWeight="Medium"/>
                             </DockPanel>
                         </Grid>
-                        <Separator Height="10"/>
+                        <Separator Height="10" Background="{DynamicResource paski}"/>
 
                     </StackPanel>
                 </ScrollViewer>
@@ -558,7 +558,7 @@
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" 
                             Margin="25,0" 
-                            Content="Reset Changes" 
+                            Content="{DynamicResource resetchanges}" 
                             Click="ResetChanges_Click"
                             Foreground="White"
                             BorderThickness="0"
@@ -576,7 +576,7 @@
                     </Button>
                     <Button Grid.Column="1" 
                             Margin="25,0" 
-                            Content="Save as New Track" 
+                            Content="{DynamicResource saveasnewtrack}" 
                             Click="SaveAsNewTrack_Click"
                             Foreground="White"
                             BorderThickness="0"
@@ -595,7 +595,7 @@
                     <!--Button 2 Content= {When editing track = "Save Changes" / When creating new Track = "Add New Track"}-->
                     <Button Grid.Column="2" 
                             Margin="25,0" 
-                            Content="Save Changes" 
+                            Content="{DynamicResource savechanges}" 
                             x:Name="SaveChangesButton" 
                             Click="SaveChanges_Click"
                             Foreground="White"
@@ -614,7 +614,7 @@
                     </Button>
                     <Button Grid.Column="3" 
                             Margin="25,0" 
-                            Content="Cancel" 
+                            Content="{DynamicResource cancel}" 
                             Click="Cancel_Click"
                             Foreground="White"
                             BorderThickness="0"
