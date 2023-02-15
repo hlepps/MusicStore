@@ -25,6 +25,7 @@ namespace MusicStore
         Pages.Library library = new Pages.Library();
         Pages.Options options = new Pages.Options();
         Pages.AccountSettings accountSettings = new Pages.AccountSettings();
+        Pages.Authors authors = new Pages.Authors();
 
         int styl;
         public void InitMainMenu()
@@ -154,6 +155,11 @@ namespace MusicStore
         private void Btnuser_Click(object sender, RoutedEventArgs e)
         {
             mainFrame.Content = accountSettings;
+        }
+
+        private void Btnauthor_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = authors;
         }
 
         private void btnlogout_Click(object sender, RoutedEventArgs e)

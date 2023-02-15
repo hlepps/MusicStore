@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\dofi2\OneDrive\Dokumenty\GitHub\MusicStore\MusicStore\obj\Debug\
+E:\GitHub\MusicStore\MusicStore\obj\Debug\
 MusicStore
 none
 false
 DEBUG;TRACE
 
-131283869722
-14-463084393
-31-969963660
-39-108407592
-App.xaml;BannerSetup.xaml;DebugWindow.xaml;Login.xaml;MainMenu.xaml;MusicPlayer.xaml;Pages\AccountSettings.xaml;Pages\AdminSettings.xaml;Pages\Library.xaml;Pages\Loading.xaml;Pages\Options.xaml;Register.xaml;TrackManager.xaml;
+16-1487249779
+141619203552
+35843730449
+39325191953
+AlbumManager.xaml;App.xaml;AuthorManager.xaml;BannerSetup.xaml;DebugWindow.xaml;Login.xaml;MainMenu.xaml;MusicPlayer.xaml;Pages\AccountSettings.xaml;Pages\AdminSettings.xaml;Pages\Authors.xaml;Pages\Library.xaml;Pages\Loading.xaml;Pages\Options.xaml;Register.xaml;TrackManager.xaml;
 
 True
 

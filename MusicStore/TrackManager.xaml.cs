@@ -30,13 +30,15 @@ namespace MusicStore
         private BitmapImage CoverImage;
         bool forceNewMP3 = false;
         bool forceNewImage = false;
-        
+        private ImageSource defaultImage;
+
         public TrackManager()
         {
             InitializeComponent();
             int nWidth = (int)System.Windows.SystemParameters.PrimaryScreenWidth;
             int nHeight = (int)System.Windows.SystemParameters.PrimaryScreenHeight;
             this.LayoutTransform = new ScaleTransform(nWidth / 2, nHeight / 2);
+            defaultImage = CoverPreviewImage.Source;
 
             AuthorsStackPanel.Children.Clear();
             Grid g = ObjectGenerationHelper.GetAuthorEmptyGrid();
@@ -123,11 +125,12 @@ namespace MusicStore
         }
         private void SetDefaultCoverImage_Click(object sender, RoutedEventArgs e)
         {
-           //Błąd przy linii 104, trzeba znaleźć sposób na załadowanie "default" opcji
-           // BitmapImage bitmapImage = new BitmapImage();
-           // Uri uri = new Uri("obrazy/note-gb4fa8b680_640.png");
-           // bitmapImage.UriSource = uri;
-           // CoverPreviewImage.Source = bitmapImage;
+            //Błąd przy linii 104, trzeba znaleźć sposób na załadowanie "default" opcji
+            // BitmapImage bitmapImage = new BitmapImage();
+            // Uri uri = new Uri("obrazy/note-gb4fa8b680_640.png");
+            // bitmapImage.UriSource = uri;
+            // CoverPreviewImage.Source = bitmapImage;
+            CoverPreviewImage.Source = defaultImage;
             forceNewImage = true;
         }
         private void SelectFile_Click(object sender, RoutedEventArgs e)

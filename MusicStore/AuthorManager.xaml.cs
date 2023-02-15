@@ -26,6 +26,7 @@ namespace MusicStore
         private DB.DBAuthor reference;
         private BitmapImage ArtistImage;
         bool forceNewImage = false;
+        private ImageSource defaultImage;
 
         public AuthorManager()
         {
@@ -33,6 +34,7 @@ namespace MusicStore
             int nWidth = (int)System.Windows.SystemParameters.PrimaryScreenWidth;
             int nHeight = (int)System.Windows.SystemParameters.PrimaryScreenHeight;
             this.LayoutTransform = new ScaleTransform(nWidth / 2, nHeight / 4);
+            defaultImage = CoverPreviewImage.Source;
             if(artistID == null)
             {
                 RestoreArtistNameButton.Visibility = Visibility.Hidden;
@@ -96,10 +98,14 @@ namespace MusicStore
         private void SetDefaultCoverImage_Click(object sender, RoutedEventArgs e)
         {
             //Błąd przy linii 104, trzeba znaleźć sposób na załadowanie "default" opcji
+            /* Błąd przy linijce Uri uri
             BitmapImage bitmapImage = new BitmapImage();
             Uri uri = new Uri("obrazy/note-gb4fa8b680_640.png");
             bitmapImage.UriSource = uri;
             CoverPreviewImage.Source = bitmapImage;
+            forceNewImage = true;
+            */
+            CoverPreviewImage.Source = defaultImage;
             forceNewImage = true;
         }
         private void SelectFile_Click(object sender, RoutedEventArgs e)

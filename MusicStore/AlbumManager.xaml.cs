@@ -29,6 +29,7 @@ namespace MusicStore
         public int? albumID = null; //Imported manually, null value will create new track
         private DB.DBAlbum reference;
         private BitmapImage CoverImage;
+        private ImageSource defaultImage;
 
         public AlbumManager()
         {
@@ -36,7 +37,7 @@ namespace MusicStore
             int nWidth = (int)System.Windows.SystemParameters.PrimaryScreenWidth;
             int nHeight = (int)System.Windows.SystemParameters.PrimaryScreenHeight;
             this.LayoutTransform = new ScaleTransform(nWidth / 2, nHeight / 2);
-
+            defaultImage = CoverPreviewImage.Source;
 
             TracksStackPanel.Children.Clear();
             Grid gt = ObjectGenerationHelper.GetAuthorEmptyGrid(); // CHANGE
@@ -123,6 +124,8 @@ namespace MusicStore
             // Uri uri = new Uri("obrazy/note-gb4fa8b680_640.png");
             // bitmapImage.UriSource = uri;
             // CoverPreviewImage.Source = bitmapImage;
+            CoverPreviewImage.Source = defaultImage;
+            //forceNewImage = true;
         }
         private void SelectFile_Click(object sender, RoutedEventArgs e)
         {
