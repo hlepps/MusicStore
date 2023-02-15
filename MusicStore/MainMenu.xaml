@@ -130,7 +130,7 @@
                         <!--Przycisk jest na całe pole, po naciśnięciu ma otwierać osobne okno do edycji loga oraz nazwy studia jeśli użytkownik jest Administratorem-->
                         <Button x:Name="OpenStudioDetailsButton" HorizontalAlignment="Center" VerticalAlignment="Stretch" Grid.Column="0" Background="Transparent" Click="OpenStudioDetailsButton_Click" IsEnabled="False">
                             <Canvas Width="{Binding ActualWidth, ElementName=OpenStudioDetailsButton}" Height="{Binding ActualHeight, ElementName=OpenStudioDetailsButton}">
-                                <Border Width="1528" Margin="-2,-2,0,0" Height="172" CornerRadius="8,8,0,0">
+                                <Border  Margin="-2,-2,0,0" Width="{Binding ActualWidth, ElementName=BannerCanvas}" Height="{Binding ActualHeight, ElementName=OpenStudioDetailsButton}" CornerRadius="8,8,0,0" >
                                     <Border.Background>
                                         <ImageBrush x:Name="BannerBackground" ImageSource="placeholder_bannerbackground.jpg" Stretch="Fill"/>
                                     </Border.Background>
