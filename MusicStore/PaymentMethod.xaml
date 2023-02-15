@@ -1,0 +1,41 @@
+﻿<Window x:Class="MusicStore.PaymentMethod"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MusicStore"
+        mc:Ignorable="d"
+        Title="Payment Method" ResizeMode="NoResize" WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Width="384"
+        Height="216"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Select Payment Method" FontWeight="Bold" FontSize="24"/>
+        <StackPanel Grid.Row="1" Margin="25,0" VerticalAlignment="Center">
+            <RadioButton GroupName="method" IsChecked="True" x:Name="RadioButtonWallet" Margin="0,5">
+                <StackPanel Orientation="Horizontal">
+                    <Image Height="{Binding ActualHeight, ElementName=RadioButtonWallet}" Width="{Binding ActualHeight, ElementName=RadioButtonWallet}" Source="obrazy/wallet.png"/>
+                    <TextBlock VerticalAlignment="Center" Text="Account Wallet" Margin="10,0,0,0"/>
+                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" x:Name="walletValue" FontStyle="Italic" Text="[X PLN]" Opacity="0.5"/>
+                    <TextBlock x:Name="fundsCheck" Text="NOT ENOUGH FUNDS" VerticalAlignment="Center" Margin="10,0,0,0" TextDecorations="{x:Null}" FontStyle="Italic" Opacity="0.5" Foreground="Red"/>
+                </StackPanel>
+            </RadioButton>
+            <RadioButton GroupName="method" x:Name="RadioButtonCard" Margin="0,5">
+                <StackPanel Orientation="Horizontal">
+                    <Image Height="{Binding ActualHeight, ElementName=RadioButtonWallet}" Width="{Binding ActualHeight, ElementName=RadioButtonWallet}" Source="obrazy/swipe-card.png"/>
+                    <TextBlock VerticalAlignment="Center" Text="Payment Card" Margin="10,0,0,0"/>
+                </StackPanel>
+            </RadioButton>
+        </StackPanel>
+        <StackPanel Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" Orientation="Horizontal" x:Name="stackpanel">
+            <Button Margin="0,10,25,10" Content="BUY" Width="{Binding ActualHeight, ElementName=stackpanel}" Click="Buy_Click"/>
+            <Button Margin="25,10,0,10" Content="CANCEL" Width="{Binding ActualHeight, ElementName=stackpanel}" Click="Close_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

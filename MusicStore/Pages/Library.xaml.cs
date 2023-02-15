@@ -504,5 +504,47 @@ namespace MusicStore.Pages
             albumManager.ReloadWindow();
             albumManager.ShowDialog();
         }
+
+        private void BuyItem_Click(object sender, RoutedEventArgs e)
+        {
+            if(UserFunctions.VerifyUserPermission(1))
+            {
+                PaymentMethod paymentMethod = new PaymentMethod();
+                double tmp;
+                if(savedIdIsSong)
+                {
+                    DB.DBSong reference = DB.DBSongsSaved.Get(savedID);
+                    tmp = reference.price;
+                }
+                else
+                {
+                    DB.DBAlbum reference = DB.DBAlbumsSaved.Get(savedID);
+                    tmp = reference.price;
+                }
+                paymentMethod.itemPrice = tmp;
+                paymentMethod.RefreshWindow();
+                paymentMethod.ShowDialog();
+            }
+            else
+            {
+                StringBuilder messageBoxText = new StringBuilder();
+                messageBoxText.Append("Shop purchases are not available for Guest accounts.");
+                messageBoxText.AppendLine();
+                messageBoxText.AppendLine();
+                messageBoxText.Append("Would you like to register as new account?");
+                messageBoxText.AppendLine();
+                messageBoxText.AppendLine();
+                messageBoxText.Append("Register now and receive 25 PLN as a welcome gift!");
+                if (MessageBox.Show(messageBoxText.ToString(), "Insufficient Permissions", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    register nowyuser = new register();
+                    //nowyuser = load data from current guest user for Register data inputs
+                    if ((bool)nowyuser.ShowDialog())
+                    {
+
+                    }
+                }
+            }
+        }
     }
 }

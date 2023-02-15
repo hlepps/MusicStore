@@ -75,5 +75,22 @@ namespace MusicStore
             }
             this.Show();
         }
+
+        private void btnguest_Click(object sender, RoutedEventArgs e)
+        {
+            
+            Loading.instance.Show();
+            System.Threading.Thread.Sleep(1000);
+            //CREATE GUEST USER
+            DBConn.instance.CreateGuest();
+            DB.DBAlbumsSaved.PreloadAll();
+            DB.DBSongsSaved.PreloadAll();
+            MainMenu menu = new MainMenu();
+            menu.InitMainMenu();
+            menu.Show();
+            this.Hide();           
+            Loading.instance.Hide();
+            
+        }
     }
 }

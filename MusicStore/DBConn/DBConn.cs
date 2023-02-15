@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using MusicStore.DB;
+using System.Windows.Media.Imaging;
 
 namespace MusicStore
 {
@@ -139,6 +140,18 @@ namespace MusicStore
             return false;
         }
 
+        public void CreateGuest()
+        {          
+            currentUser = new DB.DBUser();
+            currentUser.username = "Guest";
+            currentUser.wallet = 0;
+            currentUser.permission = 0;
+            currentUser.library = new DB.DBLibrary();
+            currentUser.library.ReloadLibrary();
+            DB.DBImage defaultAvatar = new DB.DBImage();            
+            defaultAvatar.bitmap = new BitmapImage(new Uri(@"/obrazy/note-gb4fa8b680_640.png", UriKind.Relative));
+            currentUser.avatar = defaultAvatar;                
+        }
         
     }
 }

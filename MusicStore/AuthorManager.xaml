@@ -42,7 +42,7 @@
                                 <ColumnDefinition Width="0.5*"/>
                                 <ColumnDefinition Width="7.75*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="{DynamicResource artistname} " 
+                            <TextBlock Text="{DynamicResource artistname}" 
                                        Grid.Column="0" 
                                        HorizontalAlignment="Right" 
                                        VerticalAlignment="Center"

@@ -42,7 +42,7 @@
                                 <ColumnDefinition Width="0.5*"/>
                                 <ColumnDefinition Width="7.75*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="{DynamicResource albumname} " 
+                            <TextBlock Text="{DynamicResource albumname}" 
                                        Grid.Column="0" 
                                        HorizontalAlignment="Right" 
                                        VerticalAlignment="Center"
@@ -269,7 +269,7 @@
                                 <ColumnDefinition Width="7.75*"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,0,0">
-                                <TextBlock Text="{DynamicResource tracks2} " 
+                                <TextBlock Text="{DynamicResource tracks2}" 
                                            VerticalAlignment="Center" 
                                            HorizontalAlignment="Right"
                                            Foreground="{DynamicResource napisy}"

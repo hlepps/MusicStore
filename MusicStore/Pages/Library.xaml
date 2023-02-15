@@ -339,6 +339,7 @@
                             Style="{DynamicResource button2}"
                             Width="90"
                             Height="40"
+                            Click="BuyItem_Click"
                             BorderThickness="0">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">

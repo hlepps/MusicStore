@@ -101,7 +101,7 @@
                 <StackPanel Width="250"
                             Orientation="Vertical"
                             Margin="71,80,71,-391">
-                    
+
                     <Image Source="{DynamicResource logo}"
                            Width="100" Height="100"/>
                     <TextBlock Text="Vinyl Library"
@@ -144,8 +144,8 @@
                              >
 
                     </PasswordBox>
-
-                    <Button    x:Name="btnlogowanie"
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button    x:Name="btnlogowanie"
                                Content="{DynamicResource signin}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
@@ -153,7 +153,7 @@
                                FontFamily="InriaSans-Light"
                                Cursor="Hand"
                                Click="btnlogowanie_click"
-                               Margin="0,20,0,0"
+                               Margin="0,20,12.5,0"
                                Style="{DynamicResource button1}"       
                         >
                         <Button.Template>
@@ -168,7 +168,31 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button    x:Name="btnrejestracja"
+                        <Button    x:Name="btnguest"
+                               Content="Login as Guest"
+                               FontSize="14"
+                               BorderThickness="5,5,5,5"
+                               Foreground="White"
+                               FontFamily="InriaSans-Light"
+                               Cursor="Hand"
+                               Click="btnguest_Click"
+                               Margin="12.5,20,0,0"
+                               Style="{DynamicResource button1}"       
+                        >
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="102"
+                                        Height="30"
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                <Button    x:Name="btnrejestracja"
                                Content="{DynamicResource register}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"

@@ -22,7 +22,7 @@ namespace MusicStore
     public partial class MainMenu : Window
     {
         public static MainMenu instance;
-        Pages.Library library = new Pages.Library();
+        public Pages.Library library = new Pages.Library();
         Pages.Options options = new Pages.Options();
         Pages.AccountSettings accountSettings = new Pages.AccountSettings();
         public Pages.Authors authors = new Pages.Authors();
@@ -40,6 +40,14 @@ namespace MusicStore
             else
             {
                 OpenStudioDetailsButton.IsEnabled = false;
+            }
+            if (UserFunctions.VerifyUserPermission(1))
+            {
+                
+            }
+            else
+            {
+                btnbiblioteka.IsEnabled = false;
             }
             instance = this;
 

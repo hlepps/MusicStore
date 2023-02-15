@@ -170,6 +170,9 @@
     <Compile Include="Pages\Options.xaml.cs">
       <DependentUpon>Options.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PaymentMethod.xaml.cs">
+      <DependentUpon>PaymentMethod.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TermsAndConditions.xaml.cs">
       <DependentUpon>TermsAndConditions.xaml</DependentUpon>
     </Compile>
@@ -266,6 +269,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PaymentMethod.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Register.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -283,9 +290,11 @@
     <Content Include="obrazy\music vibe.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="obrazy\swipe-card.png" />
     <Content Include="obrazy\thanos.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="obrazy\wallet.png" />
     <Content Include="Resources\TermsAndConditions\LoremIpsumChinese.txt">
       <Generator>XamlIntelliSenseFileGenerator</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
