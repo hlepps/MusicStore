@@ -43,6 +43,7 @@ namespace MusicStore
 
         private void btnzamykanie_click(object sender, RoutedEventArgs e)
         {
+            Application.Current.Shutdown();
             Close();
         }
 
