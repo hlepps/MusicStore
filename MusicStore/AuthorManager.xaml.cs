@@ -135,6 +135,7 @@ namespace MusicStore
             if (TrackNameTextBox.Text.Any())
             {
                 DBAuthorsSaved.Add(TrackNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source));
+                MusicStore.MainMenu.instance.authors.ReloadAuthors();
                 this.Close();
             }
             else
@@ -150,6 +151,7 @@ namespace MusicStore
                     DBAuthorsSaved.Update((int)artistID, TrackNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source));
                 else
                     DBAuthorsSaved.Update((int)artistID, TrackNameTextBox.Text, DBAuthorsSaved.Get((int)artistID).id);
+                MusicStore.MainMenu.instance.authors.ReloadAuthors();
             }
             else SaveAsNewArtist_Click(sender, e);
         }
