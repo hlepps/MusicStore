@@ -95,6 +95,8 @@ namespace MusicStore.DB
             MySqlCommand cmd = new MySqlCommand($"UPDATE authors SET name = '{name}', image_id='{image_id}' WHERE id='{id}'", DBConn.instance.conn);
             DBConn.instance.PrepareConnection();
             cmd.ExecuteNonQuery();
+            dictionary.Remove(id);
+            Get(id);
         }
 
     }

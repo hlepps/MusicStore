@@ -164,6 +164,18 @@ namespace MusicStore.DB
                     temp.image = DBImagesSaved.Get((int)row[2]);
                     temp.price = (double)row[3];
                     temp.songurlid = (int)row[4];
+                    temp.authors = new List<DBAuthor>();
+
+                    DBConn.instance.PrepareConnection();
+                    MySqlCommand a = new MySqlCommand($"SELECT author_id FROM songauthors where song_id={temp.id}", DBConn.instance.conn);
+                    DataTable dt2 = new DataTable();
+                    dt2.Load(a.ExecuteReader());
+                    foreach (DataRow row2 in dt2.Rows)
+                    {
+                        //System.Diagnostics.Trace.WriteLine((int)row[0]);
+                        temp.authors.Add(DBAuthorsSaved.Get((int)row2[0]));
+                    }
+
                     dictionary.Add(temp.id, temp);
                     System.Diagnostics.Trace.WriteLine(temp.name);
                 }
@@ -197,7 +209,6 @@ namespace MusicStore.DB
             DBConn.instance.PrepareConnection();
             cmd.ExecuteNonQuery();
             int id = (int)cmd.LastInsertedId;
-            Get(id);
 
             foreach(int authorID in authorsIDs)
             {
@@ -205,6 +216,7 @@ namespace MusicStore.DB
                 DBConn.instance.PrepareConnection();
                 a.ExecuteNonQuery();
             }
+            Get(id);
 
             return id;
         }
@@ -225,6 +237,8 @@ namespace MusicStore.DB
                 DBConn.instance.PrepareConnection();
                 a.ExecuteNonQuery();
             }
+            dictionary.Remove(id);
+            Get(id);
 
         }
 

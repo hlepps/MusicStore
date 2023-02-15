@@ -236,34 +236,7 @@
                                     </Grid.ColumnDefinitions>
                                     <ComboBox Grid.Column="1" x:Name="authorComboBox">
                                         <!--ComboBoxItems are dynamically generated list of Author in database-->
-                                        <!--ComboBoxItem Example //FOR DEBUG PURPOSE ONLY-->
-                                        <ComboBoxItem IsSelected="True">
-                                            <DockPanel>
-                                                <Image Height="27" Width="27" Source="obrazy/logo.png"/>
-                                                <Separator Width="25" Opacity="0"/>
-                                                <TextBlock VerticalAlignment="Center" 
-                                                           HorizontalAlignment="Left" 
-                                                           Text="Artist Name_X"
-                                                           Foreground="{DynamicResource darknap}"
-                                                           Background="Transparent"
-                                                           FontFamily="InriaSans-Light"
-                                                           FontWeight="Medium"/>
-                                            </DockPanel>
-                                        </ComboBoxItem>
-                                        <ComboBoxItem>
-                                            <DockPanel>
-                                                <Image Height="27" Width="27" Source="obrazy/album.png"/>
-                                                <Separator Width="25" Opacity="0"/>
-                                                <TextBlock VerticalAlignment="Center" 
-                                                           HorizontalAlignment="Left" 
-                                                           Text="Artist Name_Y"
-                                                           Foreground="{DynamicResource darknap}"
-                                                           Background="Transparent"
-                                                           FontFamily="InriaSans-Light"
-                                                           FontWeight="Medium"/>
-                                            </DockPanel>
-                                        </ComboBoxItem>
-                                        <!--END OF EXAMPLE-->
+                                        
                                     </ComboBox>
                                 </Grid>
                                 <!--Dynamic Generation of Author ComboBox Grid Elements-->

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicStore.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,33 @@ namespace MusicStore.Pages
         public void ReloadAuthors()
         {
             AuthorStackPanel.Children.Clear();
+            DBAuthorsSaved.GetAll();
+            foreach(DB.DBAuthor a in DB.DBAuthorsSaved.dictionary.Values)
+            {
+                Button b = new Button();
+                b.Name = "a" + a.id;
+                b.Margin = new Thickness(10);
+                b.Click += EditAuthor_Click;
+                StackPanel sp = new StackPanel();
+                sp.Orientation = Orientation.Horizontal;
+                sp.Margin = new Thickness(5);
+                Image i = new Image();
+                i.Source = a.image.bitmap;
+                i.Width = 54;
+                i.Height = 54;
+                i.HorizontalAlignment = HorizontalAlignment.Left;
+                i.VerticalAlignment = VerticalAlignment.Center;
+                i.Margin = new Thickness(0, 0, 10, 0);
+                sp.Children.Add(i);
+                TextBlock tb = new TextBlock();
+                tb.Text = a.name;
+                tb.VerticalAlignment = VerticalAlignment.Center;
+                tb.FontWeight = FontWeights.Bold;
+                tb.FontSize = 36;
+                sp.Children.Add(tb);
+                b.Content = sp;
+                AuthorStackPanel.Children.Add(b);
+            }
             //Load Authors List
             //foreach Author in List -> Spawn Button from template in xaml
         }

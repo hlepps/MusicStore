@@ -46,6 +46,33 @@ namespace MusicStore
             gt.Children.Add(AddTrackButton);
             TracksStackPanel.Children.Add(gt);
             RemoveTrackButton.Visibility = Visibility.Collapsed;
+
+            foreach (DBAuthor author in DBAuthorsSaved.dictionary.Values)
+            {
+                ComboBoxItem cbi = new ComboBoxItem();
+                cbi.Name = "a" + author.id;
+                DockPanel dp = new DockPanel();
+                Image img = new Image();
+                img.Height = 27;
+                img.Width = 27;
+                img.Source = author.image.bitmap;
+                dp.Children.Add(img);
+                Separator s = new Separator();
+                s.Width = 25;
+                s.Opacity = 0;
+                dp.Children.Add(s);
+                TextBlock tb = new TextBlock();
+                tb.VerticalAlignment = VerticalAlignment.Center;
+                tb.HorizontalAlignment = HorizontalAlignment.Left;
+                tb.Text = author.name;
+                tb.Foreground = (Brush)FindResource("darknap");
+                tb.Background = Brushes.Transparent;
+                tb.FontWeight = FontWeights.Medium;
+                dp.Children.Add(tb);
+                cbi.Content = dp;
+
+                authorComboBox.Items.Add(cbi);
+            }
         }
 
         public void ReloadWindow() //Manually called function to load site layout and values after assigning (or not) album ID
@@ -344,12 +371,6 @@ namespace MusicStore
 
             if (albumID != null)
             {
-                Grid a = (Grid)AuthorsStackPanel.Children[AuthorsStackPanel.Children.Count - 1];
-
-                ComboBox cb = new ComboBox();
-                cb.SetValue(Grid.ColumnProperty, 1);
-                a.Children.Add(cb);
-
                 int c = 0;
                 int sav = 0;
                 foreach (DBAuthor author in DBAuthorsSaved.dictionary.Values)
@@ -376,13 +397,13 @@ namespace MusicStore
                     dp.Children.Add(tb);
                     cbi.Content = dp;
 
-                    cb.Items.Add(cbi);
+                    authorComboBox.Items.Add(cbi);
                     if (author == DBAlbumsSaved.Get((int)albumID).author)
                         sav = c;
 
                     c++;
                 }
-                cb.SelectedIndex = sav;
+                authorComboBox.SelectedIndex = sav;
 
                 Grid b = ObjectGenerationHelper.GetAuthorEmptyGrid();
 

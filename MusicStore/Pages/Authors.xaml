@@ -13,7 +13,7 @@
             <StackPanel x:Name="AuthorStackPanel" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <!--Whenever page refreshes, AuthorStackPanel is cleared and reloaded with Author list from database-->
                 <!--TEMPLATE of generated object//FOR DEBUG USE ONLY-->
-                <Button x:Name="artistID" Margin="10" Click="EditArtist_Click">
+                <Button x:Name="artistID" Margin="10" Click="EditAuthor_Click">
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <Image Source="../obrazy/logo.png" Width="54" Height="54" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,10,0"/>
                         <TextBlock Text="Artist Name" VerticalAlignment="Center" FontWeight="Bold" FontSize="36"/>

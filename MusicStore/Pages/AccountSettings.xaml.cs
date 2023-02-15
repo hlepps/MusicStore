@@ -32,7 +32,7 @@ namespace MusicStore.Pages
 
             foreach(DBLibraryObject obj in DBConn.instance.currentUser.library.itemlist)
             {
-                if (obj.GetType() == typeof(DB.DBAlbum))
+                if (obj is DB.DBAlbum)
                 {
                     DBImage dbi = ((DB.DBAlbum)obj).image;
                     if (!images.Contains(dbi))
@@ -41,7 +41,7 @@ namespace MusicStore.Pages
                     if(!images.Contains(((DB.DBAlbum)obj).author.image))
                         images.Add(((DB.DBAlbum)obj).author.image);
                 }
-                else if (obj.GetType() == typeof(DB.DBSong))
+                else if (obj is DB.DBSong)
                 {
                     DBImage dbi = ((DB.DBSong)obj).image;
                     if (!images.Contains(dbi))

@@ -139,13 +139,46 @@ namespace MusicStore.DB
             return album;
         }
 
+        public static void GetAll()
+        {
+            DBConn.instance.PrepareConnection();
+            MySqlCommand authorcmd = new MySqlCommand($"SELECT id, name, image_id, mainauthor_id, price FROM albums", DBConn.instance.conn);
+            DataTable dt = new DataTable();
+            dt.Load(authorcmd.ExecuteReader());
+            foreach (DataRow row in dt.Rows)
+            {
+                if (!dictionary.ContainsKey((int)row[0]))
+                {
+                    DB.DBAlbum album = new DB.DBAlbum();
+                    album.id = (int)row[0];
+                    album.name = (string)row[1];
+                    album.image = DB.DBImagesSaved.Get((int)row[2]);
+                    album.author = DB.DBAuthorsSaved.Get((int)row[3]);
+                    album.price = (double)row[4];
+                    album.songs = new List<DBLibraryObject>();
+
+                    DBConn.instance.PrepareConnection();
+                    MySqlCommand a = new MySqlCommand($"SELECT song_id FROM songsinalbums where album_id={album.id}", DBConn.instance.conn);
+                    DataTable dt2 = new DataTable();
+                    dt2.Load(a.ExecuteReader());
+                    foreach (DataRow row2 in dt2.Rows)
+                    {
+                        //System.Diagnostics.Trace.WriteLine((int)row[0]);
+                        album.songs.Add(DBSongsSaved.Get((int)row2[0]));
+                    }
+
+                    dictionary.Add(album.id, album);
+                    System.Diagnostics.Trace.WriteLine(album.name);
+                }
+            }
+        }
+
         public static int Add(string name, int image_id, double price, int mainauthor_id, List<int> songIDs)
         {
             MySqlCommand cmd = new MySqlCommand($"INSERT INTO albums (name, image_id, mainauthor_id, price) VALUES ('{name}', {image_id}, {mainauthor_id}, {price})", DBConn.instance.conn);
             DBConn.instance.PrepareConnection();
             cmd.ExecuteNonQuery();
             int id = (int)cmd.LastInsertedId;
-            Get(id);
 
             foreach (int songID in songIDs)
             {
@@ -153,6 +186,7 @@ namespace MusicStore.DB
                 DBConn.instance.PrepareConnection();
                 a.ExecuteNonQuery();
             }
+            Get(id);
 
             return id;
         }
@@ -173,6 +207,9 @@ namespace MusicStore.DB
                 DBConn.instance.PrepareConnection();
                 a.ExecuteNonQuery();
             }
+
+            dictionary.Remove(id);
+            Get(id);
 
         }
 

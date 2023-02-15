@@ -218,9 +218,12 @@ namespace MusicStore.Pages
                     break;
 
                 case Mode.Shop:
-                    DB.DBSongsSaved.PreloadAll();
-                    DB.DBAlbumsSaved.PreloadAll();
-                    RefreshItems(DB.DBSongsSaved.GetAllFromDictionary());
+                    DB.DBSongsSaved.GetAll();
+                    DB.DBAlbumsSaved.GetAll();
+                    List<DB.DBLibraryObject> all = new List<DB.DBLibraryObject>();
+                    all.AddRange(DB.DBAlbumsSaved.GetAllFromDictionary());
+                    all.AddRange(DB.DBSongsSaved.GetAllFromDictionary());
+                    RefreshItems(all);
                     break;
 
                 case Mode.Album:
