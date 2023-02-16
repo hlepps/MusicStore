@@ -44,7 +44,10 @@ namespace MusicStore
 
         public void ReloadWindow() //Manually called function to load site layout and values after assigning (or not) artist ID
         {
-            SetArtistReference((int)artistID);
+            if(artistID!=null)
+            {
+                SetArtistReference((int)artistID);
+            }
             SetManagerLayout();
             LoadArtistInfo();
         }
