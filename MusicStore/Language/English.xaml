@@ -97,4 +97,5 @@
     <TextBlock x:Key="saveasnewauthor" Text="Save as New Author"/>
     <TextBlock x:Key="savechanges3" Text="Save Changes"/>
     <TextBlock x:Key="cancel3" Text="Cancel"/>
+    <TextBlock x:Key="authorlist" Text="Author List"/>
 </ResourceDictionary>
