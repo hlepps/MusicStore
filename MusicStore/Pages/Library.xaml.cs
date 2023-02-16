@@ -531,7 +531,7 @@ namespace MusicStore.Pages
                 messageBoxText.Append("Shop purchases are not available for Guest accounts.");
                 messageBoxText.AppendLine();
                 messageBoxText.AppendLine();
-                messageBoxText.Append("Would you like to register as new account?");
+                messageBoxText.Append("Would you like to register as a new account?");
                 messageBoxText.AppendLine();
                 messageBoxText.AppendLine();
                 messageBoxText.Append("Register now and receive 25 PLN as a welcome gift!");

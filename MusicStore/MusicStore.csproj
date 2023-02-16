@@ -135,6 +135,9 @@
       <DependentUpon>BannerSetup.xaml</DependentUpon>
     </Compile>
     <Compile Include="BPMDetector.cs" />
+    <Compile Include="CardInfo.xaml.cs">
+      <DependentUpon>CardInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DBConn\DBAlbum.cs" />
     <Compile Include="DBConn\DBAuthor.cs" />
     <Compile Include="DBConn\DBConfig.cs" />
@@ -202,6 +205,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BannerSetup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CardInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

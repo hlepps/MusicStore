@@ -107,7 +107,7 @@ namespace MusicStore
 
             if (Security.IsAlphanumeric(username) && Security.IsAlphanumeric(password))
             {
-                string sql = $"SELECT username, passhash, permission, wallet, library, avatar_id FROM users WHERE username='{username}' AND passhash='{passhash}'";
+                string sql = $"SELECT username, passhash, permission, wallet, library, avatar_id, paymentinfo FROM users WHERE username='{username}' AND passhash='{passhash}'";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 PrepareConnection();
@@ -115,7 +115,7 @@ namespace MusicStore
                 if (rdr.HasRows)
                 {
                     rdr.Read();
-                    object[] a = { rdr[0], rdr[1], rdr[2], rdr[3], rdr[4], rdr[5] };
+                    object[] a = { rdr[0], rdr[1], rdr[2], rdr[3], rdr[4], rdr[5], rdr[6] };
                     //System.Windows.MessageBox.Show($"user: {rdr[0]}, permission: {rdr[2]}, wallet: {rdr[3]}zł, library: {rdr[4]}", "Login", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
                     currentUser = new DB.DBUser();
                     currentUser.username = username;
@@ -124,6 +124,8 @@ namespace MusicStore
                     currentUser.library = new DB.DBLibrary();
                     currentUser.library.ReloadLibrary();
                     currentUser.avatar = DB.DBImagesSaved.Get((int)a[5]);
+                    string s = (string)a[6];
+                    currentUser.creditInfo = s.Split(',');
                     return true;
 
                 }

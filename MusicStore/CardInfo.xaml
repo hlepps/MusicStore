@@ -1,0 +1,81 @@
+﻿<Window x:Class="MusicStore.CardInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MusicStore"
+        mc:Ignorable="d"
+        Title="Payment Info" ResizeMode="NoResize" WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Width="384"       
+        Height="216"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <StackPanel
+                            Grid.Row="0"
+                            Orientation="Vertical"
+                            Margin="10">
+            <TextBlock Text="{DynamicResource NEWPAYMENT}"
+                               Foreground="{DynamicResource napisy}"
+                               FontWeight="Medium"
+                               FontFamily="InriaSans-Light"
+                               FontSize="18"
+                               Margin="12,15,0,0"/>
+            <TextBox x:Name="nrcardtxt"
+                             Background="Transparent"
+                             Foreground="{DynamicResource napisy}"
+                             FontSize="16"
+                             FontFamily="InriaSans-Light"
+                             BorderBrush="{DynamicResource paski}"
+                             BorderThickness="0,0,0,2"
+                               Margin="12,15,42,0"/>
+            <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource CVCVCV}"
+                               Foreground="{DynamicResource napisy}"
+                               FontWeight="Medium"
+                               FontFamily="InriaSans-Light"
+                               FontSize="18"
+                               Margin="12,0,0,0" Width="98"
+                               HorizontalAlignment="Left"/>
+                    <TextBox x:Name="cvvtxt"
+                             Background="Transparent"
+                             Foreground="{DynamicResource napisy}"
+                             FontSize="16"
+                             FontFamily="InriaSans-Light"
+                             BorderBrush="{DynamicResource paski}"
+                             BorderThickness="0,0,0,2"
+                             Margin="12,15,0,0" Width="98"
+                             HorizontalAlignment="Left"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource datacard}"
+                               Foreground="{DynamicResource napisy}"
+                               FontWeight="Medium"
+                               FontFamily="InriaSans-Light"
+                               FontSize="18"
+                               Margin="12,0,0,0" Width="194"
+                               HorizontalAlignment="Left"/>
+                    <TextBox x:Name="datetxt"
+                             Background="Transparent"
+                             Foreground="{DynamicResource napisy}"
+                             FontSize="16"
+                             FontFamily="InriaSans-Light"
+                             BorderBrush="{DynamicResource paski}"
+                             BorderThickness="0,0,0,2"
+                             Margin="12,15,0,0" Width="98"
+                             HorizontalAlignment="Left"/>
+                </StackPanel>
+            </StackPanel>
+            
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Content="Save Changes" Margin="0,0,25,0" x:Name="saveButton" Click="Save_Click"/>
+            <Button Content="Cancel" Margin="25,0,0,0" Width="{Binding ActualWidth, ElementName=saveButton}" Click="Close_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

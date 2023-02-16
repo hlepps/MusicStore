@@ -30,6 +30,8 @@
                 <StackPanel Orientation="Horizontal">
                     <Image Height="{Binding ActualHeight, ElementName=RadioButtonWallet}" Width="{Binding ActualHeight, ElementName=RadioButtonWallet}" Source="obrazy/swipe-card.png"/>
                     <TextBlock VerticalAlignment="Center" Text="Payment Card" Margin="10,0,0,0"/>
+                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" x:Name="cardNumber" FontStyle="Italic" Text="**** **** **** XXXX" Opacity="0.5"/>
+                    <Button  VerticalAlignment="Center" Margin="10,0,0,0" Content="EDIT INFO" Click="EditCard_Click"/>
                 </StackPanel>
             </RadioButton>
         </StackPanel>

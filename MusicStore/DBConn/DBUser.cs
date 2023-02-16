@@ -33,16 +33,15 @@ namespace MusicStore.DB
             if (rdr.HasRows)
             {
                 rdr.Read();
-                object[] a = { rdr[0], rdr[1], rdr[2], rdr[3], rdr[4], rdr[5] };
+                object[] a = { rdr[0], rdr[1], rdr[2], rdr[3], rdr[4], rdr[5], rdr[6] };
                 //System.Windows.MessageBox.Show($"user: {rdr[0]}, permission: {rdr[2]}, wallet: {rdr[3]}zł, library: {rdr[4]}", "Login", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
                 temp.username = username;
                 temp.wallet = (double)a[3];
                 temp.permission = (int)a[2];
                 temp.library = new DB.DBLibrary();
                 temp.avatar = DB.DBImagesSaved.Get((int)a[5]);
-                string s = (string)a[6];
+                string s = (string)a[6];                
                 temp.creditInfo = s.Split(',');
-
             }
 
             if (temp.username == "~")
