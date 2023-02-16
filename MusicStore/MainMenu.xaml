@@ -136,19 +136,20 @@
                                     </Border.Background>
                                 </Border>
                                 <Grid x:Name="StudioNameGrid" Background="Transparent" Height="{Binding ActualHeight, ElementName=BannerCanvas}" VerticalAlignment="Stretch" Margin="0,0,0,0" Panel.ZIndex="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="85.6"/>
-                                        <RowDefinition/>
-                                    </Grid.RowDefinitions>
+                                    
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="{Binding ActualHeight, ElementName=BannerCanvas}"/>
                                         <ColumnDefinition Width="1*"/>
                                     </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="85.6"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
                                     <Viewbox Grid.Row="1" Grid.Column="1">
                                         <TextBlock x:Name="StudioName" Foreground="{DynamicResource napisy}" FontWeight="Bold" FontFamily="InriaSans-Light" Margin="10,0,0,0" Text="Vinyl Library" VerticalAlignment="Center"/>
                                     </Viewbox>
                                 </Grid>
-                                <Border Height="160" Width="160" Margin="4" CornerRadius="10" BorderThickness="4">
+                                <Border Height="160" Width="160" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="4" CornerRadius="10" BorderThickness="4">
                                     <Border.Background>
                                         <ImageBrush x:Name="StudioLogo" ImageSource="obrazy/logo.png"/>
                                     </Border.Background>
@@ -268,7 +269,7 @@
                             </Button.Template>
                         </Button>
                         <Button    x:Name="btnauthors"
-                               Content="Author List"
+                               Content="{DynamicResource authorlist}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"

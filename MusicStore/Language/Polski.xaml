@@ -97,4 +97,5 @@
     <TextBlock x:Key="saveasnewauthor" Text="Zapisz Jako Nowego Autora"/>
     <TextBlock x:Key="savechanges3" Text="Zapisz Zmiany"/>
     <TextBlock x:Key="cancel3" Text="Zamknij"/>
+    <TextBlock x:Key="authorlist" Text="Lista Autorów"/>
 </ResourceDictionary>
