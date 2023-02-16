@@ -55,9 +55,16 @@ namespace MusicStore
 
         private void LoadCardInfo()
         {
-            string tmpcardNumber="XXXX XXXX XXXX ";
-            tmpcardNumber = tmpcardNumber + DBConn.instance.currentUser.creditInfo[0].Substring(12);
-            cardNumber.Text = tmpcardNumber;
+            if(DBConn.instance.currentUser.creditInfo[0].Any())
+            {
+                string tmpcardNumber = "XXXX XXXX XXXX ";
+                tmpcardNumber = tmpcardNumber + DBConn.instance.currentUser.creditInfo[0].Substring(12);
+                cardNumber.Text = tmpcardNumber;
+            }
+            else
+            {
+                cardNumber.Text = "No card saved";
+            }           
         }
 
         private void Buy_Click(object sender, RoutedEventArgs e)

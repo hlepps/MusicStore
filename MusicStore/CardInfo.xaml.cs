@@ -26,9 +26,12 @@ namespace MusicStore
         }
         private void LoadCardInfo()
         {
-            nrcardtxt.Text = DBConn.instance.currentUser.creditInfo[0];
-            cvvtxt.Text = DBConn.instance.currentUser.creditInfo[1];
-            datetxt.Text = DBConn.instance.currentUser.creditInfo[2];
+            if (DBConn.instance.currentUser.creditInfo[0].Any())
+            {
+                nrcardtxt.Text = DBConn.instance.currentUser.creditInfo[0];
+                cvvtxt.Text = DBConn.instance.currentUser.creditInfo[1];
+                datetxt.Text = DBConn.instance.currentUser.creditInfo[2];
+            }
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {
