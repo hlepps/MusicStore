@@ -9,35 +9,80 @@
         WindowStartupLocation="CenterScreen"
         Width="384"
         Height="216"
-        >
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="2*"/>
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Select Payment Method" FontWeight="Bold" FontSize="24"/>
-        <StackPanel Grid.Row="1" Margin="25,0" VerticalAlignment="Center">
-            <RadioButton GroupName="method" IsChecked="True" x:Name="RadioButtonWallet" Margin="0,5">
-                <StackPanel Orientation="Horizontal">
-                    <Image Height="{Binding ActualHeight, ElementName=RadioButtonWallet}" Width="{Binding ActualHeight, ElementName=RadioButtonWallet}" Source="obrazy/wallet.png"/>
-                    <TextBlock VerticalAlignment="Center" Text="Account Wallet" Margin="10,0,0,0"/>
-                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" x:Name="walletValue" FontStyle="Italic" Text="[X PLN]" Opacity="0.5"/>
-                    <TextBlock x:Name="fundsCheck" Text="NOT ENOUGH FUNDS" VerticalAlignment="Center" Margin="10,0,0,0" TextDecorations="{x:Null}" FontStyle="Italic" Opacity="0.5" Foreground="Red"/>
-                </StackPanel>
-            </RadioButton>
-            <RadioButton GroupName="method" x:Name="RadioButtonCard" Margin="0,5">
-                <StackPanel Orientation="Horizontal">
-                    <Image Height="{Binding ActualHeight, ElementName=RadioButtonWallet}" Width="{Binding ActualHeight, ElementName=RadioButtonWallet}" Source="obrazy/swipe-card.png"/>
-                    <TextBlock VerticalAlignment="Center" Text="Payment Card" Margin="10,0,0,0"/>
-                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" x:Name="cardNumber" FontStyle="Italic" Text="**** **** **** XXXX" Opacity="0.5"/>
-                    <Button  VerticalAlignment="Center" Margin="10,0,0,0" Content="EDIT INFO" Click="EditCard_Click"/>
-                </StackPanel>
-            </RadioButton>
-        </StackPanel>
-        <StackPanel Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" Orientation="Horizontal" x:Name="stackpanel">
-            <Button Margin="0,10,25,10" Content="BUY" Width="{Binding ActualHeight, ElementName=stackpanel}" Click="Buy_Click"/>
-            <Button Margin="25,10,0,10" Content="CANCEL" Width="{Binding ActualHeight, ElementName=stackpanel}" Click="Close_Click"/>
-        </StackPanel>
-    </Grid>
+        Background="Transparent">
+    <Border BorderThickness="4"
+            CornerRadius="15">
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="1,1" EndPoint="0,0" GradientStops="{DynamicResource rama}">
+
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" GradientStops="{DynamicResource tlo}">
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" Foreground="{DynamicResource napisy}" VerticalAlignment="Center" FontFamily="InriaSans-Light" Text="{DynamicResource selectpaymentmethod}" FontWeight="Bold" FontSize="24"/>
+            <StackPanel Grid.Row="1" Margin="25,0" VerticalAlignment="Center">
+                <RadioButton GroupName="method" IsChecked="True" x:Name="RadioButtonWallet" Foreground="{DynamicResource napisy}" Background="{DynamicResource napisy}" BorderBrush="{DynamicResource paski}" Margin="0,5">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="{Binding ActualHeight, ElementName=RadioButtonWallet}" Width="{Binding ActualHeight, ElementName=RadioButtonWallet}" Source="{DynamicResource wallet}"/>
+                        <TextBlock VerticalAlignment="Center" Text="{DynamicResource accountwallet}" Margin="10,0,0,0"/>
+                        <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" x:Name="walletValue" FontStyle="Italic" Text="[X PLN]" Opacity="0.5"/>
+                        <TextBlock x:Name="fundsCheck" Text="{DynamicResource notenoughfunds}" VerticalAlignment="Center" Margin="10,0,0,0" TextDecorations="{x:Null}" FontStyle="Italic" Opacity="0.5" Foreground="Red"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton GroupName="method" x:Name="RadioButtonCard" Foreground="{DynamicResource napisy}" Background="{DynamicResource napisy}" BorderBrush="{DynamicResource paski}" Margin="0,5">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="{Binding ActualHeight, ElementName=RadioButtonWallet}" Width="{Binding ActualHeight, ElementName=RadioButtonWallet}" Source="{DynamicResource swipecard}"/>
+                        <TextBlock VerticalAlignment="Center" Text="{DynamicResource paymentcard}" Margin="10,0,0,0"/>
+                        <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" x:Name="cardNumber" FontStyle="Italic" Text="**** **** **** XXXX" Opacity="0.5"/>
+                        <Button  VerticalAlignment="Center" Style="{DynamicResource button1}" BorderThickness="0" Foreground="White" Width="80" Height="20" Margin="10,0,0,0" Content="{DynamicResource editinfo}" Click="EditCard_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                </RadioButton>
+            </StackPanel>
+            <StackPanel Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" Orientation="Horizontal" x:Name="stackpanel">
+                <Button Margin="0,10,25,10" Content="{DynamicResource buy}" Style="{DynamicResource button1}" Foreground="White" BorderThickness="0" Width="{Binding ActualHeight, ElementName=stackpanel}" Click="Buy_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Margin="25,10,0,10" Content="{DynamicResource CANCEL}" Style="{DynamicResource button2}" Foreground="White" BorderThickness="0" Width="{Binding ActualHeight, ElementName=stackpanel}" Click="Close_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>

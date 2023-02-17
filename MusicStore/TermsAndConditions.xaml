@@ -10,16 +10,37 @@
         Width="480"
         Height="864"
         Background="Transparent">
-    <Grid>
-        <Grid.RowDefinitions>
+    <Border CornerRadius="20" BorderThickness="4">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" GradientStops="{DynamicResource tlo}">
+            </LinearGradientBrush>
+        </Border.Background>
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="1,1" EndPoint="0,0" GradientStops="{DynamicResource rama}">
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Grid>
+            <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="8*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" FontWeight="Bold" Text="Terms And Conditions" FontSize="44" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Background="White"/>
+            <TextBlock Grid.Row="0" FontWeight="Bold" Foreground="{DynamicResource napisy}" Text="{DynamicResource termsandconditions}" FontSize="44" HorizontalAlignment="Center" FontFamily="InriaSans-Light" VerticalAlignment="Center" Margin="8" Background="Transparent"/>
         <ScrollViewer Grid.Row="1">
-            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Margin="10" x:Name="ContentTextBlock" Background="White"/>
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Margin="10" Foreground="{DynamicResource napisy}" x:Name="ContentTextBlock" Background="Transparent"/>
         </ScrollViewer>
-        <Button Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Content="CLOSE" Click="CloseWindow_Click" FontSize="36" FontWeight="Bold"/>
-    </Grid>
+            <Button Grid.Row="2" Width="150" Height="50" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="10" Content="{DynamicResource CLOSE}" Click="CloseWindow_Click" FontFamily="InriaSans-Light" FontSize="31" Style="{DynamicResource button1}" FontWeight="Bold">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                                        CornerRadius="8"
+                                        Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+    </Border>
 </Window>

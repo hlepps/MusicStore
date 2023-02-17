@@ -59,4 +59,6 @@
     </Style>
 
     <BitmapImage x:Key="logo" UriSource="/obrazy/light.png"/>
+    <BitmapImage x:Key="wallet" UriSource="/obrazy/walletlight.png"/>
+    <BitmapImage x:Key="swipecard" UriSource="/obrazy/swipe-cardlight.png"/>
 </ResourceDictionary>

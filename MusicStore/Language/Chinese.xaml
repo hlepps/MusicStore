@@ -98,4 +98,23 @@
     <TextBlock x:Key="savechanges3" Text="保存更改"/>
     <TextBlock x:Key="cancel3" Text="取消"/>
     <TextBlock x:Key="authorlist" Text="作者名单"/>
+    <s:String x:Key="changeicon">更改配置文件</s:String>
+    <TextBlock x:Key="resignadminpower" Text="退出管理员权限"/>
+    <TextBlock x:Key="editpower" Text="编辑权限"/>
+    <TextBlock x:Key="readregulation" Text="阅读条款和条件"/>
+    <TextBlock x:Key="deletaccount" Text="删除帐户"/>
+    <TextBlock x:Key="logout2" Text="登出"/>
+    <s:String x:Key="termsandconditions">法令</s:String>
+    <TextBlock x:Key="CLOSE" Text="关闭"/>
+    <s:String x:Key="acceptdevilterms">我已阅读并接受规定</s:String>
+    <TextBlock x:Key="Openterms" Text="开放条款和条件"/>
+    <TextBlock x:Key="savechanges4" Text="保存更改"/>
+    <TextBlock x:Key="cancel4" Text="取消"/>
+    <s:String x:Key="selectpaymentmethod">选择付款方式</s:String>
+    <s:String x:Key="accountwallet">账户钱包</s:String>
+    <s:String x:Key="notenoughfunds">资源不足</s:String>
+    <s:String x:Key="paymentcard">信用卡</s:String>
+    <TextBlock x:Key="editinfo" Text="编辑"/>
+    <TextBlock x:Key="buy" Text="买"/>
+    <TextBlock x:Key="CANCEL" Text="取消"/>
 </ResourceDictionary>

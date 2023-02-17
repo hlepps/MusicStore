@@ -98,4 +98,25 @@
     <TextBlock x:Key="savechanges3" Text="Save Changes"/>
     <TextBlock x:Key="cancel3" Text="Cancel"/>
     <TextBlock x:Key="authorlist" Text="Author List"/>
+    <!--Te poniżej przetłumacz, a potem usuń ten komentarz-->
+    <s:String x:Key="changeicon">Zmień Profilowe</s:String>
+    <TextBlock x:Key="resignadminpower" Text="Zrezygnuj z Uprawnien Administratora"/>
+    <TextBlock x:Key="editpower" Text="Edytuj Uprawnienia"/>
+    <TextBlock x:Key="readregulation" Text="Przeczytaj Regulamin"/>
+    <TextBlock x:Key="deletaccount" Text="Usuń Konto"/>
+    <TextBlock x:Key="logout2" Text="Wyloguj się"/>
+    <!--Dalej nie ruszaj-->
+    <s:String x:Key="termsandconditions">Terms And Conditions</s:String>
+    <TextBlock x:Key="CLOSE" Text="CLOSE"/>
+    <s:String x:Key="acceptdevilterms">I have read and accept the regulations</s:String>
+    <TextBlock x:Key="Openterms" Text="Open Terms and Conditions"/>
+    <TextBlock x:Key="savechanges4" Text="Save Changes"/>
+    <TextBlock x:Key="cancel4" Text="Cancel"/>
+    <s:String x:Key="selectpaymentmethod">Select Payment Method</s:String>
+    <s:String x:Key="accountwallet">Account Wallet</s:String>
+    <s:String x:Key="notenoughfunds">NOT ENOUGH FUNDS</s:String>
+    <s:String x:Key="paymentcard">Payment Card</s:String>
+    <TextBlock x:Key="editinfo" Text="EDIT INFO"/>
+    <TextBlock x:Key="buy" Text="BUY"/>
+    <TextBlock x:Key="CANCEL" Text="CANCEL"/>
 </ResourceDictionary>

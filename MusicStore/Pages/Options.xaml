@@ -60,8 +60,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <!--Stylowanie Comboboxa-->
-        
     </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>

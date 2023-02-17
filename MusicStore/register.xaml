@@ -11,6 +11,61 @@
         MouseDown="Window_MouseDown"
         Background="Transparent"
         AllowsTransparency="True">
+    <Window.Resources>
+        <!--Stylowanie checkboxa-->
+        <Style x:Key="ToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource napisy}"/>
+            <Setter Property="Height" Value="51"/>
+            <Setter Property="Width" Value="33"/>
+            <Setter Property="MaxHeight" Value="51"/>
+            <Setter Property="MaxWidth" Value="33"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Grid>
+                            <Border Background="Transparent"
+                                    CornerRadius="10"
+                                    Height="{TemplateBinding Height}"
+                                    Width="{TemplateBinding Width}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    >
+                            </Border>
+                            <Ellipse x:Name="Ellipse"
+                                     Height="20"
+                                     Width="20"
+                                     VerticalAlignment="Top"
+                                     Fill="Transparent"
+                                     Stroke="{DynamicResource fill}"
+                                     StrokeThickness="4"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="Checked">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetName="Ellipse"
+                                                            Storyboard.TargetProperty="Margin"
+                                                            To="0 30 0 0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Unchecked">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetName="Ellipse"
+                                                            Storyboard.TargetProperty="Margin"
+                                                            To="0 0 0 0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
     <Border CornerRadius="40">
         <Border.Background>
             <ImageBrush ImageSource="obrazy/skyrim.png"/>
@@ -147,7 +202,7 @@
                              BorderThickness="0,0,0,2"
                              >
                     </PasswordBox>
-                    <TextBlock Text="Regulamin"
+                    <TextBlock Text="{DynamicResource termsandconditions}"
                                Foreground="{DynamicResource napisy}"
                                FontWeight="Medium"
                                FontFamily="InriaSans-Light"
@@ -155,11 +210,40 @@
                                Margin="12,15,0,0"/>
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="*" Background="White"/>
-                            <CheckBox x:Name="TaCCheckBox"/>
-                            <TextBlock Text="Zapoznałem się i akceptuje regulamin" Margin="10,0,0,0" Background="White"/>
+                            <TextBlock Text="*" Foreground="{DynamicResource napisy}" Background="Transparent"/>
+                            <Border Width="30"
+                                    Height="60"
+                                    BorderThickness="4"
+                                    CornerRadius="15">
+                                <Border.BorderBrush>
+                                    <LinearGradientBrush StartPoint="1,1" EndPoint="0,0" GradientStops="{DynamicResource checkbox}">
+
+                                    </LinearGradientBrush>
+                                </Border.BorderBrush>
+                                <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="TaCCheckBox" Style="{DynamicResource ToggleButtonStyle}"/>
+                            </Border>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="{DynamicResource acceptdevilterms}" Foreground="{DynamicResource napisy}" Height="20" Width="210" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Center" Background="Transparent"/>
+                                <Button Grid.Row="1" HorizontalAlignment="Center" Height="20" Width="150" BorderThickness="0" VerticalAlignment="Center" Foreground="White" Content="{DynamicResource Openterms}" Click="OpenTaC_Click" Style="{DynamicResource button1}">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </Grid>
+                            
                         </StackPanel>
-                        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Content="Otwórz Regulamin" Click="OpenTaC_Click"/>
+                        
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="15,25,15,-80">
                         <Button    x:Name="btncreate_account"

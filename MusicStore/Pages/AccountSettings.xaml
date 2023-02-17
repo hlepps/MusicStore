@@ -10,11 +10,11 @@
 
     <Grid>
         <Image x:Name="pfp" HorizontalAlignment="Left" Height="128" Margin="30,10,0,0" VerticalAlignment="Top" Width="128" Source="../obrazy/logo.png"/>
-        <TextBlock x:Name="UsertypeTextBlock" Foreground="{DynamicResource napisy}" Margin="30,147,0,0" FontSize="13" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Zmień profilowe" Width="128" />
+        <TextBlock x:Name="UsertypeTextBlock" Foreground="{DynamicResource napisy}" TextAlignment="Center" Margin="30,147,0,0" FontSize="13" HorizontalAlignment="Left" VerticalAlignment="Top" Text="{DynamicResource changeicon}" Width="128" />
 
         <ComboBox x:Name="pictureCombo" HorizontalAlignment="Left" Margin="30,164,0,0" VerticalAlignment="Top" Width="128" SelectionChanged="pictureCombo_SelectionChanged"/>
         <Button    x:Name="btnusun"
-                               Content="Usuń konto"
+                               Content="{DynamicResource deletaccount}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"
@@ -39,7 +39,7 @@
             </Button.Template>
         </Button>
         <Button    x:Name="btnwyloguj"
-                               Content="Wyloguj się"
+                               Content="{DynamicResource logout2}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"
@@ -66,7 +66,7 @@
         <Border x:Name="AdminSettingsBorder" BorderThickness="0" Width="390" HorizontalAlignment="Left" Margin="250,10,0,10">
             <Grid>
                 <Button    x:Name="btnzrezygnuj"
-                               Content="Zrezygnuj z uprawnien administratora"
+                               Content="{DynamicResource resignadminpower}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"
@@ -91,7 +91,7 @@
                     </Button.Template>
                 </Button>
                 <Button    x:Name="btnnadaj"
-                               Content="Edytuj uprawnienia"
+                               Content="{DynamicResource editpower}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"
@@ -117,7 +117,7 @@
                 </Button>
                 
                 <Button    x:Name="btnTaC"
-                               Content="Przeczytaj Regulamin"
+                               Content="{DynamicResource readregulation}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"

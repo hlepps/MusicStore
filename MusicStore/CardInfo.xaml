@@ -9,8 +9,19 @@
         WindowStartupLocation="CenterScreen"
         Width="384"       
         Height="216"
+        Background="Transparent"
         >
-    <Grid>
+    <Border BorderThickness="4"
+            CornerRadius="15">
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="1,1" EndPoint="0,0" GradientStops="{DynamicResource rama}">
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" GradientStops="{DynamicResource tlo}">
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="8*"/>
             <RowDefinition Height="2*"/>
@@ -74,8 +85,31 @@
             
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Content="Save Changes" Margin="0,0,25,0" x:Name="saveButton" Click="Save_Click"/>
-            <Button Content="Cancel" Margin="25,0,0,0" Width="{Binding ActualWidth, ElementName=saveButton}" Click="Close_Click"/>
-        </StackPanel>
+                <Button Content="{DynamicResource savechanges4}" Margin="0,0,25,0" x:Name="saveButton" Foreground="White" BorderThickness="0" Width="100" Height="25"  Click="Save_Click" Style="{DynamicResource button1}">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Content="{DynamicResource cancel4}" Margin="25,0,0,0" Width="{Binding ActualWidth, ElementName=saveButton}" Foreground="White" BorderThickness="0" Style="{DynamicResource button2}" Click="Close_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                                        CornerRadius="5"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
     </Grid>
+        </Border>
 </Window>

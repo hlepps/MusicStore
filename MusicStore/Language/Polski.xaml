@@ -98,4 +98,23 @@
     <TextBlock x:Key="savechanges3" Text="Zapisz Zmiany"/>
     <TextBlock x:Key="cancel3" Text="Zamknij"/>
     <TextBlock x:Key="authorlist" Text="Lista Autorów"/>
+    <s:String x:Key="changeicon">Zmień Profilowe</s:String>
+    <TextBlock x:Key="resignadminpower" Text="Zrezygnuj z Uprawnien Administratora"/>
+    <TextBlock x:Key="editpower" Text="Edytuj Uprawnienia"/>
+    <TextBlock x:Key="readregulation" Text="Przeczytaj Regulamin"/>
+    <TextBlock x:Key="deletaccount" Text="Usuń Konto"/>
+    <TextBlock x:Key="logout2" Text="Wyloguj się"/>
+    <s:String x:Key="termsandconditions">Regulamin</s:String>
+    <TextBlock x:Key="CLOSE" Text="ZAMKNIJ"/>
+    <s:String x:Key="acceptdevilterms">Zapoznałem się i akceptuje regulamin</s:String>
+    <TextBlock x:Key="Openterms" Text="Otwórz Regulamin"/>
+    <TextBlock x:Key="savechanges4" Text="Zapisz Zmiany"/>
+    <TextBlock x:Key="cancel4" Text="Zamknij"/>
+    <s:String x:Key="selectpaymentmethod">Wybierz Metodę Płatności</s:String>
+    <s:String x:Key="accountwallet">Portfel Konta</s:String>
+    <s:String x:Key="notenoughfunds">NIEWYSTARCZAJĄCE ŚRODKI</s:String>
+    <s:String x:Key="paymentcard">Karta Płatnicza</s:String>
+    <TextBlock x:Key="editinfo" Text="EDYTUJ"/>
+    <TextBlock x:Key="buy" Text="KUP"/>
+    <TextBlock x:Key="CANCEL" Text="ZAMKNIJ"/>
 </ResourceDictionary>
