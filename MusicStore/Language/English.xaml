@@ -3,7 +3,7 @@
     <TextBlock x:Key="signin" Text="Sign in"/>
     <TextBlock x:Key="register" Text="Register"/>
     <TextBlock x:Key="createaccount" Text="Create account"/>
-    <TextBlock x:Key="backtologin" Text="Back to login"/>
+    <TextBlock x:Key="backtologin" Text="Cancel"/>
     <s:String x:Key="LOGIN">LOGIN</s:String>
     <s:String x:Key="USERNAME">Username</s:String>
     <s:String x:Key="PASSWORD">Password</s:String>
@@ -12,7 +12,7 @@
     <s:String x:Key="NEWPASSWORD">Password</s:String>
     <s:String x:Key="REPEATNEWPASSWORD">Repeat password</s:String>
     <s:String x:Key="NEWPAYMENT">Credit card number</s:String>
-    <s:String x:Key="BANNERSETUP">BANNERSETUP</s:String>
+    <s:String x:Key="BANNERSETUP">BANNER SETUP</s:String>
     <s:String x:Key="APPBANNER">App banner</s:String>
     <s:String x:Key="STUDIOLOGO">Studio logo</s:String>
     <TextBlock x:Key="choosebtn1" Text="Select File"/>
@@ -24,7 +24,7 @@
     <s:String x:Key="USER">User: </s:String>
     <s:String x:Key="USERTYPE">User type: </s:String>
     <s:String x:Key="AVAIBLEFUNDS">Available funds: </s:String>
-    <TextBlock x:Key="logoutbtn" Text="Log out"/>
+    <TextBlock x:Key="logoutbtn" Text="Logout"/>
     <TextBlock x:Key="changestylebtn" Text="Change Style"/>
     <TextBlock x:Key="changelanbtn" Text="Change Language"/>
     <TextBlock x:Key="optionuserbtn" Text="Account Settings"/>
@@ -40,7 +40,7 @@
     <s:String x:Key="currentmode">Current Mode</s:String>
     <s:String x:Key="selecteditems">Selected items: </s:String>
     <s:String x:Key="price">Price: </s:String>
-    <TextBlock x:Key="addtocart" Text="Add to Cart"/>
+    <TextBlock x:Key="addtocart" Text="Buy"/>
     <s:String x:Key="playsample">Play Sample</s:String>
     <s:String x:Key="tracks">Tracks: </s:String>
     <TextBlock x:Key="openalbum" Text="Open Album"/>
@@ -94,21 +94,19 @@
     <TextBlock x:Key="restoreartistname" Text="Restore Artist Name"/>
     <s:String x:Key="artistimage">Artist Image:</s:String>
     <TextBlock x:Key="resetchanges3" Text="Reset Changes"/>
-    <TextBlock x:Key="saveasnewauthor" Text="Save as New Author"/>
+    <TextBlock x:Key="saveasnewauthor" Text="Save as a New Author"/>
     <TextBlock x:Key="savechanges3" Text="Save Changes"/>
     <TextBlock x:Key="cancel3" Text="Cancel"/>
     <TextBlock x:Key="authorlist" Text="Author List"/>
-    <!--Te poniżej przetłumacz, a potem usuń ten komentarz-->
-    <s:String x:Key="changeicon">Zmień Profilowe</s:String>
-    <TextBlock x:Key="resignadminpower" Text="Zrezygnuj z Uprawnien Administratora"/>
-    <TextBlock x:Key="editpower" Text="Edytuj Uprawnienia"/>
-    <TextBlock x:Key="readregulation" Text="Przeczytaj Regulamin"/>
-    <TextBlock x:Key="deletaccount" Text="Usuń Konto"/>
-    <TextBlock x:Key="logout2" Text="Wyloguj się"/>
-    <!--Dalej nie ruszaj-->
+    <s:String x:Key="changeicon">Change Profile Icon</s:String>
+    <TextBlock x:Key="resignadminpower" Text="Resign from Admin privileges"/>
+    <TextBlock x:Key="editpower" Text="Edit Privileges"/>
+    <TextBlock x:Key="readregulation" Text="Read Terms and Conditions"/>
+    <TextBlock x:Key="deletaccount" Text="Delete Account"/>
+    <TextBlock x:Key="logout2" Text="Logout"/>
     <s:String x:Key="termsandconditions">Terms And Conditions</s:String>
     <TextBlock x:Key="CLOSE" Text="CLOSE"/>
-    <s:String x:Key="acceptdevilterms">I have read and accept the regulations</s:String>
+    <s:String x:Key="acceptdevilterms">I have read and accept Terms And Conditions</s:String>
     <TextBlock x:Key="Openterms" Text="Open Terms and Conditions"/>
     <TextBlock x:Key="savechanges4" Text="Save Changes"/>
     <TextBlock x:Key="cancel4" Text="Cancel"/>

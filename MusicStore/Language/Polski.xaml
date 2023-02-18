@@ -40,7 +40,7 @@
     <s:String x:Key="currentmode">Obecny Tryb</s:String>
     <s:String x:Key="selecteditems">Wybrane elementy: </s:String>
     <s:String x:Key="price">Cena: </s:String>
-    <TextBlock x:Key="addtocart" Text="Dodaj do listy"/>
+    <TextBlock x:Key="addtocart" Text="Kup"/>
     <s:String x:Key="playsample">Odtwórz próbkę</s:String>
     <s:String x:Key="tracks">Utwory: </s:String>
     <TextBlock x:Key="openalbum" Text="Otwórz Album"/>
