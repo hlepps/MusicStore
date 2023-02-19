@@ -153,7 +153,7 @@ namespace MusicStore
                 if(forceNewImage)
                     DBAuthorsSaved.Update((int)artistID, TrackNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source));
                 else
-                    DBAuthorsSaved.Update((int)artistID, TrackNameTextBox.Text, DBAuthorsSaved.Get((int)artistID).id);
+                    DBAuthorsSaved.Update((int)artistID, TrackNameTextBox.Text, DBImagesSaved.dictionary.FirstOrDefault(x => x.Value == DBAuthorsSaved.Get((int)artistID).image).Key);
                 MusicStore.MainMenu.instance.authors.ReloadAuthors();
             }
             else SaveAsNewArtist_Click(sender, e);
