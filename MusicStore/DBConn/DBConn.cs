@@ -80,7 +80,7 @@ namespace MusicStore
             if (Security.IsAlphanumeric(username) && Security.IsAlphanumeric(password))
             {
                 
-                string sql = $"INSERT INTO users (username, passhash, permission, wallet, avatar_id, paymentinfo, lastStyle, lastLanguage, library) VALUES ('{username}', '{passhash}', 1, 25, 0, '{cc + "," + cvv + "," + date}', 0, 'English', '')";
+                string sql = $"INSERT INTO users (username, passhash, permission, wallet, avatar_id, paymentinfo, lastStyle, lastLanguage, library) VALUES ('{username}', '{passhash}', 1, 25, 0, '{cc + "," + cvv + "," + date}', 0, 'Language/English.xaml', '')";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 PrepareConnection();
