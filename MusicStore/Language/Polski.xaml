@@ -153,4 +153,12 @@
     <s:String x:Key="asthemainadmin">Jako główny administrator nie możesz usunąć swojego konta</s:String>
     <s:String x:Key="accountdelete">Usuwanie konta</s:String>
     <s:String x:Key="areyoudelete">Czy na pewno chcesz usunąć swoje konto?</s:String>
+    <s:String x:Key="totalafter">Po zakupie: </s:String>
+    <s:String x:Key="nocardsaved">Brak zapisanej karty</s:String>
+    <s:String x:Key="paymentsuccesfull">Płatność powiodła się.</s:String>
+    <s:String x:Key="thisitemhasbeen">Ta pozycja została przypisana do Twojej biblioteki, a środki zostały wycofane.</s:String>
+    <s:String x:Key="notfundsselected">Za mało środków na wybraną pozycję.</s:String>
+    <s:String x:Key="pleaseselectanothercard">Wybierz inną formę płatności.</s:String>
+    <s:String x:Key="currentversionnot">Obecna wersja nie obsługuje płatności kartami płatniczymi.</s:String>
+    <s:String x:Key="paymentfailed">Płatność nie powiodła się</s:String>
 </ResourceDictionary>

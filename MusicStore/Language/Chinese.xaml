@@ -153,4 +153,12 @@
     <s:String x:Key="asthemainadmin">作为主管理员，您不能删除您的帐户</s:String>
     <s:String x:Key="accountdelete">删除帐户</s:String>
     <s:String x:Key="areyoudelete">您确定要删除您的帐户吗?</s:String>
+    <s:String x:Key="totalafter">总后: </s:String>
+    <s:String x:Key="nocardsaved">没有保存卡</s:String>
+    <s:String x:Key="paymentsuccesfull">付款成功。</s:String>
+    <s:String x:Key="thisitemhasbeen">此项目已分配给您的图书馆，资金已被撤回。</s:String>
+    <s:String x:Key="notfundsselected">所选项目的资金不足。</s:String>
+    <s:String x:Key="pleaseselectanothercard">请选择其他付款方式。</s:String>
+    <s:String x:Key="currentversionnot">当前版本不支持支付卡支付。</s:String>
+    <s:String x:Key="paymentfailed">支付失败</s:String>
 </ResourceDictionary>

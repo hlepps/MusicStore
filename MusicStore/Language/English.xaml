@@ -153,4 +153,12 @@
     <s:String x:Key="asthemainadmin">As the main admin, you cannot delete your account</s:String>
     <s:String x:Key="accountdelete">Deleting account</s:String>
     <s:String x:Key="areyoudelete">Are you sure you want to delete your account?</s:String>
+    <s:String x:Key="totalafter">Total after: </s:String>
+    <s:String x:Key="nocardsaved">No card saved</s:String>
+    <s:String x:Key="paymentsuccesfull">Payment succesful.</s:String>
+    <s:String x:Key="thisitemhasbeen">This item has been assigned to your Library and funds had been withdrawn.</s:String>
+    <s:String x:Key="notfundsselected">Not enough funds for selected item.</s:String>
+    <s:String x:Key="pleaseselectanothercard">Please select another form of payment.</s:String>
+    <s:String x:Key="currentversionnot">Current version does not support paying by Payment Cards.</s:String>
+    <s:String x:Key="paymentfailed">Payment Failed</s:String>
 </ResourceDictionary>

@@ -45,11 +45,11 @@ namespace MusicStore
             double tmp = DBConn.instance.currentUser.wallet - itemPrice;
             if(tmp>=0)
             {
-                fundsCheck.Text = "Total after: " + tmp + " PLN";
+                fundsCheck.Text = (string)FindResource("totalafter") + tmp + " PLN";
             }
             else
             {
-                fundsCheck.Text = "NOT ENOUGH FUNDS";
+                fundsCheck.Text = (string)FindResource("notenoughfunds");
             }
         }
 
@@ -63,7 +63,7 @@ namespace MusicStore
             }
             else
             {
-                cardNumber.Text = "No card saved";
+                cardNumber.Text = (string)FindResource("nocardsaved");
             }           
         }
 
@@ -76,32 +76,32 @@ namespace MusicStore
                 {
                     //Remove funds from account, assign item to user library
                     StringBuilder stringBuilder = new StringBuilder();
-                    stringBuilder.Append("Payment succesful.");
+                    stringBuilder.Append((string)FindResource("paymentsuccesfull")); 
                     stringBuilder.AppendLine();
                     stringBuilder.AppendLine();
-                    stringBuilder.Append("This item has been assigned to your Library and funds had been withdrawn.");
-                    MessageBox.Show(stringBuilder.ToString(), "Payment Succesful", MessageBoxButton.OK, MessageBoxImage.Information);
+                    stringBuilder.Append((string)FindResource("thisitemhasbeen"));
+                    MessageBox.Show(stringBuilder.ToString(), (string)FindResource("paymentsuccesfull"), MessageBoxButton.OK, MessageBoxImage.Information);
                     MusicStore.MainMenu.instance.library.RefreshPage();
                     this.Close();
                 }
                 else
                 {
                     StringBuilder stringBuilder = new StringBuilder();
-                    stringBuilder.Append("Not enough funds for selected item.");
+                    stringBuilder.Append((string)FindResource("notfundsselected")); 
                     stringBuilder.AppendLine();
                     stringBuilder.AppendLine();
-                    stringBuilder.Append("Please select another form of payment.");
-                    MessageBox.Show(stringBuilder.ToString(), "Payment Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                    stringBuilder.Append((string)FindResource("pleaseselectanothercard")); 
+                    MessageBox.Show(stringBuilder.ToString(), (string)FindResource("paymentfailed"), MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else if(RadioButtonCard.IsChecked.Value)
             {
                 StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.Append("Current version does not support paying by Payment Cards.");
+                stringBuilder.Append((string)FindResource("currentversionnot"));
                 stringBuilder.AppendLine();
                 stringBuilder.AppendLine();
-                stringBuilder.Append("Please select another form of payment.");
-                MessageBox.Show(stringBuilder.ToString(), "Payment Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                stringBuilder.Append((string)FindResource("pleaseselectanothercard"));
+                MessageBox.Show(stringBuilder.ToString(), (string)FindResource("paymentfailed"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private void EditCard_Click(object sender, RoutedEventArgs e)
