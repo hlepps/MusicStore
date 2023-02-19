@@ -117,4 +117,16 @@
     <TextBlock x:Key="editinfo" Text="编辑"/>
     <TextBlock x:Key="buy" Text="买"/>
     <TextBlock x:Key="CANCEL" Text="取消"/>
+    <TextBlock x:Key="loginasguest" Text="以访客身份登录"/>
+    <s:String x:Key="playtrackcs">播放曲目</s:String>
+    <s:String x:Key="playsamplecs">播放样本</s:String>
+    <s:String x:Key="youareabouttoremove">您即将删除 </s:String>
+    <s:String x:Key="itemsfromthedatabase"> 数据库中的项目。</s:String>
+    <s:String x:Key="inresults,these">结果，这些项目将从商店、它们关联的任何相册以及拥有这些项目的任何用户的图书馆中移除。</s:String>
+    <s:String x:Key="THISACTION">此操作无法撤消!</s:String>
+    <s:String x:Key="proceed">继续?</s:String>
+    <s:String x:Key="shoppurchasesare">来宾帐户不可使用商店购买。</s:String>
+    <s:String x:Key="wouldyouliketo">您想注册一个新帐户吗?</s:String>
+    <s:String x:Key="registernowand">立即注册并获得 25 波兰兹罗提的欢迎礼物!</s:String>
+    <s:String x:Key="insufficientpermissions">权限不足</s:String>
 </ResourceDictionary>

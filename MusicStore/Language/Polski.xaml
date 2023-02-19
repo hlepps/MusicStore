@@ -117,4 +117,16 @@
     <TextBlock x:Key="editinfo" Text="EDYTUJ"/>
     <TextBlock x:Key="buy" Text="KUP"/>
     <TextBlock x:Key="CANCEL" Text="ZAMKNIJ"/>
+    <TextBlock x:Key="loginasguest" Text="Zaloguj jako Gość"/>
+    <s:String x:Key="playtrackcs">Odtwórz Utwór</s:String>
+    <s:String x:Key="playsamplecs">Odtwórz Próbkę</s:String>
+    <s:String x:Key="youareabouttoremove">Masz zamiar usunąć </s:String>
+    <s:String x:Key="itemsfromthedatabase"> pozycje z bazy danych.</s:String>
+    <s:String x:Key="inresults,these">W rezultacie te pozycje zostaną usunięte ze sklepu, albumów, z którymi są powiązane, a także z biblioteki każdego użytkownika, który posiada te pozycje.</s:String>
+    <s:String x:Key="THISACTION">TEJ CZYNNOŚCI NIE MOŻNA COFNĄĆ!</s:String>
+    <s:String x:Key="proceed">Kontynuować?</s:String>
+    <s:String x:Key="shoppurchasesare">Zakupy w sklepie nie są dostępne dla kont Gości.</s:String>
+    <s:String x:Key="wouldyouliketo">Czy chcesz zarejestrować się jako nowy użytkownik?</s:String>
+    <s:String x:Key="registernowand">Zarejestruj się już teraz i odbierz 25 zł w prezencie powitalnym!</s:String>
+    <s:String x:Key="insufficientpermissions">Niewystarczające uprawnienia</s:String>
 </ResourceDictionary>

@@ -117,4 +117,17 @@
     <TextBlock x:Key="editinfo" Text="EDIT INFO"/>
     <TextBlock x:Key="buy" Text="BUY"/>
     <TextBlock x:Key="CANCEL" Text="CANCEL"/>
+    <TextBlock x:Key="loginasguest" Text="Login as Guest"/>
+    <s:String x:Key="playtrackcs">Play Track</s:String>
+    <s:String x:Key="playsamplecs">Play Sample</s:String>
+    <s:String x:Key="youareabouttoremove">You are about to remove </s:String>
+    <s:String x:Key="itemsfromthedatabase"> items from the database.</s:String>
+    <s:String x:Key="inresults,these">In result, these items will be removed from the shop, any albums they are associated with as well from library of any user that own these items.</s:String>
+    <s:String x:Key="THISACTION">THIS ACTION CANNOT BE UNDONE!</s:String>
+    <s:String x:Key="proceed">Proceed?</s:String>
+    <s:String x:Key="shoppurchasesare">Shop purchases are not available for Guest accounts.</s:String>
+    <s:String x:Key="wouldyouliketo">Would you like to register as a new account?</s:String>
+    <s:String x:Key="registernowand">Register now and receive 25 PLN as a welcome gift!</s:String>
+    <s:String x:Key="insufficientpermissions">Insufficient Permissions</s:String>
+    
 </ResourceDictionary>
