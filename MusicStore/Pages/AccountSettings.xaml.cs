@@ -95,7 +95,7 @@ namespace MusicStore.Pages
         {
             if (resign)
             {
-                System.Windows.MessageBox.Show("Wybierz użytkownika, który odziedziczy uprawnienia administratora", "Rezygnacja", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+                System.Windows.MessageBox.Show((string)FindResource("selectauserwho"),(string)FindResource("resignation"), System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
 
                 string user = ((TextBlock)((ListBox)usersToChangePermissionWindow.Content).SelectedItem).Text;
                 DBConn.instance.PrepareConnection();
@@ -131,10 +131,10 @@ namespace MusicStore.Pages
         private void btnzrezygnuj_Click(object sender, RoutedEventArgs e)
         {
             if (DBConn.instance.currentUser.permission == 3)
-                System.Windows.MessageBox.Show("Jako główny administrator nie możesz zrezygnować z uprawnień administratora", "Rezygnacja", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+                System.Windows.MessageBox.Show((string)FindResource("astheprimaryadministrator"), (string)FindResource("resignation"), System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
             else
             {
-                MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz zrezygnować z uprawnień administratora?", "Rezygnacja", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show((string)FindResource("areyousure"), (string)FindResource("resignation"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 switch (result)
                 {
                     case MessageBoxResult.Yes:
@@ -154,7 +154,7 @@ namespace MusicStore.Pages
                         lgb.GradientStops = (GradientStopCollection)FindResource("tlo");
                         usersToChangePermissionWindow.Background = lgb;
                         users.Background = lgb;
-                        usersToChangePermissionWindow.Title = "Nadaj uprawnienia administracyjne";
+                        usersToChangePermissionWindow.Title = (string)FindResource("grantadministrative");
                         users.SelectionChanged += wybierzUsera;
                         DBConn.instance.PrepareConnection();
                         MySqlCommand encmd = new MySqlCommand($"SELECT username FROM users where permission=1", DBConn.instance.conn);
@@ -194,7 +194,7 @@ namespace MusicStore.Pages
             lgb.GradientStops = (GradientStopCollection)FindResource("tlo");
             usersToChangePermissionWindow.Background = lgb;
             users.Background = lgb;
-            usersToChangePermissionWindow.Title = "Wybierz użytkownika, który odziedziczy uprawnienia administratora";
+            usersToChangePermissionWindow.Title = (string)FindResource("selectauser");
             users.SelectionChanged += wybierzUsera;
             DBConn.instance.PrepareConnection();
             MySqlCommand encmd = new MySqlCommand($"SELECT username, permission FROM users where permission=1 or permission=2", DBConn.instance.conn);
@@ -210,9 +210,9 @@ namespace MusicStore.Pages
                     continue;
 
                 if ((int)row[1] == 1)
-                    t.Text += " - nadaj uprawnienia administratora";
+                    t.Text += (string)FindResource("grantrights");
                 else
-                    t.Text += " - usuń uprawnienia administratora";
+                    t.Text += (string)FindResource("removerights");
 
                 t.FontSize = 32;
                 users.Items.Add(t);
@@ -223,10 +223,10 @@ namespace MusicStore.Pages
         private void btnusun_Click(object sender, RoutedEventArgs e)
         {
             if(DBConn.instance.currentUser.permission == 3)
-                System.Windows.MessageBox.Show("Jako główny administrator nie możesz usunąć swojego konta", "Usuwanie konta", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+                System.Windows.MessageBox.Show((string)FindResource("asthemainadmin"), (string)FindResource("accountdelete"), System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
             else
             {
-                MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz usunąć swoje konto?", "Usuwanie konta", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show((string)FindResource("areyoudelete"), (string)FindResource("accountdelete"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 switch (result)
                 {
                     case MessageBoxResult.Yes:

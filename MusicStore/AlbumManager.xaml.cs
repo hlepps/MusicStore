@@ -102,7 +102,7 @@ namespace MusicStore
                 //Confirmation Buttons
                 ResetChangesRow.Width = new GridLength(0, GridUnitType.Star);
                 SaveAsNewAlbumRow.Width = new GridLength(0, GridUnitType.Star);
-                SaveChangesButton.Content = "Add New Album";
+                SaveChangesButton.Content = (string)FindResource("addnewalbum2");
             }
             //else - Values for editing mode are set by default
         }
@@ -157,9 +157,9 @@ namespace MusicStore
         private void SelectFile_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-               "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-               "Portable Network Graphic (*.png)|*.png";
+            openFileDialog.Filter = (string)FindResource("allsuportedgraphics") +
+               (string)FindResource("JPEG") +
+               (string)FindResource("PNG");
             if (openFileDialog.ShowDialog() == true)
             {
                 CoverImage = new BitmapImage(new Uri(openFileDialog.FileName));
@@ -335,7 +335,7 @@ namespace MusicStore
             }
             else
             {
-                MessageBox.Show("ERROR: Missing required values", "Creating Album Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show((string)FindResource("ERROR"), (string)FindResource("creatingalbumfailed"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
