@@ -41,6 +41,7 @@
     <s:String x:Key="selecteditems">Selected items: </s:String>
     <s:String x:Key="price">Price: </s:String>
     <TextBlock x:Key="addtocart" Text="Buy"/>
+    <TextBlock x:Key="addtocart2" Text="Buy"/>
     <s:String x:Key="playsample">Play Sample</s:String>
     <s:String x:Key="tracks">Tracks: </s:String>
     <TextBlock x:Key="openalbum" Text="Open Album"/>

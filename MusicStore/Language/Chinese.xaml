@@ -41,6 +41,7 @@
     <s:String x:Key="selecteditems">选定的对象: </s:String>
     <s:String x:Key="price">价格: </s:String>
     <TextBlock x:Key="addtocart" Text="添加到购买"/>
+    <TextBlock x:Key="addtocart2" Text="添加到购买"/>
     <s:String x:Key="playsample">播放样本</s:String>
     <s:String x:Key="playtrack">播放曲目</s:String>
     <s:String x:Key="tracks">曲目: </s:String>
