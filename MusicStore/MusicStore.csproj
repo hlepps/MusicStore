@@ -362,6 +362,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\Dokumentacja.docx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="obrazy\note-gb4fa8b680_640.png">
