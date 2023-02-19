@@ -71,7 +71,7 @@ namespace MusicStore
             }
             else
             {
-                System.Windows.MessageBox.Show("Please enter every needed information", "Login", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                System.Windows.MessageBox.Show((string)FindResource("pleasenetereveryneeded"), (string)FindResource("log"), System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
             }
         }
 

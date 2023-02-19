@@ -78,7 +78,7 @@ namespace MusicStore
                 //Confirmation Buttons
                 ResetChangesRow.Width = new GridLength(0, GridUnitType.Star);
                 SaveAsNewTrackRow.Width = new GridLength(0, GridUnitType.Star);
-                SaveChangesButton.Content = "Add New Track";
+                SaveChangesButton.Content = (string)FindResource("addnewtrack3");
             }
             //else - Values for editing mode are set by default
         }
@@ -136,9 +136,9 @@ namespace MusicStore
         private void SelectFile_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-               "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-               "Portable Network Graphic (*.png)|*.png";
+            openFileDialog.Filter = (string)FindResource("allsuportedgraphics") +
+               (string)FindResource("JPEG") +
+               (string)FindResource("PNG");
             if (openFileDialog.ShowDialog() == true)
             {
                 CoverImage = new BitmapImage(new Uri(openFileDialog.FileName));
@@ -233,7 +233,7 @@ namespace MusicStore
         private void SelectTrackFile_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "MP3 Audio file(*.mp3)| *.mp3";
+            openFileDialog.Filter = (string)FindResource("MP3");
             if (openFileDialog.ShowDialog() == true)
             {
                 mp3bytes = File.ReadAllBytes(openFileDialog.FileName);
@@ -284,7 +284,7 @@ namespace MusicStore
             }
             else
             {
-                MessageBox.Show("ERROR: Missing required values", "Creating Track Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show((string)FindResource("ERROR"), (string)FindResource("creatingtrackfailed") , MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private void SaveChanges_Click(object sender, RoutedEventArgs e)

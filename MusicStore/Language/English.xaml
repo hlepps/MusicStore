@@ -129,5 +129,28 @@
     <s:String x:Key="wouldyouliketo">Would you like to register as a new account?</s:String>
     <s:String x:Key="registernowand">Register now and receive 25 PLN as a welcome gift!</s:String>
     <s:String x:Key="insufficientpermissions">Insufficient Permissions</s:String>
-    
+    <s:String x:Key="addnewauthor2">Add New Author</s:String>
+    <s:String x:Key="allsuportedgraphics">All supported graphics|*.jpg;*.jpeg;*.png|</s:String>
+    <s:String x:Key="JPEG">JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|</s:String>
+    <s:String x:Key="PNG">Portable Network Graphic (*.png)|*.png</s:String>
+    <s:String x:Key="ERROR">ERROR: Missing required values</s:String>
+    <s:String x:Key="creatingartistfailed">Creating Artist Failed</s:String>
+    <s:String x:Key="addnewalbum2">Add New Album</s:String>
+    <s:String x:Key="creatingalbumfailed">Creating Album Failed</s:String>
+    <s:String x:Key="addnewtrack3">Add New Track</s:String>
+    <s:String x:Key="creatingtrackfailed">Creating Track Failed</s:String>
+    <s:String x:Key="MP3">MP3 Audio file(*.mp3)| *.mp3</s:String>
+    <s:String x:Key="pleasenetereveryneeded">Please enter every needed information</s:String>
+    <s:String x:Key="log">Login</s:String>
+    <s:String x:Key="selectauserwho">Select a user who will inherit administrator privileges</s:String>
+    <s:String x:Key="resignation">Resignation</s:String>
+    <s:String x:Key="astheprimaryadministrator">As the primary administrator, you cannot opt ​​out of administrator privileges</s:String>
+    <s:String x:Key="areyousure">Are you sure you want to opt out of administrator privileges?</s:String>
+    <s:String x:Key="grantadministrative">Grant administrative permissions</s:String>
+    <s:String x:Key="selectauser">Select a user who will inherit administrator privileges</s:String>
+    <s:String x:Key="grantrights"> - grant administrator rights</s:String>
+    <s:String x:Key="removerights"> - remove administrator privileges</s:String>
+    <s:String x:Key="asthemainadmin">As the main admin, you cannot delete your account</s:String>
+    <s:String x:Key="accountdelete">Deleting account</s:String>
+    <s:String x:Key="areyoudelete">Are you sure you want to delete your account?</s:String>
 </ResourceDictionary>
