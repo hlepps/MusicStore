@@ -37,6 +37,7 @@ namespace MusicStore.Pages
                 b.Name = "a" + a.id;
                 b.Margin = new Thickness(10);
                 b.Click += EditAuthor_Click;
+                b.Style = (System.Windows.Style)FindResource("button1");
                 StackPanel sp = new StackPanel();
                 sp.Orientation = Orientation.Horizontal;
                 sp.Margin = new Thickness(5);
@@ -51,6 +52,7 @@ namespace MusicStore.Pages
                 TextBlock tb = new TextBlock();
                 tb.Text = a.name;
                 tb.VerticalAlignment = VerticalAlignment.Center;
+                tb.Foreground = (SolidColorBrush)FindResource("tekstAutorow");
                 tb.FontWeight = FontWeights.Bold;
                 tb.FontSize = 36;
                 sp.Children.Add(tb);

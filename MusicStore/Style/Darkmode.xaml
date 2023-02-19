@@ -39,6 +39,7 @@
     <SolidColorBrush x:Key="napisy" Color="Orange"/>
     <SolidColorBrush x:Key="paski" Color="Green"/>
     <SolidColorBrush x:Key="butter" Color="#FF66C766"/>
+    <SolidColorBrush x:Key="tekstAutorow" Color="White"/>
 
     <Style x:Key="button1" TargetType="Button">
         <Setter Property="Background" Value="Green"/>

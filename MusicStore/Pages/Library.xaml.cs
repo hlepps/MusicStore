@@ -372,6 +372,11 @@ namespace MusicStore.Pages
         {
             Library albumLibrary = new Library();
             Window window = new Window();
+            LinearGradientBrush lgb = new LinearGradientBrush();
+            lgb.StartPoint = new Point(1, 1);
+            lgb.EndPoint = new Point(0, 0);
+            lgb.GradientStops = (GradientStopCollection)FindResource("tlo");
+            window.Background = lgb;
             albumLibrary.albumID = savedID;
             albumLibrary.pageMode = Mode.Album;
             albumLibrary.RefreshPage();
