@@ -186,13 +186,13 @@ namespace MusicStore.Pages
                 case Mode.UserLibrary:
                     ShopTrackPanel.Visibility = Visibility.Collapsed;
                     ShopAlbumPanel.Visibility = Visibility.Collapsed;
-                    TrackListenTextBlock.Text = "Play Track";
+                    TrackListenTextBlock.Text = (string)FindResource("playtrackcs");
                     break;
 
                 case Mode.Shop:
                     ShopTrackPanel.Visibility = Visibility.Visible;
                     ShopAlbumPanel.Visibility = Visibility.Visible;
-                    TrackListenTextBlock.Text = "Play Sample";
+                    TrackListenTextBlock.Text = (string)FindResource("playsamplecs");
                     break;
 
                 case Mode.Album:
@@ -200,11 +200,11 @@ namespace MusicStore.Pages
                     ShopAlbumPanel.Visibility = Visibility.Collapsed;
                     if(DBConn.instance.currentUser.library.itemlist.Contains(DB.DBAlbumsSaved.Get(albumID)))
                     {
-                        TrackListenTextBlock.Text = "Play Track";
+                        TrackListenTextBlock.Text = (string)FindResource("playtrackcs");
                     }
                     else
                     {
-                        TrackListenTextBlock.Text = "Play Sample";
+                        TrackListenTextBlock.Text = (string)FindResource("playsamplecs");
                     }
                     break;
             }
@@ -444,19 +444,19 @@ namespace MusicStore.Pages
             if(markedForDeletion.Any())
             {
                 StringBuilder sb = new StringBuilder();
-                sb.Append("You are about to remove ");
+                sb.Append((string)FindResource("youareabouttoremove"));
                 sb.Append(markedForDeletion.Count());
-                sb.Append(" items from the database.");
+                sb.Append((string)FindResource("itemsfromthedatabase"));
                 sb.AppendLine();
                 sb.AppendLine();
-                sb.Append("In result, these items will be removed from the shop, any albums they are associated with as well from library of any user that own these items.");
+                sb.Append((string)FindResource("inresults,these"));
                 sb.AppendLine();
                 sb.AppendLine();
-                sb.Append("THIS ACTION CANNOT BE UNDONE!");
+                sb.Append((string)FindResource("THISACTION"));
                 sb.AppendLine();
                 sb.AppendLine();
-                sb.AppendLine("Proceed?");
-                MessageBoxResult result = MessageBox.Show(sb.ToString(), "Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                sb.AppendLine((string)FindResource("proceed"));
+                MessageBoxResult result = MessageBox.Show(sb.ToString(), (string)FindResource("delete"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 switch(result)
                 {
                     case MessageBoxResult.Yes:
@@ -528,14 +528,14 @@ namespace MusicStore.Pages
             else
             {
                 StringBuilder messageBoxText = new StringBuilder();
-                messageBoxText.Append("Shop purchases are not available for Guest accounts.");
+                messageBoxText.Append((string)FindResource("shoppurchasesare"));
                 messageBoxText.AppendLine();
                 messageBoxText.AppendLine();
-                messageBoxText.Append("Would you like to register as a new account?");
+                messageBoxText.Append((string)FindResource("wouldyouliketo"));
                 messageBoxText.AppendLine();
                 messageBoxText.AppendLine();
-                messageBoxText.Append("Register now and receive 25 PLN as a welcome gift!");
-                if (MessageBox.Show(messageBoxText.ToString(), "Insufficient Permissions", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                messageBoxText.Append((string)FindResource("registernowand"));
+                if (MessageBox.Show(messageBoxText.ToString(), (string)FindResource("insufficientpermissions"), MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     register nowyuser = new register();
                     //nowyuser = load data from current guest user for Register data inputs
