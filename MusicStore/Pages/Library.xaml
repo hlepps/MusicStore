@@ -467,7 +467,7 @@
                     </Grid>
                     <Separator Height="15" Background="{x:Null}" Foreground="{x:Null}"/>
                     <Button HorizontalAlignment="Center"
-                            Content="{DynamicResource addtocart}"
+                            Content="{DynamicResource addtocart2}"
                             Foreground="White"
                             Style="{DynamicResource button2}"
                             Width="90"
