@@ -18,33 +18,20 @@
     <TextBlock x:Key="choosebtn1" Text="Select File"/>
     <TextBlock x:Key="choosebtn2" Text="Select File"/>
     <TextBlock x:Key="applybtn" Text="Apply changes"/>
-    <TextBlock x:Key="librarybtn" Text="Library"/>
-    <TextBlock x:Key="shopbtn" Text="Shop"/>
-    <TextBlock x:Key="optionbtn" Text="Options"/>
     <s:String x:Key="USER">User: </s:String>
     <s:String x:Key="USERTYPE">User type: </s:String>
-    <s:String x:Key="AVAIBLEFUNDS">Available funds: </s:String>
-    <TextBlock x:Key="logoutbtn" Text="Logout"/>
+    <s:String x:Key="AVAIBLEFUNDS">Available funds:</s:String>
     <TextBlock x:Key="changestylebtn" Text="Change Style"/>
     <TextBlock x:Key="changelanbtn" Text="Change Language"/>
-    <TextBlock x:Key="optionuserbtn" Text="Account Settings"/>
     <s:String x:Key="CVCVCV">CV Code</s:String>
     <s:String x:Key="datacard">Card expiration date</s:String>
-    <TextBlock x:Key="addnewtrack" Text="Add new Track"/>
-    <TextBlock x:Key="addnewalbum" Text="Add new Album"/>
-    <TextBlock x:Key="addnewartist" Text="Add new Artist"/>
-    <TextBlock x:Key="browsemod" Text="Browse Mode"/>
-    <TextBlock x:Key="editmode" Text="Edit Mode"/>
-    <TextBlock x:Key="deletionmode" Text="Deletion Mode"/>
-    <TextBlock x:Key="DELETE" Text="DELETE"/>
     <s:String x:Key="currentmode">Current Mode</s:String>
     <s:String x:Key="selecteditems">Selected items: </s:String>
     <s:String x:Key="price">Price: </s:String>
     <TextBlock x:Key="addtocart" Text="Buy"/>
     <TextBlock x:Key="addtocart2" Text="Buy"/>
     <s:String x:Key="playsample">Play Sample</s:String>
-    <s:String x:Key="tracks">Tracks: </s:String>
-    <TextBlock x:Key="openalbum" Text="Open Album"/>
+    <s:String x:Key="tracks">Tracks:</s:String>
     <s:String x:Key="browse">Browse</s:String>
     <s:String x:Key="edit">Edit</s:String>
     <s:String x:Key="delete">Delete</s:String>
@@ -98,7 +85,6 @@
     <TextBlock x:Key="saveasnewauthor" Text="Save as a New Author"/>
     <TextBlock x:Key="savechanges3" Text="Save Changes"/>
     <TextBlock x:Key="cancel3" Text="Cancel"/>
-    <TextBlock x:Key="authorlist" Text="Author List"/>
     <s:String x:Key="changeicon">Change Profile Icon</s:String>
     <TextBlock x:Key="resignadminpower" Text="Resign from Admin privileges"/>
     <TextBlock x:Key="editpower" Text="Edit Privileges"/>
@@ -162,4 +148,20 @@
     <s:String x:Key="pleaseselectanothercard">Please select another form of payment.</s:String>
     <s:String x:Key="currentversionnot">Current version does not support paying by Payment Cards.</s:String>
     <s:String x:Key="paymentfailed">Payment Failed</s:String>
+
+    <s:String x:Key="librarybtn" >Library</s:String>
+    <s:String x:Key="shopbtn" >Shop</s:String>
+    <s:String x:Key="optionbtn" >Options</s:String>
+    <s:String x:Key="authorlist" >Author List</s:String>
+    <s:String x:Key="optionuserbtn" >Account Settings</s:String>
+    <s:String x:Key="logoutbtn" >Logout</s:String>
+
+    <s:String x:Key="openalbum">Open Album</s:String>
+    <s:String x:Key="addnewtrack">Add new Track</s:String>
+    <s:String x:Key="addnewalbum">Add new Album</s:String>
+    <s:String x:Key="addnewartist">Add new Artist</s:String>
+    <s:String x:Key="browsemod">Browse Mode</s:String>
+    <s:String x:Key="editmode">Edit Mode</s:String>
+    <s:String x:Key="deletionmode">Deletion Mode</s:String>
+    <s:String x:Key="DELETE">DELETE</s:String>
 </ResourceDictionary>
