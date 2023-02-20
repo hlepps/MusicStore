@@ -181,7 +181,6 @@
                         </Grid.RowDefinitions>
 
                         <Button    x:Name="btnbiblioteka"
-                               Content="{DynamicResource librarybtn}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"
@@ -191,6 +190,8 @@
                                Margin="0,1,0,0"
                                Style="{DynamicResource button1}"   
                                Grid.Row="0">
+                            <TextBlock Text="{DynamicResource librarybtn}">
+                            </TextBlock>
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border
@@ -203,7 +204,6 @@
                             </Button.Template>
                         </Button>
                         <Button    x:Name="btnsklep"
-                               Content="{DynamicResource shopbtn}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"
@@ -213,6 +213,8 @@
                                Margin="0,0,0,0"
                                Style="{DynamicResource button2}"   
                                Grid.Row="1">
+                            <TextBlock Text="{DynamicResource shopbtn}">
+                            </TextBlock>
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border
@@ -225,7 +227,6 @@
                             </Button.Template>
                         </Button>
                         <Button    x:Name="btnopcje"
-                               Content="{DynamicResource optionbtn}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"
@@ -235,6 +236,8 @@
                                Margin="0,0,0,0"
                                Style="{DynamicResource button2}"   
                                Grid.Row="3">
+                            <TextBlock Text="{DynamicResource optionbtn}">
+                            </TextBlock>
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border
@@ -247,7 +250,6 @@
                             </Button.Template>
                         </Button>
                         <Button    x:Name="btnuser"
-                               Content="{DynamicResource optionuserbtn}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"
@@ -257,6 +259,8 @@
                                Margin="0,0,0,0"
                                Style="{DynamicResource button1}"   
                                Grid.Row="4">
+                            <TextBlock Text="{DynamicResource optionuserbtn}">
+                            </TextBlock>
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border
@@ -269,7 +273,6 @@
                             </Button.Template>
                         </Button>
                         <Button    x:Name="btnauthors"
-                               Content="{DynamicResource authorlist}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"
@@ -279,6 +282,8 @@
                                Margin="0,0,0,0"
                                Style="{DynamicResource button1}"   
                                Grid.Row="2">
+                            <TextBlock Text="{DynamicResource authorlist}">
+                            </TextBlock>
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border
@@ -291,7 +296,6 @@
                             </Button.Template>
                         </Button>
                         <Button    x:Name="btnlogout"
-                               Content="{DynamicResource logoutbtn}"
                                FontSize="16"
                                BorderThickness="5,5,5,5"
                                Foreground="White"
@@ -301,6 +305,8 @@
                                Margin="0,0,0,0"
                                Style="{DynamicResource button2}"   
                                Grid.Row="7">
+                            <TextBlock Text="{DynamicResource logoutbtn}">
+                            </TextBlock>
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border
