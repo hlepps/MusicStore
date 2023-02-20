@@ -234,6 +234,7 @@ namespace MusicStore
             openFileDialog.Filter = (string)FindResource("MP3");
             if (openFileDialog.ShowDialog() == true)
             {
+                SelectedFileTextBlock.Text = openFileDialog.FileName;
                 mp3bytes = File.ReadAllBytes(openFileDialog.FileName);
             }
             forceNewMP3 = true;
@@ -278,6 +279,7 @@ namespace MusicStore
             if(TrackNameTextBox.Text != "" && mp3bytes != new byte[0] && ShopPriceTextBox.Text != "")
             {
                 DBSongsSaved.Add(TrackNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source), double.Parse(ShopPriceTextBox.Text.Replace('.',',')), DBSongsSaved.UploadMP3(mp3bytes), GetAuthorsIDs());
+                MainMenu.instance.library.RefreshPage();
                 this.Close();
             }
             else
@@ -290,6 +292,7 @@ namespace MusicStore
             if (trackID != null)
             {
                 DBSongsSaved.Update((int)trackID, TrackNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source), double.Parse(ShopPriceTextBox.Text.Replace('.', ',')), DBSongsSaved.UploadMP3(mp3bytes), GetAuthorsIDs());
+                MainMenu.instance.library.RefreshPage();
             }
             else SaveAsNewTrack_Click(sender, e);
         }
