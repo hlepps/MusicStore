@@ -18,20 +18,33 @@
     <TextBlock x:Key="choosebtn1" Text="Wybierz plik"/>
     <TextBlock x:Key="choosebtn2" Text="Wybierz plik"/>
     <TextBlock x:Key="applybtn" Text="Zastosuj"/>
+    <TextBlock x:Key="librarybtn" Text="Biblioteka"/>
+    <TextBlock x:Key="shopbtn" Text="Sklep"/>
+    <TextBlock x:Key="optionbtn" Text="Ustawienia"/>
     <s:String x:Key="USER">Użytkownik: </s:String>
     <s:String x:Key="USERTYPE">Typ użytkownika: </s:String>
-    <s:String x:Key="AVAIBLEFUNDS">Dostępne środki:</s:String>
+    <s:String x:Key="AVAIBLEFUNDS">Dostępne środki: </s:String>
+    <TextBlock x:Key="logoutbtn" Text="Wyloguj się"/>
     <TextBlock x:Key="changestylebtn" Text="Wybierz styl"/>
     <TextBlock x:Key="changelanbtn" Text="Wybierz Język"/>
+    <TextBlock x:Key="optionuserbtn" Text="Ustawienia Konta"/>
     <s:String x:Key="CVCVCV">Kod CV</s:String>
     <s:String x:Key="datacard">Data ważności karty</s:String>
+    <TextBlock x:Key="addnewtrack" Text="Dodaj utwór"/>
+    <TextBlock x:Key="addnewalbum" Text="Dodaj album"/>
+    <TextBlock x:Key="addnewartist" Text="Dodaj artystę"/>
+    <TextBlock x:Key="browsemod" Text="Tryb przeglądania"/>
+    <TextBlock x:Key="editmode" Text="Tryb edycji"/>
+    <TextBlock x:Key="deletionmode" Text="Trub usuwania"/>
+    <TextBlock x:Key="DELETE" Text="USUŃ"/>
     <s:String x:Key="currentmode">Obecny Tryb</s:String>
     <s:String x:Key="selecteditems">Wybrane elementy: </s:String>
     <s:String x:Key="price">Cena: </s:String>
     <TextBlock x:Key="addtocart" Text="Kup"/>
     <TextBlock x:Key="addtocart2" Text="Kup"/>
     <s:String x:Key="playsample">Odtwórz próbkę</s:String>
-    <s:String x:Key="tracks">Utwory:</s:String>
+    <s:String x:Key="tracks">Utwory: </s:String>
+    <TextBlock x:Key="openalbum" Text="Otwórz Album"/>
     <s:String x:Key="browse">Przeglądanie</s:String>
     <s:String x:Key="edit">Edycja</s:String>
     <s:String x:Key="delete">Usuwanie</s:String>
@@ -85,6 +98,7 @@
     <TextBlock x:Key="saveasnewauthor" Text="Zapisz Jako Nowego Autora"/>
     <TextBlock x:Key="savechanges3" Text="Zapisz Zmiany"/>
     <TextBlock x:Key="cancel3" Text="Zamknij"/>
+    <TextBlock x:Key="authorlist" Text="Lista Autorów"/>
     <s:String x:Key="changeicon">Zmień Profilowe</s:String>
     <TextBlock x:Key="resignadminpower" Text="Zrezygnuj z Uprawnien Administratora"/>
     <TextBlock x:Key="editpower" Text="Edytuj Uprawnienia"/>
@@ -148,20 +162,4 @@
     <s:String x:Key="pleaseselectanothercard">Wybierz inną formę płatności.</s:String>
     <s:String x:Key="currentversionnot">Obecna wersja nie obsługuje płatności kartami płatniczymi.</s:String>
     <s:String x:Key="paymentfailed">Płatność nie powiodła się</s:String>
-
-    <s:String x:Key="librarybtn" >Biblioteka</s:String>
-    <s:String x:Key="shopbtn" >Sklep</s:String>
-    <s:String x:Key="optionbtn" >Ustawienia</s:String>
-    <s:String x:Key="authorlist" >Lista Autorów</s:String>
-    <s:String x:Key="optionuserbtn" >Ustawienia Konta</s:String>
-    <s:String x:Key="logoutbtn" >Wyloguj się</s:String>
-
-    <s:String x:Key="openalbum">Otwórz Album</s:String>
-    <s:String x:Key="addnewtrack">Dodaj utwór</s:String>
-    <s:String x:Key="addnewalbum">Dodaj album</s:String>
-    <s:String x:Key="addnewartist">Dodaj artystę</s:String>
-    <s:String x:Key="browsemod">Tryb przeglądania</s:String>
-    <s:String x:Key="editmode">Tryb edycji</s:String>
-    <s:String x:Key="deletionmode">Trub usuwania</s:String>
-    <s:String x:Key="DELETE">USUŃ</s:String>
 </ResourceDictionary>
