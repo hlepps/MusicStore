@@ -527,6 +527,8 @@ namespace MusicStore.Pages
                     tmp = reference.price;
                 }
                 paymentMethod.itemPrice = tmp;
+                paymentMethod.itsAlbum = !savedIdIsSong;
+                paymentMethod.id = savedID;
                 paymentMethod.RefreshWindow();
                 paymentMethod.ShowDialog();
             }

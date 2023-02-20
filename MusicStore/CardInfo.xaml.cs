@@ -35,8 +35,7 @@ namespace MusicStore
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            //If(poprawnie wypełnione pola)
-            //Prześlij nowe dane karty użytkownika do bazy
+            DBConn.instance.currentUser.SaveCreditInfo(nrcardtxt.Text, cvvtxt.Text, datetxt.Text);
             this.Close();
         }
 

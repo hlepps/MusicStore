@@ -95,8 +95,6 @@ namespace MusicStore.Pages
         {
             if (resign)
             {
-                System.Windows.MessageBox.Show((string)FindResource("selectauserwho"),(string)FindResource("resignation"), System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
-
                 string user = ((TextBlock)((ListBox)usersToChangePermissionWindow.Content).SelectedItem).Text;
                 DBConn.instance.PrepareConnection();
                 MySqlCommand a = new MySqlCommand($"UPDATE users SET permission=1 WHERE username='{DBConn.instance.currentUser.username}'", DBConn.instance.conn);
@@ -111,7 +109,7 @@ namespace MusicStore.Pages
             {
                 string user = ((TextBlock)((ListBox)usersToChangePermissionWindow.Content).SelectedItem).Text;
                 int index = user.IndexOf(" ");
-                user = user.Substring(0, index);
+                user = user.Substring(0, index-1);
                 int permission = int.Parse(((TextBlock)((ListBox)usersToChangePermissionWindow.Content).SelectedItem).Name.Substring(1));
                 DBConn.instance.PrepareConnection();
                 if (permission == 1)
@@ -138,6 +136,8 @@ namespace MusicStore.Pages
                 switch (result)
                 {
                     case MessageBoxResult.Yes:
+                        System.Windows.MessageBox.Show((string)FindResource("selectauserwho"), (string)FindResource("resignation"), System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+
                         resign = true;
                         ListBox users = new ListBox();
                         usersToChangePermissionWindow.Content = users;
@@ -217,6 +217,7 @@ namespace MusicStore.Pages
                 t.FontSize = 32;
                 users.Items.Add(t);
             }
+            resign = false;
             usersToChangePermissionWindow.ShowDialog();
         }
 

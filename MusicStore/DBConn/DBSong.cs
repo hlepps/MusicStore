@@ -205,7 +205,7 @@ namespace MusicStore.DB
 
         public static int Add(string name, int image_id, double price, int songid, List<int> authorsIDs)
         {
-            MySqlCommand cmd = new MySqlCommand($"INSERT INTO songs (songname, image_id, price, mp3_id) VALUES ('{name}', {image_id}, {price}, {songid})", DBConn.instance.conn);
+            MySqlCommand cmd = new MySqlCommand($"INSERT INTO songs (songname, image_id, price, mp3_id) VALUES ('{name}', {image_id}, {price.ToString().Replace(',','.')}, {songid})", DBConn.instance.conn);
             DBConn.instance.PrepareConnection();
             cmd.ExecuteNonQuery();
             int id = (int)cmd.LastInsertedId;

@@ -23,8 +23,8 @@ namespace MusicStore
     {
         public static MainMenu instance;
         public Pages.Library library = new Pages.Library();
-        Pages.Options options = new Pages.Options();
-        Pages.AccountSettings accountSettings = new Pages.AccountSettings();
+        public Pages.Options options = new Pages.Options();
+        public Pages.AccountSettings accountSettings = new Pages.AccountSettings();
         public Pages.Authors authors = new Pages.Authors();
 
         int styl;

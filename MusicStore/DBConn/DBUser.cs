@@ -49,6 +49,39 @@ namespace MusicStore.DB
 
             return temp;
         }
+
+        public void RefreshInfo()
+        {
+            string sql = $"SELECT username, passhash, permission, wallet, library, avatar_id, paymentinfo FROM users WHERE username='{username}'";
+
+            MySqlCommand cmd = new MySqlCommand(sql, DBConn.instance.conn);
+            DBConn.instance.PrepareConnection();
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                object[] a = { rdr[0], rdr[1], rdr[2], rdr[3], rdr[4], rdr[5], rdr[6] };
+                wallet = (double)a[3];
+                permission = (int)a[2];
+                library = new DB.DBLibrary();
+                library.ReloadLibrary();
+                avatar = DB.DBImagesSaved.Get((int)a[5]);
+                string s = (string)a[6];
+                creditInfo = s.Split(',');
+            }
+        }
+
+        public string GetRawLibrary()
+        {
+            string sql = $"SELECT library FROM users WHERE username='{username}'";
+
+            MySqlCommand cmd = new MySqlCommand(sql, DBConn.instance.conn);
+            DBConn.instance.PrepareConnection();
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            rdr.Read();
+            return (string)rdr[0];
+        }
+
         /// <summary>
         /// 
         /// </summary>

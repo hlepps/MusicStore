@@ -30,7 +30,6 @@ namespace MusicStore
         private BitmapImage CoverImage;
         bool forceNewMP3 = false;
         bool forceNewImage = false;
-        private ImageSource defaultImage;
 
         public TrackManager()
         {
@@ -38,7 +37,6 @@ namespace MusicStore
             int nWidth = (int)System.Windows.SystemParameters.PrimaryScreenWidth;
             int nHeight = (int)System.Windows.SystemParameters.PrimaryScreenHeight;
             this.LayoutTransform = new ScaleTransform(nWidth / 2, nHeight / 2);
-            defaultImage = CoverPreviewImage.Source;
 
             AuthorsStackPanel.Children.Clear();
             Grid g = ObjectGenerationHelper.GetAuthorEmptyGrid();
@@ -130,7 +128,7 @@ namespace MusicStore
             // Uri uri = new Uri("obrazy/note-gb4fa8b680_640.png");
             // bitmapImage.UriSource = uri;
             // CoverPreviewImage.Source = bitmapImage;
-            CoverPreviewImage.Source = defaultImage;
+            CoverPreviewImage.Source = new BitmapImage(new Uri("pack://application:,,,/obrazy/note-gb4fa8b680_640.png"));
             forceNewImage = true;
         }
         private void SelectFile_Click(object sender, RoutedEventArgs e)
@@ -279,7 +277,7 @@ namespace MusicStore
         {
             if(TrackNameTextBox.Text != "" && mp3bytes != new byte[0] && ShopPriceTextBox.Text != "")
             {
-                DBSongsSaved.Add(TrackNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source), double.Parse(ShopPriceTextBox.Text), DBSongsSaved.UploadMP3(mp3bytes), GetAuthorsIDs());
+                DBSongsSaved.Add(TrackNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source), double.Parse(ShopPriceTextBox.Text.Replace('.',',')), DBSongsSaved.UploadMP3(mp3bytes), GetAuthorsIDs());
                 this.Close();
             }
             else
@@ -291,7 +289,7 @@ namespace MusicStore
         {
             if (trackID != null)
             {
-                DBSongsSaved.Update((int)trackID, TrackNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source), double.Parse(ShopPriceTextBox.Text), DBSongsSaved.UploadMP3(mp3bytes), GetAuthorsIDs());
+                DBSongsSaved.Update((int)trackID, TrackNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source), double.Parse(ShopPriceTextBox.Text.Replace('.', ',')), DBSongsSaved.UploadMP3(mp3bytes), GetAuthorsIDs());
             }
             else SaveAsNewTrack_Click(sender, e);
         }

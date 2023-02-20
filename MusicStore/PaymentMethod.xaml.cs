@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace MusicStore
 {
@@ -20,6 +23,8 @@ namespace MusicStore
     public partial class PaymentMethod : Window
     {
         public double itemPrice;
+        public bool itsAlbum;
+        public int id;
         public PaymentMethod()
         {
             InitializeComponent();
@@ -74,6 +79,12 @@ namespace MusicStore
                 double tmp = DBConn.instance.currentUser.wallet - itemPrice;
                 if (tmp >= 0)
                 {
+                    MySqlCommand usr = new MySqlCommand($"UPDATE users SET library=@lib, wallet={tmp.ToString().Replace(',','.')} WHERE username='{DBConn.instance.currentUser.username}'", DBConn.instance.conn);
+                    usr.Parameters.AddWithValue("lib", DBConn.instance.currentUser.GetRawLibrary() + "," + (itsAlbum ? "a" : "s") + id);
+                    DBConn.instance.PrepareConnection();
+                    usr.ExecuteNonQuery();
+
+
                     //Remove funds from account, assign item to user library
                     StringBuilder stringBuilder = new StringBuilder();
                     stringBuilder.Append((string)FindResource("paymentsuccesfull")); 
@@ -81,7 +92,9 @@ namespace MusicStore
                     stringBuilder.AppendLine();
                     stringBuilder.Append((string)FindResource("thisitemhasbeen"));
                     MessageBox.Show(stringBuilder.ToString(), (string)FindResource("paymentsuccesfull"), MessageBoxButton.OK, MessageBoxImage.Information);
-                    MusicStore.MainMenu.instance.library.RefreshPage();
+                    DBConn.instance.currentUser.RefreshInfo();
+                    MainMenu.instance.library.RefreshPage();
+                    MainMenu.instance.RefreshUserInfo();
                     this.Close();
                 }
                 else
@@ -111,6 +124,7 @@ namespace MusicStore
             {
 
             }
+            DBConn.instance.currentUser.RefreshInfo();
             LoadCardInfo();
         }
         private void Close_Click(object sender, RoutedEventArgs e)

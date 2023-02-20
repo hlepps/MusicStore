@@ -40,7 +40,7 @@ namespace MusicStore
             loading = new Pages.Loading();
 #if DEBUG
             DebugWindow dw = new DebugWindow();
-            dw.Show();
+            //dw.Show();
             application.Run();
 #else
             try
