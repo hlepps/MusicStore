@@ -81,7 +81,7 @@ namespace MusicStore.Pages
             int id = images[pictureCombo.Items.IndexOf(pictureCombo.SelectedItem)].id;
             DBConn.instance.currentUser.ChangeAvatar(id);
             pfp.Source = DBConn.instance.currentUser.avatar.bitmap;
-
+            MainMenu.instance.RefreshUserInfo();
         }
 
         private void btnwyloguj_Click(object sender, RoutedEventArgs e)
