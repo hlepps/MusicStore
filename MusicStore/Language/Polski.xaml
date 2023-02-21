@@ -143,7 +143,7 @@
     <s:String x:Key="totalafter">Po zakupie: </s:String>
     <s:String x:Key="nocardsaved">Brak zapisanej karty</s:String>
     <s:String x:Key="paymentsuccesfull">Płatność powiodła się.</s:String>
-    <s:String x:Key="thisitemhasbeen">Ta pozycja została przypisana do Twojej biblioteki, a środki zostały wycofane.</s:String>
+    <s:String x:Key="thisitemhasbeen">Ta pozycja została przypisana do Twojej biblioteki, a środki zostały pobrane.</s:String>
     <s:String x:Key="notfundsselected">Za mało środków na wybraną pozycję.</s:String>
     <s:String x:Key="pleaseselectanothercard">Wybierz inną formę płatności.</s:String>
     <s:String x:Key="currentversionnot">Obecna wersja nie obsługuje płatności kartami płatniczymi.</s:String>
@@ -162,6 +162,6 @@
     <s:String x:Key="addnewartist">Dodaj artystę</s:String>
     <s:String x:Key="browsemod">Tryb przeglądania</s:String>
     <s:String x:Key="editmode">Tryb edycji</s:String>
-    <s:String x:Key="deletionmode">Trub usuwania</s:String>
+    <s:String x:Key="deletionmode">Tryb usuwania</s:String>
     <s:String x:Key="DELETE">USUŃ</s:String>
 </ResourceDictionary>

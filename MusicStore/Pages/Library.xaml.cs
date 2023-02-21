@@ -372,6 +372,9 @@ namespace MusicStore.Pages
         {
             Library albumLibrary = new Library();
             Window window = new Window();
+            DB.DBAlbum reference = DB.DBAlbumsSaved.Get(savedID);
+            window.Title = reference.name;
+            window.Icon = reference.image.bitmap;
             LinearGradientBrush lgb = new LinearGradientBrush();
             lgb.StartPoint = new Point(1, 1);
             lgb.EndPoint = new Point(0, 0);

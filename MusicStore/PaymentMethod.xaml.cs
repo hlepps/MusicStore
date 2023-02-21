@@ -30,7 +30,8 @@ namespace MusicStore
             InitializeComponent();
             int nWidth = (int)System.Windows.SystemParameters.PrimaryScreenWidth;
             int nHeight = (int)System.Windows.SystemParameters.PrimaryScreenHeight;
-            this.LayoutTransform = new ScaleTransform(nWidth * 0.2, nHeight * 0.2);
+            base.Width = nWidth * 0.2;
+            base.Height = nHeight * 0.2;
         }
 
         public void RefreshWindow()

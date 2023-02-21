@@ -278,7 +278,7 @@ namespace MusicStore
         {
             if(TrackNameTextBox.Text != "" && mp3bytes != new byte[0] && ShopPriceTextBox.Text != "")
             {
-                DBSongsSaved.Add(TrackNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source), double.Parse(ShopPriceTextBox.Text.Replace('.',',')), DBSongsSaved.UploadMP3(mp3bytes), GetAuthorsIDs());
+                DBSongsSaved.Add(TrackNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source), double.Parse(ShopPriceTextBox.Text.Replace('.',',')), (mp3bytes == null ? 0 : DBSongsSaved.UploadMP3(mp3bytes)), GetAuthorsIDs());
                 MainMenu.instance.library.RefreshPage();
                 this.Close();
             }
@@ -290,9 +290,10 @@ namespace MusicStore
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
             if (trackID != null)
-            {
-                DBSongsSaved.Update((int)trackID, TrackNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source), double.Parse(ShopPriceTextBox.Text.Replace('.', ',')), DBSongsSaved.UploadMP3(mp3bytes), GetAuthorsIDs());
+            {               
+                DBSongsSaved.Update((int)trackID, TrackNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source), double.Parse(ShopPriceTextBox.Text.Replace('.', ',')), (mp3bytes == null ? 0 : DBSongsSaved.UploadMP3(mp3bytes)), GetAuthorsIDs());
                 MainMenu.instance.library.RefreshPage();
+                this.Close();
             }
             else SaveAsNewTrack_Click(sender, e);
         }

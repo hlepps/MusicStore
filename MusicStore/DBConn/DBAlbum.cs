@@ -175,7 +175,7 @@ namespace MusicStore.DB
 
         public static int Add(string name, int image_id, double price, int mainauthor_id, List<int> songIDs)
         {
-            MySqlCommand cmd = new MySqlCommand($"INSERT INTO albums (name, image_id, mainauthor_id, price) VALUES ('{name}', {image_id}, {mainauthor_id}, {price})", DBConn.instance.conn);
+            MySqlCommand cmd = new MySqlCommand($"INSERT INTO albums (name, mainauthor_id, image_id, price) VALUES ('{name}', {mainauthor_id}, {image_id}, {price.ToString().Replace(',', '.')})", DBConn.instance.conn);
             DBConn.instance.PrepareConnection();
             cmd.ExecuteNonQuery();
             int id = (int)cmd.LastInsertedId;
@@ -193,7 +193,7 @@ namespace MusicStore.DB
 
         public static void Update(int id, string name, int image_id, double price, int mainauthor_id, List<int> songIDs)
         {
-            MySqlCommand cmd = new MySqlCommand($"UPDATE albums SET name = '{name}', image_id='{image_id}', price = {price}, mainauthor_id = {mainauthor_id} WHERE id='{id}'", DBConn.instance.conn);
+            MySqlCommand cmd = new MySqlCommand($"UPDATE albums SET name = '{name}',  mainauthor_id = {mainauthor_id}, image_id='{image_id}', price = {price.ToString().Replace(',', '.')} WHERE id='{id}'", DBConn.instance.conn);
             DBConn.instance.PrepareConnection();
             cmd.ExecuteNonQuery();
 

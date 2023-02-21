@@ -223,7 +223,7 @@ namespace MusicStore.DB
 
         public static void Update(int id, string name, int image_id, double price, int songid, List<int> authorsIDs)
         {
-            MySqlCommand cmd = new MySqlCommand($"UPDATE authors SET name = '{name}', image_id='{image_id}', price = {price}, mp3_id = {songid} WHERE id='{id}'", DBConn.instance.conn);
+            MySqlCommand cmd = new MySqlCommand($"UPDATE songs SET songname = '{name}', image_id='{image_id}', price = {price.ToString().Replace(',', '.')}, mp3_id = {songid} WHERE id='{id}'", DBConn.instance.conn);
             DBConn.instance.PrepareConnection();
             cmd.ExecuteNonQuery();
 

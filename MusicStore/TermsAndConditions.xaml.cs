@@ -26,7 +26,8 @@ namespace MusicStore
             InitializeComponent();
             int nWidth = (int)System.Windows.SystemParameters.PrimaryScreenWidth;
             int nHeight = (int)System.Windows.SystemParameters.PrimaryScreenHeight;
-            this.LayoutTransform = new ScaleTransform(nWidth * 0.8, nHeight * 0.25);
+            base.Width = nWidth * 0.25;
+            base.Height = nHeight * 0.8;
             switch (MusicStore.Language.LangManager.GetCurrentLanguage())
             {
                 case "Language/Chinese.xaml":

@@ -117,6 +117,8 @@ namespace MusicStore
                 ReloadCoverImage(reference);
                 //Authors
                 ReloadAuthors(reference);
+                //Tracks
+                ReloadTracks(reference);
                 //Shop Price
                 ReloadShopPrice(reference);
             }
@@ -331,7 +333,9 @@ namespace MusicStore
         {
             if (AlbumNameTextBox.Text.Any() && ShopPriceTextBox.Text.Any())
             {
-                DBAlbumsSaved.Add(AlbumNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source), double.Parse(ShopPriceTextBox.Text), GetAuthorID(), GetSongsIDs());
+                DBAlbumsSaved.Add(AlbumNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source), double.Parse(ShopPriceTextBox.Text.Replace('.', ',')), GetAuthorID(), GetSongsIDs());
+                MainMenu.instance.library.RefreshPage();
+                this.Close();
             }
             else
             {
@@ -342,7 +346,9 @@ namespace MusicStore
         {
             if (albumID != null)
             {
-                DBAlbumsSaved.Update((int)albumID, AlbumNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source), double.Parse(ShopPriceTextBox.Text), GetAuthorID(), GetSongsIDs());
+                DBAlbumsSaved.Update((int)albumID, AlbumNameTextBox.Text, DBImagesSaved.Add((BitmapImage)CoverPreviewImage.Source), double.Parse(ShopPriceTextBox.Text.Replace('.', ',')), GetAuthorID(), GetSongsIDs());
+                MainMenu.instance.library.RefreshPage();
+                this.Close();
             }
             else SaveAsNewAlbum_Click(sender, e);
         }

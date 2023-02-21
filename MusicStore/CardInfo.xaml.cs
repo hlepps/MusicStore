@@ -22,6 +22,10 @@ namespace MusicStore
         public CardInfo()
         {
             InitializeComponent();
+            int nWidth = (int)System.Windows.SystemParameters.PrimaryScreenWidth;
+            int nHeight = (int)System.Windows.SystemParameters.PrimaryScreenHeight;
+            base.Width = nWidth * 0.2;
+            base.Height = nHeight * 0.2;
             LoadCardInfo();
         }
         private void LoadCardInfo()
