@@ -164,4 +164,6 @@
     <s:String x:Key="editmode">Tryb edycji</s:String>
     <s:String x:Key="deletionmode">Tryb usuwania</s:String>
     <s:String x:Key="DELETE">USUŃ</s:String>
+
+    <s:String x:Key="studioname">Nazwa Studia</s:String>
 </ResourceDictionary>

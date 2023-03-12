@@ -164,4 +164,6 @@
     <s:String x:Key="editmode">Edit Mode</s:String>
     <s:String x:Key="deletionmode">Deletion Mode</s:String>
     <s:String x:Key="DELETE">DELETE</s:String>
+
+    <s:String x:Key="studioname">Name Studio</s:String>
 </ResourceDictionary>

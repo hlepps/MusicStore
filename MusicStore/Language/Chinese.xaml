@@ -164,4 +164,6 @@
     <s:String x:Key="editmode">编辑模式</s:String>
     <s:String x:Key="deletionmode">删除模式</s:String>
     <s:String x:Key="DELETE">删除</s:String>
+
+    <s:String x:Key="studioname">工作室名称</s:String>
 </ResourceDictionary>

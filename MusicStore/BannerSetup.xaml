@@ -55,7 +55,7 @@
                     </Grid.RowDefinitions>
                     <Grid x:Name="ContentImportGrid" HorizontalAlignment="Stretch"  Grid.Row="1" VerticalAlignment="Stretch" Margin="25,0,25,24">
                         <StackPanel x:Name="StudioNameStackPanel" Grid.Row="0" Margin="92,10,92,10" Orientation="Vertical" RenderTransformOrigin="0.503,0.865">
-                            <TextBlock Text="Nazwa studia" Foreground="{DynamicResource napisy}" FontSize="13" FontFamily="InriaSans-Light" FontWeight="Bold" TextAlignment="Center"/>
+                            <TextBlock Text="{DynamicResource studioname}" Foreground="{DynamicResource napisy}" FontSize="13" FontFamily="InriaSans-Light" FontWeight="Bold" TextAlignment="Center"/>
                             <TextBox x:Name="StudioNameInputTextBox" Background="Transparent" Foreground="{DynamicResource napisy}" Margin="0,10,0,0" FontFamily="InriaSans-Light"
                              BorderBrush="{DynamicResource paski}" TextAlignment="Center"
                              BorderThickness="0,0,0,2" Text="Vinyl Library" Height="18" RenderTransformOrigin="0.513,0.225"/>
